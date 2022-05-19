@@ -1,0 +1,3020 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authentication" type="tns:Authentication" />
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="queryYwtmByDdWl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="order_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="product_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtmByDdWlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryYwtmByDdWlResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MessagePack">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:MessagePack" />
+            <s:element minOccurs="1" maxOccurs="1" name="PrivateStr" type="tns:privilidge" />
+            <s:element minOccurs="0" maxOccurs="1" name="DbConnStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="privilidge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PrintBin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrintLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CGSH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CGRK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DGRK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YCRK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PANDIAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCLL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DGCK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SJ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBGCK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BYD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HWCX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PCCX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KCTH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DJKTH" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAdmin" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SeeLog">
+        <s:complexType />
+      </s:element>
+      <s:element name="SeeLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SeeLogResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelLogResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlantNSL">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPlantNSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlantNSLResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPrintList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPrintListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPrintListResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPoInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfoYS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfoYSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPoInfoYSResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDGInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDGInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDGInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSCLLInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="piType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSCLLInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSCLLInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfo1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoInfo1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPoInfo1Result" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Stream" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdPoInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="in_ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdPoInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdPoInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="out_ywtm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdReceiveInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PiType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdReceiveInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdReceiveInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InBound">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="piType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="piDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InBoundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InBoundResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="piDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdSCLLInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PiType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdSCLLInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdSCLLInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBFInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="piType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBFInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBFInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdBF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PiType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdBFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdBFResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdBFCK">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Plant" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdBFCKResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdBFCKResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetYSTHInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="piType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetYSTHInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetYSTHInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdYSTHInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PiType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdYSTHInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdYSTHInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReceiveInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RPo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Plant" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReceiveInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReceiveInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="poDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOperatorSTNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOperatorSTNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOperatorSTNumberResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="STOrderInfo">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeMaterialInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Plant" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STLocation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Charg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeMaterialInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeMaterialInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ArtName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DLOpSTInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DLOpSTInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DLOpSTInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Stream" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBatchMCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="piDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBatchMCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertBatchMCountResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeDoSTJobInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeDoSTJobInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeDoSTJobInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateItemStaus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ItemNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateItemStausResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateItemStausResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InSertMaterialCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Plant" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STLocation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Charg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="STCount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InSertMaterialCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InSertMaterialCountResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNeedSTInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNeedSTInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNeedSTInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownLoadSTInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownLoadSTInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownLoadSTInfoResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpLoadSTInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpLoadSTInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpLoadSTInfoResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GoodsMoveGetInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GoodsMoveGetInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GoodsMoveGetInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMoveInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Matnr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Charg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Werks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lgort" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="opType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMoveInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsMoveInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMoveInfo1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="opType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMoveInfo1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsMoveInfo1Result" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBFCKInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="opType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeedDetail" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBFCKInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBFCKInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="refDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdYKInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdYKInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdYKInfoResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCXInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BaoGuanYuan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HuoWei" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lgort" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Werks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCXInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHWCXInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="cxDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWPCCXInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BaoGuanyuan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Werks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Charg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Matnr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWPCCXInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHWPCCXInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="pccxDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWLPZInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BaoGuanyuan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWLPZInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWLPZInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBGYInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BGY" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBGYInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBGYInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaintainNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="storeMan" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaintainNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMaintainNumResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsMaintainList">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="maintainNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsInfoResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsGoodsList">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMaintainNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="maintainNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maintainNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMaintainNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMaintainNumResult" type="tns:MessagePack" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaintainModEnd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="maintainNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaintainModEndResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MaintainModEndResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaintainCompleteCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="maintainNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaintainCompleteCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MaintainCompleteCheckResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPZH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enumopType" type="tns:enumOpType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="enumOpType">
+        <s:restriction base="s:string">
+          <s:enumeration value="采购收货" />
+          <s:enumeration value="验收入库" />
+          <s:enumeration value="代管入库" />
+          <s:enumeration value="上架" />
+          <s:enumeration value="生产领料" />
+          <s:enumeration value="移至报废库" />
+          <s:enumeration value="报废出库" />
+          <s:enumeration value="库存退货" />
+          <s:enumeration value="采购退货" />
+          <s:enumeration value="代管出库" />
+          <s:enumeration value="实时盘点" />
+          <s:enumeration value="批处理盘点" />
+          <s:enumeration value="实时移库" />
+          <s:enumeration value="批量移库" />
+          <s:enumeration value="批次查询" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="getPZHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPZHResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="pzh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pznd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enumopType" type="tns:enumOpType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryYwtmResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryDd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enumoptype" type="tns:enumOpType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryDdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryDdResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtm_Wltm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enumoptype" type="tns:enumOpType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtm_WltmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryYwtm_WltmResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCXInfo_RF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BaoGuanYuan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HuoWei" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lgort" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Werks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCXInfo_RFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHWCXInfo_RFResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="cxDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYwtm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywtm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYwtmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getYwtmResult" type="tns:clsYwtm" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="clsYwtm">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ywtm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Xtdm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gch" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Order_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Jhsxh" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tmlx" type="tns:enum条码类型" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pch" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tmlen" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="H_no" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="enum条码类型">
+        <s:restriction base="s:string">
+          <s:enumeration value="无" />
+          <s:enumeration value="原物料条码" />
+          <s:enumeration value="一维条码" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="queryYwtms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wltms" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="queryYwtmsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryYwtmsResult" type="tns:MessagePack" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmByDdWlSoapIn">
+    <wsdl:part name="parameters" element="tns:queryYwtmByDdWl" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmByDdWlSoapOut">
+    <wsdl:part name="parameters" element="tns:queryYwtmByDdWlResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SeeLogSoapIn">
+    <wsdl:part name="parameters" element="tns:SeeLog" />
+  </wsdl:message>
+  <wsdl:message name="SeeLogSoapOut">
+    <wsdl:part name="parameters" element="tns:SeeLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="SeeLogAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DelLogSoapIn">
+    <wsdl:part name="parameters" element="tns:DelLog" />
+  </wsdl:message>
+  <wsdl:message name="DelLogSoapOut">
+    <wsdl:part name="parameters" element="tns:DelLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelLogAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPlantNSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlantNSL" />
+  </wsdl:message>
+  <wsdl:message name="GetPlantNSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlantNSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlantNSLAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPrintListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPrintList" />
+  </wsdl:message>
+  <wsdl:message name="GetPrintListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPrintListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPrintListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPoInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPoInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoYSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPoInfoYS" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoYSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPoInfoYSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfoYSAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetDGInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDGInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetDGInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDGInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDGInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetSCLLInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSCLLInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSCLLInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSCLLInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSCLLInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfo1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetPoInfo1" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfo1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetPoInfo1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetPoInfo1Authentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdPoInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdPoInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdPoInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdPoInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdPoInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdReceiveInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdReceiveInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdReceiveInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdReceiveInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdReceiveInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="InBoundSoapIn">
+    <wsdl:part name="parameters" element="tns:InBound" />
+  </wsdl:message>
+  <wsdl:message name="InBoundSoapOut">
+    <wsdl:part name="parameters" element="tns:InBoundResponse" />
+  </wsdl:message>
+  <wsdl:message name="InBoundAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdSCLLInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdSCLLInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdSCLLInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdSCLLInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdSCLLInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetBFInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBFInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBFInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBFInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBFInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdBF" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdBFResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFCKSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdBFCK" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFCKSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdBFCKResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdBFCKAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetYSTHInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetYSTHInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetYSTHInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetYSTHInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetYSTHInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdYSTHInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdYSTHInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdYSTHInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdYSTHInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdYSTHInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiveInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReceiveInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiveInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReceiveInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiveInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetOperatorSTNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOperatorSTNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetOperatorSTNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOperatorSTNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOperatorSTNumberAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GeMaterialInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GeMaterialInfo" />
+  </wsdl:message>
+  <wsdl:message name="GeMaterialInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GeMaterialInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeMaterialInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DLOpSTInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DLOpSTInfo" />
+  </wsdl:message>
+  <wsdl:message name="DLOpSTInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DLOpSTInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DLOpSTInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="InsertBatchMCountSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBatchMCount" />
+  </wsdl:message>
+  <wsdl:message name="InsertBatchMCountSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBatchMCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBatchMCountAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GeDoSTJobInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GeDoSTJobInfo" />
+  </wsdl:message>
+  <wsdl:message name="GeDoSTJobInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GeDoSTJobInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeDoSTJobInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemStausSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateItemStaus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemStausSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateItemStausResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemStausAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="InSertMaterialCountSoapIn">
+    <wsdl:part name="parameters" element="tns:InSertMaterialCount" />
+  </wsdl:message>
+  <wsdl:message name="InSertMaterialCountSoapOut">
+    <wsdl:part name="parameters" element="tns:InSertMaterialCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="InSertMaterialCountAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetNeedSTInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNeedSTInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetNeedSTInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNeedSTInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNeedSTInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadSTInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownLoadSTInfo" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadSTInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownLoadSTInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadSTInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadSTInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpLoadSTInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadSTInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpLoadSTInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadSTInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GoodsMoveGetInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GoodsMoveGetInfo" />
+  </wsdl:message>
+  <wsdl:message name="GoodsMoveGetInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GoodsMoveGetInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GoodsMoveGetInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsMoveInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsMoveInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfo1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsMoveInfo1" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfo1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsMoveInfo1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMoveInfo1Authentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetBFCKInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBFCKInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBFCKInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBFCKInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBFCKInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdYKInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdYKInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdYKInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdYKInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdYKInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHWCXInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHWCXInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHWPCCXInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHWPCCXInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHWPCCXInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHWPCCXInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHWPCCXInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetWLPZInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWLPZInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetWLPZInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWLPZInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWLPZInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetBGYInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBGYInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBGYInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBGYInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBGYInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetMaintainNumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMaintainNum" />
+  </wsdl:message>
+  <wsdl:message name="GetMaintainNumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMaintainNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMaintainNumAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaintainNumSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMaintainNum" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaintainNumSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMaintainNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaintainNumAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="MaintainModEndSoapIn">
+    <wsdl:part name="parameters" element="tns:MaintainModEnd" />
+  </wsdl:message>
+  <wsdl:message name="MaintainModEndSoapOut">
+    <wsdl:part name="parameters" element="tns:MaintainModEndResponse" />
+  </wsdl:message>
+  <wsdl:message name="MaintainModEndAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="MaintainCompleteCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:MaintainCompleteCheck" />
+  </wsdl:message>
+  <wsdl:message name="MaintainCompleteCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:MaintainCompleteCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="MaintainCompleteCheckAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="getPZHSoapIn">
+    <wsdl:part name="parameters" element="tns:getPZH" />
+  </wsdl:message>
+  <wsdl:message name="getPZHSoapOut">
+    <wsdl:part name="parameters" element="tns:getPZHResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPZHAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmSoapIn">
+    <wsdl:part name="parameters" element="tns:queryYwtm" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmSoapOut">
+    <wsdl:part name="parameters" element="tns:queryYwtmResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="queryDdSoapIn">
+    <wsdl:part name="parameters" element="tns:queryDd" />
+  </wsdl:message>
+  <wsdl:message name="queryDdSoapOut">
+    <wsdl:part name="parameters" element="tns:queryDdResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryDdAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtm_WltmSoapIn">
+    <wsdl:part name="parameters" element="tns:queryYwtm_Wltm" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtm_WltmSoapOut">
+    <wsdl:part name="parameters" element="tns:queryYwtm_WltmResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtm_WltmAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfo_RFSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHWCXInfo_RF" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfo_RFSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHWCXInfo_RFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCXInfo_RFAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="getYwtmSoapIn">
+    <wsdl:part name="parameters" element="tns:getYwtm" />
+  </wsdl:message>
+  <wsdl:message name="getYwtmSoapOut">
+    <wsdl:part name="parameters" element="tns:getYwtmResponse" />
+  </wsdl:message>
+  <wsdl:message name="getYwtmAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmsSoapIn">
+    <wsdl:part name="parameters" element="tns:queryYwtms" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmsSoapOut">
+    <wsdl:part name="parameters" element="tns:queryYwtmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryYwtmsAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="AnSteelInterFaceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtmByDdWl">
+      <wsdl:input message="tns:queryYwtmByDdWlSoapIn" />
+      <wsdl:output message="tns:queryYwtmByDdWlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SeeLog">
+      <wsdl:input message="tns:SeeLogSoapIn" />
+      <wsdl:output message="tns:SeeLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelLog">
+      <wsdl:input message="tns:DelLogSoapIn" />
+      <wsdl:output message="tns:DelLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantNSL">
+      <wsdl:input message="tns:GetPlantNSLSoapIn" />
+      <wsdl:output message="tns:GetPlantNSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintList">
+      <wsdl:input message="tns:GetPrintListSoapIn" />
+      <wsdl:output message="tns:GetPrintListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo">
+      <wsdl:input message="tns:GetPoInfoSoapIn" />
+      <wsdl:output message="tns:GetPoInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfoYS">
+      <wsdl:input message="tns:GetPoInfoYSSoapIn" />
+      <wsdl:output message="tns:GetPoInfoYSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDGInfo">
+      <wsdl:input message="tns:GetDGInfoSoapIn" />
+      <wsdl:output message="tns:GetDGInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSCLLInfo">
+      <wsdl:input message="tns:GetSCLLInfoSoapIn" />
+      <wsdl:output message="tns:GetSCLLInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo1">
+      <wsdl:input message="tns:GetPoInfo1SoapIn" />
+      <wsdl:output message="tns:GetPoInfo1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdPoInfo">
+      <wsdl:input message="tns:UpdPoInfoSoapIn" />
+      <wsdl:output message="tns:UpdPoInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdReceiveInfo">
+      <wsdl:input message="tns:UpdReceiveInfoSoapIn" />
+      <wsdl:output message="tns:UpdReceiveInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InBound">
+      <wsdl:input message="tns:InBoundSoapIn" />
+      <wsdl:output message="tns:InBoundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdSCLLInfo">
+      <wsdl:input message="tns:UpdSCLLInfoSoapIn" />
+      <wsdl:output message="tns:UpdSCLLInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBFInfo">
+      <wsdl:input message="tns:GetBFInfoSoapIn" />
+      <wsdl:output message="tns:GetBFInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdBF">
+      <wsdl:input message="tns:UpdBFSoapIn" />
+      <wsdl:output message="tns:UpdBFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdBFCK">
+      <wsdl:input message="tns:UpdBFCKSoapIn" />
+      <wsdl:output message="tns:UpdBFCKSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetYSTHInfo">
+      <wsdl:input message="tns:GetYSTHInfoSoapIn" />
+      <wsdl:output message="tns:GetYSTHInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdYSTHInfo">
+      <wsdl:input message="tns:UpdYSTHInfoSoapIn" />
+      <wsdl:output message="tns:UpdYSTHInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiveInfo">
+      <wsdl:input message="tns:GetReceiveInfoSoapIn" />
+      <wsdl:output message="tns:GetReceiveInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperatorSTNumber">
+      <wsdl:input message="tns:GetOperatorSTNumberSoapIn" />
+      <wsdl:output message="tns:GetOperatorSTNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeMaterialInfo">
+      <wsdl:input message="tns:GeMaterialInfoSoapIn" />
+      <wsdl:output message="tns:GeMaterialInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DLOpSTInfo">
+      <wsdl:input message="tns:DLOpSTInfoSoapIn" />
+      <wsdl:output message="tns:DLOpSTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBatchMCount">
+      <wsdl:input message="tns:InsertBatchMCountSoapIn" />
+      <wsdl:output message="tns:InsertBatchMCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeDoSTJobInfo">
+      <wsdl:input message="tns:GeDoSTJobInfoSoapIn" />
+      <wsdl:output message="tns:GeDoSTJobInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItemStaus">
+      <wsdl:input message="tns:UpdateItemStausSoapIn" />
+      <wsdl:output message="tns:UpdateItemStausSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InSertMaterialCount">
+      <wsdl:input message="tns:InSertMaterialCountSoapIn" />
+      <wsdl:output message="tns:InSertMaterialCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNeedSTInfo">
+      <wsdl:input message="tns:GetNeedSTInfoSoapIn" />
+      <wsdl:output message="tns:GetNeedSTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadSTInfo">
+      <wsdl:input message="tns:DownLoadSTInfoSoapIn" />
+      <wsdl:output message="tns:DownLoadSTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadSTInfo">
+      <wsdl:input message="tns:UpLoadSTInfoSoapIn" />
+      <wsdl:output message="tns:UpLoadSTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GoodsMoveGetInfo">
+      <wsdl:input message="tns:GoodsMoveGetInfoSoapIn" />
+      <wsdl:output message="tns:GoodsMoveGetInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo">
+      <wsdl:input message="tns:GetGoodsMoveInfoSoapIn" />
+      <wsdl:output message="tns:GetGoodsMoveInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo1">
+      <wsdl:input message="tns:GetGoodsMoveInfo1SoapIn" />
+      <wsdl:output message="tns:GetGoodsMoveInfo1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBFCKInfo">
+      <wsdl:input message="tns:GetBFCKInfoSoapIn" />
+      <wsdl:output message="tns:GetBFCKInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdYKInfo">
+      <wsdl:input message="tns:UpdYKInfoSoapIn" />
+      <wsdl:output message="tns:UpdYKInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo">
+      <wsdl:input message="tns:GetHWCXInfoSoapIn" />
+      <wsdl:output message="tns:GetHWCXInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHWPCCXInfo">
+      <wsdl:input message="tns:GetHWPCCXInfoSoapIn" />
+      <wsdl:output message="tns:GetHWPCCXInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWLPZInfo">
+      <wsdl:input message="tns:GetWLPZInfoSoapIn" />
+      <wsdl:output message="tns:GetWLPZInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBGYInfo">
+      <wsdl:input message="tns:GetBGYInfoSoapIn" />
+      <wsdl:output message="tns:GetBGYInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintainNum">
+      <wsdl:input message="tns:GetMaintainNumSoapIn" />
+      <wsdl:output message="tns:GetMaintainNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfo">
+      <wsdl:input message="tns:GetGoodsInfoSoapIn" />
+      <wsdl:output message="tns:GetGoodsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMaintainNum">
+      <wsdl:input message="tns:UpdateMaintainNumSoapIn" />
+      <wsdl:output message="tns:UpdateMaintainNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainModEnd">
+      <wsdl:input message="tns:MaintainModEndSoapIn" />
+      <wsdl:output message="tns:MaintainModEndSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainCompleteCheck">
+      <wsdl:input message="tns:MaintainCompleteCheckSoapIn" />
+      <wsdl:output message="tns:MaintainCompleteCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPZH">
+      <wsdl:input message="tns:getPZHSoapIn" />
+      <wsdl:output message="tns:getPZHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm">
+      <wsdl:input message="tns:queryYwtmSoapIn" />
+      <wsdl:output message="tns:queryYwtmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="queryDd">
+      <wsdl:input message="tns:queryDdSoapIn" />
+      <wsdl:output message="tns:queryDdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm_Wltm">
+      <wsdl:input message="tns:queryYwtm_WltmSoapIn" />
+      <wsdl:output message="tns:queryYwtm_WltmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo_RF">
+      <wsdl:input message="tns:GetHWCXInfo_RFSoapIn" />
+      <wsdl:output message="tns:GetHWCXInfo_RFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYwtm">
+      <wsdl:input message="tns:getYwtmSoapIn" />
+      <wsdl:output message="tns:getYwtmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtms">
+      <wsdl:input message="tns:queryYwtmsSoapIn" />
+      <wsdl:output message="tns:queryYwtmsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AnSteelInterFaceSoap" type="tns:AnSteelInterFaceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:HelloWorldAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtmByDdWl">
+      <soap:operation soapAction="http://tempuri.org/queryYwtmByDdWl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LoginAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeeLog">
+      <soap:operation soapAction="http://tempuri.org/SeeLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SeeLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelLog">
+      <soap:operation soapAction="http://tempuri.org/DelLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DelLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantNSL">
+      <soap:operation soapAction="http://tempuri.org/GetPlantNSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPlantNSLAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintList">
+      <soap:operation soapAction="http://tempuri.org/GetPrintList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPrintListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo">
+      <soap:operation soapAction="http://tempuri.org/GetPoInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPoInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfoYS">
+      <soap:operation soapAction="http://tempuri.org/GetPoInfoYS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPoInfoYSAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDGInfo">
+      <soap:operation soapAction="http://tempuri.org/GetDGInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDGInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSCLLInfo">
+      <soap:operation soapAction="http://tempuri.org/GetSCLLInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSCLLInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo1">
+      <soap:operation soapAction="http://tempuri.org/GetPoInfo1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPoInfo1Authentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdPoInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdPoInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdPoInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdReceiveInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdReceiveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdReceiveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InBound">
+      <soap:operation soapAction="http://tempuri.org/InBound" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InBoundAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdSCLLInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdSCLLInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdSCLLInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBFInfo">
+      <soap:operation soapAction="http://tempuri.org/GetBFInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBFInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdBF">
+      <soap:operation soapAction="http://tempuri.org/UpdBF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdBFAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdBFCK">
+      <soap:operation soapAction="http://tempuri.org/UpdBFCK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdBFCKAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYSTHInfo">
+      <soap:operation soapAction="http://tempuri.org/GetYSTHInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetYSTHInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdYSTHInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdYSTHInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdYSTHInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiveInfo">
+      <soap:operation soapAction="http://tempuri.org/GetReceiveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetReceiveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperatorSTNumber">
+      <soap:operation soapAction="http://tempuri.org/GetOperatorSTNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetOperatorSTNumberAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeMaterialInfo">
+      <soap:operation soapAction="http://tempuri.org/GeMaterialInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GeMaterialInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DLOpSTInfo">
+      <soap:operation soapAction="http://tempuri.org/DLOpSTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DLOpSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBatchMCount">
+      <soap:operation soapAction="http://tempuri.org/InsertBatchMCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertBatchMCountAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeDoSTJobInfo">
+      <soap:operation soapAction="http://tempuri.org/GeDoSTJobInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GeDoSTJobInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItemStaus">
+      <soap:operation soapAction="http://tempuri.org/UpdateItemStaus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateItemStausAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InSertMaterialCount">
+      <soap:operation soapAction="http://tempuri.org/InSertMaterialCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InSertMaterialCountAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNeedSTInfo">
+      <soap:operation soapAction="http://tempuri.org/GetNeedSTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNeedSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadSTInfo">
+      <soap:operation soapAction="http://tempuri.org/DownLoadSTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownLoadSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadSTInfo">
+      <soap:operation soapAction="http://tempuri.org/UpLoadSTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpLoadSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoodsMoveGetInfo">
+      <soap:operation soapAction="http://tempuri.org/GoodsMoveGetInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GoodsMoveGetInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsMoveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGoodsMoveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo1">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsMoveInfo1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGoodsMoveInfo1Authentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBFCKInfo">
+      <soap:operation soapAction="http://tempuri.org/GetBFCKInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBFCKInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdYKInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdYKInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdYKInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHWCXInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHWCXInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWPCCXInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHWPCCXInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHWPCCXInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWLPZInfo">
+      <soap:operation soapAction="http://tempuri.org/GetWLPZInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetWLPZInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBGYInfo">
+      <soap:operation soapAction="http://tempuri.org/GetBGYInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBGYInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintainNum">
+      <soap:operation soapAction="http://tempuri.org/GetMaintainNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMaintainNumAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGoodsInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMaintainNum">
+      <soap:operation soapAction="http://tempuri.org/UpdateMaintainNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateMaintainNumAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintainModEnd">
+      <soap:operation soapAction="http://tempuri.org/MaintainModEnd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:MaintainModEndAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintainCompleteCheck">
+      <soap:operation soapAction="http://tempuri.org/MaintainCompleteCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:MaintainCompleteCheckAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPZH">
+      <soap:operation soapAction="http://tempuri.org/getPZH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPZHAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm">
+      <soap:operation soapAction="http://tempuri.org/queryYwtm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:queryYwtmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDd">
+      <soap:operation soapAction="http://tempuri.org/queryDd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:queryDdAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm_Wltm">
+      <soap:operation soapAction="http://tempuri.org/queryYwtm_Wltm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:queryYwtm_WltmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo_RF">
+      <soap:operation soapAction="http://tempuri.org/GetHWCXInfo_RF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHWCXInfo_RFAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYwtm">
+      <soap:operation soapAction="http://tempuri.org/getYwtm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getYwtmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtms">
+      <soap:operation soapAction="http://tempuri.org/queryYwtms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:queryYwtmsAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AnSteelInterFaceSoap12" type="tns:AnSteelInterFaceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWorldAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtmByDdWl">
+      <soap12:operation soapAction="http://tempuri.org/queryYwtmByDdWl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LoginAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeeLog">
+      <soap12:operation soapAction="http://tempuri.org/SeeLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SeeLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelLog">
+      <soap12:operation soapAction="http://tempuri.org/DelLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DelLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantNSL">
+      <soap12:operation soapAction="http://tempuri.org/GetPlantNSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPlantNSLAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintList">
+      <soap12:operation soapAction="http://tempuri.org/GetPrintList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPrintListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetPoInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPoInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfoYS">
+      <soap12:operation soapAction="http://tempuri.org/GetPoInfoYS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPoInfoYSAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDGInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetDGInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDGInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSCLLInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetSCLLInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSCLLInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoInfo1">
+      <soap12:operation soapAction="http://tempuri.org/GetPoInfo1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPoInfo1Authentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdPoInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdPoInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdPoInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdReceiveInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdReceiveInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdReceiveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InBound">
+      <soap12:operation soapAction="http://tempuri.org/InBound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InBoundAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdSCLLInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdSCLLInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdSCLLInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBFInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetBFInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBFInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdBF">
+      <soap12:operation soapAction="http://tempuri.org/UpdBF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdBFAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdBFCK">
+      <soap12:operation soapAction="http://tempuri.org/UpdBFCK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdBFCKAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYSTHInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetYSTHInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetYSTHInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdYSTHInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdYSTHInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdYSTHInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiveInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetReceiveInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetReceiveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperatorSTNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetOperatorSTNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetOperatorSTNumberAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeMaterialInfo">
+      <soap12:operation soapAction="http://tempuri.org/GeMaterialInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GeMaterialInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DLOpSTInfo">
+      <soap12:operation soapAction="http://tempuri.org/DLOpSTInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DLOpSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBatchMCount">
+      <soap12:operation soapAction="http://tempuri.org/InsertBatchMCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertBatchMCountAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeDoSTJobInfo">
+      <soap12:operation soapAction="http://tempuri.org/GeDoSTJobInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GeDoSTJobInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItemStaus">
+      <soap12:operation soapAction="http://tempuri.org/UpdateItemStaus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateItemStausAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InSertMaterialCount">
+      <soap12:operation soapAction="http://tempuri.org/InSertMaterialCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InSertMaterialCountAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNeedSTInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetNeedSTInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNeedSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadSTInfo">
+      <soap12:operation soapAction="http://tempuri.org/DownLoadSTInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownLoadSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadSTInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpLoadSTInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpLoadSTInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoodsMoveGetInfo">
+      <soap12:operation soapAction="http://tempuri.org/GoodsMoveGetInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GoodsMoveGetInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsMoveInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGoodsMoveInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMoveInfo1">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsMoveInfo1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGoodsMoveInfo1Authentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBFCKInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetBFCKInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBFCKInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdYKInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdYKInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdYKInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHWCXInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHWCXInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWPCCXInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHWPCCXInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHWPCCXInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWLPZInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetWLPZInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetWLPZInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBGYInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetBGYInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBGYInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintainNum">
+      <soap12:operation soapAction="http://tempuri.org/GetMaintainNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMaintainNumAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGoodsInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMaintainNum">
+      <soap12:operation soapAction="http://tempuri.org/UpdateMaintainNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateMaintainNumAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintainModEnd">
+      <soap12:operation soapAction="http://tempuri.org/MaintainModEnd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:MaintainModEndAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintainCompleteCheck">
+      <soap12:operation soapAction="http://tempuri.org/MaintainCompleteCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:MaintainCompleteCheckAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPZH">
+      <soap12:operation soapAction="http://tempuri.org/getPZH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPZHAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm">
+      <soap12:operation soapAction="http://tempuri.org/queryYwtm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:queryYwtmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDd">
+      <soap12:operation soapAction="http://tempuri.org/queryDd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:queryDdAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtm_Wltm">
+      <soap12:operation soapAction="http://tempuri.org/queryYwtm_Wltm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:queryYwtm_WltmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCXInfo_RF">
+      <soap12:operation soapAction="http://tempuri.org/GetHWCXInfo_RF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHWCXInfo_RFAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYwtm">
+      <soap12:operation soapAction="http://tempuri.org/getYwtm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getYwtmAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwtms">
+      <soap12:operation soapAction="http://tempuri.org/queryYwtms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:queryYwtmsAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AnSteelInterFace">
+    <wsdl:port name="AnSteelInterFaceSoap" binding="tns:AnSteelInterFaceSoap">
+      <soap:address location="http://192.1.77.3/SapServiceCZ/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AnSteelInterFaceSoap12" binding="tns:AnSteelInterFaceSoap12">
+      <soap12:address location="http://192.1.77.3/SapServiceCZ/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

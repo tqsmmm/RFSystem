@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D48AFB72-3E88-49E7-A642-0385515CBB3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RFSystem</RootNamespace>
+    <AssemblyName>RFSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="icsharpcode.sharpziplib, Version=0.5.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73" />
+    <Reference Include="Interop.Excel, Version=1.5.0.0, Culture=neutral" />
+    <Reference Include="Interop.Microsoft.Office.Core, Version=2.3.0.0, Culture=neutral" />
+    <Reference Include="Interop.VBIDE, Version=5.3.0.0, Culture=neutral" />
+    <Reference Include="office, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="RF_ControlLibrary, Version=1.0.3352.25009, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArriveStore\ExceptionCard\打印设备卡片.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库货物信息合并.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库货物信息拆分.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库货物处理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库货物存放信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库通知单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库通知单修改.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\到库通知单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\异议入库.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\异议入库信息添加.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArriveStore\异议货物存放信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonClass\CommonFunction.cs" />
+    <Compile Include="CommonClass\ConstDefine.cs" />
+    <Compile Include="CommonClass\ExcelDateOperator.cs" />
+    <Compile Include="CommonClass\Printer.cs" />
+    <Compile Include="CommonClass\RFdesOperator.cs" />
+    <Compile Include="CommonClass\RoleInit.cs" />
+    <Compile Include="GetData.cs" />
+    <Compile Include="LabelPrint\ContractorLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelPrint\LocationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelPrint\LocationLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelPrint\ProductLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelPrint\保管员货品.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelPrint\库位查询.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\保养单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\保养货物.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\制定保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\新增保养数量.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\查询保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\管理保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点条目信息新增.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ArriveStore\ExceptionCard\库存设备备件卡片.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>库存设备备件卡片2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\ExceptionCard\打印设备卡片.resx">
+      <DependentUpon>打印设备卡片.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库货物信息合并.resx">
+      <DependentUpon>到库货物信息合并.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库货物信息拆分.resx">
+      <DependentUpon>到库货物信息拆分.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库货物处理.resx">
+      <DependentUpon>到库货物处理.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库货物存放信息.resx">
+      <DependentUpon>到库货物存放信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库通知单.resx">
+      <DependentUpon>到库通知单.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库通知单修改.resx">
+      <DependentUpon>到库通知单修改.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\到库通知单列表.resx">
+      <DependentUpon>到库通知单列表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\异议入库.resx">
+      <DependentUpon>异议入库.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\异议入库信息添加.resx">
+      <DependentUpon>异议入库信息添加.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArriveStore\异议货物存放信息.resx">
+      <DependentUpon>异议货物存放信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\ContractorLabel.resx">
+      <DependentUpon>ContractorLabel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\LocationAdd.resx">
+      <DependentUpon>LocationAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\LocationLabel.resx">
+      <DependentUpon>LocationLabel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\ProductLabel.resx">
+      <DependentUpon>ProductLabel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\保管员货品.resx">
+      <DependentUpon>保管员货品.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelPrint\库位查询.resx">
+      <DependentUpon>库位查询.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\MaintainReport\RptViewer.resx">
+      <DependentUpon>RptViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\MaintainReport\保养单.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>保养单1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\保养单列表.resx">
+      <DependentUpon>保养单列表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\保养货物.resx">
+      <DependentUpon>保养货物.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\制定保养单.resx">
+      <DependentUpon>制定保养单.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\新增保养数量.resx">
+      <DependentUpon>新增保养数量.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\查询保养单.resx">
+      <DependentUpon>查询保养单.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\管理保养单.resx">
+      <DependentUpon>管理保养单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点条目信息新增.resx">
+      <DependentUpon>盘点条目信息新增.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="同步数据\同步库存数据.resx">
+      <DependentUpon>同步库存数据.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RF库存管理系统.resx">
+      <DependentUpon>RF库存管理系统.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RF库存管理系统登录.resx">
+      <DependentUpon>RF库存管理系统登录.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\Excel文件数据同步.resx">
+      <DependentUpon>Excel文件数据同步.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\工作日志统计.resx">
+      <DependentUpon>工作日志统计.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\数据同步.resx">
+      <DependentUpon>数据同步.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="查询统计\数据库查询.resx">
+      <DependentUpon>数据库查询.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\本地数据库查询.resx">
+      <DependentUpon>本地数据库查询.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic\货位数据同步.resx">
+      <DependentUpon>货位数据同步.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\打印机信息.resx">
+      <DependentUpon>打印机信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\公司信息.resx">
+      <DependentUpon>公司信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\公司及库存地点信息.resx">
+      <DependentUpon>公司及库存地点信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\库存地点信息.resx">
+      <DependentUpon>库存地点信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\打印机列表.resx">
+      <DependentUpon>打印机列表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\日志信息查看.resx">
+      <DependentUpon>日志信息查看.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\日志管理.resx">
+      <DependentUpon>日志管理.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\SAP用户修改.resx">
+      <DependentUpon>SAP用户修改.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\SAP用户新增.resx">
+      <DependentUpon>SAP用户新增.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\SAP用户管理.resx">
+      <DependentUpon>SAP用户管理.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\用户信息.resx">
+      <DependentUpon>用户信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\用户列表.resx">
+      <DependentUpon>用户列表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\用户权限设置.resx">
+      <DependentUpon>用户权限设置.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\创建盘点清单.resx">
+      <DependentUpon>创建盘点清单.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\理论库存信息.resx">
+      <DependentUpon>理论库存信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点对照.resx">
+      <DependentUpon>盘点对照.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点对照明细信息.resx">
+      <DependentUpon>盘点对照明细信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点报表.resx">
+      <DependentUpon>盘点报表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点报表明细信息.resx">
+      <DependentUpon>盘点报表明细信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点条目.resx">
+      <DependentUpon>盘点条目.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点条目明细信息.resx">
+      <DependentUpon>盘点条目明细信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点清单列表.resx">
+      <DependentUpon>盘点清单列表.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\进行盘点.resx">
+      <DependentUpon>进行盘点.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="同步数据\同步库存数据.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="同步数据\同步库存数据.Designer.cs">
+      <DependentUpon>同步库存数据.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RF库存管理系统.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RF库存管理系统登录.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Serivce.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Statistic\Excel文件数据同步.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistic\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Statistic\工作日志统计.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistic\数据同步.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="查询统计\数据库查询.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistic\本地数据库查询.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistic\货位数据同步.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\打印机信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\公司信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\公司及库存地点信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\库存地点信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\打印机列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\日志信息查看.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\日志管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\SAP用户修改.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\SAP用户新增.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\SAP用户管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\用户信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\用户列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\用户权限设置.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="Web References\rfid2021Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\创建盘点清单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\理论库存信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点对照.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点对照明细信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点报表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点报表明细信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点条目.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点条目明细信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点清单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\进行盘点.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="Web References\rfid2021Service\MessagePack.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\rfid2021Service\privilidge.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\rfid2021Service\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\rfid2021Service\rfidService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\CrystalDecisions.CrystalReports.Engine.dll" />
+    <Content Include="dll\CrystalDecisions.ReportSource.dll" />
+    <Content Include="dll\CrystalDecisions.Shared.dll" />
+    <Content Include="dll\CrystalDecisions.Windows.Forms.dll" />
+    <Content Include="dll\icsharpcode.sharpziplib.dll" />
+    <Content Include="dll\Interop.Excel.dll" />
+    <Content Include="dll\Interop.Microsoft.Office.Core.dll" />
+    <Content Include="dll\Interop.VBIDE.dll" />
+    <Content Include="dll\librfc32.dll" />
+    <Content Include="dll\office.dll" />
+    <Content Include="dll\RF_ControlLibrary.dll" />
+    <None Include="app.config" />
+    <Compile Include="ClsCommon.cs" />
+    <Compile Include="Maintain\MaintainReport\RptViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web References\AnSteel\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <None Include="Web References\AnSteel\clsYwtm.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AnSteel\MessagePack.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AnSteel\privilidge.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AnSteel\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\AnSteel\Service1.disco" />
+    <None Include="Web References\AnSteel\Service1.wsdl" />
+    <None Include="Web References\rfid2021Service\rfidService.disco" />
+    <Content Include="说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{7871EBAC-D2A5-4475-B57B-ACF284D0C964}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DsToExcel\DsToExcel.csproj">
+      <Project>{57F04321-9503-4075-8B26-CF0F4280BE30}</Project>
+      <Name>DsToExcel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.1.77.3/SapServiceCZ/Service1.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AnSteel\</RelPath>
+      <UpdateFromURL>http://192.1.77.3/SapServiceCZ/Service1.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>RFSystem_AnSteel_AnSteelInterFace</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.1.77.3:7766/rfidService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\rfid2021Service\</RelPath>
+      <UpdateFromURL>http://192.1.77.3:7766/rfidService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>RFSystem_rfid2021_rfidService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
