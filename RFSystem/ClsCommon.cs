@@ -31,6 +31,11 @@ namespace RFSystem
             string str19 = p;//单价
             string str20 = cop;
 
+            if (str2.IndexOf("鞍钢股份有限公司") != -1)
+            {
+                str2 = str2.Substring(("鞍钢股份有限公司").Length);
+            }
+
             if (str3.Length > 35)
             {
                 str3 = str3.Substring(0, 35);
