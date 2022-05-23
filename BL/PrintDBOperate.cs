@@ -32,20 +32,18 @@ namespace BL
 
         public static DataTable GetContractorList(string conNo)
         {
-            DataTable dt = null;
-            string param = "";
-            param = param + TDBObject.ToDBVal(conNo);
-            db.OpenProcedure("RF_Contractor_GetList", param, out dt);
+            string param = TDBObject.ToDBVal(conNo);
+
+            db.OpenProcedure("RF_Contractor_GetList", param, out DataTable dt);
 
             return dt;
         }
 
         public static DataTable GetLocationList(string locNo)
         {
-            DataTable dt = null;
-            string param = "";
-            param = param + TDBObject.ToDBVal(locNo);
-            db.OpenProcedure("RF_Location_GetList", param, out dt);
+            string param = TDBObject.ToDBVal(locNo);
+
+            db.OpenProcedure("RF_Location_GetList", param, out DataTable dt);
 
             return dt;
         }

@@ -19,7 +19,6 @@ namespace RFSystem.Statistic
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ComboBox comboBoxPlant;
         private System.Windows.Forms.ComboBox comboBoxSLocation;
-        private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dataGridViewStockInfo;
         private System.Data.DataTable dtPlantList;
         private System.Data.DataTable dtStore;
@@ -251,7 +250,6 @@ namespace RFSystem.Statistic
             this.dtPlantList = null;
             this.dtStoreLocusList = null;
             this.thread = null;
-            this.components = null;
 
             this.InitializeComponent();// InitializeComponent();
 

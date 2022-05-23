@@ -18,27 +18,27 @@ namespace DsToExcel
 
         public ToExcel()
         {
-            this.m_MappingTable.Columns.Add("SourceColumn", typeof(string));
-            this.m_MappingTable.Columns.Add("MappingName", typeof(string));
+            m_MappingTable.Columns.Add("SourceColumn", typeof(string));
+            m_MappingTable.Columns.Add("MappingName", typeof(string));
         }
 
         public void Do()
         {
-            if (this.m_Thread == null)
+            if (m_Thread == null)
             {
-                this.m_Thread = new Thread(new ThreadStart(this.ExportDataToExcel));
+                m_Thread = new Thread(new ThreadStart(ExportDataToExcel));
             }
 
-            if (this.m_Thread.IsAlive)
+            if (m_Thread.IsAlive)
             {
                 throw new Exception("正在生成Excel文件，请稍候再试");
             }
 
-            this.m_Thread = new Thread(new ThreadStart(this.ExportDataToExcel));
+            m_Thread = new Thread(new ThreadStart(ExportDataToExcel));
 
             try
             {
-                this.m_Thread.Start();
+                m_Thread.Start();
             }
             catch (Exception exception)
             {
@@ -50,7 +50,7 @@ namespace DsToExcel
         {
             try
             {
-                this.ExportDataToExcelALL();
+                ExportDataToExcelALL();
             }
             catch (Exception exception)
             {
@@ -73,22 +73,22 @@ namespace DsToExcel
                 workbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing);
                 worksheet = (Worksheet)workbook.Sheets[1];
 
-                if ((this.m_TableName != null) || (this.m_TableName != ""))
+                if ((m_TableName != null) || (m_TableName != ""))
                 {
                     worksheet = (Worksheet)workbook.Sheets[1];
                     char[] chArray = new char[2];
                     string str = "";
 
-                    for (int i = 0; i < this.m_Ds.Tables[this.m_TableName].Columns.Count; i++)
+                    for (int i = 0; i < m_Ds.Tables[m_TableName].Columns.Count; i++)
                     {
                         if (i < 0x1a)
                         {
-                            chArray[0] = Convert.ToChar((int)(0x41 + i));
+                            chArray[0] = Convert.ToChar(0x41 + i);
                         }
                         else
                         {
                             chArray[0] = 'A';
-                            chArray[1] = Convert.ToChar((int)((0x41 + i) - 0x1a));
+                            chArray[1] = Convert.ToChar(0x41 + i - 0x1a);
                         }
 
                         str = chArray[0].ToString();
@@ -101,13 +101,13 @@ namespace DsToExcel
                         worksheet.get_Range(Convert.ToString(str) + Convert.ToString(1), Convert.ToString(str) + Convert.ToString(1)).set_Item(1, 1, this.GetColumnName(this.m_Ds.Tables[this.m_TableName].Columns[i].ColumnName.ToString()));
                     }
 
-                    object[,] objArray = new object[this.m_Ds.Tables[this.m_TableName].Rows.Count, this.m_Ds.Tables[this.m_TableName].Columns.Count];
+                    object[,] objArray = new object[m_Ds.Tables[m_TableName].Rows.Count, m_Ds.Tables[m_TableName].Columns.Count];
 
-                    for (int j = 0; j < this.m_Ds.Tables[this.m_TableName].Rows.Count; j++)
+                    for (int j = 0; j < m_Ds.Tables[m_TableName].Rows.Count; j++)
                     {
-                        for (int k = 0; k < this.m_Ds.Tables[this.m_TableName].Columns.Count; k++)
+                        for (int k = 0; k < m_Ds.Tables[m_TableName].Columns.Count; k++)
                         {
-                            objArray[j, k] = this.m_Ds.Tables[this.m_TableName].Rows[j][k].ToString();
+                            objArray[j, k] = m_Ds.Tables[m_TableName].Rows[j][k].ToString();
                         }
                     }
 
@@ -115,35 +115,35 @@ namespace DsToExcel
 
                     if (chArray[1] != '\0')
                     {
-                        str2 = str2 + Convert.ToString(chArray[1]);
+                        str2 += Convert.ToString(chArray[1]);
                     }
 
-                    worksheet.get_Range("A2", str2 + Convert.ToString((int)(this.m_Ds.Tables[this.m_TableName].Rows.Count + 1))).Value2 = objArray;
+                    worksheet.get_Range("A2", str2 + Convert.ToString(m_Ds.Tables[m_TableName].Rows.Count + 1)).Value2 = objArray;
                 }
                 else
                 {
-                    for (int m = 1; m < this.m_Ds.Tables.Count; m++)
+                    for (int m = 1; m < m_Ds.Tables.Count; m++)
                     {
                         worksheet = (Worksheet)workbook.Sheets[m];
 
-                        for (int n = 0; n < this.m_Ds.Tables[m - 1].Rows.Count; n++)
+                        for (int n = 0; n < m_Ds.Tables[m - 1].Rows.Count; n++)
                         {
-                            for (int num6 = 0; num6 < this.m_Ds.Tables[m - 1].Columns.Count; num6++)
+                            for (int num6 = 0; num6 < m_Ds.Tables[m - 1].Columns.Count; num6++)
                             {
-                                if (this.m_Ds.Tables[m - 1].Rows[n].IsNull(num6))
+                                if (m_Ds.Tables[m - 1].Rows[n].IsNull(num6))
                                 {
-                                    worksheet.get_Range(Convert.ToString(Convert.ToChar((int)(0x41 + num6))) + Convert.ToString((int)(n + 2)), Convert.ToString(Convert.ToChar((int)(0x41 + num6))) + Convert.ToString((int)(n + 2))).set_Item(1, 1, "");
+                                    worksheet.get_Range(Convert.ToString(Convert.ToChar(0x41 + num6)) + Convert.ToString(n + 2), Convert.ToString(Convert.ToChar(0x41 + num6)) + Convert.ToString(n + 2)).set_Item(1, 1, "");
                                 }
                                 else
                                 {
-                                    worksheet.get_Range(Convert.ToString(Convert.ToChar((int)(0x41 + num6))) + Convert.ToString((int)(n + 2)), Convert.ToString(Convert.ToChar((int)(0x41 + num6))) + Convert.ToString((int)(n + 2))).set_Item(1, 1, "'" + this.m_Ds.Tables[m - 1].Rows[n][num6].ToString());
+                                    worksheet.get_Range(Convert.ToString(Convert.ToChar(0x41 + num6)) + Convert.ToString(n + 2), Convert.ToString(Convert.ToChar(0x41 + num6)) + Convert.ToString(n + 2)).set_Item(1, 1, "'" + m_Ds.Tables[m - 1].Rows[n][num6].ToString());
                                 }
                             }
                         }
                     }
                 }
 
-                workbook.Close(true, this.m_FileName, Type.Missing);
+                workbook.Close(true, m_FileName, Type.Missing);
 
                 if (worksheet != null)
                 {
@@ -186,7 +186,7 @@ namespace DsToExcel
 
         private string GetColumnName(string sourceColunmName)
         {
-            foreach (DataRow row in this.m_MappingTable.Rows)
+            foreach (DataRow row in m_MappingTable.Rows)
             {
                 if (row["SourceColumn"].ToString().Trim().ToUpper() == sourceColunmName.Trim().ToUpper())
                 {
@@ -201,11 +201,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_Ds;
+                return m_Ds;
             }
             set
             {
-                this.m_Ds = value;
+                m_Ds = value;
             }
         }
 
@@ -213,11 +213,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_FileName;
+                return m_FileName;
             }
             set
             {
-                this.m_FileName = value;
+                m_FileName = value;
             }
         }
 
@@ -225,11 +225,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_IsShowDoing;
+                return m_IsShowDoing;
             }
             set
             {
-                this.m_IsShowDoing = value;
+                m_IsShowDoing = value;
             }
         }
 
@@ -237,11 +237,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_MappingTable;
+                return m_MappingTable;
             }
             set
             {
-                this.m_MappingTable = value;
+                m_MappingTable = value;
             }
         }
 
@@ -249,11 +249,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_TableName;
+                return m_TableName;
             }
             set
             {
-                this.m_TableName = value;
+                m_TableName = value;
             }
         }
     }

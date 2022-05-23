@@ -28,13 +28,13 @@ namespace RFSystem.Maintain.MaintainReport
 
         private void GetMaintainInfo(ArrayList baseInfo)
         {
-            TextObject obj2 = (TextObject)this.rpt.ReportDefinition.ReportObjects["TextMaintainNo"];
+            TextObject obj2 = (TextObject)rpt.ReportDefinition.ReportObjects["TextMaintainNo"];
             obj2.Text = baseInfo[0].ToString();
-            TextObject obj3 = (TextObject)this.rpt.ReportDefinition.ReportObjects["TextMaintainDatetime"];
+            TextObject obj3 = (TextObject)rpt.ReportDefinition.ReportObjects["TextMaintainDatetime"];
             obj3.Text = baseInfo[1].ToString();
-            TextObject obj4 = (TextObject)this.rpt.ReportDefinition.ReportObjects["TextStoreman"];
+            TextObject obj4 = (TextObject)rpt.ReportDefinition.ReportObjects["TextStoreman"];
             obj4.Text = baseInfo[2].ToString();
-            TextObject obj5 = (TextObject)this.rpt.ReportDefinition.ReportObjects["TextAdmin"];
+            TextObject obj5 = (TextObject)rpt.ReportDefinition.ReportObjects["TextAdmin"];
             obj5.Text = baseInfo[3].ToString();
         }
 

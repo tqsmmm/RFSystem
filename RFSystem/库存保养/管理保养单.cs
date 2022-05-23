@@ -43,7 +43,6 @@ namespace RFSystem
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
         private ComboBox comboBoxState;
-        private IContainer components;
         private DataGridView dataGridViewMaintain;
         private DataGridView dataGridViewMaintainDetail;
         private DateTimePicker dateTimePickerTableMakeDateFrom;
@@ -716,7 +715,6 @@ namespace RFSystem
             dtPlantList = null;
             dtStoreLocusList = null;
             dtReport = null;
-            components = null;
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;

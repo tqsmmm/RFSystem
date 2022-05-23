@@ -13,7 +13,6 @@ namespace RFSystem
         private Button btnAddCount;
         private Button btnSelect;
         private CheckBox checkBoxComplete;
-        private IContainer components;
         private DataGridView dataGridViewMaintainInfo;
         private DataTable dtMaintainList;
         private DataView dvMaintainList;
@@ -312,11 +311,11 @@ namespace RFSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 60);
+            this.label1.Location = new System.Drawing.Point(18, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 135;
-            this.label1.Text = "条 码 号：";
+            this.label1.Text = "条码号：";
             // 
             // checkBoxComplete
             // 
@@ -398,6 +397,7 @@ namespace RFSystem
             this.Name = "保养货物";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "保养货物";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.保养货物_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintainInfo)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -409,7 +409,6 @@ namespace RFSystem
         // Methods
         public 保养货物(string maintainNo)
         {
-            components = null;
             InitializeComponent();
             dtMaintainList = new DataTable();
             ArrayList arriveList = new ArrayList();

@@ -1,17 +1,14 @@
-﻿namespace RFSystem.ArriveStore
-{
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Windows.Forms;
+﻿using System;
+using System.Collections;
+using System.Windows.Forms;
 
+namespace RFSystem.ArriveStore
+{
     public class 到库货物存放信息 : Form
     {
         private ArrayList arriveStoreStorageInfo = null;
         private Button btnCancel;
         private Button btnOK;
-        private IContainer components = null;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -21,12 +18,12 @@
 
         public 到库货物存放信息()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            base.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

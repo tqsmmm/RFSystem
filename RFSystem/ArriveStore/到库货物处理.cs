@@ -11,7 +11,6 @@ namespace RFSystem.ArriveStore
     {
         private Button btnCancel;
         private Button btnDeal;
-        private IContainer components = null;
         private Label label4;
         private Label label6;
         private Label label8;
@@ -25,31 +24,31 @@ namespace RFSystem.ArriveStore
 
         public 到库货物处理(string arriveListID, string equipmentName, string acceptAmount, string dealAmount)
         {
-            this.InitializeComponent();
-            this.regex = new Regex(ConstDefine.REGEX_NUM);
-            this.labelArriveListID.Text = arriveListID;
-            this.labelEquipmentName.Text = equipmentName;
-            this.labelAcceptAmount.Text = acceptAmount;
-            this.labelDealAmount.Text = dealAmount;
+            InitializeComponent();
+            regex = new Regex(ConstDefine.REGEX_NUM);
+            labelArriveListID.Text = arriveListID;
+            labelEquipmentName.Text = equipmentName;
+            labelAcceptAmount.Text = acceptAmount;
+            labelDealAmount.Text = dealAmount;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            base.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
-            if (this.numericUpDownDealAmount.Value == 0M)
+            if (numericUpDownDealAmount.Value == 0M)
             {
                 MessageBox.Show("处理数量不能为零", "错误", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if ((this.numericUpDownDealAmount.Value + Convert.ToDecimal(this.labelDealAmount.Text)) <= Convert.ToDecimal(this.labelAcceptAmount.Text))
+            else if ((numericUpDownDealAmount.Value + Convert.ToDecimal(labelDealAmount.Text)) <= Convert.ToDecimal(labelAcceptAmount.Text))
             {
-                if (DBOperate.AddAmountArriveStoreDeal(this.labelArriveListID.Text, this.numericUpDownDealAmount.Value) == 1)
+                if (DBOperate.AddAmountArriveStoreDeal(labelArriveListID.Text, numericUpDownDealAmount.Value) == 1)
                 {
                     MessageBox.Show("处理成功");
-                    base.DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
@@ -209,6 +208,7 @@ namespace RFSystem.ArriveStore
             this.Name = "到库货物处理";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "到库货物处理";
+            this.Load += new System.EventHandler(this.到库货物处理_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDealAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,7 +217,7 @@ namespace RFSystem.ArriveStore
 
         private void RegexNum(object sender, EventArgs e)
         {
-            if (!((TextBox)sender).Text.Equals(string.Empty) && !this.regex.IsMatch(((TextBox)sender).Text))
+            if (!((TextBox)sender).Text.Equals(string.Empty) && !regex.IsMatch(((TextBox)sender).Text))
             {
                 MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 ((TextBox)sender).Focus();
@@ -228,8 +228,13 @@ namespace RFSystem.ArriveStore
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.GetNextControl(base.ActiveControl, true).Focus();
+                GetNextControl(ActiveControl, true).Focus();
             }
+        }
+
+        private void 到库货物处理_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

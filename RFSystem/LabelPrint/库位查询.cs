@@ -39,7 +39,6 @@ namespace RFSystem.LabelPrint
         private DataGridViewTextBoxColumn ColumnWeight;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewMaintain;
         private DataGridView dataGridViewSapStockInfo;
         private DataTable dtGoods;
@@ -62,7 +61,6 @@ namespace RFSystem.LabelPrint
         // Methods
         public 库位查询(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.userItem = null;
             this.userRoles = null;
             this.dtMaintain = null;

@@ -15,35 +15,35 @@ namespace DL
 
         public TDB(string ConnStr)
         {
-            this.sqlType = ESQL_TYPE.NonQuery;
-            this.conn = null;
-            this.m_lock = new object();
-            this.connectionstring = ConnStr;
+            sqlType = ESQL_TYPE.NonQuery;
+            conn = null;
+            m_lock = new object();
+            connectionstring = ConnStr;
         }
 
         public TDB(string name, string password, string catalog, string serverip)
         {
-            this.sqlType = ESQL_TYPE.NonQuery;
-            this.conn = null;
-            this.m_lock = new object();
-            this.connectionstring = "Provider=SQLOLEDB.1;User ID=" + name + ";Password=" + password + ";Initial Catalog=" + catalog + ";Data Source=" + serverip + ";Persist Security Info=False;Auto Translate=True;Packet Size=4096;";
+            sqlType = ESQL_TYPE.NonQuery;
+            conn = null;
+            m_lock = new object();
+            connectionstring = "Provider=SQLOLEDB.1;User ID=" + name + ";Password=" + password + ";Initial Catalog=" + catalog + ";Data Source=" + serverip + ";Persist Security Info=False;Auto Translate=True;Packet Size=4096;";
         }
 
         public void BeginTrans()
         {
             try
             {
-                if (this.conn == null)
+                if (conn == null)
                 {
-                    this.conn = new OleDbConnection(this.connectionstring);
+                    conn = new OleDbConnection(connectionstring);
                 }
 
-                if (this.conn.State == ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
-                    this.conn.Open();
+                    conn.Open();
                 }
 
-                this.trans = this.conn.BeginTransaction();
+                trans = conn.BeginTransaction();
             }
             catch (Exception exception)
             {
@@ -59,9 +59,9 @@ namespace DL
             {
                 try
                 {
-                    if (this.conn != null)
+                    if (conn != null)
                     {
-                        this.conn.Close();
+                        conn.Close();
                     }
                 }
                 catch (Exception exception)
@@ -75,7 +75,7 @@ namespace DL
         {
             try
             {
-                this.trans.Commit();
+                trans.Commit();
             }
             catch (Exception exception)
             {
@@ -83,33 +83,33 @@ namespace DL
             }
             finally
             {
-                if (this.conn != null)
+                if (conn != null)
                 {
-                    this.conn.Close();
+                    conn.Close();
                 }
             }
         }
 
         public object Excute(string asSqlText)
         {
-            OleDbCommand aoCmd = this.conn.CreateCommand();
+            OleDbCommand aoCmd = conn.CreateCommand();
             aoCmd.CommandType = CommandType.Text;
             aoCmd.CommandText = asSqlText;
 
-            switch (this.sqlType)
+            switch (sqlType)
             {
                 case ESQL_TYPE.NonQuery:
-                    this.ExcuteNonQuery(aoCmd);
+                    ExcuteNonQuery(aoCmd);
                     break;
 
                 case ESQL_TYPE.Reader:
-                    return this.ExcuteReader(aoCmd);
+                    return ExcuteReader(aoCmd);
 
                 case ESQL_TYPE.Scalar:
-                    return this.ExcuteScalar(aoCmd);
+                    return ExcuteScalar(aoCmd);
 
                 case ESQL_TYPE.DataSet:
-                    return this.ExcuteDataSet(aoCmd);
+                    return ExcuteDataSet(aoCmd);
             }
 
             return null;
@@ -117,19 +117,19 @@ namespace DL
 
         public void Excute(string asSqlText, OleDbParameter[] arParams, int commandType)
         {
-            if (this.conn == null)
+            if (conn == null)
             {
-                this.conn = new OleDbConnection(this.connectionstring);
+                conn = new OleDbConnection(connectionstring);
             }
 
-            if (this.conn.State == ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
             {
-                this.conn.Open();
+                conn.Open();
             }
 
-            OleDbCommand command = this.conn.CreateCommand();
+            OleDbCommand command = conn.CreateCommand();
             command.Parameters.Clear();
-            command.Transaction = this.trans;
+            command.Transaction = trans;
 
             if (arParams != null)
             {
@@ -173,30 +173,30 @@ namespace DL
 
         public int ExcuteInsertCommand(ArrayList arrList)
         {
-            if (this.conn == null)
+            if (conn == null)
             {
-                this.conn = new OleDbConnection(this.connectionstring);
+                conn = new OleDbConnection(connectionstring);
             }
 
-            this.trans = null;
+            trans = null;
 
             try
             {
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
 
-                if (this.conn.State == ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
-                    this.conn.Open();
+                    conn.Open();
                 }
 
-                this.trans = this.conn.BeginTransaction();
+                trans = conn.BeginTransaction();
 
                 for (int i = 0; i < arrList.Count; i++)
                 {
                     DictionaryEntry entry = (DictionaryEntry)arrList[i];
                     adapter.InsertCommand = (OleDbCommand)entry.Key;
-                    adapter.InsertCommand.Connection = this.conn;
-                    adapter.InsertCommand.Transaction = this.trans;
+                    adapter.InsertCommand.Connection = conn;
+                    adapter.InsertCommand.Transaction = trans;
                     entry = (DictionaryEntry)arrList[i];
 
                     if (entry.Value == null)
@@ -210,18 +210,18 @@ namespace DL
                     }
                 }
 
-                this.trans.Commit();
+                trans.Commit();
 
                 return 0;
             }
             catch (OleDbException exception)
             {
-                if (this.trans != null)
+                if (trans != null)
                 {
-                    this.trans.Rollback();
+                    trans.Rollback();
                 }
 
-                this.CheckException(exception);
+                CheckException(exception);
                 string des = "";
                 new TLogError(exception, des).SaveExceptionInfo();
 
@@ -285,19 +285,19 @@ namespace DL
         public int ExecProcedure(string proc, string param)
         {
             string sQL = proc + " " + param;
-            return this.ExecSQL(sQL);
+            return ExecSQL(sQL);
         }
 
         public int ExecSQL(string SQL)
         {
-            if (this.conn == null)
+            if (conn == null)
             {
-                this.conn = new OleDbConnection(this.connectionstring);
+                conn = new OleDbConnection(connectionstring);
             }
 
             try
             {
-                OleDbCommand command = new OleDbCommand(SQL, this.conn);
+                OleDbCommand command = new OleDbCommand(SQL, conn);
                 command.CommandTimeout = 30;
 
                 if (command.Connection.State.ToString().Equals("Closed"))
@@ -305,12 +305,12 @@ namespace DL
                     command.Connection.Open();
                 }
 
-                command.Transaction = this.trans;
+                command.Transaction = trans;
                 return command.ExecuteNonQuery();
             }
             catch (OleDbException exception)
             {
-                this.CheckException(exception);
+                CheckException(exception);
                 new TLogError(exception, SQL).SaveExceptionInfo();
                 return -1;
             }
@@ -320,21 +320,21 @@ namespace DL
         {
             ds = new DataSet();
 
-            if (this.conn == null)
+            if (conn == null)
             {
-                this.conn = new OleDbConnection(this.connectionstring);
+                conn = new OleDbConnection(connectionstring);
             }
 
             try
             {
-                if (this.conn.State == ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
-                    this.conn.Open();
+                    conn.Open();
                 }
 
-                OleDbCommand command = new OleDbCommand(SQL, this.conn);
+                OleDbCommand command = new OleDbCommand(SQL, conn);
                 command.CommandTimeout = 30;
-                command.Transaction = this.trans;
+                command.Transaction = trans;
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = command;
                 adapter.Fill(ds);
@@ -342,7 +342,7 @@ namespace DL
             }
             catch (OleDbException exception)
             {
-                this.CheckException(exception);
+                CheckException(exception);
                 new TLogError(exception, SQL).SaveExceptionInfo();
                 return -1;
             }
@@ -352,21 +352,21 @@ namespace DL
         {
             dt = new DataTable();
 
-            if (this.conn == null)
+            if (conn == null)
             {
-                this.conn = new OleDbConnection(this.connectionstring);
+                conn = new OleDbConnection(connectionstring);
             }
 
             try
             {
-                if (this.conn.State == ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
-                    this.conn.Open();
+                    conn.Open();
                 }
 
-                OleDbCommand command = new OleDbCommand(SQL, this.conn);
+                OleDbCommand command = new OleDbCommand(SQL, conn);
                 command.CommandTimeout = 30;
-                command.Transaction = this.trans;
+                command.Transaction = trans;
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = command;
                 adapter.Fill(dt);
@@ -374,7 +374,7 @@ namespace DL
             }
             catch (OleDbException exception)
             {
-                this.CheckException(exception);
+                CheckException(exception);
                 new TLogError(exception, SQL).SaveExceptionInfo();
                 return -1;
             }
@@ -383,20 +383,20 @@ namespace DL
         public int OpenProcedure(string proc, string param, out DataSet ds)
         {
             string sQL = proc + " " + param;
-            return this.OpenDataSet(sQL, out ds);
+            return OpenDataSet(sQL, out ds);
         }
 
         public int OpenProcedure(string proc, string param, out DataTable dt)
         {
             string sQL = proc + " " + param;
-            return this.OpenDataSet(sQL, out dt);
+            return OpenDataSet(sQL, out dt);
         }
 
         public void RollBack()
         {
             try
             {
-                this.trans.Rollback();
+                trans.Rollback();
             }
             catch (Exception exception)
             {
@@ -404,9 +404,9 @@ namespace DL
             }
             finally
             {
-                if (this.conn != null)
+                if (conn != null)
                 {
-                    this.conn.Close();
+                    conn.Close();
                 }
             }
         }
@@ -415,11 +415,11 @@ namespace DL
         {
             get
             {
-                return this.sqlType;
+                return sqlType;
             }
             set
             {
-                this.sqlType = value;
+                sqlType = value;
             }
         }
 

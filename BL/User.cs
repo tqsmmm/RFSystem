@@ -7,8 +7,7 @@ namespace BL
     {
         public static UserInfo GetUserByLogin(UserInfo userItem, out bool ifExist, out DataTable dtUserRoles)
         {
-            DataSet userByLogin = null;
-            userByLogin = DBOperate.GetUserByLogin(userItem);
+            DataSet userByLogin = DBOperate.GetUserByLogin(userItem);
             DataTable table = userByLogin.Tables[0];
             dtUserRoles = userByLogin.Tables[1];
 

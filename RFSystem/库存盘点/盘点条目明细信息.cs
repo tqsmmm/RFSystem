@@ -14,7 +14,6 @@ namespace RFSystem
         private Button btnExit;
         private Button btnMod;
         private ComboBox comboBoxSLocation;
-        private IContainer components = null;
         private Label label1;
         private Label label11;
         private Label label13;
@@ -75,19 +74,42 @@ namespace RFSystem
             }
             else
             {
-                ArrayList stOriginList = new ArrayList();
-                stOriginList.Add(Convert.ToDecimal(stOriginItem[0]));
-                stOriginList.Add(comboBoxSLocation.Text);
-                stOriginList.Add(textBoxBin.Text);
-                stOriginList.Add(Convert.ToDecimal(textBoxBinCount.Text));
-
-                if (DBOperate.ModSTOrigin(stOriginList) != -1)
+                if (Text=="盘点条目信息新增")
                 {
-                    MessageBox.Show("盘点条目修改成功");
-                    stOriginItem[2] = comboBoxSLocation.Text;
-                    stOriginItem[5] = textBoxBin.Text;
-                    stOriginItem[6] = textBoxBinCount.Text;
-                    DialogResult = DialogResult.OK;
+                    ArrayList stOriginList = new ArrayList();
+                    stOriginList.Add(Convert.ToDecimal(textBoxSTSerial.Text));
+                    stOriginList.Add(textBoxPlant.Text);
+                    stOriginList.Add(comboBoxSLocation.Text);
+                    stOriginList.Add(textBoxMaterial.Text);
+                    stOriginList.Add(textBoxBNumber.Text);
+                    stOriginList.Add(textBoxBin.Text);
+                    stOriginList.Add(Convert.ToDecimal(textBoxBinCount.Text));
+                    stOriginList.Add(textBoxBarCode.Text);
+                    stOriginList.Add(textBoxOperatorUser.Text);
+                    stOriginList.Add(textBoxOperatorDateTime.Text);
+
+                    if (DBOperate.AddNewSTOrigin(stOriginList) != -1)
+                    {
+                        MessageBox.Show("盘点条目新增成功");
+                        DialogResult = DialogResult.OK;
+                    }
+                }
+                else if (Text=="盘点条目信息修改")
+                {
+                    ArrayList stOriginList = new ArrayList();
+                    stOriginList.Add(Convert.ToDecimal(stOriginItem[0]));
+                    stOriginList.Add(comboBoxSLocation.Text);
+                    stOriginList.Add(textBoxBin.Text);
+                    stOriginList.Add(Convert.ToDecimal(textBoxBinCount.Text));
+
+                    if (DBOperate.ModSTOrigin(stOriginList) != -1)
+                    {
+                        MessageBox.Show("盘点条目修改成功");
+                        stOriginItem[2] = comboBoxSLocation.Text;
+                        stOriginItem[5] = textBoxBin.Text;
+                        stOriginItem[6] = textBoxBinCount.Text;
+                        DialogResult = DialogResult.OK;
+                    }
                 }
             }
         }
@@ -165,7 +187,7 @@ namespace RFSystem
             this.btnMod.Name = "btnMod";
             this.btnMod.Size = new System.Drawing.Size(100, 40);
             this.btnMod.TabIndex = 36;
-            this.btnMod.Text = "修改";
+            this.btnMod.Text = "确定";
             this.btnMod.UseVisualStyleBackColor = true;
             this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
@@ -339,6 +361,7 @@ namespace RFSystem
             this.Name = "盘点条目明细信息";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "货物盘点明细条目信息";
+            this.Load += new System.EventHandler(this.盘点条目明细信息_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,6 +382,11 @@ namespace RFSystem
             {
                 return stOriginItem;
             }
+        }
+
+        private void 盘点条目明细信息_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,7 +10,6 @@ namespace RFSystem
     {
         private Button btnAdd;
         private Button btnCancel;
-        private IContainer components = null;
         private Label label1;
         private Label label2;
         private TextBox textBoxSapPassword;

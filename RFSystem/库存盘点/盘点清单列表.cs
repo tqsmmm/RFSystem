@@ -21,7 +21,6 @@ namespace RFSystem
         private Button btnTheoryAmount;
         private Button btReflash;
         private ToExcelButton buttonExcel;
-        private IContainer components;
         private 理论库存信息 dataInStore;
         private DataSet ds;
         private DataGridView dtVDetail;
@@ -321,7 +320,6 @@ namespace RFSystem
         // Methods
         public 盘点清单列表(UserInfo userItem, ArrayList userRoles)
         {
-            components = null;
             userItem = null;
             this.userRoles = null;
             m_ErrMsg = "";

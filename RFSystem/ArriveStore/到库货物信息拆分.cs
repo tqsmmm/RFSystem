@@ -24,7 +24,6 @@ namespace RFSystem.ArriveStore
         private Button btnSplit;
         private Button btnSubmit;
         private Button btnUnsplit;
-        private IContainer components;
         private DataGridView dataGridViewStorageInfoF;
         private DataGridView dataGridViewStorageInfoS;
         private ArrayList getStorageInfo;
@@ -578,7 +577,6 @@ namespace RFSystem.ArriveStore
         // Methods
         public 到库货物信息拆分(ArrayList arriveListInfo)
         {
-            this.components = null;
             this.storageInfoListF = null;
             this.storageInfoListS = null;
             this.getStorageInfo = null;

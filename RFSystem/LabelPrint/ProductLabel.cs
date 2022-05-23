@@ -29,7 +29,6 @@ namespace RFSystem.LabelPrint
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnPName;
         private DataGridViewTextBoxColumn columnSocket;
-        private IContainer components;
         private DataGridView dataGridViewPrinterList;
         private DataGridView dataGridViewProductList;
         private DataSet dsWl;
@@ -647,7 +646,6 @@ namespace RFSystem.LabelPrint
 
         public ProductLabel(UserInfo userItem)
         {
-            this.components = null;
             this.dtPrinterList = null;
             this.userItem = null;
             this.InitializeComponent();

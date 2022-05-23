@@ -16,7 +16,6 @@ namespace RFSystem
         private ComboBox comboBoxOperatorUser;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewSTCompare;
         private DataTable dtCompare;
         private DataTable dtPlantList;
@@ -336,7 +335,6 @@ namespace RFSystem
             dtPlantList = null;
             dtStoreLocusList = null;
             dtCompare = null;
-            components = null;
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;

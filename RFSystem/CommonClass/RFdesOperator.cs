@@ -16,6 +16,7 @@ namespace RFSystem.CommonClass
         public void DesDecrypt()
         {
             byte[] rgbIV = new byte[] { 0x12, 0x34, 0x56, 120, 0x90, 0xab, 0xcd, 0xef };
+
             byte[] buffer = new byte[inputString.Length];
 
             try

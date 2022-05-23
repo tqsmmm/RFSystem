@@ -14,7 +14,6 @@ namespace RFSystem
         private Button btnSelect;
         private DataGridViewTextBoxColumn ColumnUser_ID;
         private DataGridViewTextBoxColumn ColumnUser_Name;
-        private IContainer components;
         private DataGridView dataGridViewUserList;
         private DataTable dtUserAndRoles;
         private DataTable dtUserRoles;
@@ -140,7 +139,7 @@ namespace RFSystem
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(312, 28);
+            this.btnSelect.Location = new System.Drawing.Point(325, 25);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(100, 40);
             this.btnSelect.TabIndex = 20;
@@ -254,7 +253,6 @@ namespace RFSystem
             dtUserAndRoles = null;
             dtUserRoles = null;
             ifMouseClick = true;
-            components = null;
             InitializeComponent();
             dtUserRoles = new DataTable();
             dataGridViewUserList.AutoGenerateColumns = false;

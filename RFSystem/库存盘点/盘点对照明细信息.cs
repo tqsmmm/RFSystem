@@ -43,7 +43,6 @@ namespace RFSystem
         private DataGridViewTextBoxColumn ColumnSPEC;
         private DataGridViewTextBoxColumn ColumnSubPlant;
         private DataGridViewTextBoxColumn ColumnWeight;
-        private IContainer components;
         private DataGridView dataGridViewSapStockInfo;
         private DataGridView dataGridViewSTOrigin;
         private DataSet dsAdjustItem;
@@ -460,7 +459,6 @@ namespace RFSystem
         // Methods
         public 盘点对照明细信息(UserInfo userItem, ArrayList userRoles, ArrayList adjustItem)
         {
-            components = null;
             this.userItem = null;
             this.userRoles = null;
             this.adjustItem = null;
@@ -507,9 +505,10 @@ namespace RFSystem
                 stOriginItem.Add(DateTime.Now);
             }
 
-            盘点条目信息新增 盘点条目信息新增 = new 盘点条目信息新增(stOriginItem);
+            盘点条目明细信息 frm = new 盘点条目明细信息(stOriginItem);
+            frm.Text = "盘点条目信息新增";
 
-            if (盘点条目信息新增.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 FlushDate();
             }
@@ -542,14 +541,15 @@ namespace RFSystem
             stOriginItem.RemoveAt(1);
             stOriginItem[8] = userItem.userID;
 
-            盘点条目明细信息 盘点条目明细信息 = new 盘点条目明细信息(stOriginItem);
+            盘点条目明细信息 frm = new 盘点条目明细信息(stOriginItem);
+            frm.Text = "盘点条目信息修改";
 
-            if (盘点条目明细信息.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 DataRow row = dsAdjustItem.Tables[1].Select("ItemNo=" + dataGridViewSTOrigin.SelectedRows[0].Cells["ColumnItemNo"].Value.ToString())[0];
-                row["SLocation"] = 盘点条目明细信息.STOriginItem[2];
-                row["Bin"] = 盘点条目明细信息.STOriginItem[5];
-                row["BinCount"] = 盘点条目明细信息.STOriginItem[6];
+                row["SLocation"] = frm.STOriginItem[2];
+                row["Bin"] = frm.STOriginItem[5];
+                row["BinCount"] = frm.STOriginItem[6];
             }
 
             GetDiffrient();
@@ -557,7 +557,7 @@ namespace RFSystem
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            base.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         private void dataGridViewSTOrigin_SelectionChanged(object sender, EventArgs e)

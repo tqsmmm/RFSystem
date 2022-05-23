@@ -18,7 +18,6 @@ namespace RFSystem.SystemConfig
         private DataGridViewTextBoxColumn columnPrinterAddress;
         private DataGridViewTextBoxColumn columnPrinterName;
         private DataGridViewTextBoxColumn columnPrinterSocket;
-        private IContainer components;
         private DataGridView dataGridViewPrinterList;
         private DataTable dtPrinterList;
         private GroupBox groupBox2;
@@ -215,7 +214,6 @@ namespace RFSystem.SystemConfig
         // Methods
         public 打印机列表()
         {
-            components = null;
             dtPrinterList = null;
             InitializeComponent();
         }

@@ -15,7 +15,6 @@ namespace RFSystem
     public class RF库存管理系统 : Form
     {
         // Fields
-        private IContainer components;
         private ToolStripMenuItem excel文件数据同步ToolStripMenuItem;
         private MenuStrip menuStripMainForm;
         private UserInfo userItem;
@@ -60,7 +59,6 @@ namespace RFSystem
         // Methods
         public RF库存管理系统(UserInfo userItem, ArrayList userRoles)
         {
-            components = null;
             this.userItem = null;
             this.userRoles = null;
             InitializeComponent();

@@ -17,7 +17,6 @@ namespace RFSystem
         private Button btnMakeInventory;
         private Button btnOver;
         private Button btnSubmit;
-        private IContainer components;
         private ProgressBar progressBar1;
         private bool SapDowning;
         private bool SapUping;
@@ -173,7 +172,6 @@ namespace RFSystem
             SapDowning = false;
             SapUping = false;
             thread = null;
-            components = null;
             InitializeComponent();
             FormClosing += new FormClosingEventHandler(进行盘点_FormClosing);
             timer1.Enabled = true;

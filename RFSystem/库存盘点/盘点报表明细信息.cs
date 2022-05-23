@@ -12,7 +12,6 @@ namespace RFSystem
     {
         private Button btnExit;
         private Button btnMod;
-        private IContainer components = null;
         private bool ifTurnRight = true;
         private Label label1;
         private Label label10;

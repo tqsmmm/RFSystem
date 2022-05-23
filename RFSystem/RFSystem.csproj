@@ -156,9 +156,6 @@
     <Compile Include="库存保养\管理保养单.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="库存盘点\盘点条目信息新增.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArriveStore\ExceptionCard\库存设备备件卡片.rpt">
@@ -263,10 +260,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="库存保养\管理保养单.resx">
       <DependentUpon>管理保养单.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点条目信息新增.resx">
-      <DependentUpon>盘点条目信息新增.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

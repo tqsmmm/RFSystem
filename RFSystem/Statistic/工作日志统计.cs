@@ -34,7 +34,6 @@ namespace RFSystem.Statistic
         private ComboBox comboBoxStockOutSLocation;
         private ComboBox comboBoxStockTakePlant;
         private ComboBox comboBoxStockTakeSLocation;
-        private IContainer components;
         private DataGridView dataGridViewStock_op;
         private DataGridView dataGridViewStockDelivery;
         private DataGridView dataGridViewStockin;
@@ -2247,7 +2246,6 @@ namespace RFSystem.Statistic
         // Methods
         public 工作日志统计(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.userItem = null;
             this.userRoles = null;
             this.dtPlantList = null;

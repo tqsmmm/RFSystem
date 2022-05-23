@@ -19,7 +19,6 @@ namespace RFSystem
         private DataGridViewTextBoxColumn ColumnSL;
         private DataGridViewTextBoxColumn ColumnState;
         private DataGridViewTextBoxColumn ColumnSTOREMAN;
-        private IContainer components;
         private DataGridView dataGridViewMaintain;
         private DataTable dtMaintainHeader;
         private 保养货物 maintain;
@@ -157,7 +156,6 @@ namespace RFSystem
         // Methods
         public 保养单列表(UserInfo userItem, ArrayList userRoles)
         {
-            components = null;
             this.userItem = null;
             this.userRoles = null;
             InitializeComponent();

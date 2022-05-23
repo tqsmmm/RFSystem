@@ -23,7 +23,6 @@ namespace RFSystem.LabelPrint
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnPName;
         private DataGridViewTextBoxColumn columnSocket;
-        private IContainer components;
         private DataGridView dataGridViewLocationList;
         private DataGridView dataGridViewPrinterList;
         private DataTable dtLocationList;
@@ -38,7 +37,6 @@ namespace RFSystem.LabelPrint
         // Methods
         public LocationLabel()
         {
-            this.components = null;
             this.dtLocationList = null;
             this.dtPrinterList = null;
             this.InitializeComponent();

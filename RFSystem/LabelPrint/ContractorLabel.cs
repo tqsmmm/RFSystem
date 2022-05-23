@@ -20,7 +20,6 @@ namespace RFSystem.LabelPrint
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnPName;
         private DataGridViewTextBoxColumn columnSocket;
-        private IContainer components;
         private DataGridView dataGridViewContractorList;
         private DataGridView dataGridViewPrinterList;
         private DataTable dtContractorList;
@@ -37,7 +36,6 @@ namespace RFSystem.LabelPrint
         {
             this.dtContractorList = null;
             this.dtPrinterList = null;
-            this.components = null;
             this.InitializeComponent();
             this.dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
             this.dataGridViewPrinterList.DataSource = this.dtPrinterList;

@@ -5,8 +5,6 @@ namespace RFSystem.Statistic
 {
     public class 货位数据同步 : Form
     {
-        private IContainer components = null;
-
         public 货位数据同步()
         {
             this.InitializeComponent();

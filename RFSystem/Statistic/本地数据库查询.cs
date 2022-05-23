@@ -27,7 +27,6 @@ namespace RFSystem.Statistic
         private DataGridViewTextBoxColumn columnSocket;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewPrinterList;
         private DataGridView dataGridViewStock;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -791,7 +790,6 @@ namespace RFSystem.Statistic
         // Methods
         public 本地数据库查询(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.userItem = null;
             this.userRoles = null;
             this.dtPlantList = null;

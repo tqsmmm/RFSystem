@@ -31,7 +31,6 @@ namespace RFSystem
         private ComboBox comboBoxOperatorUser;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewSapStockInfo;
         private DataTable dtPlantList;
         private DataTable dtSapStockInfo;
@@ -455,7 +454,6 @@ namespace RFSystem
         {
             DataTable table;
             string str;
-            components = null;
             this.userItem = null;
             this.userRoles = null;
             this.stSerial = string.Empty;

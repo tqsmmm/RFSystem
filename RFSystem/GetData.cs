@@ -26,9 +26,7 @@ namespace RFSystem
 
                 _dt.Rows.Add(_dr);
 
-                DataSet _outDs;
-
-                MessagePack pack = newService.sendMsg("DVE117", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs, out _outDs);
+                MessagePack pack = newService.sendMsg("DVE117", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs, out DataSet _outDs);
 
                 if (!pack.Result)
                 {

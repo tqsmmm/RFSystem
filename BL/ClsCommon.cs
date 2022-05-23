@@ -89,7 +89,6 @@ namespace BL
         //本地数据库查询
         public static DataTable LocalStockGetList_New(ArrayList alParams)
         {
-            DataTable dt = null;
             string param = "";
 
             foreach (object obj2 in alParams)
@@ -99,14 +98,13 @@ namespace BL
 
             param = param.Remove(param.Length - 1);
             //db.OpenProcedure("RF_LocalStock_GetList", param, out dt);
-            db.OpenProcedure("RF_LocalStock_GetList_New", param, out dt);
+            db.OpenProcedure("RF_LocalStock_GetList_New", param, out DataTable dt);
 
             return dt;
         }
 
         public static DataTable LocalStockGetList(ArrayList alParams)
         {
-            DataTable dt = null;
             string param = "";
 
             foreach (object obj2 in alParams)
@@ -116,7 +114,7 @@ namespace BL
 
             param = param.Remove(param.Length - 1);
             //db.OpenProcedure("RF_LocalStock_GetList", param, out dt);
-            db.OpenProcedure("rfid2021.dbo.RF_LocalStock_GetList", param, out dt);
+            db.OpenProcedure("rfid2021.dbo.RF_LocalStock_GetList", param, out DataTable dt);
 
             return dt;
         }
@@ -124,10 +122,8 @@ namespace BL
         //工作日志统计
         public static DataSet StatisticInfo_New(string storeMan, string operatorDateFrom, string operatorDateTo)
         {
-            DataSet ds = null;
-            string param = "";
-            param = ((param + TDBObject.ToDBVal(storeMan) + ",") + TDBObject.ToDBVal(operatorDateFrom) + ",") + TDBObject.ToDBVal(operatorDateTo);
-            db.OpenProcedure("RF_Statistic_GetList_New", param, out ds);
+            string param = TDBObject.ToDBVal(storeMan) + "," + TDBObject.ToDBVal(operatorDateFrom) + "," + TDBObject.ToDBVal(operatorDateTo);
+            db.OpenProcedure("RF_Statistic_GetList_New", param, out DataSet ds);
 
             return ds;
         }
@@ -158,10 +154,10 @@ namespace BL
             {
                 db.BeginTrans();
             
-                string param = "";
-                param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",")
+                string param = TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ","
                     + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59")) + ","
                     + TDBObject.ToDBVal(czr);
+
                 db.ExecProcedure("STItem_ToHis", param);
                 db.Commit();
 

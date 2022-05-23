@@ -42,7 +42,6 @@ namespace RFSystem.ArriveStore
         private ComboBox comboBoxConveyanceMode;
         private ComboBox comboBoxPackagingKinds;
         private ComboBox comboBoxQuantityUnits;
-        private IContainer components;
         private DataGridView dataGridViewArriveGoodsInfo;
         private DateTimePicker dateTimePickerSignInDateFrom;
         private DateTimePicker dateTimePickerSignInDateTo;
@@ -1027,7 +1026,6 @@ namespace RFSystem.ArriveStore
         {
             this.ArriveGoodsInfo = null;
             this.userItem = null;
-            this.components = null;
             this.InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;

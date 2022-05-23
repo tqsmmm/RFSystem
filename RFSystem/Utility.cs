@@ -50,7 +50,7 @@ namespace RFSystem
         public static int Binary_Search(FileStream stream, int stPos, int lineLen, string findVal, out long pos, out string findLine)
         {
             long num = 0L;
-            long num2 = (stream.Length / ((long)lineLen)) - 1L;
+            long num2 = (stream.Length / lineLen) - 1L;
             byte[] buffer = new byte[lineLen];
             pos = 0L;
 
@@ -92,7 +92,7 @@ namespace RFSystem
             {
                 EAN = EAN.Trim();
 
-                if (((EAN.Length == 13) || (EAN.Length == 8)) || (EAN.Length == 12))
+                if ((EAN.Length == 13) || (EAN.Length == 8) || (EAN.Length == 12))
                 {
                     char ch;
                     int num4;
@@ -116,7 +116,7 @@ namespace RFSystem
                         num4 = 10 - ((num2 + (num * 3)) % 10);
                         ch = EAN[EAN.Length - 1];
 
-                        return ((num4.ToString() == ch.ToString()) || ((num4 = 10 - ((num2 + (num * 3)) % 10)).ToString() == "10"));
+                        return (num4.ToString() == ch.ToString()) || ((num4 = 10 - ((num2 + (num * 3)) % 10)).ToString() == "10");
                     }
 
                     if (EAN.Length == 13)
@@ -124,7 +124,7 @@ namespace RFSystem
                         num4 = 10 - (((num2 * 3) + num) % 10);
                         ch = EAN[EAN.Length - 1];
 
-                        return ((num4.ToString() == ch.ToString()) || ((num4 = 10 - (((num2 * 3) + num) % 10)).ToString() == "10"));
+                        return (num4.ToString() == ch.ToString()) || ((num4 = 10 - (((num2 * 3) + num) % 10)).ToString() == "10");
                     }
 
                     return false;
@@ -424,8 +424,8 @@ namespace RFSystem
                         else
                         {
                             str = str + "\n" + Encoding.GetEncoding("gb2312").GetString(bytes, 0, LineLen - 1);
-                            length = (length - LineLen) + 1;
-                            num2 = (num2 + LineLen) - 1;
+                            length = length - LineLen + 1;
+                            num2 = num2 + LineLen - 1;
                             buffer2 = new byte[length];
                             Array.Copy(bytes, LineLen - 1, buffer2, 0, length);
                             bytes = buffer2;

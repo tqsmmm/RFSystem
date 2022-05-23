@@ -12,42 +12,42 @@ namespace RF_ControlLibrary
 
         public ComboBox()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void ComboBox_SizeChanged(object sender, EventArgs e)
         {
-            base.Size = new Size(base.Size.Width, 20);
-            this.comboBoxUserControl.Size = base.Size;
+            Size = new Size(Size.Width, 20);
+            comboBoxUserControl.Size = Size;
         }
 
         private void comboBoxUserControl_Enter(object sender, EventArgs e)
         {
-            this.comboBoxUserControl.Tag = this.comboBoxUserControl.Text;
+            comboBoxUserControl.Tag = comboBoxUserControl.Text;
         }
 
         private void comboBoxUserControl_Leave(object sender, EventArgs e)
         {
-            if (this.comboBoxUserControl.Items.Contains(this.comboBoxUserControl.Text))
+            if (comboBoxUserControl.Items.Contains(comboBoxUserControl.Text))
             {
-                this.comboBoxUserControl.Tag = ((Control)sender).Text;
+                comboBoxUserControl.Tag = ((Control)sender).Text;
             }
             else
             {
-                ((Control)sender).Text = (string)this.comboBoxUserControl.Tag;
+                ((Control)sender).Text = (string)comboBoxUserControl.Tag;
             }
         }
 
         private void comboBoxUserControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.comboBoxUserControl.Tag = this.comboBoxUserControl.Text;
+            comboBoxUserControl.Tag = comboBoxUserControl.Text;
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (this.components != null))
+            if (disposing && (components != null))
             {
-                this.components.Dispose();
+                components.Dispose();
             }
 
             base.Dispose(disposing);
@@ -77,19 +77,19 @@ namespace RF_ControlLibrary
 
         public void ItemsAdd(string item)
         {
-            this.comboBoxUserControl.Items.Add(item);
-            this.comboBoxUserControl.Text = this.comboBoxUserControl.Items[0].ToString();
+            comboBoxUserControl.Items.Add(item);
+            comboBoxUserControl.Text = comboBoxUserControl.Items[0].ToString();
         }
 
         public int SelectIndex
         {
             get
             {
-                return this.comboBoxUserControl.SelectedIndex;
+                return comboBoxUserControl.SelectedIndex;
             }
             set
             {
-                this.comboBoxUserControl.SelectedIndex = value;
+                comboBoxUserControl.SelectedIndex = value;
             }
         }
 
@@ -97,11 +97,11 @@ namespace RF_ControlLibrary
         {
             get
             {
-                return this.comboBoxUserControl.Text;
+                return comboBoxUserControl.Text;
             }
             set
             {
-                this.comboBoxUserControl.Text = value;
+                comboBoxUserControl.Text = value;
             }
         }
     }

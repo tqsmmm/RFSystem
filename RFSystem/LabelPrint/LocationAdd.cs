@@ -10,7 +10,6 @@ namespace RFSystem.LabelPrint
     {
         private Button btnAdd;
         private Button btnCancel;
-        private IContainer components = null;
         private Label label1;
         private TextBox txtLocation;
 

@@ -8,7 +8,6 @@ namespace RFSystem.ArriveStore.ExceptionCard
 {
     public class 打印设备卡片 : Form
     {
-        private IContainer components = null;
         private CrystalReportViewer crystalReportViewerExceptionCard;
 
         public 打印设备卡片()

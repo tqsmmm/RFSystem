@@ -6,7 +6,6 @@ namespace RFSystem
 {
     public class 日志信息查看 : Form
     {
-        private IContainer components = null;
         private RichTextBox richTextBox1;
         public string val = "";
 

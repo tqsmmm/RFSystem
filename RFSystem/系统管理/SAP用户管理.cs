@@ -17,7 +17,6 @@ namespace RFSystem
         private Button btnSelect;
         private DataGridViewTextBoxColumn columnSapPassword;
         private DataGridViewTextBoxColumn columnSapUserID;
-        private IContainer components;
         private DataGridView dataGridViewSapUserList;
         private DataTable dtSapUserList;
         private Label label8;
@@ -170,7 +169,6 @@ namespace RFSystem
         // Methods
         public SAP用户管理()
         {
-            components = null;
             dtSapUserList = null;
             InitializeComponent();
         }

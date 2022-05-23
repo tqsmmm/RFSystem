@@ -24,7 +24,6 @@ namespace RFSystem.ArriveStore
         private ComboBox comboBoxConveyanceMode;
         private ComboBox comboBoxPackagingKinds;
         private ComboBox comboBoxQuantityUnits;
-        private IContainer components;
         private DataGridView dataGridViewStorageInfo;
         private ArrayList getStorageInfo;
         private GroupBox groupBox2;
@@ -858,7 +857,6 @@ namespace RFSystem.ArriveStore
             this.storageInfoList = null;
             this.getStorageInfo = null;
             this.userItem = null;
-            this.components = null;
             this.InitializeComponent();
             this.regex = new Regex(ConstDefine.REGEX_NUM);
             this.userItem = userItem;

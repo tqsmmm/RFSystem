@@ -15,7 +15,6 @@ namespace RFSystem.LabelPrint
         private Button button2;
         private Button button3;
         private Button button4;
-        private IContainer components;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
@@ -39,7 +38,6 @@ namespace RFSystem.LabelPrint
             this.m_Ds = null;
             this.m_Dv = null;
             this.thread = null;
-            this.components = null;
             this.InitializeComponent();
             base.Load += new EventHandler(this.保管员货品_Load);
         }

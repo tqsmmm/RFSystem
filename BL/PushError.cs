@@ -1,6 +1,5 @@
 ﻿namespace BL
 {
-
     public class PushError
     {
         public string PushNow(int iPullErrorId)

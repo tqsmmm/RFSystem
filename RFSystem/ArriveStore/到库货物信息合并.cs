@@ -29,7 +29,6 @@ namespace RFSystem.ArriveStore
         private ComboBox comboBoxConveyanceMode;
         private ComboBox comboBoxPackagingKinds;
         private ComboBox comboBoxQuantityUnits;
-        private IContainer components;
         private DataGridView dataGridViewStorageInfo;
         private ArrayList getStorageInfo;
         private GroupBox groupBox1;
@@ -915,7 +914,6 @@ namespace RFSystem.ArriveStore
             this.arriveListInfo2 = null;
             this.arriveListInfo3 = null;
             this.getStorageInfo = null;
-            this.components = null;
             this.InitializeComponent();
             this.InitializeFormControls();
             this.arriveListInfo1 = arriveListInfo;
@@ -933,6 +931,7 @@ namespace RFSystem.ArriveStore
         private void btnAdd_Click(object sender, EventArgs e)
         {
             到库货物存放信息 到库货物存放信息 = new 到库货物存放信息();
+
             if (到库货物存放信息.ShowDialog() == DialogResult.OK)
             {
                 this.getStorageInfo = 到库货物存放信息.ArriveStoreStorageInfo;

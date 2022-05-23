@@ -15,9 +15,9 @@ namespace DsToExcel
 
         public ToExcelButton()
         {
-            this.InitializeComponent();
-            this.objToExcel = new ToExcel();
-            this.Text = "生成Excel";
+            InitializeComponent();
+            objToExcel = new ToExcel();
+            Text = "生成Excel";
         }
 
         protected override void Dispose(bool disposing)
@@ -34,7 +34,7 @@ namespace DsToExcel
         {
             SaveFileDialog dialog = new SaveFileDialog();
 
-            if ((this.m_Ds == null) || (this.m_Ds.Tables.Count < 1))
+            if ((m_Ds == null) || (m_Ds.Tables.Count < 1))
             {
                 MessageBox.Show("请选择数据源", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
@@ -49,14 +49,14 @@ namespace DsToExcel
                         File.Create(dialog.FileName).Close();
                     }
 
-                    this.objToExcel.TableName = this.m_TableName;
-                    this.objToExcel.FileName = dialog.FileName;
-                    this.objToExcel.DataSource = this.m_Ds;
-                    this.objToExcel.IsShowDoing = this.m_IsShowDoing;
+                    objToExcel.TableName = m_TableName;
+                    objToExcel.FileName = dialog.FileName;
+                    objToExcel.DataSource = m_Ds;
+                    objToExcel.IsShowDoing = m_IsShowDoing;
 
                     try
                     {
-                        this.objToExcel.Do();
+                        objToExcel.Do();
                     }
                     catch (Exception exception)
                     {
@@ -74,10 +74,10 @@ namespace DsToExcel
 
             while (enumerator.MoveNext())
             {
-                DataRow row = this.objToExcel.MappingTable.NewRow();
+                DataRow row = objToExcel.MappingTable.NewRow();
                 row["SourceColumn"] = enumerator.Key.ToString();
                 row["MappingName"] = enumerator.Value.ToString();
-                this.objToExcel.MappingTable.Rows.Add(row);
+                objToExcel.MappingTable.Rows.Add(row);
             }
         }
 
@@ -85,10 +85,10 @@ namespace DsToExcel
         {
             for (int i = 0; i < grid.TableStyles[0].GridColumnStyles.Count; i++)
             {
-                DataRow row = this.objToExcel.MappingTable.NewRow();
+                DataRow row = objToExcel.MappingTable.NewRow();
                 row["SourceColumn"] = grid.TableStyles[0].GridColumnStyles[i].MappingName;
                 row["MappingName"] = grid.TableStyles[0].GridColumnStyles[i].HeaderText;
-                this.objToExcel.MappingTable.Rows.Add(row);
+                objToExcel.MappingTable.Rows.Add(row);
             }
         }
 
@@ -96,11 +96,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_IsShowDoing;
+                return m_IsShowDoing;
             }
             set
             {
-                this.m_IsShowDoing = value;
+                m_IsShowDoing = value;
             }
         }
 
@@ -108,11 +108,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.objToExcel.MappingTable;
+                return objToExcel.MappingTable;
             }
             set
             {
-                this.objToExcel.MappingTable = value;
+                objToExcel.MappingTable = value;
             }
         }
 
@@ -120,11 +120,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_Ds;
+                return m_Ds;
             }
             set
             {
-                this.m_Ds = value;
+                m_Ds = value;
             }
         }
 
@@ -132,11 +132,11 @@ namespace DsToExcel
         {
             get
             {
-                return this.m_TableName;
+                return m_TableName;
             }
             set
             {
-                this.m_TableName = value;
+                m_TableName = value;
             }
         }
     }

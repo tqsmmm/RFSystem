@@ -10,7 +10,6 @@
     {
         private Button btnCancel;
         private Button btnOK;
-        private IContainer components = null;
         private ArrayList demurralStorageInfo = null;
         private Label label1;
         private Label label2;

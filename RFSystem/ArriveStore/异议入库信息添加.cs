@@ -19,7 +19,6 @@ namespace RFSystem.ArriveStore
         private Button btnStorageAdd;
         private Button btnStorageDel;
         private ComboBox comboBoxArriveListID;
-        private IContainer components;
         private DataGridView dataGridViewStorageInfo;
         private DataTable demurralInfoList;
         private ArrayList getDemurralInfo;
@@ -283,7 +282,6 @@ namespace RFSystem.ArriveStore
         // Methods
         public 异议入库信息添加(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.demurralInfoList = null;
             this.getDemurralInfo = null;
             this.userItem = null;

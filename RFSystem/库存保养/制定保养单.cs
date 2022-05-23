@@ -37,7 +37,6 @@ namespace RFSystem
         private DataGridViewTextBoxColumn ColumnWeight;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewMaintain;
         private DataGridView dataGridViewSapStockInfo;
         private DataTable dtGoods;
@@ -595,7 +594,6 @@ namespace RFSystem
         // Methods
         public 制定保养单(UserInfo userItem, ArrayList userRoles)
         {
-            components = null;
             this.userItem = null;
             this.userRoles = null;
             dtMaintain = null;

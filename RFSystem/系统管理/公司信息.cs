@@ -10,7 +10,6 @@ namespace RFSystem
     {
         private Button btnCancel;
         private Button btnMod;
-        private IContainer components = null;
         private Label label1;
         private Label label2;
         private TextBox textBoxPlantID;

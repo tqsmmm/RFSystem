@@ -14,7 +14,6 @@ namespace RFSystem
         // Fields
         private Button btDel;
         private Button btSee;
-        private IContainer components;
         private DataGridView dataGridView1;
         private DataSet m_poDs;
 
@@ -86,7 +85,6 @@ namespace RFSystem
         // Methods
         public 日志管理()
         {
-            components = null;
             m_poDs = null;
             InitializeComponent();
             Load += new EventHandler(日志管理_Load);

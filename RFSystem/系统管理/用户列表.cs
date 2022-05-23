@@ -17,7 +17,6 @@ namespace RFSystem
         private Button btnMod;
         private Button btnSelect;
         private CheckBox checkBoxUnUsed;
-        private IContainer components;
         private DataGridView dataGridViewUserList;
         private DataTable dtUserList;
         private GroupBox groupBox2;
@@ -298,7 +297,6 @@ namespace RFSystem
         public 用户列表()
         {
             dtUserList = null;
-            components = null;
             InitializeComponent();
         }
 

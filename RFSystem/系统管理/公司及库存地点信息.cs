@@ -25,7 +25,6 @@ namespace RFSystem
         private DataGridViewTextBoxColumn columnStoreLocusID;
         private DataGridViewTextBoxColumn columnStorePlantID;
         private ComboBox comboBoxPlantList;
-        private IContainer components;
         private DataGridView dataGridViewPlantList;
         private DataGridView dataGridViewStoreList;
         private DataTable dtPlantList;
@@ -364,7 +363,6 @@ namespace RFSystem
         // Methods
         public 公司及库存地点信息()
         {
-            components = null;
             dtPlantList = null;
             dtStoreLocusList = null;
             InitializeComponent();

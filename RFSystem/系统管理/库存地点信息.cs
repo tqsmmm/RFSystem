@@ -12,7 +12,6 @@ namespace RFSystem
         private Button btnCancel;
         private Button btnMod;
         private ComboBox comboBoxPlantID;
-        private IContainer components = null;
         private DataTable dtPlant = null;
         private Label label1;
         private Label label2;

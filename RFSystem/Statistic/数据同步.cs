@@ -37,7 +37,6 @@ namespace RFSystem.Statistic
         private DataGridViewTextBoxColumn ColumnWeight;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewSapStockInfo;
         private DataSet dsResult;
         private DataTable dtPlantList;
@@ -474,7 +473,6 @@ namespace RFSystem.Statistic
         // Methods
         public 数据同步(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.userItem = null;
             this.userRoles = null;
             this.dtPlantList = null;

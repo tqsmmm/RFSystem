@@ -14,7 +14,6 @@ namespace RFSystem
         private Button btnCreatList;
         private Button btTo;
         private ComboBox comboBoxPlant;
-        private IContainer components = null;
         private DataTable dtPlantList = null;
         private GroupBox groupBox1;
         private Label label1;

@@ -28,7 +28,6 @@ namespace RFSystem
         private DataGridViewTextBoxColumn ColumnUNIT;
         private ComboBox comboBoxPlant;
         private ComboBox comboBoxSLocation;
-        private IContainer components;
         private DataGridView dataGridViewMaintainInfo;
         private DateTimePicker dateTimePickerTableMakeDateFrom;
         private DateTimePicker dateTimePickerTableMakeDateTo;
@@ -197,6 +196,7 @@ namespace RFSystem
             // 
             // checkBoxComplete
             // 
+            this.checkBoxComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxComplete.AutoSize = true;
             this.checkBoxComplete.Location = new System.Drawing.Point(1023, 71);
             this.checkBoxComplete.Name = "checkBoxComplete";
@@ -543,7 +543,6 @@ namespace RFSystem
             this.userRoles = null;
             dtPlantList = null;
             dtStoreLocusList = null;
-            components = null;
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;

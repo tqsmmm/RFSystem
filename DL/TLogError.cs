@@ -16,23 +16,17 @@ namespace DL
         public static string LogFileName = @"E:\log\logerror.txt";
         public const int NULLVALUE = -11;
         public const int REMOTING_CONNECT = -1000;
-        private const int SQLERROROFCONNECTIONFAIL = 0x11;
-        private const int SQLERROROFINDEXDUPLICATE1 = 0xe14;
-        private const int SQLERROROFINDEXDUPLICATE2 = 0xa29;
-        private const int SQLERROROFKEYDUPLICATE = 0xa43;
-        private const int SQLERROROFLOGINNFAIL = 0x4818;
-        private const int SQLERROROFNULLVALUE = 0x203;
 
         public TLogError(Exception E)
         {
             this.E = null;
-            this.des = null;
+            des = null;
             this.E = E;
         }
 
         public TLogError(string des)
         {
-            this.E = null;
+            E = null;
             this.des = null;
             this.des = des;
         }
@@ -102,7 +96,7 @@ namespace DL
 
             }
 
-            if (this.E != null)
+            if (E != null)
             {
                 try
                 {
@@ -111,15 +105,15 @@ namespace DL
                     writer.WriteLine("-------------------------------------------------------------------");
                     writer.WriteLine("时间：" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString());
                     writer.WriteLine("错误堆栈信息：");
-                    writer.WriteLine(this.E.StackTrace.ToString());
+                    writer.WriteLine(E.StackTrace.ToString());
                     writer.WriteLine("错误信息：");
-                    writer.WriteLine(this.E.Message);
+                    writer.WriteLine(E.Message);
 
-                    if (this.des != null)
+                    if (des != null)
                     {
                         writer.WriteLine();
                         writer.WriteLine("附加信息：");
-                        writer.WriteLine("    " + this.des);
+                        writer.WriteLine("    " + des);
                     }
 
                     writer.Close();
@@ -132,7 +126,7 @@ namespace DL
                 return num;
             }
 
-            if (this.des != null)
+            if (des != null)
             {
                 try
                 {
@@ -141,7 +135,7 @@ namespace DL
                     writer.WriteLine("-------------------------------------------------------------------");
                     writer.WriteLine("时间：" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
                     writer.WriteLine("调试信息：");
-                    writer.WriteLine("    " + this.des);
+                    writer.WriteLine("    " + des);
                     writer.Close();
                     num = 0;
                 }

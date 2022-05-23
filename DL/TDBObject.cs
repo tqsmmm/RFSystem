@@ -57,8 +57,7 @@ namespace DL
         public static void GetField(DataRow dr, string FieldName, ref ArrayList val)
         {
             char[] separator = ",".ToCharArray();
-            string[] strArray = null;
-            strArray = Convert.ToString(dr[FieldName]).Split(separator);
+            string[] strArray = Convert.ToString(dr[FieldName]).Split(separator);
 
             foreach (string str3 in strArray)
             {
@@ -127,7 +126,7 @@ namespace DL
 
         public static string ToDBVal(object FieldVal)
         {
-            string source = "";
+            string source;
 
             if (FieldVal == null)
             {
@@ -135,7 +134,7 @@ namespace DL
             }
             else
             {
-                if ((((FieldVal is int) || (FieldVal is long)) || (FieldVal is float)) || (FieldVal is decimal))
+                if ((FieldVal is int) || (FieldVal is long) || (FieldVal is float) || (FieldVal is decimal))
                 {
                     return FieldVal.ToString();
                 }

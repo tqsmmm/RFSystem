@@ -10,7 +10,6 @@ namespace RFSystem.Statistic
     {
         // Fields
         private Button btnSelect;
-        private IContainer components;
         private DataGridView dataGridViewResult;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
@@ -115,7 +114,6 @@ namespace RFSystem.Statistic
         // Methods
         public UserControl1(ArrayList paramList)
         {
-            this.components = null;
             this.paramList = paramList;
             this.InitializeComponent();
         }

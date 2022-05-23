@@ -18,7 +18,6 @@ namespace RFSystem.ArriveStore
         private Button btnSelect;
         private ToExcelButton buttonExcel;
         private CheckBox checkBoxTableMakeDate;
-        private IContainer components;
         private DataGridView dataGridViewGoodsList;
         private DataGridView dataGridViewStorageInfo;
         private DateTimePicker dateTimePickerTableMakeDateFrom;
@@ -437,7 +436,6 @@ namespace RFSystem.ArriveStore
         // Methods
         public 异议入库(UserInfo userItem, ArrayList userRoles)
         {
-            this.components = null;
             this.demurralInfoList = null;
             this.demurralStorageInfoList = null;
             this.dvDemurralStorageInfoList = null;
