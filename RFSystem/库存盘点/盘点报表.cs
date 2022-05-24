@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using BL;
 using System.Collections;
-using DsToExcel;
 using RFSystem.CommonClass;
 
 namespace RFSystem
@@ -15,7 +14,6 @@ namespace RFSystem
         private Button btnMod;
         private Button btnReason;
         private Button btnSelect;
-        private ToExcelButton buttonExcel;
         private CheckBox checkBoxDiff;
         private DataGridViewTextBoxColumn ColumnBNumber;
         private DataGridViewTextBoxColumn ColumnCausation;
@@ -602,7 +600,6 @@ namespace RFSystem
             dtStoreLocusList = null;
             dtReport = null;
             this.STStatus = "5";
-            buttonExcel = null;
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;
@@ -647,12 +644,6 @@ namespace RFSystem
             }
 
             comboBoxPlant.SelectedIndex = 0;
-            buttonExcel = new ToExcelButton();
-            Controls.Add(buttonExcel);
-            buttonExcel.Location = new Point(0x327, 0x238);
-            buttonExcel.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
-            buttonExcel.Size = new Size(0x4b, 0x17);
-            buttonExcel.TableName = "collect";
         }
 
         private void btnMod_Click(object sender, EventArgs e)
@@ -774,8 +765,6 @@ namespace RFSystem
             dtExcel.Columns["Causation"].ColumnName = "差异原因";
             DataSet set = new DataSet();
             set.Tables.Add(dtExcel);
-            buttonExcel.Source = set;
-            buttonExcel.TableName = set.Tables[0].TableName;
             Hashtable hs = new Hashtable();
 
             foreach (DataColumn column in dtReport.Columns)
@@ -783,7 +772,6 @@ namespace RFSystem
                 hs.Add(column.ToString(), column.ToString());
             }
 
-            buttonExcel.SetMapping(hs);
         }
 
         private void comboBoxPlant_SelectedIndexChanged(object sender, EventArgs e)

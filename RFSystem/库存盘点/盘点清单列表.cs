@@ -1,11 +1,9 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using BL;
 using System.Collections;
-using DsToExcel;
 using RFSystem.CommonClass;
 
 namespace RFSystem
@@ -20,7 +18,6 @@ namespace RFSystem
         private Button btnReport;
         private Button btnTheoryAmount;
         private Button btReflash;
-        private ToExcelButton buttonExcel;
         private 理论库存信息 dataInStore;
         private DataSet ds;
         private DataGridView dtVDetail;
@@ -331,19 +328,12 @@ namespace RFSystem
             m_DsvHead = null;
             m_DetailDt = null;
             m_DsvDetail = null;
-            buttonExcel = null;
             ds = new DataSet();
             hs = new Hashtable();
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;
             Load += new EventHandler(盘点清单列表_Load);
-            buttonExcel = new ToExcelButton();
-            Controls.Add(buttonExcel);
-            buttonExcel.Location = new Point(300, 0x192);
-            buttonExcel.Size = new Size(100, 0x20);
-            buttonExcel.TableName = "collect";
-            buttonExcel.Visible = false;
         }
 
         private void BindDetail()
@@ -588,16 +578,12 @@ namespace RFSystem
             {
                 BindHead();
                 ds.Tables.Add(m_HeadDt);
-                buttonExcel.Source = ds.Copy();
-                buttonExcel.TableName = ds.Tables[0].TableName;
                 hs.Clear();
 
                 for (int i = 0; i < dtVHead.Columns.Count; i++)
                 {
                     hs.Add(dtVHead.Columns[i].Name, dtVHead.Columns[i].HeaderText);
                 }
-
-                buttonExcel.SetMapping(hs);
             }
 
             btn_tohis.Enabled = false;

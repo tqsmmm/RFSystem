@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using BL;
 using System.Collections;
-using DsToExcel;
 using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
@@ -17,7 +16,6 @@ namespace RFSystem.ArriveStore
         private Button btnDel;
         private Button btnExit;
         private Button btnSelect;
-        private ToExcelButton buttonExcel;
         private CheckBox checkBoxTableMakeDate;
         private DataGridView dataGridViewGoodsList;
         private DataGridView dataGridViewStorageInfo;
@@ -441,7 +439,6 @@ namespace RFSystem.ArriveStore
             this.demurralStorageInfoList = null;
             this.dvDemurralStorageInfoList = null;
             this.userItem = null;
-            this.buttonExcel = null;
             this.InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;
@@ -459,11 +456,6 @@ namespace RFSystem.ArriveStore
             this.demurralStorageInfoList.Columns.Add("StorePosition");
             this.demurralStorageInfoList.Columns.Add("Amount", Type.GetType("System.Decimal"));
             this.demurralStorageInfoList.Columns.Add("Remark");
-            this.buttonExcel = new ToExcelButton();
-            base.Controls.Add(this.buttonExcel);
-            this.buttonExcel.Location = new Point(0x1f3, 0x213);
-            this.buttonExcel.Size = new Size(0x4b, 0x17);
-            this.buttonExcel.TableName = "collect";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -531,14 +523,11 @@ namespace RFSystem.ArriveStore
                 row2["所属到库单号"] = "'" + row2["所属到库单号"];
             }
             set.Tables.Add(this.dtExcel);
-            this.buttonExcel.Source = set;
-            this.buttonExcel.TableName = set.Tables[0].TableName;
             Hashtable hs = new Hashtable();
             foreach (DataColumn column in this.demurralInfoList.Columns)
             {
                 hs.Add(column.ToString(), column.ToString());
             }
-            this.buttonExcel.SetMapping(hs);
         }
 
         private void checkBoxTableMakeDate_CheckedChanged(object sender, EventArgs e)

@@ -1,5 +1,4 @@
-﻿using DL;
-using System.Data;
+﻿using System.Data;
 
 namespace BL
 {
