@@ -316,20 +316,20 @@ namespace RFSystem
             {
                 if (dataGridViewUserList.SelectedRows != null)
                 {
-                    if ((MessageBox.Show("确认恢复此条用户信息么？", "恢复", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.RebornUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认恢复此条用户信息么？") && (DBOperate.RebornUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
                     {
-                        MessageBox.Show("用户恢复成功，如果需要检索此用户信息请取消选择\"被删除过的用户\"");
+                        CommonFunction.Sys_MsgBox("用户恢复成功，如果需要检索此用户信息请取消选择\"被删除过的用户\"");
                         btnSelect.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条用户信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条用户信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何人员信息，无法恢复", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何人员信息，无法恢复");
             }
         }
 
@@ -339,20 +339,20 @@ namespace RFSystem
             {
                 if (dataGridViewUserList.SelectedRows != null)
                 {
-                    if ((MessageBox.Show("确认删除此条用户信息么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.DelUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条用户信息么？") && (DBOperate.DelUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
                     {
-                        MessageBox.Show("用户删除成功，如果需要检索此用户信息请选择\"被删除过的用户\"");
+                        CommonFunction.Sys_MsgBox("用户删除成功，如果需要检索此用户信息请选择\"被删除过的用户\"");
                         btnSelect.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条用户信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条用户信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何人员信息，无法删除", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何人员信息，无法删除");
             }
         }
 
@@ -384,12 +384,12 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条用户信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条用户信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何人员信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何人员信息，无法修改");
             }
         }
 
@@ -463,9 +463,9 @@ namespace RFSystem
             rfid2021Service.MessagePack pack =  newService.sendMsgNotOut("DVE130", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs);
 
             if (pack.Result)
-                MessageBox.Show("同步成功");
+                CommonFunction.Sys_MsgBox("同步成功");
             else
-                MessageBox.Show(pack.Message);
+                CommonFunction.Sys_MsgBox(pack.Message);
         }
 
         private void 用户信息_Load(object sender, EventArgs e)

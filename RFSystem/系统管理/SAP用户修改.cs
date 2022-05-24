@@ -37,12 +37,12 @@ namespace RFSystem
 
                 if (DBOperate.ModSapUser(textBoxSapUserID.Text, @operator.OutString) != -1)
                 {
-                    MessageBox.Show("SAP用户 " + textBoxSapUserID.Text.Trim() + " 修改成功");
+                    CommonFunction.Sys_MsgBox("SAP用户 " + textBoxSapUserID.Text.Trim() + " 修改成功");
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("数据库出错，请联系系统管理员确认");
+                    CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace RFSystem
         {
             if (textBoxSapUserID.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
 

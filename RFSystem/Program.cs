@@ -39,12 +39,12 @@ namespace RFSystem
                     }
                     else
                     {
-                        MessageBox.Show("用户已被删除");
+                        CommonFunction.Sys_MsgBox("用户已被删除");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("用户或密码错误");
+                    CommonFunction.Sys_MsgBox("用户或密码错误");
                 }
             }
         }

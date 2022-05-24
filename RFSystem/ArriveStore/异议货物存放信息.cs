@@ -1,5 +1,6 @@
 ﻿namespace RFSystem.ArriveStore
 {
+    using RFSystem.CommonClass;
     using System;
     using System.Collections;
     using System.ComponentModel;
@@ -162,7 +163,7 @@
         {
             if (this.textBoxStorePosition.Text.Trim().Equals(string.Empty) || (this.numericUpDownAmount.Value == 0M))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
             return true;

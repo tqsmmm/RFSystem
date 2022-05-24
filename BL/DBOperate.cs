@@ -1512,7 +1512,7 @@ namespace BL
                  */
                 return "0";
             }
-            catch (Exception e)
+            catch
             {
                 //db.RollBack();
                 return "-1";

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using BL;
 using RFSystem.Properties;
 using System.Net.Sockets;
+using RFSystem.CommonClass;
 
 namespace RFSystem.LabelPrint
 {
@@ -34,33 +34,33 @@ namespace RFSystem.LabelPrint
         // Methods
         public ContractorLabel()
         {
-            this.dtContractorList = null;
-            this.dtPrinterList = null;
-            this.InitializeComponent();
-            this.dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dtContractorList = null;
+            dtPrinterList = null;
+            InitializeComponent();
+            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Close();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            this.PrintContractorLabel();
+            PrintContractorLabel();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            this.dtContractorList = PrintDBOperate.GetContractorList(this.txtContractor.Text.Trim());
-            this.dataGridViewContractorList.DataSource = this.dtContractorList;
+            dtContractorList = PrintDBOperate.GetContractorList(txtContractor.Text.Trim());
+            dataGridViewContractorList.DataSource = dtContractorList;
         }
 
         private void btnSelectPrinter_Click(object sender, EventArgs e)
         {
-            this.dtPrinterList = DBOperate.GetPrinterList("%" + this.txtPrinter.Text + "%", "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void dataGridViewContractorList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,8 +71,8 @@ namespace RFSystem.LabelPrint
         private string dealPrintData(string con, string xx, string xz, string copy)
         {
             string str = "";
-            str = ((((str + "@CREATE;LOC\r\n" + "BARCODE\r\n") + "C128C;VSCAN;X2;H4.65;DARK;" + xx + ";1\r\n") + "*" + con + "*\r\n") + "PDF;S\r\n" + "STOP\r\n") + "FONT;FACE 92250;BOLD OFF;SLANT OFF;SYMSET 0\r\n" + "ALPHA\r\n";
-            return ((((str + "CCW;POINT;" + xz + ";7;15;15;'" + con + "'\r\n") + "STOP\r\n" + "END\r\n") + "@EXECUTE;LOC;" + copy + "\r\n") + "@NORMAL\r\n");
+            str = str + "@CREATE;LOC\r\n" + "BARCODE\r\n" + "C128C;VSCAN;X2;H4.65;DARK;" + xx + ";1\r\n" + "*" + con + "*\r\n" + "PDF;S\r\n" + "STOP\r\n" + "FONT;FACE 92250;BOLD OFF;SLANT OFF;SYMSET 0\r\n" + "ALPHA\r\n";
+            return str + "CCW;POINT;" + xz + ";7;15;15;'" + con + "'\r\n" + "STOP\r\n" + "END\r\n" + "@EXECUTE;LOC;" + copy + "\r\n" + "@NORMAL\r\n";
         }
 
         private void InitializeComponent()
@@ -311,19 +311,19 @@ namespace RFSystem.LabelPrint
             string xz = "10";
 
             TcpClient client = new TcpClient();
-            string hostname = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(this.dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
             try
             {
                 client.Connect(hostname, port);
 
-                for (int i = 0; i < this.dataGridViewContractorList.RowCount; i++)
+                for (int i = 0; i < dataGridViewContractorList.RowCount; i++)
                 {
-                    con = this.dataGridViewContractorList.Rows[i].Cells["columnContractor"].Value.ToString();
+                    con = dataGridViewContractorList.Rows[i].Cells["columnContractor"].Value.ToString();
                     xx = "4";
                     xz = "10";
-                    s = this.dealPrintData(con, xx, xz, copy);
+                    s = dealPrintData(con, xx, xz, copy);
                     client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                     client.GetStream().Flush();
                 }
@@ -332,7 +332,7 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
 
@@ -340,19 +340,19 @@ namespace RFSystem.LabelPrint
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.GetNextControl(base.ActiveControl, true).Focus();
+                GetNextControl(ActiveControl, true).Focus();
             }
         }
 
         private void dataGridViewContractorList_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewContractorList.Rows != null) && (this.dataGridViewContractorList.SelectedRows.Count != 0))
+            if ((dataGridViewContractorList.Rows != null) && (dataGridViewContractorList.SelectedRows.Count != 0))
             {
-                this.btnPrint.Enabled = true;
+                btnPrint.Enabled = true;
             }
             else
             {
-                this.btnPrint.Enabled = false;
+                btnPrint.Enabled = false;
             }
         }
 

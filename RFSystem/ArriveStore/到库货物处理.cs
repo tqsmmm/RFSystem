@@ -41,23 +41,23 @@ namespace RFSystem.ArriveStore
         {
             if (numericUpDownDealAmount.Value == 0M)
             {
-                MessageBox.Show("处理数量不能为零", "错误", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("处理数量不能为零");
             }
             else if ((numericUpDownDealAmount.Value + Convert.ToDecimal(labelDealAmount.Text)) <= Convert.ToDecimal(labelAcceptAmount.Text))
             {
                 if (DBOperate.AddAmountArriveStoreDeal(labelArriveListID.Text, numericUpDownDealAmount.Value) == 1)
                 {
-                    MessageBox.Show("处理成功");
+                    CommonFunction.Sys_MsgBox("处理成功");
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("处理失败，数据库出错", "错误", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("处理失败，数据库出错");
                 }
             }
             else
             {
-                MessageBox.Show("您要处理的货物数量超过实收货物数量，请确认", "数量超标", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("您要处理的货物数量超过实收货物数量，请确认");
             }
         }
 
@@ -219,7 +219,7 @@ namespace RFSystem.ArriveStore
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using BL;
 using System.Collections;
 using DsToExcel;
+using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
 {
@@ -478,7 +479,7 @@ namespace RFSystem.ArriveStore
         {
             if (DBOperate.DelArriveStoreExceptionInfo(this.dataGridViewGoodsList.SelectedRows[0].Cells["ColumnExceptionID"].Value.ToString()) != -1)
             {
-                MessageBox.Show("信息删除成功！");
+                CommonFunction.Sys_MsgBox("信息删除成功！");
                 this.btnSelect.PerformClick();
             }
         }
@@ -520,7 +521,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("当前没有异议入库的货物信息，请确认", "数据不存在", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                CommonFunction.Sys_MsgBox("当前没有异议入库的货物信息，请确认");
             }
             this.dataGridViewStorageInfo.DataSource = this.dvDemurralStorageInfoList;
             this.dtExcel = this.demurralInfoList.Copy();

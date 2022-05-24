@@ -14,12 +14,9 @@ namespace RFSystem
 {
     public class 数据库查询 : Form
     {
-        // Fields
-        private Button btnExit;
         private Button btnPatchPrint;
         private Button btnPrint;
         private Button btnSelect;
-        private Button button1;
         private ComboBox cmbLabelType;
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnSocket;
@@ -36,12 +33,10 @@ namespace RFSystem
         private Label label10;
         private Label label11;
         private Thread thread;
-        private TextBox txtCopy;
         private TextBox txtPrinter;
         private UserInfo userItem;
         private TextBox textBoxStoreMan;
         private Label label1;
-        private GroupBox groupBox3;
         private DataGridViewTextBoxColumn deliveryLineId;
         private DataGridViewTextBoxColumn batchId;
         private DataGridViewTextBoxColumn itemId;
@@ -78,6 +73,8 @@ namespace RFSystem
         private DataGridViewTextBoxColumn productionLine;
         private DataGridViewTextBoxColumn invBin;
         private DataGridViewTextBoxColumn unitWeight;
+        private Label label2;
+        private NumericUpDown nudCopy;
         private ArrayList userRoles;
 
         protected override void Dispose(bool disposing)
@@ -92,26 +89,11 @@ namespace RFSystem
 
         private void InitializeComponent()
         {
-            this.btnExit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxStoreMan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
             this.dataGridViewStock = new System.Windows.Forms.DataGridView();
-            this.txtCopy = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnPatchPrint = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbLabelType = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtPrinter = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dataGridViewPrinterList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.deliveryLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,23 +130,25 @@ namespace RFSystem
             this.productionLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invBin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnPatchPrint = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbLabelType = new System.Windows.Forms.ComboBox();
+            this.txtPrinter = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dataGridViewPrinterList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nudCopy = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(900, 581);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 40);
-            this.btnExit.TabIndex = 1000;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // groupBox1
             // 
@@ -175,7 +159,7 @@ namespace RFSystem
             this.groupBox1.Controls.Add(this.btnSelect);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(987, 75);
+            this.groupBox1.Size = new System.Drawing.Size(987, 90);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "本地数据库查询";
@@ -183,16 +167,15 @@ namespace RFSystem
             // textBoxStoreMan
             // 
             this.textBoxStoreMan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBoxStoreMan.Location = new System.Drawing.Point(135, 34);
+            this.textBoxStoreMan.Location = new System.Drawing.Point(158, 37);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
             this.textBoxStoreMan.Size = new System.Drawing.Size(200, 26);
             this.textBoxStoreMan.TabIndex = 30006;
-            this.textBoxStoreMan.TextChanged += new System.EventHandler(this.textBoxStoreMan_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 37);
+            this.label1.Location = new System.Drawing.Point(45, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 30005;
@@ -201,9 +184,9 @@ namespace RFSystem
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(881, 27);
+            this.btnSelect.Location = new System.Drawing.Point(861, 25);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(100, 40);
+            this.btnSelect.Size = new System.Drawing.Size(120, 50);
             this.btnSelect.TabIndex = 100;
             this.btnSelect.Text = "检索";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -257,161 +240,15 @@ namespace RFSystem
             this.productionLine,
             this.invBin,
             this.unitWeight});
-            this.dataGridViewStock.Location = new System.Drawing.Point(12, 94);
+            this.dataGridViewStock.Location = new System.Drawing.Point(12, 108);
             this.dataGridViewStock.Name = "dataGridViewStock";
             this.dataGridViewStock.ReadOnly = true;
             this.dataGridViewStock.RowHeadersVisible = false;
             this.dataGridViewStock.RowTemplate.Height = 23;
             this.dataGridViewStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStock.Size = new System.Drawing.Size(987, 370);
+            this.dataGridViewStock.Size = new System.Drawing.Size(987, 356);
             this.dataGridViewStock.TabIndex = 110;
             this.dataGridViewStock.SelectionChanged += new System.EventHandler(this.dataGridViewStock_SelectionChanged);
-            // 
-            // txtCopy
-            // 
-            this.txtCopy.Location = new System.Drawing.Point(77, 32);
-            this.txtCopy.Name = "txtCopy";
-            this.txtCopy.Size = new System.Drawing.Size(102, 26);
-            this.txtCopy.TabIndex = 1002;
-            this.txtCopy.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 20);
-            this.label10.TabIndex = 1001;
-            this.label10.Text = "打印份数";
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(185, 25);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 40);
-            this.btnPrint.TabIndex = 1004;
-            this.btnPrint.Text = "单个打印";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnPatchPrint
-            // 
-            this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(291, 25);
-            this.btnPatchPrint.Name = "btnPatchPrint";
-            this.btnPatchPrint.Size = new System.Drawing.Size(100, 40);
-            this.btnPatchPrint.TabIndex = 1005;
-            this.btnPatchPrint.Text = "批量打印";
-            this.btnPatchPrint.UseVisualStyleBackColor = true;
-            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.cmbLabelType);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.txtPrinter);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.dataGridViewPrinterList);
-            this.groupBox2.Location = new System.Drawing.Point(12, 470);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(547, 147);
-            this.groupBox2.TabIndex = 1006;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "打印机选择";
-            // 
-            // cmbLabelType
-            // 
-            this.cmbLabelType.FormattingEnabled = true;
-            this.cmbLabelType.Items.AddRange(new object[] {
-            "普通标签",
-            "RFID标签"});
-            this.cmbLabelType.Location = new System.Drawing.Point(398, 101);
-            this.cmbLabelType.Name = "cmbLabelType";
-            this.cmbLabelType.Size = new System.Drawing.Size(143, 28);
-            this.cmbLabelType.TabIndex = 1102;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(441, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 40);
-            this.button1.TabIndex = 101;
-            this.button1.Text = "查找";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtPrinter
-            // 
-            this.txtPrinter.Location = new System.Drawing.Point(398, 23);
-            this.txtPrinter.Name = "txtPrinter";
-            this.txtPrinter.Size = new System.Drawing.Size(143, 26);
-            this.txtPrinter.TabIndex = 102;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(341, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 20);
-            this.label11.TabIndex = 101;
-            this.label11.Text = "打印机";
-            // 
-            // dataGridViewPrinterList
-            // 
-            this.dataGridViewPrinterList.AllowUserToAddRows = false;
-            this.dataGridViewPrinterList.AllowUserToResizeRows = false;
-            this.dataGridViewPrinterList.ColumnHeadersHeight = 30;
-            this.dataGridViewPrinterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewPrinterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.columnPAddress,
-            this.columnSocket});
-            this.dataGridViewPrinterList.Location = new System.Drawing.Point(10, 23);
-            this.dataGridViewPrinterList.MultiSelect = false;
-            this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
-            this.dataGridViewPrinterList.ReadOnly = true;
-            this.dataGridViewPrinterList.RowHeadersVisible = false;
-            this.dataGridViewPrinterList.RowTemplate.Height = 23;
-            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrinterList.Size = new System.Drawing.Size(325, 109);
-            this.dataGridViewPrinterList.TabIndex = 1100;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PrinterName";
-            this.dataGridViewTextBoxColumn1.HeaderText = "打印机";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // columnPAddress
-            // 
-            this.columnPAddress.DataPropertyName = "PrinterAddress";
-            this.columnPAddress.HeaderText = "IP地址";
-            this.columnPAddress.Name = "columnPAddress";
-            this.columnPAddress.ReadOnly = true;
-            // 
-            // columnSocket
-            // 
-            this.columnSocket.DataPropertyName = "PrinterSocket";
-            this.columnSocket.HeaderText = "端口号";
-            this.columnSocket.Name = "columnSocket";
-            this.columnSocket.ReadOnly = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.txtCopy);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.btnPatchPrint);
-            this.groupBox3.Controls.Add(this.btnPrint);
-            this.groupBox3.Location = new System.Drawing.Point(602, 470);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(397, 105);
-            this.groupBox3.TabIndex = 1008;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "打印功能";
             // 
             // deliveryLineId
             // 
@@ -701,14 +538,157 @@ namespace RFSystem
             this.unitWeight.ReadOnly = true;
             this.unitWeight.Width = 62;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(341, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(79, 20);
+            this.label10.TabIndex = 1001;
+            this.label10.Text = "打印份数：";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Enabled = false;
+            this.btnPrint.Location = new System.Drawing.Point(753, 569);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(120, 50);
+            this.btnPrint.TabIndex = 1004;
+            this.btnPrint.Text = "单个打印";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnPatchPrint
+            // 
+            this.btnPatchPrint.Enabled = false;
+            this.btnPatchPrint.Location = new System.Drawing.Point(879, 569);
+            this.btnPatchPrint.Name = "btnPatchPrint";
+            this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
+            this.btnPatchPrint.TabIndex = 1005;
+            this.btnPatchPrint.Text = "批量打印";
+            this.btnPatchPrint.UseVisualStyleBackColor = true;
+            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.nudCopy);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.cmbLabelType);
+            this.groupBox2.Controls.Add(this.txtPrinter);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.dataGridViewPrinterList);
+            this.groupBox2.Location = new System.Drawing.Point(12, 470);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(622, 147);
+            this.groupBox2.TabIndex = 1006;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "打印机选择";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(341, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 1103;
+            this.label2.Text = "打印类型：";
+            // 
+            // cmbLabelType
+            // 
+            this.cmbLabelType.FormattingEnabled = true;
+            this.cmbLabelType.Items.AddRange(new object[] {
+            "普通标签",
+            "RFID标签"});
+            this.cmbLabelType.Location = new System.Drawing.Point(426, 55);
+            this.cmbLabelType.Name = "cmbLabelType";
+            this.cmbLabelType.Size = new System.Drawing.Size(150, 28);
+            this.cmbLabelType.TabIndex = 1102;
+            // 
+            // txtPrinter
+            // 
+            this.txtPrinter.Location = new System.Drawing.Point(426, 23);
+            this.txtPrinter.Name = "txtPrinter";
+            this.txtPrinter.Size = new System.Drawing.Size(150, 26);
+            this.txtPrinter.TabIndex = 102;
+            this.txtPrinter.TextChanged += new System.EventHandler(this.txtPrinter_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(355, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 20);
+            this.label11.TabIndex = 101;
+            this.label11.Text = "打印机：";
+            // 
+            // dataGridViewPrinterList
+            // 
+            this.dataGridViewPrinterList.AllowUserToAddRows = false;
+            this.dataGridViewPrinterList.AllowUserToResizeRows = false;
+            this.dataGridViewPrinterList.ColumnHeadersHeight = 30;
+            this.dataGridViewPrinterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPrinterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.columnPAddress,
+            this.columnSocket});
+            this.dataGridViewPrinterList.Location = new System.Drawing.Point(10, 23);
+            this.dataGridViewPrinterList.MultiSelect = false;
+            this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
+            this.dataGridViewPrinterList.ReadOnly = true;
+            this.dataGridViewPrinterList.RowHeadersVisible = false;
+            this.dataGridViewPrinterList.RowTemplate.Height = 23;
+            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPrinterList.Size = new System.Drawing.Size(325, 109);
+            this.dataGridViewPrinterList.TabIndex = 1100;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PrinterName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "打印机";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // columnPAddress
+            // 
+            this.columnPAddress.DataPropertyName = "PrinterAddress";
+            this.columnPAddress.HeaderText = "IP地址";
+            this.columnPAddress.Name = "columnPAddress";
+            this.columnPAddress.ReadOnly = true;
+            // 
+            // columnSocket
+            // 
+            this.columnSocket.DataPropertyName = "PrinterSocket";
+            this.columnSocket.HeaderText = "端口号";
+            this.columnSocket.Name = "columnSocket";
+            this.columnSocket.ReadOnly = true;
+            // 
+            // nudCopy
+            // 
+            this.nudCopy.Location = new System.Drawing.Point(426, 89);
+            this.nudCopy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCopy.Name = "nudCopy";
+            this.nudCopy.Size = new System.Drawing.Size(150, 26);
+            this.nudCopy.TabIndex = 1006;
+            this.nudCopy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // 数据库查询
             // 
             this.ClientSize = new System.Drawing.Size(1011, 629);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.btnPatchPrint);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridViewStock);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -718,14 +698,14 @@ namespace RFSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "本地数据库查询";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.数据库查询_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -759,11 +739,6 @@ namespace RFSystem
             cmbLabelType.Text = "普通标签";
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void btnPatchPrint_Click(object sender, EventArgs e)
         {
             PrintProductLabelNew_Patch(dataGridViewStock.Rows);
@@ -778,12 +753,6 @@ namespace RFSystem
         {
             thread = new Thread(new ThreadStart(ShowWaitingMsg));
             thread.Start();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
-            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         public string Data_Hex(string old)
@@ -806,7 +775,7 @@ namespace RFSystem
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Failed to convert!!! Please check your input format!" + exception.Message);
+                CommonFunction.Sys_MsgBox("Failed to convert!!! Please check your input format!" + exception.Message);
             }
             return str;
         }
@@ -816,14 +785,14 @@ namespace RFSystem
             if ((dataGridViewStock.Rows.Count > 0 ) && (dataGridViewStock.SelectedRows.Count > 0))
             {
                 //this.txtCopy.Text = this.dataGridViewStock.SelectedRows[0].Cells["ColumnPrintCount"].Value.ToString();
-                txtCopy.Text = "1";
+                nudCopy.Text = "1";
 
                 btnPrint.Enabled = true;
                 btnPatchPrint.Enabled = true;
             }
             else
             {
-                txtCopy.Text = "0";
+                nudCopy.Text = "0";
                 btnPrint.Enabled = false;
                 btnPatchPrint.Enabled = false;
             }
@@ -845,7 +814,7 @@ namespace RFSystem
         {
             if (dataGridViewPrinterList.RowCount < 1)
             {
-                MessageBox.Show("请指定打印机!");
+                CommonFunction.Sys_MsgBox("请指定打印机!");
             }
             else
             {
@@ -910,7 +879,7 @@ namespace RFSystem
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                 }
             }
         }
@@ -919,7 +888,7 @@ namespace RFSystem
         {
             if (dataGridViewPrinterList.RowCount < 1)
             {
-                MessageBox.Show("请指定打印机!");
+                CommonFunction.Sys_MsgBox("请指定打印机!");
             }
             else
             {
@@ -972,14 +941,14 @@ namespace RFSystem
                         string w = dgvr[i].Cells["unitWeight"].Value.ToString();
                         string p = dgvr[i].Cells["invPrice"].Value.ToString();
                         //string cop = Math.Truncate(Convert.ToDecimal(dgvr[i].Cells["ColumnPrintCount"].Value)).ToString();
-                        string cop = txtCopy.Text;
+                        string cop = nudCopy.Text;
 
                         string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();
                         string ywtm = deNo + "-" + proNo;//"R2000450000531020000401030814";
                         //string ywtm = "R2000450000531020000401030814";
                         //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
 
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                         client.GetStream().Flush();
                     }
@@ -988,7 +957,7 @@ namespace RFSystem
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                 }
             }
         }
@@ -1020,7 +989,7 @@ namespace RFSystem
                 else
                 {
                     dataGridViewStock.DataSource = dtResult;
-                    MessageBox.Show("没有检索到任何数据，请重新检索");
+                    CommonFunction.Sys_MsgBox("没有检索到任何数据，请重新检索");
                 }
 
                 dataGridViewStock_SelectionChanged(null, null);
@@ -1040,9 +1009,15 @@ namespace RFSystem
             Invoke(new EventHandler(ShowMsg));
         }
 
-        private void textBoxStoreMan_TextChanged(object sender, EventArgs e)
+        private void 数据库查询_Load(object sender, EventArgs e)
         {
-            
+            txtPrinter_TextChanged(null, e);
+        }
+
+        private void txtPrinter_TextChanged(object sender, EventArgs e)
+        {
+            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
     }
 }

@@ -68,8 +68,8 @@ namespace RFSystem
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewReport = new System.Windows.Forms.DataGridView();
             this.ColumnSapItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPlant = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,14 +126,14 @@ namespace RFSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewReport.ColumnHeadersHeight = 30;
             this.dataGridViewReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -168,8 +168,8 @@ namespace RFSystem
             this.dataGridViewReport.Name = "dataGridViewReport";
             this.dataGridViewReport.ReadOnly = true;
             this.dataGridViewReport.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewReport.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewReport.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewReport.RowTemplate.Height = 23;
             this.dataGridViewReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReport.Size = new System.Drawing.Size(956, 474);
@@ -575,7 +575,7 @@ namespace RFSystem
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridViewReport);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(980, 650);
             this.Name = "盘点报表";
@@ -699,12 +699,12 @@ namespace RFSystem
             {
                 if (DBOperate.ModReportCausation(dataGridViewReport.SelectedRows[0].Cells["ColumnSapItemNo"].Value.ToString(), textBoxCausation.Text.Trim()) != -1)
                 {
-                    MessageBox.Show("盘点汇总条目 " + dataGridViewReport.SelectedRows[0].Cells["ColumnSapItemNo"].Value.ToString() + " 盈亏原因修改完毕");
+                    CommonFunction.Sys_MsgBox("盘点汇总条目 " + dataGridViewReport.SelectedRows[0].Cells["ColumnSapItemNo"].Value.ToString() + " 盈亏原因修改完毕");
                     btnSelect.PerformClick();
                 }
                 else
                 {
-                    MessageBox.Show("盘点汇总条目 " + dataGridViewReport.SelectedRows[0].Cells["ColumnSapItemNo"].Value.ToString() + " 盈亏原因修改失败，请重新尝试或联系管理员确认");
+                    CommonFunction.Sys_MsgBox("盘点汇总条目 " + dataGridViewReport.SelectedRows[0].Cells["ColumnSapItemNo"].Value.ToString() + " 盈亏原因修改失败，请重新尝试或联系管理员确认");
                 }
             }
         }

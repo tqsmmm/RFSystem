@@ -898,18 +898,20 @@ namespace RFSystem.ArriveStore
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if ((((this.textBoxBargainID.Text.Trim().Equals(string.Empty) || this.textBoxBargainMakerID.Text.Trim().Equals(string.Empty)) || (this.textBoxKeeperID.Text.Trim().Equals(string.Empty) || this.textBoxKeeper.Text.Trim().Equals(string.Empty))) || (this.textBoxAcceptAmount.Text.Trim().Equals(string.Empty) || this.textBoxConsignmentAmount.Text.Trim().Equals(string.Empty))) || this.textBoxAcceptWeight.Text.Trim().Equals(string.Empty))
+            if ((((textBoxBargainID.Text.Trim().Equals(string.Empty) || textBoxBargainMakerID.Text.Trim().Equals(string.Empty)) || (textBoxKeeperID.Text.Trim().Equals(string.Empty) || this.textBoxKeeper.Text.Trim().Equals(string.Empty))) || (this.textBoxAcceptAmount.Text.Trim().Equals(string.Empty) || this.textBoxConsignmentAmount.Text.Trim().Equals(string.Empty))) || this.textBoxAcceptWeight.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("录入信息不完整，其中合同信息，保管员信息及运单件数，实收数量，实收重量为必添信息", "信息不完整", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("录入信息不完整，其中合同信息，保管员信息及运单件数，实收数量，实收重量为必添信息");
             }
             else
             {
                 decimal num = 0M;
-                foreach (DataRow row in this.storageInfoList.Rows)
+
+                foreach (DataRow row in storageInfoList.Rows)
                 {
                     num += Convert.ToDecimal(row["Amount"]);
                 }
-                if (num == Convert.ToDecimal(this.textBoxAcceptAmount.Text))
+
+                if (num == Convert.ToDecimal(textBoxAcceptAmount.Text))
                 {
                     ArrayList billInfo = new ArrayList();
                     Control textBoxBargainID = this.textBoxBargainID;
@@ -928,17 +930,17 @@ namespace RFSystem.ArriveStore
                     string str = DBOperate.ArriveStoreNewBill(this.userItem.userID, ConstDefine.MODULEKEY_ARRIVESTORE, billInfo, this.storageInfoList);
                     if (!str.Equals("-1"))
                     {
-                        MessageBox.Show("到库通知单 " + str + " 添加成功");
-                        this.ClareInputControl();
+                        CommonFunction.Sys_MsgBox("到库通知单 " + str + " 添加成功");
+                        ClareInputControl();
                     }
                     else
                     {
-                        MessageBox.Show("到库通知单添加失败，请联系管理员确认");
+                        CommonFunction.Sys_MsgBox("到库通知单添加失败，请联系管理员确认");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("实收数量和临时入库数量须保持一致，请确认", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    CommonFunction.Sys_MsgBox("实收数量和临时入库数量须保持一致，请确认");
                 }
             }
         }
@@ -1007,7 +1009,7 @@ namespace RFSystem.ArriveStore
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !this.regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }
@@ -1027,7 +1029,7 @@ namespace RFSystem.ArriveStore
                 DataSet poDs = null;
                 if (Utility.getSerive().GetPoInfo(this.textBoxBargainID.Text.Trim(), "采购收货", true, out poDs).Code == -1)
                 {
-                    MessageBox.Show("找不到相应的合同号，请确认输入", "数据不存在", MessageBoxButtons.OK);
+                    CommonFunction.Sys_MsgBox("找不到相应的合同号，请确认输入");
                 }
                 else
                 {
@@ -1050,7 +1052,7 @@ namespace RFSystem.ArriveStore
                 }
                 else
                 {
-                    MessageBox.Show("找不到相应人员，请确认输入", "数据不存在", MessageBoxButtons.OK);
+                    CommonFunction.Sys_MsgBox("找不到相应人员，请确认输入");
                     this.textBoxKeeperID.Focus();
                 }
             }

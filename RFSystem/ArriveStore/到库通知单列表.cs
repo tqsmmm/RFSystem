@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BL;
 using System.Collections;
+using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
 {
@@ -1061,7 +1062,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("信息处理失败，请联系管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("信息处理失败，请联系管理员");
             }
         }
 
@@ -1077,15 +1078,15 @@ namespace RFSystem.ArriveStore
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("是否删除选择条目？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (CommonFunction.Sys_MsgYN("是否删除选择条目？"))
             {
-                if (DBOperate.DelBill(this.dataGridViewArriveGoodsInfo.SelectedRows[0].Cells["ColumnArriveListID"].Value.ToString()) != -1)
+                if (DBOperate.DelBill(dataGridViewArriveGoodsInfo.SelectedRows[0].Cells["ColumnArriveListID"].Value.ToString()) != -1)
                 {
-                    this.btnSelect.PerformClick();
+                    btnSelect.PerformClick();
                 }
                 else
                 {
-                    MessageBox.Show("信息处理失败，请联系管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    CommonFunction.Sys_MsgBox("信息处理失败，请联系管理员");
                 }
             }
         }
@@ -1158,7 +1159,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("信息处理失败，请联系管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("信息处理失败，请联系管理员");
             }
         }
 
@@ -1177,7 +1178,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("信息处理失败，请联系管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("信息处理失败，请联系管理员");
             }
         }
 

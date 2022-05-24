@@ -357,11 +357,11 @@ namespace RFSystem.Statistic
         {
             if (DBOperate.ExcelUpdateStock(this.dvStore.ToTable()).Equals("-1"))
             {
-                MessageBox.Show("更新失败");
+                CommonFunction.Sys_MsgBox("更新失败");
             }
             else
             {
-                MessageBox.Show("数据同步成功");
+                CommonFunction.Sys_MsgBox("数据同步成功");
             }
         }
 
@@ -434,33 +434,33 @@ namespace RFSystem.Statistic
                             }
                         }
 
-                        this.dtStore.Rows.Add(row);
+                        dtStore.Rows.Add(row);
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("文件读取失败，请确认文件格式是否正确");
+                    CommonFunction.Sys_MsgBox("文件读取失败，请确认文件格式是否正确");
                 }
                 finally
                 {
                     application.Workbooks.Close();
                 }
 
-                if (CommonFunction.IfHasData(this.dtStore))
+                if (CommonFunction.IfHasData(dtStore))
                 {
-                    this.btnSelect.Enabled = true;
-                    this.btnSelectShowMsg(null, null);
+                    btnSelect.Enabled = true;
+                    btnSelectShowMsg(null, null);
                 }
                 else
                 {
-                    this.btnSelect.Enabled = false;
-                    MessageBox.Show("当前文件数据为空");
+                    btnSelect.Enabled = false;
+                    CommonFunction.Sys_MsgBox("当前文件数据为空");
                     return;
                 }
 
-                if (this.dvStore.Count == 0)
+                if (dvStore.Count == 0)
                 {
-                    MessageBox.Show("当前数据为空，如果您确认文件中存在数据，那么造成数据为空的结果可能为您的筛选条件造成，比如没有当前用户的所属数据");
+                    CommonFunction.Sys_MsgBox("当前数据为空，如果您确认文件中存在数据，那么造成数据为空的结果可能为您的筛选条件造成，比如没有当前用户的所属数据");
                 }
             }
             catch
@@ -475,7 +475,7 @@ namespace RFSystem.Statistic
 
         private void ShowWaitingMsg()
         {
-            base.Invoke(new EventHandler(this.ShowMsg));
+            Invoke(new EventHandler(ShowMsg));
         }
     }
 }

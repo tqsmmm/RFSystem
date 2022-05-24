@@ -1,7 +1,7 @@
 ﻿using BL;
+using RFSystem.CommonClass;
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace RFSystem.LabelPrint
@@ -27,12 +27,12 @@ namespace RFSystem.LabelPrint
 
                 if (PrintDBOperate.AddLocation(locItem) != -1)
                 {
-                    MessageBox.Show("货位号" + txtLocation.Text.Trim() + " 添加成功");
+                    CommonFunction.Sys_MsgBox("货位号" + txtLocation.Text.Trim() + " 添加成功");
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("货位号添加失败，请确认没有添加重复货位号并且数据库联接正常");
+                    CommonFunction.Sys_MsgBox("货位号添加失败，请确认没有添加重复货位号并且数据库联接正常");
                 }
             }
         }
@@ -100,6 +100,7 @@ namespace RFSystem.LabelPrint
             this.Name = "LocationAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "货位添加";
+            this.Load += new System.EventHandler(this.LocationAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,11 +118,16 @@ namespace RFSystem.LabelPrint
         {
             if (txtLocation.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写货位号", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写货位号");
                 return false;
             }
 
             return true;
+        }
+
+        private void LocationAdd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

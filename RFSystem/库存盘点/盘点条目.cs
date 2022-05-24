@@ -410,13 +410,11 @@ namespace RFSystem
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridViewSTOrigin);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(980, 650);
             this.Name = "盘点条目";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "盘点条目";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSTOrigin)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -482,9 +480,9 @@ namespace RFSystem
 
         private void btnBlankOut_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("继续本操作将作废被选择条目，是否继续？", "作废", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.BlankOutSTOrigin(Convert.ToInt32(this.dataGridViewSTOrigin.SelectedRows[0].Cells["ColumnItemNo"].Value)) != -1))
+            if (CommonFunction.Sys_MsgYN("继续本操作将作废被选择条目，是否继续？") && (DBOperate.BlankOutSTOrigin(Convert.ToInt32(this.dataGridViewSTOrigin.SelectedRows[0].Cells["ColumnItemNo"].Value)) != -1))
             {
-                MessageBox.Show("条目信息作废成功");
+                CommonFunction.Sys_MsgBox("条目信息作废成功");
                 btnSelect.PerformClick();
             }
         }

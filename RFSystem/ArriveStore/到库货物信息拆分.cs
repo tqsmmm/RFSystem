@@ -641,7 +641,7 @@ namespace RFSystem.ArriveStore
             string str = string.Empty;
             if ((this.textBoxAcceptAmountS.Text.Equals(string.Empty) || this.textBoxAcceptWeightS.Text.Equals(string.Empty)) || this.textBoxConsignmentAmountS.Text.Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "数据不完整", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
             }
             else
             {
@@ -677,16 +677,16 @@ namespace RFSystem.ArriveStore
                         {
                             if (str2 == "ConsignmentAmount")
                             {
-                                MessageBox.Show("运单件数的数量大于剩余货物数量", "数量超标", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                CommonFunction.Sys_MsgBox("运单件数的数量大于剩余货物数量");
                             }
                             else if (str2 == "Split")
                             {
-                                MessageBox.Show("拆分的数量大于剩余货物数量", "数量超标", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                CommonFunction.Sys_MsgBox("拆分的数量大于剩余货物数量");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("实收重量的数量大于剩余货物数量", "数量超标", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            CommonFunction.Sys_MsgBox("实收重量的数量大于剩余货物数量");
                         }
                     }
                 }
@@ -716,7 +716,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("实收数量和临时入库数量不一致，请确认", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                CommonFunction.Sys_MsgBox("实收数量和临时入库数量不一致，请确认");
             }
         }
 
@@ -759,7 +759,7 @@ namespace RFSystem.ArriveStore
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !this.regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }
@@ -777,19 +777,19 @@ namespace RFSystem.ArriveStore
             string str = DBOperate.SplitArriveStore(this.arriveListInfo[0].ToString(), billInfo, storageInfoListF, storageInfoListS);
             if (!str.Equals("-1"))
             {
-                MessageBox.Show("到库通知单 " + billInfo[0].ToString() + " 拆分为 " + this.labelArriveListID.Text + "|" + str + " 两个到库单");
-                base.DialogResult = DialogResult.OK;
+                CommonFunction.Sys_MsgBox("到库通知单 " + billInfo[0].ToString() + " 拆分为 " + this.labelArriveListID.Text + "|" + str + " 两个到库单");
+                DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("到库通知单拆分失败，请联系管理员确认");
-                base.DialogResult = DialogResult.OK;
+                CommonFunction.Sys_MsgBox("到库通知单拆分失败，请联系管理员确认");
+                DialogResult = DialogResult.OK;
             }
         }
 
         private void 到库货物信息拆分_Shown(object sender, EventArgs e)
         {
-            this.textBoxConsignmentAmountS.Focus();
+            textBoxConsignmentAmountS.Focus();
         }
 
     }

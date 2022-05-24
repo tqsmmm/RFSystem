@@ -5,9 +5,21 @@ namespace RFSystem.CommonClass
 {
     internal class CommonFunction
     {
-        public static DialogResult AskMBox(string text, string caption, bool ynOroc, bool onYes)
+        public static void Sys_MsgBox(string strMsg)
         {
-            return MessageBox.Show(text, caption, ynOroc ? MessageBoxButtons.YesNo : MessageBoxButtons.OKCancel, MessageBoxIcon.Question, onYes ? MessageBoxDefaultButton.Button1 : MessageBoxDefaultButton.Button2);
+            MessageBox.Show(strMsg, "RF库存管理系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static bool Sys_MsgYN(string strMsg)
+        {
+            if (MessageBox.Show(strMsg, "RF库存管理系统", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static bool IfHasData(DataTable dataList)

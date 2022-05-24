@@ -46,7 +46,6 @@ namespace BL
 
         public static DataTable MaintainGetList_New(ArrayList arriveList)
         {
-            DataTable dt = null;
             string param = "";
 
             foreach (object obj2 in arriveList)
@@ -56,7 +55,7 @@ namespace BL
 
             param = param.Remove(param.Length - 1);
             //db.OpenProcedure("RF_Maintain_GetList", param, out dt);
-            db.OpenProcedure("RF_Maintain_GetList_New", param, out dt);
+            db.OpenProcedure("RF_Maintain_GetList_New", param, out DataTable dt);
 
             return dt;
         }
@@ -67,9 +66,8 @@ namespace BL
             try
             {
                 db.BeginTrans();
-                string param = "";
-                //param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",") + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59"));
-                param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",")
+
+                string param = TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ","
                     + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59")) + ","
                     + TDBObject.ToDBVal(czr);
                 db.ExecProcedure("RF_Maintain_ToHis", param);
@@ -135,10 +133,10 @@ namespace BL
             ErrMsg = "";
             dt = new DataTable();
 
-            if (0 != db.OpenDataSet("select * from STOrder where STStatus<>-1 "
-                + " and STCreateDate>='" + dTime1.ToString("yyyy-MM-dd") + "' "
-                + " and STCreateDate<='" + dTime2.ToString("yyyy-MM-dd 23:59:59") + "' "
-                + " order by STSerial", out dt))
+            if (0 != db.OpenDataSet("SELECT * FROM STOrder WHERE STStatus <> -1 "
+                + " AND CONVERT(VARCHAR(10), STCreateDate, 120) >= '" + dTime1.ToString("yyyy-MM-dd") + "' "
+                + " AND CONVERT(VARCHAR(10), STCreateDate, 120) <= '" + dTime2.ToString("yyyy-MM-dd") + "' "
+                + " ORDER BY STSerial", out dt))
             {
                 ErrMsg = "获取盘点列表失败";
                 return -1;

@@ -274,7 +274,7 @@ namespace RFSystem
             {
                 if (DBOperate.DelUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString()) != -1)
                 {
-                    MessageBox.Show("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
+                    CommonFunction.Sys_MsgBox("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
                 }
             }
             else
@@ -283,7 +283,7 @@ namespace RFSystem
 
                 if (DBOperate.ModUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString(), userRoles) != -1)
                 {
-                    MessageBox.Show("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
+                    CommonFunction.Sys_MsgBox("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
                 }
             }
         }

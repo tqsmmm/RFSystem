@@ -857,17 +857,17 @@ namespace RFSystem.ArriveStore
                 }
                 if (!DBOperate.ArriveStoreMod(billInfo, this.storageInfoList).Equals("-1"))
                 {
-                    MessageBox.Show("到库通知单 " + billInfo[0].ToString() + " 修改成功");
+                    CommonFunction.Sys_MsgBox("到库通知单 " + billInfo[0].ToString() + " 修改成功");
                     base.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("数据库出错，请联系系统管理员确认");
+                    CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                 }
             }
             else
             {
-                MessageBox.Show("实收数量和临时入库数量不一致，请确认", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                CommonFunction.Sys_MsgBox("实收数量和临时入库数量不一致，请确认");
             }
         }
 
@@ -922,7 +922,7 @@ namespace RFSystem.ArriveStore
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !this.regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using BL;
+using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
 {
@@ -995,22 +996,22 @@ namespace RFSystem.ArriveStore
                     {
                         billInfo.Add(textBoxBargainID.Text);
                     }
-                    textBoxBargainID = base.GetNextControl(textBoxBargainID, true);
+                    textBoxBargainID = GetNextControl(textBoxBargainID, true);
                 }
-                if (!DBOperate.MergeArriveStore(billInfo, this.storageInfoList).Equals("-1"))
+                if (!DBOperate.MergeArriveStore(billInfo, storageInfoList).Equals("-1"))
                 {
-                    MessageBox.Show("到库通知单 " + billInfo[0].ToString() + "|" + this.comboBoxArriveListID2.SelectedItem.ToString() + " 合并为 " + billInfo[0].ToString());
-                    base.DialogResult = DialogResult.OK;
+                    CommonFunction.Sys_MsgBox("到库通知单 " + billInfo[0].ToString() + "|" + comboBoxArriveListID2.SelectedItem.ToString() + " 合并为 " + billInfo[0].ToString());
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("到库通知单 " + billInfo[0].ToString() + "|" + this.comboBoxArriveListID2.SelectedItem.ToString() + " 合并失败，请联系管理员");
-                    base.DialogResult = DialogResult.Cancel;
+                    CommonFunction.Sys_MsgBox("到库通知单 " + billInfo[0].ToString() + "|" + comboBoxArriveListID2.SelectedItem.ToString() + " 合并失败，请联系管理员");
+                    DialogResult = DialogResult.Cancel;
                 }
             }
             else
             {
-                MessageBox.Show("实收数量和临时入库数量不一致，请确认", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                CommonFunction.Sys_MsgBox("实收数量和临时入库数量不一致，请确认");
             }
         }
 
@@ -1052,7 +1053,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("请选择被合并的到库单号", "选择信息", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                CommonFunction.Sys_MsgBox("请选择被合并的到库单号");
             }
         }
 

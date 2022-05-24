@@ -900,7 +900,7 @@ namespace RFSystem.Statistic
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Failed to convert!!! Please check your input format!" + exception.Message);
+                CommonFunction.Sys_MsgBox("Failed to convert!!! Please check your input format!" + exception.Message);
             }
 
             return str;
@@ -954,7 +954,7 @@ namespace RFSystem.Statistic
         {
             if (this.dataGridViewPrinterList.RowCount < 1)
             {
-                MessageBox.Show("请指定打印机!");
+                CommonFunction.Sys_MsgBox("请指定打印机!");
             }
             else
             {
@@ -1002,7 +1002,7 @@ namespace RFSystem.Statistic
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                 }
             }
         }
@@ -1011,7 +1011,7 @@ namespace RFSystem.Statistic
         {
             if (this.dataGridViewPrinterList.RowCount < 1)
             {
-                MessageBox.Show("请指定打印机!");
+                CommonFunction.Sys_MsgBox("请指定打印机!");
             }
             else
             {
@@ -1061,7 +1061,7 @@ namespace RFSystem.Statistic
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                 }
             }
         }
@@ -1099,7 +1099,7 @@ namespace RFSystem.Statistic
                 else
                 {
                     this.dataGridViewStock.DataSource = this.dtResult;
-                    MessageBox.Show("没有检索到任何数据，请重新检索");
+                    CommonFunction.Sys_MsgBox("没有检索到任何数据，请重新检索");
                 }
 
                 this.dataGridViewStock_SelectionChanged(null, null);

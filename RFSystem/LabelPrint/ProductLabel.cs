@@ -646,22 +646,22 @@ namespace RFSystem.LabelPrint
 
         public ProductLabel(UserInfo userItem)
         {
-            this.dtPrinterList = null;
+            dtPrinterList = null;
             this.userItem = null;
-            this.InitializeComponent();
-            this.dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
-            this.dataGridViewProductList.AutoGenerateColumns = false;
+            InitializeComponent();
+            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dataGridViewProductList.AutoGenerateColumns = false;
             this.userItem = userItem;
-            this.textBoxKeeperID.Text = userItem.userID;
-            this.txtFactoryNo.Text = DateTime.Now.Year.ToString();
-            this.dsWl = new DataSet();
-            this.cmbLabelType.Text = "普通标签";
+            textBoxKeeperID.Text = userItem.userID;
+            txtFactoryNo.Text = DateTime.Now.Year.ToString();
+            dsWl = new DataSet();
+            cmbLabelType.Text = "普通标签";
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Close();
         }
 
         private void btnPatchPrint_Click(object sender, EventArgs e)
@@ -669,7 +669,7 @@ namespace RFSystem.LabelPrint
             bool flag = false;
             bool ifPrintNull = true;
 
-            foreach (DataGridViewRow row in (IEnumerable)this.dataGridViewProductList.Rows)
+            foreach (DataGridViewRow row in dataGridViewProductList.Rows)
             {
                 if (row.Cells["ColumnXAUTO"].Value.Equals("X"))
                 {
@@ -677,23 +677,23 @@ namespace RFSystem.LabelPrint
                 }
             }
 
-            if (flag && (CommonFunction.AskMBox("是否打印原货位物料信息", "是否打印", true, true) == DialogResult.No))
+            if (flag && CommonFunction.Sys_MsgYN("是否打印原货位物料信息？"))
             {
                 ifPrintNull = false;
             }
 
-            this.PrintProductLabelNew_Patch(this.dataGridViewProductList.Rows, ifPrintNull);
+            PrintProductLabelNew_Patch(dataGridViewProductList.Rows, ifPrintNull);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            this.PrintProductLabelNew_Patch(this.dataGridViewProductList.SelectedRows);
+            PrintProductLabelNew_Patch(dataGridViewProductList.SelectedRows);
         }
 
         private void btnPrintCountMod_Click(object sender, EventArgs e)
         {
-            this.dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value = this.txtCopy.Text;
-            this.dataGridViewLocationList_SelectionChanged(null, null);
+            dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value = txtCopy.Text;
+            dataGridViewLocationList_SelectionChanged(null, null);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -708,11 +708,11 @@ namespace RFSystem.LabelPrint
                 }
                 catch
                 {
-                    MessageBox.Show("年度输入格式不正确，请输入0--3000内的数字");
+                    CommonFunction.Sys_MsgBox("年度输入格式不正确，请输入0--3000内的数字");
 
-                    if (CommonFunction.IfHasData((DataTable)this.dataGridViewProductList.DataSource))
+                    if (CommonFunction.IfHasData((DataTable)dataGridViewProductList.DataSource))
                     {
-                        ((DataTable)this.dataGridViewProductList.DataSource).Rows.Clear();
+                        ((DataTable)dataGridViewProductList.DataSource).Rows.Clear();
                     }
 
                     return;
@@ -720,57 +720,57 @@ namespace RFSystem.LabelPrint
 
                 if ((num <= 0M) || (num >= 3000M))
                 {
-                    MessageBox.Show("年度输入格式不正确，请输入0--3000内的数字");
+                    CommonFunction.Sys_MsgBox("年度输入格式不正确，请输入0--3000内的数字");
 
-                    if (CommonFunction.IfHasData((DataTable)this.dataGridViewProductList.DataSource))
+                    if (CommonFunction.IfHasData((DataTable)dataGridViewProductList.DataSource))
                     {
-                        ((DataTable)this.dataGridViewProductList.DataSource).Rows.Clear();
+                        ((DataTable)dataGridViewProductList.DataSource).Rows.Clear();
                     }
                 }
-                else if ((this.txtFactoryNo.Text.Trim().Equals(string.Empty) || this.txtPatch.Text.Trim().Equals(string.Empty)) || this.textBoxKeeperID.Text.Trim().Equals(string.Empty))
+                else if ((txtFactoryNo.Text.Trim().Equals(string.Empty) || txtPatch.Text.Trim().Equals(string.Empty)) || textBoxKeeperID.Text.Trim().Equals(string.Empty))
                 {
-                    MessageBox.Show("凭证年度,物料凭证号及保管员为必输入项目，请完整填写");
+                    CommonFunction.Sys_MsgBox("凭证年度,物料凭证号及保管员为必输入项目，请完整填写");
 
-                    if (CommonFunction.IfHasData((DataTable)this.dataGridViewProductList.DataSource))
+                    if (CommonFunction.IfHasData((DataTable)dataGridViewProductList.DataSource))
                     {
-                        ((DataTable)this.dataGridViewProductList.DataSource).Rows.Clear();
+                        ((DataTable)dataGridViewProductList.DataSource).Rows.Clear();
                     }
                 }
                 else
                 {
-                    MessagePack pack = Utility.getSerive().GetWLPZInfo(this.textBoxKeeperID.Text.Trim(), this.txtFactoryNo.Text.Trim(), this.txtPatch.Text.Trim(), out this.dsWl);
+                    MessagePack pack = Utility.getSerive().GetWLPZInfo(textBoxKeeperID.Text.Trim(), txtFactoryNo.Text.Trim(), txtPatch.Text.Trim(), out dsWl);
 
                     if (pack.Code == -1)
                     {
-                        MessageBox.Show(pack.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
 
-                        if (CommonFunction.IfHasData((DataTable)this.dataGridViewProductList.DataSource))
+                        if (CommonFunction.IfHasData((DataTable)dataGridViewProductList.DataSource))
                         {
-                            ((DataTable)this.dataGridViewProductList.DataSource).Rows.Clear();
+                            ((DataTable)dataGridViewProductList.DataSource).Rows.Clear();
                         }
                     }
                     else
                     {
                         getbcxx();
 
-                        this.dataGridViewProductList.DataSource = this.dsWl.Tables[0];
+                        dataGridViewProductList.DataSource = dsWl.Tables[0];
 
-                        foreach (DataGridViewRow row in (IEnumerable)this.dataGridViewProductList.Rows)
+                        foreach (DataGridViewRow row in dataGridViewProductList.Rows)
                         {
                             row.Cells["ColumnPrintCount"].Value = row.Cells["columnQty"].Value;
                         }
 
-                        this.dataGridViewLocationList_SelectionChanged(null, null);
+                        dataGridViewLocationList_SelectionChanged(null, null);
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("由于网络等原因，数据取得失败");
+                CommonFunction.Sys_MsgBox("由于网络等原因，数据取得失败");
 
-                if (CommonFunction.IfHasData((DataTable)this.dataGridViewProductList.DataSource))
+                if (CommonFunction.IfHasData((DataTable)dataGridViewProductList.DataSource))
                 {
-                    ((DataTable)this.dataGridViewProductList.DataSource).Rows.Clear();
+                    ((DataTable)dataGridViewProductList.DataSource).Rows.Clear();
                 }
             }
         }
@@ -876,7 +876,7 @@ namespace RFSystem.LabelPrint
 
             if (pak.Code != 0)
             {
-                MessageBox.Show(pak.Message);
+                CommonFunction.Sys_MsgBox(pak.Message);
                 return;
             }
 
@@ -884,7 +884,7 @@ namespace RFSystem.LabelPrint
             {
                 for (int i = 0; i < _len; i++)
                 {
-                    DataRow row = this.dsWl.Tables[0].Rows[i];
+                    DataRow row = dsWl.Tables[0].Rows[i];
                     proNo = row["Matnr"].ToString().Trim();
                     patch = row["Charg"].ToString().Trim();
                     wareNo = row["Werks"].ToString().Trim();
@@ -894,13 +894,13 @@ namespace RFSystem.LabelPrint
                     {
                         if (wltm == ds.Tables[0].Rows[j]["product_barcode"].ToString().Trim())
                         {
-                            this.dsWl.Tables[0].Rows[i]["N_ywtm"] = ds.Tables[0].Rows[j]["ywtm"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_pch"] = ds.Tables[0].Rows[j]["pch"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_storeman"] = ds.Tables[0].Rows[j]["storeman"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_rkrq"] = ds.Tables[0].Rows[j]["rkrq"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_pzh"] = ds.Tables[0].Rows[j]["pzh"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_pznd"] = ds.Tables[0].Rows[j]["pznd"].ToString().Trim();
-                            this.dsWl.Tables[0].Rows[i]["N_ghdw"] = ds.Tables[0].Rows[j]["ghdw"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_ywtm"] = ds.Tables[0].Rows[j]["ywtm"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_pch"] = ds.Tables[0].Rows[j]["pch"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_storeman"] = ds.Tables[0].Rows[j]["storeman"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_rkrq"] = ds.Tables[0].Rows[j]["rkrq"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_pzh"] = ds.Tables[0].Rows[j]["pzh"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_pznd"] = ds.Tables[0].Rows[j]["pznd"].ToString().Trim();
+                            dsWl.Tables[0].Rows[i]["N_ghdw"] = ds.Tables[0].Rows[j]["ghdw"].ToString().Trim();
                             break;
                         }
                     }
@@ -911,13 +911,13 @@ namespace RFSystem.LabelPrint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.dtPrinterList = DBOperate.GetPrinterList("%" + this.txtPrinter.Text + "%", "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string str = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            string str = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
             Settings.Default.DefaultPrinterIP = str;
             Settings.Default.Save();
         }
@@ -941,7 +941,7 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Failed to convert!!! Please check your input format!" + exception.Message);
+                CommonFunction.Sys_MsgBox("Failed to convert!!! Please check your input format!" + exception.Message);
             }
 
             return str;
@@ -949,41 +949,41 @@ namespace RFSystem.LabelPrint
 
         private void dataGridViewLocationList_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewProductList.Rows != null) && (this.dataGridViewProductList.SelectedRows.Count != 0))
+            if ((dataGridViewProductList.Rows != null) && (dataGridViewProductList.SelectedRows.Count != 0))
             {
-                if (this.dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value != null)
+                if (dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value != null)
                 {
-                    this.txtCopy.Text = this.dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value.ToString();
-                    this.btnPrintCountMod.Enabled = true;
+                    txtCopy.Text = dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value.ToString();
+                    btnPrintCountMod.Enabled = true;
                 }
 
-                this.btnPrint.Enabled = true;
-                this.btnPatchPrint.Enabled = true;
+                btnPrint.Enabled = true;
+                btnPatchPrint.Enabled = true;
             }
             else
             {
-                this.txtCopy.Text = "0";
-                this.btnPrintCountMod.Enabled = false;
-                this.btnPrint.Enabled = false;
-                this.btnPatchPrint.Enabled = false;
+                txtCopy.Text = "0";
+                btnPrintCountMod.Enabled = false;
+                btnPrint.Enabled = false;
+                btnPatchPrint.Enabled = false;
             }
         }
 
         private void dataGridViewPrinterList_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewPrinterList.Rows != null) && (this.dataGridViewPrinterList.SelectedRows.Count != 0))
+            if ((dataGridViewPrinterList.Rows != null) && (dataGridViewPrinterList.SelectedRows.Count != 0))
             {
-                this.button2.Enabled = true;
+                button2.Enabled = true;
             }
             else
             {
-                this.button2.Enabled = false;
+                button2.Enabled = false;
             }
         }
 
         private void dataGridViewProductList_Sorted(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in (IEnumerable)this.dataGridViewProductList.Rows)
+            foreach (DataGridViewRow row in dataGridViewProductList.Rows)
             {
                 row.Cells["ColumnPrintCount"].Value = row.Cells["columnQty"].Value;
             }
@@ -992,8 +992,8 @@ namespace RFSystem.LabelPrint
         private void PrintProductLabelNew_Patch(DataGridViewSelectedRowCollection dgvr)
         {
             TcpClient client = new TcpClient();
-            string hostname = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(this.dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
             try
             {
@@ -1024,7 +1024,7 @@ namespace RFSystem.LabelPrint
 
                     string ywtm = dgvr[i].Cells["C_N_ywtm"].Value.ToString().Trim();
                     string patch = dgvr[i].Cells["columnPatch"] == null || dgvr[i].Cells["columnPatch"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_pch"].Value.ToString().Trim() : dgvr[i].Cells["columnPatch"].Value.ToString().Trim();
-                    string deNo = this.txtPatch.Text.Trim() == "" ? dgvr[i].Cells["C_N_pzh"].Value.ToString() : this.txtPatch.Text.Trim();
+                    string deNo = txtPatch.Text.Trim() == "" ? dgvr[i].Cells["C_N_pzh"].Value.ToString() : txtPatch.Text.Trim();
                     string ckDate = dgvr[i].Cells["columnDate"] == null || dgvr[i].Cells["columnDate"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_rkrq"].Value.ToString().Trim() : dgvr[i].Cells["columnDate"].Value.ToString().Trim();
                     string supp = dgvr[i].Cells["ColumnPro"] == null || dgvr[i].Cells["ColumnPro"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_ghdw"].Value.ToString().Trim() : dgvr[i].Cells["ColumnPro"].Value.ToString().Trim();
                     string baoguanyuan = dgvr[i].Cells["C_Bct10"] == null || dgvr[i].Cells["C_Bct10"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_storeman"].Value.ToString().Trim() : dgvr[i].Cells["C_Bct10"].Value.ToString().Trim();
@@ -1039,15 +1039,15 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
 
         private void PrintProductLabelNew_Patch(DataGridViewRowCollection dgvr, bool ifPrintNull)
         {
             TcpClient client = new TcpClient();
-            string hostname = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(this.dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
             try
             {
@@ -1096,7 +1096,7 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
 
@@ -1104,24 +1104,24 @@ namespace RFSystem.LabelPrint
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.GetNextControl(base.ActiveControl, true).Focus();
+                GetNextControl(ActiveControl, true).Focus();
             }
         }
 
         private void textBoxKeeperID_Leave(object sender, EventArgs e)
         {
-            if (!this.textBoxKeeperID.Text.Equals(string.Empty) && !CommonFunction.IfHasData(DBOperate.GetUserIDName(this.textBoxKeeperID.Text)))
+            if (!textBoxKeeperID.Text.Equals(string.Empty) && !CommonFunction.IfHasData(DBOperate.GetUserIDName(textBoxKeeperID.Text)))
             {
-                MessageBox.Show("找不到相应人员，请确认输入", "数据不存在", MessageBoxButtons.OK);
-                this.textBoxKeeperID.Focus();
+                CommonFunction.Sys_MsgBox("找不到相应人员，请确认输入");
+                textBoxKeeperID.Focus();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             TcpClient client = new TcpClient();
-            string hostname = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(this.dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
             try
             {
@@ -1169,7 +1169,7 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
     }

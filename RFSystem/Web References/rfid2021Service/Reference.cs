@@ -13,16 +13,8 @@
 // 
 #pragma warning disable 1591
 
-namespace RFSystem.rfid2021Service {
-    using System.Diagnostics;
-    using System;
-    using System.Xml.Serialization;
-    using System.ComponentModel;
-    using System.Web.Services.Protocols;
-    using System.Web.Services;
-    using System.Data;
-    
-    
+namespace RFSystem.rfid2021Service
+{
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]

@@ -711,11 +711,11 @@ namespace RFSystem
 
             if (pack.Result)
             {
-                MessageBox.Show("同步成功");
+                CommonFunction.Sys_MsgBox("同步成功");
             }
             else
             {
-                MessageBox.Show(pack.Message);
+                CommonFunction.Sys_MsgBox(pack.Message);
             }
         }
 
@@ -738,11 +738,11 @@ namespace RFSystem
 
             if (pack.Result)
             {
-                MessageBox.Show("同步成功");
+                CommonFunction.Sys_MsgBox("同步成功");
             }
             else
             {
-                MessageBox.Show(pack.Message);
+                CommonFunction.Sys_MsgBox(pack.Message);
             }
         }
 

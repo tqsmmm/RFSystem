@@ -1,4 +1,5 @@
 ﻿using BL;
+using RFSystem.CommonClass;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -46,24 +47,24 @@ namespace RFSystem.SystemConfig
                 {
                     if (DBOperate.AddPrinter(printerItem) != -1)
                     {
-                        MessageBox.Show("打印机 " + textBoxPrinterName.Text.Trim() + " 添加成功");
+                        CommonFunction.Sys_MsgBox("打印机 " + textBoxPrinterName.Text.Trim() + " 添加成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("打印机信息添加失败，请确认没有添加重复信息并且数据库联接正常");
+                        CommonFunction.Sys_MsgBox("打印机信息添加失败，请确认没有添加重复信息并且数据库联接正常");
                     }
                 }
                 else if (Text == "打印机修改")
                 {
                     if (DBOperate.ModPrinter(printerItem) != -1)
                     {
-                        MessageBox.Show("打印机 " + textBoxPrinterName.Text.Trim() + " 信息修改成功");
+                        CommonFunction.Sys_MsgBox("打印机 " + textBoxPrinterName.Text.Trim() + " 信息修改成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("数据库出错，请联系系统管理员确认");
+                        CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                     }
                 }
             }
@@ -188,7 +189,7 @@ namespace RFSystem.SystemConfig
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !regex.IsMatch(textBoxPrinterAddress.Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合IP格式要求，请从新输入", "IP格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合IP格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }
@@ -197,7 +198,7 @@ namespace RFSystem.SystemConfig
         {
             if (textBoxPrinterName.Text.Trim().Equals(string.Empty) || textBoxPrinterAddress.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
 

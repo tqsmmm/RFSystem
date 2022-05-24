@@ -21,40 +21,40 @@ namespace RFSystem
 
         public RF库存管理系统登录()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.DialogResult = DialogResult.No;
+            DialogResult = DialogResult.No;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.errorProvider.Clear();
+            errorProvider.Clear();
 
-            if (string.IsNullOrEmpty(this.textBoxUserID.Text.Trim()) || string.IsNullOrEmpty(this.textBoxPassWord.Text.Trim()))
+            if (string.IsNullOrEmpty(textBoxUserID.Text.Trim()) || string.IsNullOrEmpty(textBoxPassWord.Text.Trim()))
             {
-                MessageBox.Show("用户帐号及密码不可为空");
+                CommonFunction.Sys_MsgBox("用户帐号及密码不可为空");
 
-                if (string.IsNullOrEmpty(this.textBoxPassWord.Text.Trim()))
+                if (string.IsNullOrEmpty(textBoxPassWord.Text.Trim()))
                 {
-                    this.errorProvider.SetError(this.textBoxPassWord, "输入不可为空");
-                    this.textBoxPassWord.Focus();
+                    errorProvider.SetError(textBoxPassWord, "输入不可为空");
+                    textBoxPassWord.Focus();
                 }
 
-                if (string.IsNullOrEmpty(this.textBoxUserID.Text.Trim()))
+                if (string.IsNullOrEmpty(textBoxUserID.Text.Trim()))
                 {
-                    this.errorProvider.SetError(this.textBoxUserID, "输入不可为空");
-                    this.textBoxUserID.Focus();
+                    errorProvider.SetError(textBoxUserID, "输入不可为空");
+                    textBoxUserID.Focus();
                 }
             }
             else
             {
                 string str2;
                 string str = Settings.Default.RFSystem_AnSteel_AnSteelInterFace.ToString();
-                ConstDefine.g_User = this.textBoxUserID.Text.Trim().ToUpperInvariant();
-                ConstDefine.g_PassWord = this.textBoxPassWord.Text.Trim();
+                ConstDefine.g_User = textBoxUserID.Text.Trim().ToUpperInvariant();
+                ConstDefine.g_PassWord = textBoxPassWord.Text.Trim();
                 ConstDefine.g_ConnStr = str;
                 privilidge privateStr = new privilidge();
 
@@ -62,17 +62,17 @@ namespace RFSystem
                 {
                     rfid2021Service.rfidService _rfid2021service = new rfid2021Service.rfidService();
                     rfid2021Service.privilidge privateStr_new;
-                    rfid2021Service.MessagePack pack = _rfid2021service.Login(this.textBoxUserID.Text.Trim().ToUpperInvariant(), this.textBoxPassWord.Text.Trim(), out ConstDefine.g_bxuserid, out ConstDefine.g_bxusername, out ConstDefine.g_bxjobid, out privateStr_new, out str2);
+                    rfid2021Service.MessagePack pack = _rfid2021service.Login(textBoxUserID.Text.Trim().ToUpperInvariant(), textBoxPassWord.Text.Trim(), out ConstDefine.g_bxuserid, out ConstDefine.g_bxusername, out ConstDefine.g_bxjobid, out privateStr_new, out str2);
                     
                     if (!pack.Result)
                     {
-                        MessageBox.Show(pack.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
                         return;
                     }
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                     return;
                 }
 
@@ -80,7 +80,7 @@ namespace RFSystem
                 DBOperate.ConnStr = str2;
                 BL.ClsCommon.ConnStr = str2;
                 PrintDBOperate.ConnStr = str2;
-                base.DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
             }
         }
 
@@ -159,7 +159,6 @@ namespace RFSystem
             // RF库存管理系统登录
             // 
             this.ClientSize = new System.Drawing.Size(484, 261);
-            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPassWord);
@@ -183,7 +182,7 @@ namespace RFSystem
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.GetNextControl(base.ActiveControl, true).Focus();
+                GetNextControl(ActiveControl, true).Focus();
             }
         }
     }

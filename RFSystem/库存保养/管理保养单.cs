@@ -740,7 +740,7 @@ namespace RFSystem
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否取消重新保养？继续此操作先前的修改将被取消，请确认", "取消重新保养", true, false) == DialogResult.Yes)
+            if (CommonFunction.Sys_MsgYN("是否取消重新保养？继续此操作先前的修改将被取消，请确认"))
             {
                 textBoxMaintain.Text = string.Empty;
                 SetModControlsEnable(false);
@@ -750,16 +750,16 @@ namespace RFSystem
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否作废本保养单？", "作废保养", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("是否作废本保养单？"))
             {
                 if (DBOperate.MaintainModState(dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString(), "0", "-1") == 1)
                 {
                     dataGridViewMaintain.SelectedRows[0].Cells["ColumnState"].Value = "作废单据";
-                    MessageBox.Show("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 作废保养");
+                    CommonFunction.Sys_MsgBox("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 作废保养");
                 }
                 else
                 {
-                    MessageBox.Show("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 作废保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
+                    CommonFunction.Sys_MsgBox("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 作废保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
                 }
 
                 dataGridViewMaintain_SelectionChanged(null, null);
@@ -768,16 +768,16 @@ namespace RFSystem
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否结束保养本保养单货物？", "结束保养", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("是否结束保养本保养单货物？"))
             {
                 if (DBOperate.MaintainModState(dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString(), "1", "2") == 1)
                 {
                     dataGridViewMaintain.SelectedRows[0].Cells["ColumnState"].Value = "保养完成";
-                    MessageBox.Show("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 结束保养");
+                    CommonFunction.Sys_MsgBox("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 结束保养");
                 }
                 else
                 {
-                    MessageBox.Show("单据 " + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 结束保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
+                    CommonFunction.Sys_MsgBox("单据 " + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 结束保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
                 }
 
                 dataGridViewMaintain_SelectionChanged(null, null);
@@ -789,11 +789,11 @@ namespace RFSystem
             if (dataGridViewMaintainDetail.SelectedRows[0].Index == (dataGridViewMaintainDetail.Rows.Count - 1))
             {
                 textBoxMaintain.Text = "0";
-                MessageBox.Show("合计行不可进行修改", "合计行修改错误", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("合计行不可进行修改");
             }
             else
             {
-                decimal num = 0M;
+                decimal num;
 
                 try
                 {
@@ -801,13 +801,13 @@ namespace RFSystem
 
                     if ((num < 0M) || (num > Convert.ToDecimal(dataGridViewMaintainDetail.SelectedRows[0].Cells["ColumnPLAN_NUM"].Value)))
                     {
-                        MessageBox.Show("重新保养数量必须大于0小于计划保养数量，请重新输入");
+                        CommonFunction.Sys_MsgBox("重新保养数量必须大于0小于计划保养数量，请重新输入");
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("输入不符合数字格式，请重新输入");
+                    CommonFunction.Sys_MsgBox("输入不符合数字格式，请重新输入");
                     return;
                 }
 
@@ -855,16 +855,16 @@ namespace RFSystem
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否开始保养本保养单货物？", "开始保养", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("是否开始保养本保养单货物？"))
             {
                 if (DBOperate.MaintainModState(dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString(), "0", "1") == 1)
                 {
                     dataGridViewMaintain.SelectedRows[0].Cells["ColumnState"].Value = "保养中";
-                    MessageBox.Show("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 开始保养");
+                    CommonFunction.Sys_MsgBox("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 开始保养");
                 }
                 else
                 {
-                    MessageBox.Show("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 开始保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
+                    CommonFunction.Sys_MsgBox("单据 " + dataGridViewMaintain.SelectedRows[0].Cells["ColumnMAINTAIN_NO"].Value.ToString() + " 开始保养失败，请确认是否其他人已改变单据状态，或数据库联接失败");
                 }
 
                 dataGridViewMaintain_SelectionChanged(null, null);
@@ -873,11 +873,11 @@ namespace RFSystem
 
         private void btnSubmitMod_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否提交重新保养？", "重新保养", true, false) == DialogResult.Yes)
+            if (CommonFunction.Sys_MsgYN("是否提交重新保养？"))
             {
                 if (DBOperate.MaintainReMaintain(dtMaintainDetail))
                 {
-                    MessageBox.Show("单据" + dtMaintainDetail.Rows[0]["MAINTAIN_NO"].ToString() + "被退回重新保养");
+                    CommonFunction.Sys_MsgBox("单据" + dtMaintainDetail.Rows[0]["MAINTAIN_NO"].ToString() + "被退回重新保养");
                     textBoxMaintain.Text = string.Empty;
                     SetModControlsEnable(false);
                     dataGridViewMaintain.SelectedRows[0].Cells["ColumnState"].Value = "保养中";
@@ -885,7 +885,7 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("退保养失败，请重新查看单据是否已经被改动");
+                    CommonFunction.Sys_MsgBox("退保养失败，请重新查看单据是否已经被改动");
                 }
             }
         }

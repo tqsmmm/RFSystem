@@ -186,7 +186,7 @@ namespace RFSystem
 
             if (!CommonFunction.IfHasData(dtMaintainHeader))
             {
-                MessageBox.Show("当前没有可操作的货物！");
+                CommonFunction.Sys_MsgBox("当前没有可操作的货物！");
             }
         }
 

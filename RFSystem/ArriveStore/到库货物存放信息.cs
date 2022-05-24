@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RFSystem.CommonClass;
+using System;
 using System.Collections;
 using System.Windows.Forms;
 
@@ -30,7 +31,7 @@ namespace RFSystem.ArriveStore
         {
             if (this.textBoxStorePosition.Text.Trim().Equals(string.Empty) || (this.numericUpDownAmount.Value == 0M))
             {
-                MessageBox.Show("录入信息不完整，请填写完整信息(库位及库位数量)", "信息不完整", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("录入信息不完整，请填写完整信息(库位及库位数量)");
             }
             else
             {

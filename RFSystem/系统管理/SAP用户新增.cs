@@ -31,12 +31,12 @@ namespace RFSystem
 
                 if (DBOperate.AddSapUser(textBoxSapUserID.Text, @operator.OutString) != -1)
                 {
-                    MessageBox.Show("SAP用户 " + textBoxSapUserID.Text.Trim() + " 添加成功");
+                    CommonFunction.Sys_MsgBox("SAP用户 " + textBoxSapUserID.Text.Trim() + " 添加成功");
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("SAP用户添加失败，请确认没有添加重复用户并且数据库联接正常");
+                    CommonFunction.Sys_MsgBox("SAP用户添加失败，请确认没有添加重复用户并且数据库联接正常");
                 }
             }
         }
@@ -149,7 +149,7 @@ namespace RFSystem
         {
             if (textBoxSapUserID.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
 

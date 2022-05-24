@@ -50,7 +50,7 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("当前用户对应的SAP用户不存在，请对应修改", "对应修改", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("当前用户对应的SAP用户不存在，请对应修改");
                 }
             }
 
@@ -66,7 +66,7 @@ namespace RFSystem
         {
             if (textBoxUserID.Text.Trim().Length != 4)
             {
-                MessageBox.Show("用户ID固定为4位，请检查更改");
+                CommonFunction.Sys_MsgBox("用户ID固定为4位，请检查更改");
             }
             else if (ValidateInput())
             {
@@ -83,28 +83,28 @@ namespace RFSystem
 
                     if (DBOperate.AddUser(userItem) != -1)
                     {
-                        MessageBox.Show("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 添加成功");
+                        CommonFunction.Sys_MsgBox("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 添加成功");
                         DialogResult = DialogResult.OK;
                     }
                     else if ((num == -10) || (num == 0xa43))
                     {
-                        MessageBox.Show("您尝试添加重复用户，请确认");
+                        CommonFunction.Sys_MsgBox("您尝试添加重复用户，请确认");
                     }
                     else
                     {
-                        MessageBox.Show("添加用户出错，请确认是否添加重复用户并检查数据库联接是否正常");
+                        CommonFunction.Sys_MsgBox("添加用户出错，请确认是否添加重复用户并检查数据库联接是否正常");
                     }
                 }
                 else if (Text == "用户修改")
                 {
                     if (DBOperate.ModUser(userItem) != -1)
                     {
-                        MessageBox.Show("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 信息修改成功");
+                        CommonFunction.Sys_MsgBox("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 信息修改成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("数据库出错，请联系系统管理员确认");
+                        CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                     }
                 }
             }
@@ -302,13 +302,13 @@ namespace RFSystem
         {
             if (textBoxUserID.Text.Trim().Equals(string.Empty) || textBoxUserName.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
 
             if (!textBoxPassWord.Text.Trim().Equals(textBoxRePassWord.Text.Trim()))
             {
-                MessageBox.Show("请确认两次输入密码一致", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请确认两次输入密码一致");
                 textBoxPassWord.Focus();
                 SetErrorProvider(errorProvider, textBoxPassWord, "两次输入密码不一致");
                 SetErrorProvider(errorProvider, textBoxRePassWord, "两次输入密码不一致");

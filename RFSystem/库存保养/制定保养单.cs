@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using BL;
@@ -64,6 +63,7 @@ namespace RFSystem
         private void InitializeComponent()
         {
             this.groupBoxInputInfo = new System.Windows.Forms.GroupBox();
+            this.labelMaintainID = new System.Windows.Forms.TextBox();
             this.textBoxBin = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxSTOREMAN = new System.Windows.Forms.TextBox();
@@ -104,7 +104,6 @@ namespace RFSystem
             this.textBoxPlanNum = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnModPlanNum = new System.Windows.Forms.Button();
-            this.labelMaintainID = new System.Windows.Forms.TextBox();
             this.groupBoxInputInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintain)).BeginInit();
@@ -134,6 +133,14 @@ namespace RFSystem
             this.groupBoxInputInfo.TabIndex = 0;
             this.groupBoxInputInfo.TabStop = false;
             this.groupBoxInputInfo.Text = "保养单信息添加";
+            // 
+            // labelMaintainID
+            // 
+            this.labelMaintainID.Location = new System.Drawing.Point(91, 25);
+            this.labelMaintainID.Name = "labelMaintainID";
+            this.labelMaintainID.ReadOnly = true;
+            this.labelMaintainID.Size = new System.Drawing.Size(150, 26);
+            this.labelMaintainID.TabIndex = 511;
             // 
             // textBoxBin
             // 
@@ -277,7 +284,6 @@ namespace RFSystem
             this.dataGridViewMaintain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMaintain.Size = new System.Drawing.Size(982, 168);
             this.dataGridViewMaintain.TabIndex = 20000;
-            this.dataGridViewMaintain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMaintain_CellContentClick);
             this.dataGridViewMaintain.SelectionChanged += new System.EventHandler(this.dataGridViewMaintain_SelectionChanged);
             // 
             // ColumnFACTORY_NO
@@ -465,7 +471,7 @@ namespace RFSystem
             // 
             this.btnMaintainPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaintainPlan.Enabled = false;
-            this.btnMaintainPlan.Location = new System.Drawing.Point(794, 577);
+            this.btnMaintainPlan.Location = new System.Drawing.Point(900, 577);
             this.btnMaintainPlan.Name = "btnMaintainPlan";
             this.btnMaintainPlan.Size = new System.Drawing.Size(100, 40);
             this.btnMaintainPlan.TabIndex = 500;
@@ -548,14 +554,6 @@ namespace RFSystem
             this.btnModPlanNum.UseVisualStyleBackColor = true;
             this.btnModPlanNum.Click += new System.EventHandler(this.btnModPlanNum_Click);
             // 
-            // labelMaintainID
-            // 
-            this.labelMaintainID.Location = new System.Drawing.Point(91, 25);
-            this.labelMaintainID.Name = "labelMaintainID";
-            this.labelMaintainID.ReadOnly = true;
-            this.labelMaintainID.Size = new System.Drawing.Size(150, 26);
-            this.labelMaintainID.TabIndex = 511;
-            // 
             // 制定保养单
             // 
             this.ClientSize = new System.Drawing.Size(1012, 629);
@@ -617,7 +615,7 @@ namespace RFSystem
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            if (((!comboBoxPlant.Text.Trim().Equals("无") && !comboBoxSLocation.Text.Trim().Equals("无")) && !textBoxBin.Text.Trim().Equals(string.Empty)) && !textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
+            if (!comboBoxPlant.Text.Trim().Equals("无") && !comboBoxSLocation.Text.Trim().Equals("无") && !textBoxBin.Text.Trim().Equals(string.Empty) && !textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
             {
                 DataSet cxDs = new DataSet("货位查询");
                 MessagePack pack = new MessagePack();
@@ -628,7 +626,7 @@ namespace RFSystem
                 }
                 catch
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
 
                 if (pack.Code == 0)
@@ -646,18 +644,18 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
             }
             else
             {
-                MessageBox.Show("请填写完整信息！");
+                CommonFunction.Sys_MsgBox("请填写完整信息！");
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否清空页面所有数据？此前内容将会全部被清除。", "是否继续", true, false) == DialogResult.Yes)
+            if (CommonFunction.Sys_MsgYN("是否清空页面所有数据？此前内容将会全部被清除。"))
             {
                 ClearControls();
             }
@@ -665,7 +663,7 @@ namespace RFSystem
 
         private void btnDelMain_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否删除库位为 " + textBoxBinDel.Text.Trim() + " 的保养计划？", "删除保养计划", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("是否删除库位为 " + textBoxBinDel.Text.Trim() + " 的保养计划？"))
             {
                 DataRow[] rowArray = dtGoods.Select(" BIN='" + textBoxBinDel.Text.Trim() + "'");
 
@@ -675,7 +673,7 @@ namespace RFSystem
                 }
 
                 dtGoods.AcceptChanges();
-                MessageBox.Show("货位 " + textBoxBinDel.Text.Trim() + " 的保养计划被删除");
+                CommonFunction.Sys_MsgBox("货位 " + textBoxBinDel.Text.Trim() + " 的保养计划被删除");
 
                 if (!CommonFunction.IfHasData(dtGoods))
                 {
@@ -687,7 +685,7 @@ namespace RFSystem
 
         private void btnItemDel_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否删除被选中条目？", "删除条目", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("是否删除被选中条目？"))
             {
                 DataRow[] rowArray = dtGoods.Select(" BARCODE='" + dataGridViewSapStockInfo.SelectedRows[0].Cells["ColumnBARCODE"].Value.ToString() + "' and BIN='" + dataGridViewSapStockInfo.SelectedRows[0].Cells["ColumnBIN"].Value.ToString() + "'");
 
@@ -707,7 +705,7 @@ namespace RFSystem
 
         private void btnMaintainPlan_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("确认生成此保养单么？", "保养单生成", true, false) != DialogResult.No)
+            if (CommonFunction.Sys_MsgYN("确认生成此保养单么？"))
             {
                 ArrayList billInfo = new ArrayList();
 
@@ -720,12 +718,12 @@ namespace RFSystem
 
                 if (!str.Equals("-1"))
                 {
-                    MessageBox.Show("库存保养单 " + str + " 添加成功");
+                    CommonFunction.Sys_MsgBox("库存保养单 " + str + " 添加成功");
                     ClearControls();
                 }
                 else
                 {
-                    MessageBox.Show("库存保养单添加失败，请联系管理员确认");
+                    CommonFunction.Sys_MsgBox("库存保养单添加失败，请联系管理员确认");
                 }
             }
         }
@@ -740,18 +738,18 @@ namespace RFSystem
             }
             catch
             {
-                MessageBox.Show("数字格式不正确");
+                CommonFunction.Sys_MsgBox("数字格式不正确");
                 return;
             }
 
             if (num <= 0M)
             {
-                MessageBox.Show("保养数量不可小于等于0，如不需保养此货物请删除条目");
+                CommonFunction.Sys_MsgBox("保养数量不可小于等于0，如不需保养此货物请删除条目");
                 dataGridViewSapStockInfo_SelectionChanged(null, null);
             }
             else if (num > Convert.ToDecimal(dataGridViewSapStockInfo.SelectedRows[0].Cells["ColumnPLAN_NUM"].Value))
             {
-                MessageBox.Show("保养数量不可大于库存数量");
+                CommonFunction.Sys_MsgBox("保养数量不可大于库存数量");
                 dataGridViewSapStockInfo_SelectionChanged(null, null);
             }
             else
@@ -913,14 +911,9 @@ namespace RFSystem
         {
             if (!textBoxSTOREMAN.Text.Equals(string.Empty) && !CommonFunction.IfHasData(DBOperate.GetUserIDName(textBoxSTOREMAN.Text)))
             {
-                MessageBox.Show("找不到相应人员，请确认输入", "数据不存在", MessageBoxButtons.OK);
+                CommonFunction.Sys_MsgBox("找不到相应人员，请确认输入");
                 textBoxSTOREMAN.Focus();
             }
-        }
-
-        private void dataGridViewMaintain_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void 制定保养单_Load(object sender, EventArgs e)

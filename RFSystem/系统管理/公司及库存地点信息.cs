@@ -400,23 +400,23 @@ namespace RFSystem
                 {
                     if (CommonFunction.IfHasData(DBOperate.GetStoreLocusWithPlant((string)dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value)))
                     {
-                        MessageBox.Show("该公司信息下包含仓库地点信息，请先删除仓库地点信息", "不可删除", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1);
+                        CommonFunction.Sys_MsgBox("该公司信息下包含仓库地点信息，请先删除仓库地点信息");
                     }
-                    else if ((MessageBox.Show("确认删除此条公司信息么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.DelPlant((string)this.dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value) == 1))
+                    else if (CommonFunction.Sys_MsgYN("确认删除此条公司信息么？") && (DBOperate.DelPlant((string)dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value) == 1))
                     {
-                        MessageBox.Show("公司信息删除成功");
+                        CommonFunction.Sys_MsgBox("公司信息删除成功");
                         btnSelectPlant.PerformClick();
                         RefreshDate();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条公司信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条公司信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何公司信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何公司信息，无法修改");
             }
         }
 
@@ -426,20 +426,20 @@ namespace RFSystem
             {
                 if (dataGridViewStoreList.SelectedRows != null)
                 {
-                    if ((MessageBox.Show("确认删除此条库存地点信息么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.DelStoreLocus((string)this.dataGridViewStoreList.SelectedRows[0].Cells["columnStoreLocusID"].Value, (string)this.dataGridViewStoreList.SelectedRows[0].Cells["columnStorePlantID"].Value) == 1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条库存地点信息么？") && (DBOperate.DelStoreLocus((string)this.dataGridViewStoreList.SelectedRows[0].Cells["columnStoreLocusID"].Value, (string)dataGridViewStoreList.SelectedRows[0].Cells["columnStorePlantID"].Value) == 1))
                     {
-                        MessageBox.Show("库存地点信息删除成功");
+                        CommonFunction.Sys_MsgBox("库存地点信息删除成功");
                         btnSelectStore.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条库存地点信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条库存地点信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何库存地点信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何库存地点信息，无法修改");
             }
         }
 
@@ -467,12 +467,12 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条公司信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条公司信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何公司信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何公司信息，无法修改");
             }
         }
 
@@ -499,12 +499,12 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条库存地点信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条库存地点信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何库存地点信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何库存地点信息，无法修改");
             }
         }
 

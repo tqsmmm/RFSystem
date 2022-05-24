@@ -76,7 +76,7 @@ namespace RFSystem
             {
                 ifTurnRight = false;
 
-                if (MessageBox.Show("当前盘点货位信息或数量信息与SAP理论库存信息不一致，是否继续修改？", "对比不一致", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (!CommonFunction.Sys_MsgYN("当前盘点货位信息或数量信息与SAP理论库存信息不一致，是否继续修改？"))
                 {
                     flag = false;
                 }
@@ -95,7 +95,7 @@ namespace RFSystem
 
                 if (DBOperate.ModReport(reportList) != -1)
                 {
-                    MessageBox.Show("盘点报表条目修改成功");
+                    CommonFunction.Sys_MsgBox("盘点报表条目修改成功");
                     reportItem[6] = textBoxSTBin1.Text;
                     reportItem[7] = textBoxSTBinCount1.Text;
                     reportItem[8] = textBoxSTBin2.Text;
@@ -366,7 +366,6 @@ namespace RFSystem
             // 盘点报表明细信息
             // 
             this.ClientSize = new System.Drawing.Size(584, 311);
-            this.ControlBox = false;
             this.Controls.Add(this.btnMod);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.textBoxSTBinCount3);
@@ -395,6 +394,8 @@ namespace RFSystem
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "盘点报表明细信息";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "盘点报表明细信息";
@@ -408,7 +409,7 @@ namespace RFSystem
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }

@@ -189,24 +189,24 @@ namespace RFSystem
             {
                 if (!DBOperate.GetSapInfoBySapID(dataGridViewSapUserList.SelectedRows[0].Cells["columnSapUserID"].Value.ToString()).Rows[0][0].ToString().Equals("0"))
                 {
-                    MessageBox.Show("当前Sap用户还在被使用中，去除所有使用当前Sap用户的用户授权点", "删除无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("当前Sap用户还在被使用中，去除所有使用当前Sap用户的用户授权点");
                 }
                 else if (CommonFunction.IfHasData(dtSapUserList))
                 {
-                    if ((MessageBox.Show("确认删除此条Sap用户信息么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.DelSapUser((string)this.dataGridViewSapUserList.SelectedRows[0].Cells["columnSapUserID"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条Sap用户信息么？") && (DBOperate.DelSapUser((string)dataGridViewSapUserList.SelectedRows[0].Cells["columnSapUserID"].Value) != -1))
                     {
-                        MessageBox.Show("Sap用户信息删除成功");
+                        CommonFunction.Sys_MsgBox("Sap用户信息删除成功");
                         btnSelect.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("没有检索到任何Sap用户信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("没有检索到任何Sap用户信息，无法修改");
                 }
             }
             else
             {
-                MessageBox.Show("请选择一条Sap用户信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请选择一条Sap用户信息");
             }
         }
 

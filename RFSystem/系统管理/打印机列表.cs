@@ -235,20 +235,20 @@ namespace RFSystem.SystemConfig
             {
                 if (dataGridViewPrinterList.SelectedRows != null)
                 {
-                    if ((MessageBox.Show("确认删除此条打印机信息么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.DelPrinter((string)this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPrinterName"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条打印机信息么？") && (DBOperate.DelPrinter((string)dataGridViewPrinterList.SelectedRows[0].Cells["columnPrinterName"].Value) != -1))
                     {
-                        MessageBox.Show("打印机信息删除成功");
+                        CommonFunction.Sys_MsgBox("打印机信息删除成功");
                         btnSelect.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条打印机信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条打印机信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何打印机信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何打印机信息，无法修改");
             }
         }
 
@@ -275,12 +275,12 @@ namespace RFSystem.SystemConfig
                 }
                 else
                 {
-                    MessageBox.Show("请选择一条打印机信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("请选择一条打印机信息");
                 }
             }
             else
             {
-                MessageBox.Show("没有检索到任何打印机信息，无法修改", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("没有检索到任何打印机信息，无法修改");
             }
         }
 

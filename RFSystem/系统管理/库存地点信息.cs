@@ -1,4 +1,5 @@
 ﻿using BL;
+using RFSystem.CommonClass;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -47,24 +48,24 @@ namespace RFSystem
                 {
                     if (DBOperate.AddStoreLocus(textBoxStoreLocusID.Text.Trim(), comboBoxPlantID.Text.Trim(), textBoxStoreLocusDescription.Text.Trim()) != -1)
                     {
-                        MessageBox.Show("库存地点 " + textBoxStoreLocusID.Text.Trim() + " 添加成功");
+                        CommonFunction.Sys_MsgBox("库存地点 " + textBoxStoreLocusID.Text.Trim() + " 添加成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("库存地点信息添加失败，请确认没有添加重复库存地点编号并且数据库联接正常");
+                        CommonFunction.Sys_MsgBox("库存地点信息添加失败，请确认没有添加重复库存地点编号并且数据库联接正常");
                     }
                 }
                 else if (Text == "库存修改")
                 {
                     if (DBOperate.ModStoreLocus(textBoxStoreLocusID.Text, comboBoxPlantID.Text.Trim(), textBoxStoreLocusDescription.Text.Trim()) != -1)
                     {
-                        MessageBox.Show("库存地点 " + textBoxStoreLocusID.Text + " 信息修改成功");
+                        CommonFunction.Sys_MsgBox("库存地点 " + textBoxStoreLocusID.Text + " 信息修改成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        MessageBox.Show("数据库出错，请联系系统管理员确认");
+                        CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                     }
                 }
             }
@@ -189,7 +190,7 @@ namespace RFSystem
         {
             if ((textBoxStoreLocusID.Text.Trim().Equals(string.Empty) || comboBoxPlantID.Text.Trim().Equals(string.Empty)) || textBoxStoreLocusDescription.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
 

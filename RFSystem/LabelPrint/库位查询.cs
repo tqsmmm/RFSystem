@@ -63,106 +63,108 @@ namespace RFSystem.LabelPrint
         {
             this.userItem = null;
             this.userRoles = null;
-            this.dtMaintain = null;
-            this.dtGoods = null;
-            this.dtPlantList = null;
-            this.dtStoreLocusList = null;
-            this.thread = null;
-            this.InitializeComponent();
+            dtMaintain = null;
+            dtGoods = null;
+            dtPlantList = null;
+            dtStoreLocusList = null;
+            thread = null;
+            InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;
-            this.textBoxSTOREMAN.Text = userItem.userID;
+            textBoxSTOREMAN.Text = userItem.userID;
+
             if (userItem.isAdmin)
             {
-                this.textBoxSTOREMAN.ReadOnly = false;
+                textBoxSTOREMAN.ReadOnly = false;
             }
-            this.InitFctAndStore();
-            this.InitTableColumns();
+
+            InitFctAndStore();
+            InitTableColumns();
         }
 
         private void btnAddDetail_Click(object sender, EventArgs e)
         {
-            if (((!this.comboBoxPlant.Text.Trim().Equals("无") && !this.comboBoxSLocation.Text.Trim().Equals("无")) && !this.textBoxBin.Text.Trim().Equals(string.Empty)) && !this.textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
+            if (!comboBoxPlant.Text.Trim().Equals("无") && !comboBoxSLocation.Text.Trim().Equals("无") && !textBoxBin.Text.Trim().Equals(string.Empty) && !textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
             {
-                if (this.dtMaintain.Select("FACTORY_NO='" + this.comboBoxPlant.Text.Trim() + "' and SL='" + this.comboBoxSLocation.Text.Trim() + "' and STOREMAN='" + this.textBoxSTOREMAN.Text.Trim() + "' and BINKEY='" + this.textBoxBin.Text.Trim() + "'").Length > 0)
+                if (dtMaintain.Select("FACTORY_NO='" + comboBoxPlant.Text.Trim() + "' and SL='" + comboBoxSLocation.Text.Trim() + "' and STOREMAN='" + textBoxSTOREMAN.Text.Trim() + "' and BINKEY='" + textBoxBin.Text.Trim() + "'").Length > 0)
                 {
-                    MessageBox.Show("已包含此检索条件，请不要重复输入");
+                    CommonFunction.Sys_MsgBox("已包含此检索条件，请不要重复输入");
                 }
                 else
                 {
-                    this.dtMaintain.Rows.Add(new object[] { this.comboBoxPlant.Text.Trim(), this.comboBoxSLocation.Text.Trim(), this.textBoxSTOREMAN.Text.Trim(), this.textBoxBin.Text.Trim() });
+                    dtMaintain.Rows.Add(new object[] { comboBoxPlant.Text.Trim(), comboBoxSLocation.Text.Trim(), textBoxSTOREMAN.Text.Trim(), textBoxBin.Text.Trim() });
                 }
             }
             else
             {
-                MessageBox.Show("请填写完整信息！");
+                CommonFunction.Sys_MsgBox("请填写完整信息！");
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (CommonFunction.AskMBox("是否清空页面所有数据？此前内容将会全部被清除。", "是否继续", true, false) == DialogResult.Yes)
+            if (CommonFunction.Sys_MsgYN("是否清空页面所有数据？此前内容将会全部被清除。"))
             {
-                this.ClearControls();
-                this.btnSelect.Enabled = true;
-                this.btnAddDetail.Enabled = true;
-                this.btnDelete.Enabled = true;
+                ClearControls();
+                btnSelect.Enabled = true;
+                btnAddDetail.Enabled = true;
+                btnDelete.Enabled = true;
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DataRow[] rowArray = this.dtMaintain.Select("FACTORY_NO='" + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnFACTORY_NO"].Value.ToString() + "' and SL='" + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnSL"].Value.ToString() + "' and STOREMAN='" + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnSTOREMAN"].Value.ToString() + "' and BINKEY='" + this.dataGridViewMaintain.SelectedRows[0].Cells["ColumnBINKEY"].Value.ToString() + "'");
+            DataRow[] rowArray = dtMaintain.Select("FACTORY_NO='" + dataGridViewMaintain.SelectedRows[0].Cells["ColumnFACTORY_NO"].Value.ToString() + "' and SL='" + dataGridViewMaintain.SelectedRows[0].Cells["ColumnSL"].Value.ToString() + "' and STOREMAN='" + dataGridViewMaintain.SelectedRows[0].Cells["ColumnSTOREMAN"].Value.ToString() + "' and BINKEY='" + dataGridViewMaintain.SelectedRows[0].Cells["ColumnBINKEY"].Value.ToString() + "'");
 
             if ((rowArray != null) && (rowArray.Length != 0))
             {
-                this.dtMaintain.Rows.Remove(rowArray[0]);
+                dtMaintain.Rows.Remove(rowArray[0]);
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Close();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            this.thread = new Thread(new ThreadStart(this.ShowWaitingMsg));
-            this.thread.Start();
+            thread = new Thread(new ThreadStart(ShowWaitingMsg));
+            thread.Start();
         }
 
         private void ClearControls()
         {
-            this.comboBoxPlant.SelectedIndex = 0;
-            this.textBoxBin.Text = string.Empty;
-            this.dtGoods.Rows.Clear();
-            this.dtMaintain.Rows.Clear();
+            comboBoxPlant.SelectedIndex = 0;
+            textBoxBin.Text = string.Empty;
+            dtGoods.Rows.Clear();
+            dtMaintain.Rows.Clear();
         }
 
         private void comboBoxPlant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.comboBoxSLocation.Items.Clear();
-            this.comboBoxSLocation.Items.Add("无");
+            comboBoxSLocation.Items.Clear();
+            comboBoxSLocation.Items.Add("无");
 
-            foreach (DataRow row in this.dtStoreLocusList.Select("PlantID='" + this.comboBoxPlant.Text + "'"))
+            foreach (DataRow row in dtStoreLocusList.Select("PlantID='" + comboBoxPlant.Text + "'"))
             {
-                this.comboBoxSLocation.Items.Add(row["StoreLocusID"].ToString());
+                comboBoxSLocation.Items.Add(row["StoreLocusID"].ToString());
             }
 
-            this.comboBoxSLocation.SelectedIndex = 0;
+            comboBoxSLocation.SelectedIndex = 0;
         }
 
         private void dataGridViewMaintain_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewMaintain.Rows != null) && (this.dataGridViewMaintain.SelectedRows.Count != 0))
+            if ((dataGridViewMaintain.Rows != null) && (dataGridViewMaintain.SelectedRows.Count != 0))
             {
-                this.btnDelete.Enabled = true;
-                this.btnSelect.Enabled = true;
+                btnDelete.Enabled = true;
+                btnSelect.Enabled = true;
             }
             else
             {
-                this.btnDelete.Enabled = false;
-                this.btnSelect.Enabled = false;
+                btnDelete.Enabled = false;
+                btnSelect.Enabled = false;
             }
         }
 
@@ -170,7 +172,7 @@ namespace RFSystem.LabelPrint
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.SelectNextControl(base.ActiveControl, true, true, true, true);
+                SelectNextControl(ActiveControl, true, true, true, true);
             }
         }
 
@@ -212,21 +214,21 @@ namespace RFSystem.LabelPrint
 
         private void InitFctAndStore()
         {
-            this.dtPlantList = DBOperate.GetPlantList(string.Empty);
-            this.dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
-            this.comboBoxSLocation.Items.Add("无");
-            this.comboBoxSLocation.SelectedIndex = 0;
-            this.comboBoxPlant.Items.Add("无");
+            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
+            comboBoxSLocation.Items.Add("无");
+            comboBoxSLocation.SelectedIndex = 0;
+            comboBoxPlant.Items.Add("无");
 
-            if (CommonFunction.IfHasData(this.dtPlantList))
+            if (CommonFunction.IfHasData(dtPlantList))
             {
-                foreach (DataRow row in this.dtPlantList.Rows)
+                foreach (DataRow row in dtPlantList.Rows)
                 {
-                    this.comboBoxPlant.Items.Add(row["PlantID"].ToString());
+                    comboBoxPlant.Items.Add(row["PlantID"].ToString());
                 }
             }
 
-            this.comboBoxPlant.SelectedIndex = 0;
+            comboBoxPlant.SelectedIndex = 0;
         }
 
         private void InitializeComponent()
@@ -728,7 +730,7 @@ namespace RFSystem.LabelPrint
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                foreach (DataRow row in this.dtMaintain.Rows)
+                foreach (DataRow row in dtMaintain.Rows)
                 {
                     DataSet cxDs = new DataSet("货位查询");
                     MessagePack pack = new MessagePack();
@@ -739,30 +741,30 @@ namespace RFSystem.LabelPrint
                     }
                     catch
                     {
-                        MessageBox.Show(pack.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
                         return;
                     }
 
                     if (pack.Code == 0)
                     {
-                        this.FilterTheUsefulInfo(cxDs.Tables[0], this.dtGoods, row["BINKEY"].ToString());
+                        FilterTheUsefulInfo(cxDs.Tables[0], dtGoods, row["BINKEY"].ToString());
                     }
                     else
                     {
-                        MessageBox.Show(pack.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
                     }
                 }
 
-                if (!CommonFunction.IfHasData(this.dtGoods))
+                if (!CommonFunction.IfHasData(dtGoods))
                 {
-                    MessageBox.Show("没有检索到任何数据，请重新输入条件进行检索");
-                    this.ClearControls();
+                    CommonFunction.Sys_MsgBox("没有检索到任何数据，请重新输入条件进行检索");
+                    ClearControls();
                 }
                 else
                 {
-                    this.btnSelect.Enabled = false;
-                    this.btnAddDetail.Enabled = false;
-                    this.btnDelete.Enabled = false;
+                    btnSelect.Enabled = false;
+                    btnAddDetail.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
             }
             catch
@@ -777,7 +779,7 @@ namespace RFSystem.LabelPrint
 
         private void ShowWaitingMsg()
         {
-            base.Invoke(new EventHandler(this.ShowMsg));
+            Invoke(new EventHandler(ShowMsg));
         }
     }
 }

@@ -314,12 +314,12 @@ namespace RFSystem.ArriveStore
                 demurralList.Add(this.textBoxExceptionCausation.Text);
                 if (!DBOperate.ArriveStoreExceptionInfoAdd(demurralList, this.demurralInfoList).Equals("-1"))
                 {
-                    MessageBox.Show("对到库单 " + this.comboBoxArriveListID.Text + " 的异议入库信息添加成功");
+                    CommonFunction.Sys_MsgBox("对到库单 " + this.comboBoxArriveListID.Text + " 的异议入库信息添加成功");
                     base.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("数据库出错，请联系系统管理员确认");
+                    CommonFunction.Sys_MsgBox("数据库出错，请联系系统管理员确认");
                 }
             }
         }
@@ -368,7 +368,7 @@ namespace RFSystem.ArriveStore
         {
             if (this.comboBoxArriveListID.Text.Trim().Equals(string.Empty) || (this.numericUpDownGoodsAmount.Value == 0M))
             {
-                MessageBox.Show("请填写完整信息", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请填写完整信息");
                 return false;
             }
             decimal num = 0M;
@@ -378,7 +378,7 @@ namespace RFSystem.ArriveStore
             }
             if (num != this.numericUpDownGoodsAmount.Value)
             {
-                MessageBox.Show("异议数量和异议入库数量不一致，请确认", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("异议数量和异议入库数量不一致，请确认");
                 return false;
             }
             return true;
@@ -405,7 +405,7 @@ namespace RFSystem.ArriveStore
             }
             else
             {
-                MessageBox.Show("当前没有可进行异议入库货物的单据");
+                CommonFunction.Sys_MsgBox("当前没有可进行异议入库货物的单据");
                 base.DialogResult = DialogResult.Cancel;
             }
         }

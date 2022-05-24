@@ -70,7 +70,7 @@ namespace RFSystem
         {
             if ((comboBoxSLocation.Text.Equals(string.Empty) || textBoxBin.Text.Equals(string.Empty)) || textBoxBinCount.Text.Equals(string.Empty))
             {
-                MessageBox.Show("信息填写不完整，请确认并填写完整信息", "信息填写不完整", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("信息填写不完整，请确认并填写完整信息");
             }
             else
             {
@@ -90,7 +90,7 @@ namespace RFSystem
 
                     if (DBOperate.AddNewSTOrigin(stOriginList) != -1)
                     {
-                        MessageBox.Show("盘点条目新增成功");
+                        CommonFunction.Sys_MsgBox("盘点条目新增成功");
                         DialogResult = DialogResult.OK;
                     }
                 }
@@ -104,7 +104,7 @@ namespace RFSystem
 
                     if (DBOperate.ModSTOrigin(stOriginList) != -1)
                     {
-                        MessageBox.Show("盘点条目修改成功");
+                        CommonFunction.Sys_MsgBox("盘点条目修改成功");
                         stOriginItem[2] = comboBoxSLocation.Text;
                         stOriginItem[5] = textBoxBin.Text;
                         stOriginItem[6] = textBoxBinCount.Text;
@@ -333,7 +333,6 @@ namespace RFSystem
             // 盘点条目明细信息
             // 
             this.ClientSize = new System.Drawing.Size(584, 261);
-            this.ControlBox = false;
             this.Controls.Add(this.textBoxSTSerial);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxPlant);
@@ -358,6 +357,8 @@ namespace RFSystem
             this.Controls.Add(this.label15);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "盘点条目明细信息";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "货物盘点明细条目信息";
@@ -371,7 +372,7 @@ namespace RFSystem
         {
             if (!((TextBox)sender).Text.Equals(string.Empty) && !regex.IsMatch(((TextBox)sender).Text))
             {
-                MessageBox.Show("对不起，您所输入的不符合数字格式要求，请从新输入", "数字格式不符", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                CommonFunction.Sys_MsgBox("对不起，您所输入的不符合数字格式要求，请从新输入");
                 ((TextBox)sender).Focus();
             }
         }

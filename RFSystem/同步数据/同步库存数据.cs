@@ -22,7 +22,7 @@ namespace RFSystem
         {
             if (textBoxStoreMan.Text.Trim() == "")
             {
-                MessageBox.Show("请输入正确管理员码");
+                CommonFunction.Sys_MsgBox("请输入正确管理员码");
                 return;
             }
 
@@ -56,12 +56,12 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
             }
             catch (Exception ee)
             {
-                MessageBox.Show(ee.Message);
+                CommonFunction.Sys_MsgBox(ee.Message);
             }
             finally
             {
@@ -121,7 +121,7 @@ namespace RFSystem
         {
             if (rC < 0 || rC != recC)
             {
-                MessageBox.Show("没有接收到数据，或记录数为0");
+                CommonFunction.Sys_MsgBox("没有接收到数据，或记录数为0");
                 return;
             }
 
@@ -131,11 +131,11 @@ namespace RFSystem
 
             if (updateCount > -1)
             {
-                MessageBox.Show("同步成功，同步 " + updateCount + "条数据");
+                CommonFunction.Sys_MsgBox("同步成功，同步 " + updateCount + "条数据");
             }
             else
             {
-                MessageBox.Show("同步失败");
+                CommonFunction.Sys_MsgBox("同步失败");
             }
         }
     }

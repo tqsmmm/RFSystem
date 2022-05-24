@@ -2,7 +2,6 @@
 using RFSystem.CommonClass;
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -32,14 +31,13 @@ namespace RFSystem
         private RadioButton radioButton2;
         private TextBox textBox1;
         private TextBox textBoxSapInventoryNo;
+        private Label label7;
         private TextBox txtKeeper;
 
         public 创建盘点清单()
         {
-            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
-            Load += new EventHandler(创建盘点清单_Load);
-            txtKeeper.TextChanged += new EventHandler(txtKeeper_TextChanged);
+            
             dtPlantList = DBOperate.GetPlantList(string.Empty);
             comboBoxPlant.Items.Add("无");
 
@@ -82,13 +80,13 @@ namespace RFSystem
         {
             if (textBoxSapInventoryNo.Text.Equals(string.Empty) || comboBoxPlant.Text.Trim().Equals("无"))
             {
-                MessageBox.Show("SAP盘点序号以及盘点货物所属公司均为必填(选)条件，请完成填写");
+                CommonFunction.Sys_MsgBox("SAP盘点序号以及盘点货物所属公司均为必填(选)条件，请完成填写");
             }
-            else if (DialogResult.No != MessageBox.Show("你确认要开始盘点么？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            else if (CommonFunction.Sys_MsgYN("你确认要开始盘点么？"))
             {
                 if (0 != DBOperate.GetSTNumber(out string sTNumber, out m_ErrMsg))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                 }
                 else
                 {
@@ -101,11 +99,11 @@ namespace RFSystem
 
                     if (0 != DBOperate.InSertSTOrder(m_DtOperator, ConstDefine.g_User, sTType, textBox1.Text.Trim(), sTNumber, textBoxSapInventoryNo.Text.Trim(), comboBoxPlant.Text.Trim(), out m_ErrMsg))
                     {
-                        MessageBox.Show(m_ErrMsg);
+                        CommonFunction.Sys_MsgBox(m_ErrMsg);
                     }
                     else
                     {
-                        MessageBox.Show("创建盘点单号成功，单号为：" + sTNumber);
+                        CommonFunction.Sys_MsgBox("创建盘点单号成功，单号为：" + sTNumber);
                         Close();
                     }
                 }
@@ -139,6 +137,7 @@ namespace RFSystem
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtKeeper = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxPlant = new System.Windows.Forms.ComboBox();
@@ -161,6 +160,7 @@ namespace RFSystem
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtKeeper);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxPlant);
@@ -169,7 +169,6 @@ namespace RFSystem
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBoxSapInventoryNo);
-            this.groupBox1.Controls.Add(this.btnCreatList);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btBack);
@@ -180,26 +179,32 @@ namespace RFSystem
             this.groupBox1.Controls.Add(this.lstOperator);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(621, 542);
+            this.groupBox1.Size = new System.Drawing.Size(621, 496);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "盘点准备数据";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(160, 59);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "盘点类型：";
+            // 
             // txtKeeper
             // 
-            this.txtKeeper.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtKeeper.Location = new System.Drawing.Point(231, 175);
+            this.txtKeeper.Location = new System.Drawing.Point(245, 153);
             this.txtKeeper.Name = "txtKeeper";
             this.txtKeeper.Size = new System.Drawing.Size(300, 26);
             this.txtKeeper.TabIndex = 10;
+            this.txtKeeper.TextChanged += new System.EventHandler(this.txtKeeper_TextChanged);
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(132, 178);
+            this.label1.Location = new System.Drawing.Point(146, 156);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 9;
@@ -207,21 +212,17 @@ namespace RFSystem
             // 
             // comboBoxPlant
             // 
-            this.comboBoxPlant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPlant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPlant.FormattingEnabled = true;
-            this.comboBoxPlant.Location = new System.Drawing.Point(231, 141);
+            this.comboBoxPlant.Location = new System.Drawing.Point(245, 119);
             this.comboBoxPlant.Name = "comboBoxPlant";
             this.comboBoxPlant.Size = new System.Drawing.Size(300, 28);
             this.comboBoxPlant.TabIndex = 14;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(90, 144);
+            this.label5.Location = new System.Drawing.Point(104, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(135, 20);
             this.label5.TabIndex = 13;
@@ -229,10 +230,8 @@ namespace RFSystem
             // 
             // radioButton2
             // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(231, 79);
+            this.radioButton2.Location = new System.Drawing.Point(334, 57);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(121, 24);
             this.radioButton2.TabIndex = 7;
@@ -241,11 +240,9 @@ namespace RFSystem
             // 
             // radioButton1
             // 
-            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(142, 79);
+            this.radioButton1.Location = new System.Drawing.Point(245, 57);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(83, 24);
             this.radioButton1.TabIndex = 6;
@@ -264,16 +261,14 @@ namespace RFSystem
             // 
             // textBoxSapInventoryNo
             // 
-            this.textBoxSapInventoryNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSapInventoryNo.Location = new System.Drawing.Point(231, 109);
+            this.textBoxSapInventoryNo.Location = new System.Drawing.Point(245, 87);
             this.textBoxSapInventoryNo.Name = "textBoxSapInventoryNo";
             this.textBoxSapInventoryNo.Size = new System.Drawing.Size(300, 26);
             this.textBoxSapInventoryNo.TabIndex = 12;
             // 
             // btnCreatList
             // 
-            this.btnCreatList.Location = new System.Drawing.Point(409, 496);
+            this.btnCreatList.Location = new System.Drawing.Point(533, 514);
             this.btnCreatList.Name = "btnCreatList";
             this.btnCreatList.Size = new System.Drawing.Size(100, 40);
             this.btnCreatList.TabIndex = 5;
@@ -292,10 +287,8 @@ namespace RFSystem
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(119, 112);
+            this.label4.Location = new System.Drawing.Point(133, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 20);
             this.label4.TabIndex = 11;
@@ -303,7 +296,7 @@ namespace RFSystem
             // 
             // btBack
             // 
-            this.btBack.Location = new System.Drawing.Point(287, 336);
+            this.btBack.Location = new System.Drawing.Point(287, 436);
             this.btBack.Name = "btBack";
             this.btBack.Size = new System.Drawing.Size(43, 31);
             this.btBack.TabIndex = 3;
@@ -319,14 +312,12 @@ namespace RFSystem
             this.lstST.Location = new System.Drawing.Point(336, 263);
             this.lstST.Name = "lstST";
             this.lstST.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstST.Size = new System.Drawing.Size(209, 104);
+            this.lstST.Size = new System.Drawing.Size(209, 204);
             this.lstST.TabIndex = 2;
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(231, 47);
+            this.textBox1.Location = new System.Drawing.Point(245, 25);
             this.textBox1.MaxLength = 100;
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -335,14 +326,12 @@ namespace RFSystem
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 50);
+            this.label2.Location = new System.Drawing.Point(160, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 20);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 12;
-            this.label2.Text = "本次盘点描述：";
+            this.label2.Text = "盘点描述：";
             // 
             // btTo
             // 
@@ -362,46 +351,35 @@ namespace RFSystem
             this.lstOperator.Location = new System.Drawing.Point(80, 263);
             this.lstOperator.Name = "lstOperator";
             this.lstOperator.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstOperator.Size = new System.Drawing.Size(201, 104);
+            this.lstOperator.Size = new System.Drawing.Size(201, 204);
             this.lstOperator.TabIndex = 1;
             // 
             // 创建盘点清单
             // 
             this.ClientSize = new System.Drawing.Size(645, 566);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnCreatList);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "创建盘点清单";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "创建盘点清单";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.创建盘点清单_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
-        private void txtKeeper_TextChanged(object sender, EventArgs e)
-        {
-            string str = "show='T'";
-
-            if (txtKeeper.Text.Trim() != "")
-            {
-                str = "show='T' and User_ID like '" + txtKeeper.Text.Trim() + "*'";
-            }
-
-            m_DsvOperator.RowFilter = str;
-        }
-
         private void 创建盘点清单_Load(object sender, EventArgs e)
         {
             if (0 != DBOperate.GetSTList(out DataSet ds, out m_ErrMsg))
             {
-                MessageBox.Show(m_ErrMsg);
+                CommonFunction.Sys_MsgBox(m_ErrMsg);
                 Close();
             }
             else
@@ -417,6 +395,18 @@ namespace RFSystem
                 lstST.DisplayMember = "Display";
                 lstST.ValueMember = "User_ID";
             }
+        }
+
+        private void txtKeeper_TextChanged(object sender, EventArgs e)
+        {
+            string str = "show='T'";
+
+            if (txtKeeper.Text.Trim() != "")
+            {
+                str = "show='T' and User_ID like '" + txtKeeper.Text.Trim() + "*'";
+            }
+
+            m_DsvOperator.RowFilter = str;
         }
     }
 }

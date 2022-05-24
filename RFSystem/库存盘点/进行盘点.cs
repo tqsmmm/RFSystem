@@ -213,7 +213,7 @@ namespace RFSystem
 
             if (num == 0)
             {
-                MessageBox.Show("该盘点单已被其他管理员改变，请退出并从新操作");
+                CommonFunction.Sys_MsgBox("该盘点单已被其他管理员改变，请退出并从新操作");
             }
             else if (num != -1)
             {
@@ -222,7 +222,7 @@ namespace RFSystem
             }
             else
             {
-                MessageBox.Show("更新出错，请检查数据库");
+                CommonFunction.Sys_MsgBox("更新出错，请检查数据库");
             }
         }
 
@@ -232,7 +232,7 @@ namespace RFSystem
 
             if (num == 0)
             {
-                MessageBox.Show("该盘点单已被其他管理员改变，请退出并从新操作");
+                CommonFunction.Sys_MsgBox("该盘点单已被其他管理员改变，请退出并从新操作");
             }
             else if (num != -1)
             {
@@ -241,7 +241,7 @@ namespace RFSystem
             }
             else
             {
-                MessageBox.Show("更新出错，请检查数据库");
+                CommonFunction.Sys_MsgBox("更新出错，请检查数据库");
             }
         }
 
@@ -254,7 +254,7 @@ namespace RFSystem
             }
             else
             {
-                MessageBox.Show("现在正在处理库存下载中");
+                CommonFunction.Sys_MsgBox("现在正在处理库存下载中");
             }
         }
 
@@ -272,22 +272,22 @@ namespace RFSystem
                     str = str2 + row["STSerial"].ToString() + "|" + row["Plant"].ToString() + "|" + row["SLocation"].ToString() + "|" + row["Material"].ToString() + "|" + row["BNumber"].ToString() + "\r\n";
                 }
 
-                MessageBox.Show(str + "\r\n请调整其货位至少于等于三个");
+                CommonFunction.Sys_MsgBox(str + "\r\n请调整其货位至少于等于三个");
             }
             else if (DBOperate.AddCompare(Convert.ToDecimal(toolStripStatusLabel2.Text)) != -1)
             {
-                MessageBox.Show("盘点单 " + toolStripStatusLabel2.Text + " 盘点信息汇总完毕，请在盘点报表中进行查询修改");
+                CommonFunction.Sys_MsgBox("盘点单 " + toolStripStatusLabel2.Text + " 盘点信息汇总完毕，请在盘点报表中进行查询修改");
                 int num = DBOperate.STOrderChangeState(Convert.ToInt32(STSerial), 4);
 
                 if (num == 0)
                 {
-                    MessageBox.Show("该盘点单已被其他管理员改变，请退出并从新操作");
+                    CommonFunction.Sys_MsgBox("该盘点单已被其他管理员改变，请退出并从新操作");
                 }
                 else
                 {
                     if (num != 1)
                     {
-                        MessageBox.Show("更新出错，请检查数据库");
+                        CommonFunction.Sys_MsgBox("更新出错，请检查数据库");
                     }
 
                     if (num != -1)
@@ -295,7 +295,7 @@ namespace RFSystem
                         if (STType.Equals("1"))
                         {
                             btnOver.Enabled = false;
-                            MessageBox.Show("本次日常盘点结束");
+                            CommonFunction.Sys_MsgBox("本次日常盘点结束");
                             Close();
                         }
                         else
@@ -306,7 +306,7 @@ namespace RFSystem
                     }
                     else
                     {
-                        MessageBox.Show("更新出错，请检查数据库");
+                        CommonFunction.Sys_MsgBox("更新出错，请检查数据库");
                     }
                 }
             }
@@ -321,7 +321,7 @@ namespace RFSystem
             }
             else
             {
-                MessageBox.Show("现在正在上传Sap盘点数据中");
+                CommonFunction.Sys_MsgBox("现在正在上传Sap盘点数据中");
             }
         }
 
@@ -343,13 +343,13 @@ namespace RFSystem
 
         private void ReflashProcess100(object o, EventArgs e)
         {
-            MessageBox.Show("成功下载Sap系统库存");
+            CommonFunction.Sys_MsgBox("成功下载Sap系统库存");
             progressBar1.Value = 100;
         }
 
         private void ReflashProcess101(object o, EventArgs e)
         {
-            MessageBox.Show("成功上传Sap盘点数据");
+            CommonFunction.Sys_MsgBox("成功上传Sap盘点数据");
             progressBar1.Value = 100;
             btnSubmit.Enabled = false;
         }
@@ -365,7 +365,7 @@ namespace RFSystem
 
                 if (pack.Code != 0)
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
                 else
                 {
@@ -375,7 +375,7 @@ namespace RFSystem
             catch (Exception exception)
             {
                 SapDowning = false;
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
             finally
             {
@@ -394,7 +394,7 @@ namespace RFSystem
 
                 if (pack.Code != 0)
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
                 else
                 {
@@ -404,7 +404,7 @@ namespace RFSystem
             catch (Exception exception)
             {
                 SapUping = false;
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
             finally
             {
@@ -430,12 +430,12 @@ namespace RFSystem
             if (SapDowning)
             {
                 e.Cancel = true;
-                MessageBox.Show("数据正在下载中不能关闭窗口");
+                CommonFunction.Sys_MsgBox("数据正在下载中不能关闭窗口");
             }
             else if (SapUping)
             {
                 e.Cancel = true;
-                MessageBox.Show("数据正在上传中不能关闭窗口");
+                CommonFunction.Sys_MsgBox("数据正在上传中不能关闭窗口");
             }
         }
 

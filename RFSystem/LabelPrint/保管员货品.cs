@@ -363,7 +363,7 @@ namespace RFSystem.LabelPrint
                     if (bGYInfo.Code != 0)
                     {
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show(bGYInfo.Message);
+                        CommonFunction.Sys_MsgBox(bGYInfo.Message);
                     }
                     else
                     {
@@ -394,7 +394,7 @@ namespace RFSystem.LabelPrint
                 catch (Exception exception)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                     Cursor.Current = Cursors.Default;
                 }
             }

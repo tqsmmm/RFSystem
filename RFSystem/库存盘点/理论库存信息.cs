@@ -435,7 +435,7 @@ namespace RFSystem
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewSapStockInfo);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(750, 450);
             this.Name = "理论库存信息";

@@ -44,6 +44,7 @@ namespace RFSystem
         private Button btn_query;
         private Button btn_tohis;
         private Button button1;
+        private GroupBox groupBox3;
         private ArrayList userRoles;
 
         private void InitializeComponent()
@@ -66,10 +67,12 @@ namespace RFSystem
             this.btn_query = new System.Windows.Forms.Button();
             this.btn_tohis = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtVHead)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtVDetail)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtVHead
@@ -87,16 +90,18 @@ namespace RFSystem
             this.dtVHead.RowHeadersVisible = false;
             this.dtVHead.RowTemplate.Height = 23;
             this.dtVHead.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtVHead.Size = new System.Drawing.Size(369, 472);
+            this.dtVHead.Size = new System.Drawing.Size(942, 237);
             this.dtVHead.TabIndex = 3;
             this.dtVHead.SelectionChanged += new System.EventHandler(this.dtVHead_SelectionChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dtVHead);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(118, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 497);
+            this.groupBox1.Size = new System.Drawing.Size(948, 262);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "盘点清单列表";
@@ -107,9 +112,9 @@ namespace RFSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dtVDetail);
-            this.groupBox2.Location = new System.Drawing.Point(393, 12);
+            this.groupBox2.Location = new System.Drawing.Point(118, 366);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(678, 497);
+            this.groupBox2.Size = new System.Drawing.Size(948, 247);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "盘点清单详细";
@@ -129,13 +134,12 @@ namespace RFSystem
             this.dtVDetail.RowHeadersVisible = false;
             this.dtVDetail.RowTemplate.Height = 23;
             this.dtVDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtVDetail.Size = new System.Drawing.Size(672, 472);
+            this.dtVDetail.Size = new System.Drawing.Size(942, 222);
             this.dtVDetail.TabIndex = 3;
             // 
             // btDel
             // 
-            this.btDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDel.Location = new System.Drawing.Point(441, 515);
+            this.btDel.Location = new System.Drawing.Point(12, 58);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(100, 40);
             this.btDel.TabIndex = 9;
@@ -145,8 +149,7 @@ namespace RFSystem
             // 
             // btReflash
             // 
-            this.btReflash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btReflash.Location = new System.Drawing.Point(971, 561);
+            this.btReflash.Location = new System.Drawing.Point(12, 380);
             this.btReflash.Name = "btReflash";
             this.btReflash.Size = new System.Drawing.Size(100, 40);
             this.btReflash.TabIndex = 10;
@@ -156,8 +159,7 @@ namespace RFSystem
             // 
             // btnOperate
             // 
-            this.btnOperate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOperate.Location = new System.Drawing.Point(547, 515);
+            this.btnOperate.Location = new System.Drawing.Point(12, 12);
             this.btnOperate.Name = "btnOperate";
             this.btnOperate.Size = new System.Drawing.Size(100, 40);
             this.btnOperate.TabIndex = 11;
@@ -167,8 +169,7 @@ namespace RFSystem
             // 
             // btnTheoryAmount
             // 
-            this.btnTheoryAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTheoryAmount.Location = new System.Drawing.Point(653, 515);
+            this.btnTheoryAmount.Location = new System.Drawing.Point(12, 104);
             this.btnTheoryAmount.Name = "btnTheoryAmount";
             this.btnTheoryAmount.Size = new System.Drawing.Size(100, 40);
             this.btnTheoryAmount.TabIndex = 12;
@@ -178,8 +179,7 @@ namespace RFSystem
             // 
             // btnEntry
             // 
-            this.btnEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEntry.Location = new System.Drawing.Point(759, 515);
+            this.btnEntry.Location = new System.Drawing.Point(12, 150);
             this.btnEntry.Name = "btnEntry";
             this.btnEntry.Size = new System.Drawing.Size(100, 40);
             this.btnEntry.TabIndex = 13;
@@ -189,8 +189,7 @@ namespace RFSystem
             // 
             // btnCollate
             // 
-            this.btnCollate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCollate.Location = new System.Drawing.Point(865, 515);
+            this.btnCollate.Location = new System.Drawing.Point(12, 196);
             this.btnCollate.Name = "btnCollate";
             this.btnCollate.Size = new System.Drawing.Size(100, 40);
             this.btnCollate.TabIndex = 14;
@@ -200,8 +199,7 @@ namespace RFSystem
             // 
             // btnReport
             // 
-            this.btnReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReport.Location = new System.Drawing.Point(971, 515);
+            this.btnReport.Location = new System.Drawing.Point(12, 242);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(100, 40);
             this.btnReport.TabIndex = 15;
@@ -211,8 +209,7 @@ namespace RFSystem
             // 
             // dateTimePickerTableMakeDateTo
             // 
-            this.dateTimePickerTableMakeDateTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimePickerTableMakeDateTo.Location = new System.Drawing.Point(277, 566);
+            this.dateTimePickerTableMakeDateTo.Location = new System.Drawing.Point(309, 32);
             this.dateTimePickerTableMakeDateTo.Name = "dateTimePickerTableMakeDateTo";
             this.dateTimePickerTableMakeDateTo.Size = new System.Drawing.Size(140, 26);
             this.dateTimePickerTableMakeDateTo.TabIndex = 74;
@@ -220,8 +217,7 @@ namespace RFSystem
             // 
             // dateTimePickerTableMakeDateFrom
             // 
-            this.dateTimePickerTableMakeDateFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimePickerTableMakeDateFrom.Location = new System.Drawing.Point(97, 566);
+            this.dateTimePickerTableMakeDateFrom.Location = new System.Drawing.Point(129, 32);
             this.dateTimePickerTableMakeDateFrom.Name = "dateTimePickerTableMakeDateFrom";
             this.dateTimePickerTableMakeDateFrom.Size = new System.Drawing.Size(140, 26);
             this.dateTimePickerTableMakeDateFrom.TabIndex = 73;
@@ -229,9 +225,8 @@ namespace RFSystem
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(243, 571);
+            this.label10.Location = new System.Drawing.Point(275, 37);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 20);
             this.label10.TabIndex = 71;
@@ -239,9 +234,8 @@ namespace RFSystem
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 571);
+            this.label1.Location = new System.Drawing.Point(44, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 72;
@@ -249,8 +243,7 @@ namespace RFSystem
             // 
             // btn_query
             // 
-            this.btn_query.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_query.Location = new System.Drawing.Point(441, 561);
+            this.btn_query.Location = new System.Drawing.Point(455, 25);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(100, 40);
             this.btn_query.TabIndex = 75;
@@ -260,8 +253,7 @@ namespace RFSystem
             // 
             // btn_tohis
             // 
-            this.btn_tohis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_tohis.Location = new System.Drawing.Point(865, 561);
+            this.btn_tohis.Location = new System.Drawing.Point(12, 288);
             this.btn_tohis.Name = "btn_tohis";
             this.btn_tohis.Size = new System.Drawing.Size(100, 40);
             this.btn_tohis.TabIndex = 134;
@@ -271,26 +263,37 @@ namespace RFSystem
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(739, 561);
+            this.button1.Location = new System.Drawing.Point(12, 334);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 40);
+            this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 135;
-            this.button1.Text = "转移至历史库";
+            this.button1.Text = "移至历史库";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateFrom);
+            this.groupBox3.Controls.Add(this.btn_query);
+            this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateTo);
+            this.groupBox3.Location = new System.Drawing.Point(118, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(948, 80);
+            this.groupBox3.TabIndex = 136;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "查询条件";
+            // 
             // 盘点清单列表
             // 
-            this.ClientSize = new System.Drawing.Size(1083, 613);
+            this.ClientSize = new System.Drawing.Size(1078, 625);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_tohis);
-            this.Controls.Add(this.btn_query);
-            this.Controls.Add(this.dateTimePickerTableMakeDateTo);
-            this.Controls.Add(this.dateTimePickerTableMakeDateFrom);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnCollate);
             this.Controls.Add(this.btnEntry);
@@ -312,8 +315,9 @@ namespace RFSystem
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtVDetail)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -369,7 +373,7 @@ namespace RFSystem
         {
             if (dtVHead.SelectedRows.Count <= 0)
             {
-                MessageBox.Show("请选择要作废的单据号");
+                CommonFunction.Sys_MsgBox("请选择要作废的单据号");
             }
             else
             {
@@ -379,17 +383,17 @@ namespace RFSystem
 
                 if (str2.Trim() != ConstDefine.g_User.Trim())
                 {
-                    MessageBox.Show("只有创建该单号的用户才能作废该单据");
+                    CommonFunction.Sys_MsgBox("只有创建该单号的用户才能作废该单据");
                 }
                 else if (num > 0)
                 {
-                    MessageBox.Show("该单据的所处的状态不能被作废");
+                    CommonFunction.Sys_MsgBox("该单据的所处的状态不能被作废");
                 }
-                else if (DialogResult.No != MessageBox.Show("你确认要作废该单据么？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+                else if (CommonFunction.Sys_MsgYN("你确认要作废该单据么？"))
                 {
                     if (0 != DBOperate.CancelSTItem(sTSerial, str2, out m_ErrMsg))
                     {
-                        MessageBox.Show(m_ErrMsg);
+                        CommonFunction.Sys_MsgBox(m_ErrMsg);
                     }
                     else
                     {
@@ -424,7 +428,7 @@ namespace RFSystem
         {
             if (dtVHead.SelectedRows.Count <= 0)
             {
-                MessageBox.Show("请选择要操作的单据号");
+                CommonFunction.Sys_MsgBox("请选择要操作的单据号");
             }
             else
             {
@@ -438,7 +442,7 @@ namespace RFSystem
                 }
                 else
                 {
-                    MessageBox.Show("该盘点单已经不可操作，请确认");
+                    CommonFunction.Sys_MsgBox("该盘点单已经不可操作，请确认");
                 }
             }
         }
@@ -476,7 +480,7 @@ namespace RFSystem
 
                 if (!LoadDetail(sTSerial, out m_DetailDt))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                 }
                 else
                 {
@@ -499,7 +503,7 @@ namespace RFSystem
 
                 if (!LoadDetail(sTSerial, out m_DetailDt))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                 }
                 else
                 {
@@ -572,11 +576,11 @@ namespace RFSystem
         {
             if (0 != DBOperate.GetSTItem("", DateTime.Now, out m_HeadDt, out m_ErrMsg))
             {
-                MessageBox.Show(m_ErrMsg);
+                CommonFunction.Sys_MsgBox(m_ErrMsg);
             }
             else if (!CommonFunction.IfHasData(m_HeadDt))
             {
-                MessageBox.Show("没有检索到任何有效单据，请确认");
+                CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
                 SetButtonsEnable(false, false, false, false, false, false);
                 button1.Enabled = false;
             }
@@ -615,13 +619,13 @@ namespace RFSystem
 
                 if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;
                 }
 
                 if (!CommonFunction.IfHasData(m_HeadDt))
                 {
-                    MessageBox.Show("没有检索到任何有效单据，请确认");
+                    CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
                     SetButtonsEnable(false, false, false, false, false, false);
                     return;
                 }
@@ -635,7 +639,7 @@ namespace RFSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("操作失败，请稍后重试。失败原因：\r\n" + ex.Message, "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                CommonFunction.Sys_MsgBox("操作失败，请稍后重试。失败原因：\r\n" + ex.Message);
             }
             finally
             {
@@ -686,13 +690,13 @@ namespace RFSystem
 
                 if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;
                 }
 
                 if (!CommonFunction.IfHasData(m_HeadDt))
                 {
-                    MessageBox.Show("没有检索到任何有效单据，请确认");
+                    CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
                     SetButtonsEnable(false, false, false, false, false, false);
                     return;
                 }
@@ -742,7 +746,7 @@ namespace RFSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("真的删除此条盘点数据吗？","确认删除", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            if (!CommonFunction.Sys_MsgYN("真的删除此条盘点数据吗？"))
             {
                 return;
             }
@@ -755,7 +759,7 @@ namespace RFSystem
             {
                 if (0 != BL.ClsCommon.STItemToHis_s(dtVHead.SelectedRows[0].Cells["STSerial"].Value.ToString(), ConstDefine.g_User))
                 {
-                    MessageBox.Show("转移至历史库失败，请稍后重试", "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    CommonFunction.Sys_MsgBox("转移至历史库失败，请稍后重试");
                     ((Button)sender).Enabled = true;
                     return;
                 }
@@ -785,13 +789,13 @@ namespace RFSystem
 
                 if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
-                    MessageBox.Show(m_ErrMsg);
+                    CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;
                 }
 
                 if (!CommonFunction.IfHasData(m_HeadDt))
                 {
-                    MessageBox.Show("没有检索到任何有效单据，请确认");
+                    CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
                     SetButtonsEnable(false, false, false, false, false, false);
                     return;
                 }

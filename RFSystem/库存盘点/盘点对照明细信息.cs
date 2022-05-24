@@ -438,7 +438,6 @@ namespace RFSystem
             // 盘点对照明细信息
             // 
             this.ClientSize = new System.Drawing.Size(974, 661);
-            this.ControlBox = false;
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnMod);
             this.Controls.Add(this.dataGridViewSTOrigin);
@@ -518,9 +517,9 @@ namespace RFSystem
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("继续本操作将作废被选择条目，是否继续？", "作废", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (DBOperate.BlankOutSTOrigin(Convert.ToInt32(this.dataGridViewSTOrigin.SelectedRows[0].Cells["ColumnItemNo"].Value)) != -1))
+            if (CommonFunction.Sys_MsgYN("继续本操作将作废被选择条目，是否继续？") && (DBOperate.BlankOutSTOrigin(Convert.ToInt32(this.dataGridViewSTOrigin.SelectedRows[0].Cells["ColumnItemNo"].Value)) != -1))
             {
-                MessageBox.Show("条目信息作废成功");
+                CommonFunction.Sys_MsgBox("条目信息作废成功");
                 FlushDate();
             }
 

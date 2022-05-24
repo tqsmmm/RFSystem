@@ -670,7 +670,7 @@ namespace RFSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("操作失败，请稍后重试。失败原因：\r\n" + ex.Message, "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                CommonFunction.Sys_MsgBox("操作失败，请稍后重试。失败原因：\r\n" + ex.Message);
             }
             finally
             {
@@ -689,7 +689,7 @@ namespace RFSystem
             {
                 if (0 != BL.ClsCommon.MaintainItemToHis(dtpfrom.Value, dtpto.Value, ConstDefine.g_User))
                 {
-                    MessageBox.Show("转移至历史库失败，请稍后重试", "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    CommonFunction.Sys_MsgBox("转移至历史库失败，请稍后重试");
                     ((Button)sender).Enabled = true;
                     return;
                 }
@@ -699,7 +699,7 @@ namespace RFSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("操作失败，失败原因：\r\n" + ex.Message, "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                CommonFunction.Sys_MsgBox("操作失败，失败原因：\r\n" + ex.Message);
                 ((Button)sender).Enabled = true;
             }
             finally

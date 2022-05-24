@@ -1,7 +1,7 @@
 ﻿using BL;
+using RFSystem.CommonClass;
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace RFSystem
@@ -50,12 +50,12 @@ namespace RFSystem
             }
             catch
             {
-                MessageBox.Show("数字格式输入不正确，请确认");
+                CommonFunction.Sys_MsgBox("数字格式输入不正确，请确认");
                 return;
             }
             if (Convert.ToDecimal(textBoxBIN_NUM.Text.Trim()) < (Convert.ToDecimal(textBoxMAINTAINNUM.Text.Trim()) + Convert.ToDecimal(textBoxAddNum.Text.Trim())))
             {
-                MessageBox.Show("保养数量超过保养单中的计划数量，请确认");
+                CommonFunction.Sys_MsgBox("保养数量超过保养单中的计划数量，请确认");
             }
             else
             {
@@ -67,12 +67,12 @@ namespace RFSystem
 
                 if (DBOperate.MaintainDetailAddCount(alParams) == -1)
                 {
-                    MessageBox.Show("数据更新失败，请确认保养过程中保养单状态没有被改变且数据库联接正常");
+                    CommonFunction.Sys_MsgBox("数据更新失败，请确认保养过程中保养单状态没有被改变且数据库联接正常");
                     DialogResult = DialogResult.Cancel;
                 }
                 else
                 {
-                    MessageBox.Show("保养成功");
+                    CommonFunction.Sys_MsgBox("保养成功");
                     resultValue = Convert.ToDecimal(textBoxAddNum.Text);
                     DialogResult = DialogResult.OK;
                 }
@@ -264,6 +264,7 @@ namespace RFSystem
             this.Name = "新增保养数量";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增保养数量";
+            this.Load += new System.EventHandler(this.新增保养数量_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,6 +276,11 @@ namespace RFSystem
             {
                 return resultValue;
             }
+        }
+
+        private void 新增保养数量_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

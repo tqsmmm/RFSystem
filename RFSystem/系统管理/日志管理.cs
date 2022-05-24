@@ -94,25 +94,25 @@ namespace RFSystem
         {
             try
             {
-                if ((dataGridView1.SelectedRows.Count > 0) && (DialogResult.No != MessageBox.Show("你确认要删除该文件么？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)))
+                if ((dataGridView1.SelectedRows.Count > 0) && CommonFunction.Sys_MsgYN("你确认要删除该文件么？"))
                 {
                     string fileName = dataGridView1.SelectedRows[0].Cells["fileName"].Value.ToString();
                     MessagePack pack = Utility.getSerive().DelLog(fileName);
 
                     if (pack.Code != 0)
                     {
-                        MessageBox.Show(pack.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
                     }
                     else
                     {
                         dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
-                        MessageBox.Show("删除成功");
+                        CommonFunction.Sys_MsgBox("删除成功");
                     }
                 }
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
 
@@ -131,7 +131,7 @@ namespace RFSystem
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    CommonFunction.Sys_MsgBox(exception.Message);
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace RFSystem
 
                 if (pack.Code != 0)
                 {
-                    MessageBox.Show(pack.Message);
+                    CommonFunction.Sys_MsgBox(pack.Message);
                 }
                 else
                 {
@@ -157,7 +157,7 @@ namespace RFSystem
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
     }

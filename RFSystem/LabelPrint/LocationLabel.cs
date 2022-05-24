@@ -55,24 +55,24 @@ namespace RFSystem.LabelPrint
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (this.dataGridViewLocationList.SelectedRows != null)
+            if (dataGridViewLocationList.SelectedRows != null)
             {
-                if (CommonFunction.IfHasData(this.dtLocationList))
+                if (CommonFunction.IfHasData(dtLocationList))
                 {
-                    if ((MessageBox.Show("确认删除此条货位号么？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) && (PrintDBOperate.DelLocation((string)this.dataGridViewLocationList.SelectedRows[0].Cells["columnLocation"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条货位号么？") && (PrintDBOperate.DelLocation((string)dataGridViewLocationList.SelectedRows[0].Cells["columnLocation"].Value) != -1))
                     {
-                        MessageBox.Show("货位号删除成功");
-                        this.btnSelect.PerformClick();
+                        CommonFunction.Sys_MsgBox("货位号删除成功");
+                        btnSelect.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("没有检索到任何货位信息，无法进行删除操作", "检索无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CommonFunction.Sys_MsgBox("没有检索到任何货位信息，无法进行删除操作");
                 }
             }
             else
             {
-                MessageBox.Show("请选择一条货位信息", "选择无效", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CommonFunction.Sys_MsgBox("请选择一条货位信息");
             }
         }
 
@@ -382,25 +382,21 @@ namespace RFSystem.LabelPrint
 
         private void PrintLocationLabel()
         {
-            string s = "";
-            string loc = "";
             string copy = "1";
-            string xx = "2";
-            string xz = "12";
             TcpClient client = new TcpClient();
-            string hostname = this.dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(this.dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
             try
             {
                 client.Connect(hostname, port);
 
-                for (int i = 0; i < this.dataGridViewLocationList.RowCount; i++)
+                for (int i = 0; i < dataGridViewLocationList.RowCount; i++)
                 {
-                    loc = this.dataGridViewLocationList.Rows[i].Cells["columnLocation"].Value.ToString();
-                    xx = "5.5";
-                    xz = "13";
-                    s = this.dealPrintData(loc, xx, xz, copy);
+                    string loc = dataGridViewLocationList.Rows[i].Cells["columnLocation"].Value.ToString();
+                    string xx = "5.5";
+                    string xz = "13";
+                    string s = dealPrintData(loc, xx, xz, copy);
                     client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                     client.GetStream().Flush();
                 }
@@ -409,7 +405,7 @@ namespace RFSystem.LabelPrint
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                CommonFunction.Sys_MsgBox(exception.Message);
             }
         }
 
@@ -417,7 +413,7 @@ namespace RFSystem.LabelPrint
         {
             if (e.KeyCode == Keys.Enter)
             {
-                base.GetNextControl(base.ActiveControl, true).Focus();
+                GetNextControl(ActiveControl, true).Focus();
             }
         }
     }

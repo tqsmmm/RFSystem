@@ -40,7 +40,7 @@ namespace RFSystem
             }
             catch (Exception ee)
             {
-                MessageBox.Show(ee.Message);
+                CommonFunction.Sys_MsgBox(ee.Message);
                 return null;
             }
             finally

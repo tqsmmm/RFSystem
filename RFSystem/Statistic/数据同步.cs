@@ -521,43 +521,43 @@ namespace RFSystem.Statistic
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (this.dsResult.Tables.Count == 0)
+            if (dsResult.Tables.Count == 0)
             {
-                MessageBox.Show("请先检索数据");
+                CommonFunction.Sys_MsgBox("请先检索数据");
             }
-            else if (this.dsResult.Tables["Detail"].Rows.Count == 0)
+            else if (dsResult.Tables["Detail"].Rows.Count == 0)
             {
-                MessageBox.Show("更新数据为空不可更新");
+                CommonFunction.Sys_MsgBox("更新数据为空不可更新");
             }
             else
             {
                 string str;
                 bool flag;
 
-                if (this.radioButtonStoreMan.Checked)
+                if (radioButtonStoreMan.Checked)
                 {
-                    str = this.textBoxStoreMan.Text.Trim();
+                    str = textBoxStoreMan.Text.Trim();
                     flag = true;
                 }
                 else
                 {
-                    str = this.textBoxBin.Text.Trim();
+                    str = textBoxBin.Text.Trim();
                     flag = false;
                 }
 
-                if (DBOperate.UpdateStock(this.dsResult.Tables["Detail"], str, flag).Equals("-1"))
+                if (DBOperate.UpdateStock(dsResult.Tables["Detail"], str, flag).Equals("-1"))
                 {
-                    MessageBox.Show("更新失败");
+                    CommonFunction.Sys_MsgBox("更新失败");
                 }
                 else
                 {
-                    MessageBox.Show("数据同步成功");
-                    this.SetControlsState(true);
+                    CommonFunction.Sys_MsgBox("数据同步成功");
+                    SetControlsState(true);
                 }
             }
         }
@@ -664,7 +664,7 @@ namespace RFSystem.Statistic
         {
             if (this.textBoxStoreMan.Text.Trim() == "")
             {
-                MessageBox.Show("请输入正确管理员码");
+                CommonFunction.Sys_MsgBox("请输入正确管理员码");
                 return;
             }
             
@@ -676,7 +676,7 @@ namespace RFSystem.Statistic
                 {
                     if (this.textBoxStoreMan.Text.Trim() == "")
                     {
-                        MessageBox.Show("请输入正确管理员码");
+                        CommonFunction.Sys_MsgBox("请输入正确管理员码");
                     }
                     else
                     {
@@ -688,7 +688,7 @@ namespace RFSystem.Statistic
                             if (bGYInfo.Code != 0)
                             {
                                 Cursor.Current = Cursors.Default;
-                                MessageBox.Show(bGYInfo.Message);
+                                CommonFunction.Sys_MsgBox(bGYInfo.Message);
                                 return;
                             }
 
@@ -701,7 +701,7 @@ namespace RFSystem.Statistic
                         catch (Exception exception)
                         {
                             Cursor.Current = Cursors.Default;
-                            MessageBox.Show(exception.Message);
+                            CommonFunction.Sys_MsgBox(exception.Message);
                             return;
                         }
 
@@ -720,7 +720,7 @@ namespace RFSystem.Statistic
                         if (pack2.Code != 0)
                         {
                             Cursor.Current = Cursors.Default;
-                            MessageBox.Show(pack2.Message);
+                            CommonFunction.Sys_MsgBox(pack2.Message);
                             return;
                         }
 
@@ -730,7 +730,7 @@ namespace RFSystem.Statistic
                     catch
                     {
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show(pack2.Message);
+                        CommonFunction.Sys_MsgBox(pack2.Message);
                         return;
                     }
                     this.SetControlsState(false);
