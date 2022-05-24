@@ -5,8 +5,6 @@ using System.Threading;
 using BL;
 using System.Collections;
 using RFSystem.CommonClass;
-using Excel;
-using System.Reflection;
 
 namespace RFSystem.Statistic
 {
@@ -247,66 +245,66 @@ namespace RFSystem.Statistic
         {
             this.userItem = null;
             this.userRoles = null;
-            this.dtPlantList = null;
-            this.dtStoreLocusList = null;
-            this.thread = null;
+            dtPlantList = null;
+            dtStoreLocusList = null;
+            thread = null;
 
-            this.InitializeComponent();// InitializeComponent();
+            InitializeComponent();// InitializeComponent();
 
             this.userItem = userItem;
             this.userRoles = userRoles;
-            this.dtStore = new System.Data.DataTable();
+            dtStore = new DataTable();
 
             for (int i = 0; i < 30; i++)
             {
-                this.dtStore.Columns.Add(i.ToString());
+                dtStore.Columns.Add(i.ToString());
             }
 
-            this.textBoxStoreMan.Text = userItem.userID;
+            textBoxStoreMan.Text = userItem.userID;
 
             if (userItem.isAdmin)
             {
-                this.textBoxStoreMan.ReadOnly = false;
+                textBoxStoreMan.ReadOnly = false;
             }
 
-            this.dvStore = this.dtStore.DefaultView;
-            this.dtPlantList = DBOperate.GetPlantList(string.Empty);
-            this.dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
-            this.comboBoxSLocation.Items.Add("无");
-            this.comboBoxSLocation.SelectedIndex = 0;
-            this.comboBoxPlant.Items.Add("无");
+            dvStore = dtStore.DefaultView;
+            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
+            comboBoxSLocation.Items.Add("无");
+            comboBoxSLocation.SelectedIndex = 0;
+            comboBoxPlant.Items.Add("无");
 
-            if (CommonFunction.IfHasData(this.dtPlantList))
+            if (CommonFunction.IfHasData(dtPlantList))
             {
-                foreach (DataRow row in this.dtPlantList.Rows)
+                foreach (DataRow row in dtPlantList.Rows)
                 {
-                    this.comboBoxPlant.Items.Add(row["PlantID"].ToString());
+                    comboBoxPlant.Items.Add(row["PlantID"].ToString());
                 }
             }
 
-            this.comboBoxPlant.SelectedIndex = 0;
-            this.dataGridViewStockInfo.DataSource = this.dvStore;
+            comboBoxPlant.SelectedIndex = 0;
+            dataGridViewStockInfo.DataSource = dvStore;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            base.Close();
+            Close();
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            if (this.openFileDialog.ShowDialog() != DialogResult.Cancel)
+            if (openFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                this.thread = new Thread(new ThreadStart(this.ShowWaitingMsg));
-                this.thread.Start();
-                this.Refresh();
+                thread = new Thread(new ThreadStart(ShowWaitingMsg));
+                thread.Start();
+                Refresh();
             }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            this.thread = new Thread(new ThreadStart(this.btnSelectShowWaitingMsg));
-            this.thread.Start();
+            thread = new Thread(new ThreadStart(btnSelectShowWaitingMsg));
+            thread.Start();
         }
 
         private void btnSelectShowMsg(object o, EventArgs e)
@@ -316,28 +314,28 @@ namespace RFSystem.Statistic
                 Cursor.Current = Cursors.WaitCursor;
                 string str = " 1=1 ";
 
-                if (!string.IsNullOrEmpty(this.textBoxStoreMan.Text.Trim()))
+                if (!string.IsNullOrEmpty(textBoxStoreMan.Text.Trim()))
                 {
-                    str = str + " and 保管员='" + this.textBoxStoreMan.Text.Trim() + "'";
+                    str = str + " and 保管员='" + textBoxStoreMan.Text.Trim() + "'";
                 }
 
-                if (!this.comboBoxPlant.Text.Equals("无"))
+                if (!comboBoxPlant.Text.Equals("无"))
                 {
-                    str = str + " and 工厂='" + this.comboBoxPlant.Text.Trim() + "'";
+                    str = str + " and 工厂='" + comboBoxPlant.Text.Trim() + "'";
                 }
 
-                if (!this.comboBoxSLocation.Text.Equals("无"))
+                if (!comboBoxSLocation.Text.Equals("无"))
                 {
-                    str = str + " and 库存地='" + this.comboBoxSLocation.Text.Trim() + "'";
+                    str = str + " and 库存地='" + comboBoxSLocation.Text.Trim() + "'";
                 }
 
-                if (!string.IsNullOrEmpty(this.textBoxBin.Text.Trim()))
+                if (!string.IsNullOrEmpty(textBoxBin.Text.Trim()))
                 {
                     string str2 = str;
-                    str = str2 + " and (货位1='" + this.textBoxBin.Text.Trim() + "' or 货位2='" + this.textBoxBin.Text.Trim() + "' or 货位3='" + this.textBoxBin.Text.Trim() + "')";
+                    str = str2 + " and (货位1='" + textBoxBin.Text.Trim() + "' or 货位2='" + textBoxBin.Text.Trim() + "' or 货位3='" + textBoxBin.Text.Trim() + "')";
                 }
 
-                this.dvStore.RowFilter = str;
+                dvStore.RowFilter = str;
             }
             catch
             {
@@ -350,12 +348,12 @@ namespace RFSystem.Statistic
 
         private void btnSelectShowWaitingMsg()
         {
-            base.Invoke(new EventHandler(this.btnSelectShowMsg));
+            Invoke(new EventHandler(btnSelectShowMsg));
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (DBOperate.ExcelUpdateStock(this.dvStore.ToTable()).Equals("-1"))
+            if (DBOperate.ExcelUpdateStock(dvStore.ToTable()).Equals("-1"))
             {
                 CommonFunction.Sys_MsgBox("更新失败");
             }
@@ -367,110 +365,32 @@ namespace RFSystem.Statistic
 
         private void comboBoxPlant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.comboBoxSLocation.Items.Clear();
-            this.comboBoxSLocation.Items.Add("无");
+            comboBoxSLocation.Items.Clear();
+            comboBoxSLocation.Items.Add("无");
 
-            foreach (DataRow row in this.dtStoreLocusList.Select("PlantID='" + this.comboBoxPlant.Text + "'"))
+            foreach (DataRow row in dtStoreLocusList.Select("PlantID='" + comboBoxPlant.Text + "'"))
             {
-                this.comboBoxSLocation.Items.Add(row["StoreLocusID"].ToString());
+                comboBoxSLocation.Items.Add(row["StoreLocusID"].ToString());
             }
 
-            this.comboBoxSLocation.SelectedIndex = 0;
+            comboBoxSLocation.SelectedIndex = 0;
         }
 
         private void dataGridViewStockInfo_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewStockInfo.Rows != null) && (this.dataGridViewStockInfo.SelectedRows.Count != 0))
+            if ((dataGridViewStockInfo.Rows != null) && (dataGridViewStockInfo.SelectedRows.Count != 0))
             {
-                this.btnUpdate.Enabled = true;
+                btnUpdate.Enabled = true;
             }
             else
             {
-                this.btnUpdate.Enabled = false;
+                btnUpdate.Enabled = false;
             }
         }
 
         private void ShowMsg(object o, EventArgs e)
         {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                Excel.Application application = new Excel.Application();// ApplicationClass();
 
-                if (CommonFunction.IfHasData(this.dtStore))
-                {
-                    this.dtStore.Rows.Clear();
-                }
-
-                try
-                {
-                    int num;
-                    Range range;
-                    Worksheet worksheet = (Worksheet)application.Workbooks._Open(this.openFileDialog.FileName, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value).Sheets[1];
-
-                    for (num = 2; num < 0x20; num++)
-                    {
-                        range = (Range)worksheet.Cells[5, num];
-                        this.dtStore.Columns[num - 2].ColumnName = range.Value2.ToString();
-                    }
-
-                    this.dvStore.RowFilter = "1=2";
-
-                    for (num = 7; num < (worksheet.UsedRange.Rows.Count + 1); num++)
-                    {
-                        DataRow row = this.dtStore.NewRow();
-
-                        for (int i = 2; i < 0x20; i++)
-                        {
-                            range = (Range)worksheet.Cells[num, i];
-
-                            if (i == 0x11)
-                            {
-                                row[i - 2] = ExcelDateOperator.ConvertExcelDateToDate(range.Value2.ToString());
-                            }
-                            else
-                            {
-                                row[i - 2] = range.Value2;
-                            }
-                        }
-
-                        dtStore.Rows.Add(row);
-                    }
-                }
-                catch
-                {
-                    CommonFunction.Sys_MsgBox("文件读取失败，请确认文件格式是否正确");
-                }
-                finally
-                {
-                    application.Workbooks.Close();
-                }
-
-                if (CommonFunction.IfHasData(dtStore))
-                {
-                    btnSelect.Enabled = true;
-                    btnSelectShowMsg(null, null);
-                }
-                else
-                {
-                    btnSelect.Enabled = false;
-                    CommonFunction.Sys_MsgBox("当前文件数据为空");
-                    return;
-                }
-
-                if (dvStore.Count == 0)
-                {
-                    CommonFunction.Sys_MsgBox("当前数据为空，如果您确认文件中存在数据，那么造成数据为空的结果可能为您的筛选条件造成，比如没有当前用户的所属数据");
-                }
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                Cursor.Current = Cursors.Default;
-            }
         }
 
         private void ShowWaitingMsg()

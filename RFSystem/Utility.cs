@@ -1,51 +1,15 @@
-﻿using ICSharpCode.SharpZipLib.GZip;
-using RFSystem.AnSteel;
+﻿using RFSystem.AnSteel;
 using RFSystem.CommonClass;
 using System;
 using System.Collections;
-using System.Data;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using System.Xml;
 
 namespace RFSystem
 {
     public class Utility
     {
-        public static byte[] addDataSet(DataSet ds)
-        {
-            MemoryStream w = new MemoryStream();
-            XmlTextWriter writer = new XmlTextWriter(w, Encoding.UTF8);
-            ds.WriteXml(writer, XmlWriteMode.WriteSchema);
-            w.Seek(0L, SeekOrigin.Begin);
-            byte[] buffer = new byte[w.Length];
-            w.Read(buffer, 0, buffer.Length);
-            w.Close();
-
-            return addZip(buffer);
-        }
-
-        public static byte[] addZip(byte[] needAdd)
-        {
-            byte[] buffer;
-            MemoryStream baseOutputStream = new MemoryStream();
-
-            try
-            {
-                GZipOutputStream stream2 = new GZipOutputStream(baseOutputStream);
-                stream2.Write(needAdd, 0, needAdd.Length);
-                stream2.Finish();
-                stream2.Close();
-                buffer = baseOutputStream.ToArray();
-            }
-            finally
-            {
-                baseOutputStream.Close();
-            }
-
-            return buffer;
-        }
 
         public static int Binary_Search(FileStream stream, int stPos, int lineLen, string findVal, out long pos, out string findLine)
         {
@@ -135,70 +99,6 @@ namespace RFSystem
             catch
             {
                 return false;
-            }
-        }
-
-        public static byte[] DecodeValue(byte[] needDecode)
-        {
-            byte[] needExact = new byte[needDecode.Length];
-            int index = needDecode.Length - 1;
-
-            for (int i = 0; index >= 0; i++)
-            {
-                needExact[i] = needDecode[index];
-                index--;
-            }
-
-            return ExactZip(needExact);
-        }
-
-        public static byte[] EncodeValue(byte[] needEncode)
-        {
-            byte[] buffer = addZip(needEncode);
-            byte[] buffer2 = new byte[buffer.Length];
-            int index = buffer.Length - 1;
-
-            for (int i = 0; index >= 0; i++)
-            {
-                buffer2[i] = buffer[index];
-                index--;
-            }
-
-            return buffer2;
-        }
-
-        public static DataSet ExactDataSet(byte[] addDs)
-        {
-            byte[] buffer = ExactZip(addDs);
-            DataSet set = new DataSet();
-            MemoryStream input = new MemoryStream();
-            input.Write(buffer, 0, buffer.Length);
-            input.Seek(0L, SeekOrigin.Begin);
-            XmlTextReader reader = new XmlTextReader(input);
-            set.ReadXml(reader, XmlReadMode.Auto);
-            input.Close();
-
-            return set;
-        }
-
-        public static byte[] ExactZip(byte[] needExact)
-        {
-            MemoryStream baseInputStream = new MemoryStream(needExact);
-            MemoryStream stream2 = new MemoryStream();
-            GZipInputStream stream3 = new GZipInputStream(baseInputStream);
-            byte[] buffer = new byte[0x800];
-
-            while (true)
-            {
-                int count = stream3.Read(buffer, 0, buffer.Length);
-                if (count > 0)
-                {
-                    stream2.Write(buffer, 0, count);
-                }
-                else
-                {
-                    return stream2.ToArray();
-                }
             }
         }
 

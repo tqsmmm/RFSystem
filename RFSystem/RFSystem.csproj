@@ -64,11 +64,6 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="icsharpcode.sharpziplib, Version=0.5.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73" />
-    <Reference Include="Interop.Excel, Version=1.5.0.0, Culture=neutral" />
-    <Reference Include="Interop.Microsoft.Office.Core, Version=2.3.0.0, Culture=neutral" />
-    <Reference Include="Interop.VBIDE, Version=5.3.0.0, Culture=neutral" />
-    <Reference Include="office, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="RF_ControlLibrary, Version=1.0.3352.25009, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -532,17 +527,6 @@
     <None Include="Web References\rfid2021Service\rfidService.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dll\CrystalDecisions.CrystalReports.Engine.dll" />
-    <Content Include="dll\CrystalDecisions.ReportSource.dll" />
-    <Content Include="dll\CrystalDecisions.Shared.dll" />
-    <Content Include="dll\CrystalDecisions.Windows.Forms.dll" />
-    <Content Include="dll\icsharpcode.sharpziplib.dll" />
-    <Content Include="dll\Interop.Excel.dll" />
-    <Content Include="dll\Interop.Microsoft.Office.Core.dll" />
-    <Content Include="dll\Interop.VBIDE.dll" />
-    <Content Include="dll\librfc32.dll" />
-    <Content Include="dll\office.dll" />
-    <Content Include="dll\RF_ControlLibrary.dll" />
     <None Include="app.config" />
     <Compile Include="ClsCommon.cs" />
     <Compile Include="Maintain\MaintainReport\RptViewer.cs">
