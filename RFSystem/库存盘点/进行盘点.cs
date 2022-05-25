@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.ComponentModel;
 using System.Threading;
-using BL;
 using System.Data;
 using RFSystem.CommonClass;
 using RFSystem.AnSteel;

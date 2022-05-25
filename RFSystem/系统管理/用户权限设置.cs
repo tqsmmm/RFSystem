@@ -1,9 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using RFSystem.CommonClass;
-using BL;
 using System.Collections;
 
 namespace RFSystem

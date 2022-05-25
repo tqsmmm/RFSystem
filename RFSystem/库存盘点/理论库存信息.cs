@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data;
-using System.ComponentModel;
-using BL;
 using System.Collections;
 using RFSystem.CommonClass;
 

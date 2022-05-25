@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using BL;
 using System.Collections;
 using RFSystem.AnSteel;
 using RFSystem.CommonClass;

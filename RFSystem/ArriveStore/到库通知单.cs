@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using BL;
 using System.Text.RegularExpressions;
 using System.Collections;
 using RFSystem.CommonClass;

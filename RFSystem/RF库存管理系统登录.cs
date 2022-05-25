@@ -1,4 +1,3 @@
-using BL;
 using RFSystem.AnSteel;
 using RFSystem.CommonClass;
 using RFSystem.Properties;
@@ -78,7 +77,7 @@ namespace RFSystem
 
                 ConstDefine.g_DbConnStr = str2;
                 DBOperate.ConnStr = str2;
-                BL.ClsCommon.ConnStr = str2;
+                ClsCommon.ConnStr = str2;
                 PrintDBOperate.ConnStr = str2;
                 DialogResult = DialogResult.OK;
             }

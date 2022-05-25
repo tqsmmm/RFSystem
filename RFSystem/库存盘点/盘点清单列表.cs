@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using BL;
 using System.Collections;
 using RFSystem.CommonClass;
 
@@ -603,7 +601,7 @@ namespace RFSystem
             {
                 DataTable dt = new DataTable();
 
-                if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
+                if (0 != ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
                     CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;
@@ -643,7 +641,7 @@ namespace RFSystem
 
             try
             {
-                if (0 != BL.ClsCommon.STItemToHis(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, ConstDefine.g_User))
+                if (0 != ClsCommon.STItemToHis(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, ConstDefine.g_User))
                 {
                     //MessageBox.Show("转移至历史库失败，请稍后重试", "注意", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     ((Button)sender).Enabled = true;
@@ -674,7 +672,7 @@ namespace RFSystem
             {
                 DataTable dt = new DataTable();
 
-                if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
+                if (0 != ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
                     CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;
@@ -743,7 +741,7 @@ namespace RFSystem
 
             try
             {
-                if (0 != BL.ClsCommon.STItemToHis_s(dtVHead.SelectedRows[0].Cells["STSerial"].Value.ToString(), ConstDefine.g_User))
+                if (0 != ClsCommon.STItemToHis_s(dtVHead.SelectedRows[0].Cells["STSerial"].Value.ToString(), ConstDefine.g_User))
                 {
                     CommonFunction.Sys_MsgBox("转移至历史库失败，请稍后重试");
                     ((Button)sender).Enabled = true;
@@ -773,7 +771,7 @@ namespace RFSystem
             {
                 DataTable dt = new DataTable();
 
-                if (0 != BL.ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
+                if (0 != ClsCommon.GetSTItem_New(dateTimePickerTableMakeDateFrom.Value, dateTimePickerTableMakeDateTo.Value, out dt, out m_ErrMsg))
                 {
                     CommonFunction.Sys_MsgBox(m_ErrMsg);
                     return;

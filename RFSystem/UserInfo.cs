@@ -1,9 +1,15 @@
 ﻿using System.Data;
 
-namespace BL
+namespace RFSystem
 {
-    public class User
+    public class UserInfo
     {
+        public bool isAdmin;
+        public bool isEffect;
+        public string passWord;
+        public string userID;
+        public string userName;
+
         public static UserInfo GetUserByLogin(UserInfo userItem, out bool ifExist, out DataTable dtUserRoles)
         {
             DataSet userByLogin = DBOperate.GetUserByLogin(userItem);

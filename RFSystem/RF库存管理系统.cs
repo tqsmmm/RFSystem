@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using BL;
 using RFSystem.Statistic;
 using RFSystem.LabelPrint;
 using RFSystem.SystemConfig;

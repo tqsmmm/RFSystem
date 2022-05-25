@@ -2,7 +2,6 @@
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using BL;
 using RFSystem.Properties;
 using RFSystem.CommonClass;
 using System.Net.Sockets;

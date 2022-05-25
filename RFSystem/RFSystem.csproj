@@ -104,6 +104,7 @@
     <Compile Include="CommonClass\Printer.cs" />
     <Compile Include="CommonClass\RFdesOperator.cs" />
     <Compile Include="CommonClass\RoleInit.cs" />
+    <Compile Include="DBOperate.cs" />
     <Compile Include="GetData.cs" />
     <Compile Include="LabelPrint\ContractorLabel.cs">
       <SubType>Form</SubType>
@@ -123,6 +124,12 @@
     <Compile Include="LabelPrint\库位查询.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PrintDBOperate.cs" />
+    <Compile Include="SqlManager.cs" />
+    <Compile Include="TDB.cs" />
+    <Compile Include="TDBObject.cs" />
+    <Compile Include="TLogError.cs" />
+    <Compile Include="UserInfo.cs" />
     <Compile Include="库存保养\保养单列表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,6 +375,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -532,12 +542,6 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{7871EBAC-D2A5-4475-B57B-ACF284D0C964}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

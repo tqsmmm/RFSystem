@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using BL;
 using System.Collections;
 using RFSystem.CommonClass;
 
@@ -582,7 +580,7 @@ namespace RFSystem
 
             arriveList.Add(checkBoxComplete.Checked ? "1" : string.Empty);
             //this.dataGridViewMaintainInfo.DataSource = DBOperate.MaintainGetList(arriveList);
-            dataGridViewMaintainInfo.DataSource = BL.ClsCommon.MaintainGetList_New(arriveList);
+            dataGridViewMaintainInfo.DataSource = ClsCommon.MaintainGetList_New(arriveList);
         }
 
         private void checkBoxTableMakeDate_CheckedChanged(object sender, EventArgs e)
@@ -661,7 +659,7 @@ namespace RFSystem
                 arriveList.Add(dtpfrom.Value.Date.ToString());
                 arriveList.Add(dtpto.Value.Date.ToString());
                 arriveList.Add("");
-                dataGridViewMaintainInfo.DataSource = BL.ClsCommon.MaintainGetList_New(arriveList);
+                dataGridViewMaintainInfo.DataSource = ClsCommon.MaintainGetList_New(arriveList);
 
                 if (dataGridViewMaintainInfo.Rows.Count > 0)
                 {
@@ -687,7 +685,7 @@ namespace RFSystem
 
             try
             {
-                if (0 != BL.ClsCommon.MaintainItemToHis(dtpfrom.Value, dtpto.Value, ConstDefine.g_User))
+                if (0 != ClsCommon.MaintainItemToHis(dtpfrom.Value, dtpto.Value, ConstDefine.g_User))
                 {
                     CommonFunction.Sys_MsgBox("转移至历史库失败，请稍后重试");
                     ((Button)sender).Enabled = true;

@@ -2,7 +2,7 @@
 using System.Data.OleDb;
 using System.IO;
 
-namespace BL
+namespace RFSystem
 {
     public class TLogError
     {

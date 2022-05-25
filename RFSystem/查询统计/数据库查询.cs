@@ -4,7 +4,6 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using RFSystem.Properties;
-using BL;
 using System.Threading;
 using RFSystem.CommonClass;
 using System.Collections;
@@ -949,7 +948,7 @@ namespace RFSystem
                 alParams.Add(textBoxStoreMan.Text.Trim());
                 //this.dtResult = DBOperate.LocalStockGetList_New(alParams);
 
-                dtResult = BL.ClsCommon.LocalStockGetList(alParams);
+                dtResult = ClsCommon.LocalStockGetList(alParams);
 
                 if (CommonFunction.IfHasData(dtResult))
                 {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Data;
 using System.Data.OleDb;
 
-namespace BL
+namespace RFSystem
 {
     public class DBOperate
     {
@@ -29,20 +29,6 @@ namespace BL
             param = param.Remove(param.Length - 1);
 
             return db.ExecProcedure("RF_ArriveStoreExceptionInfo_Add", param);
-        }
-
-        public static int AddBill(ArrayList billInfo)
-        {
-            string param = "";
-
-            foreach (object obj2 in billInfo)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_ArriveStoreInfo_Add", param);
         }
 
         public static int AddCompare(decimal stSerial)
@@ -106,20 +92,6 @@ namespace BL
             param = param.Remove(param.Length - 1);
 
             return db.ExecProcedure("RF_StorageExceptionInfo_Add", param);
-        }
-
-        public static int AddStorageInfo(ArrayList storageInfo)
-        {
-            string param = "";
-
-            foreach (object obj2 in storageInfo)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_StorageInfo_Add", param);
         }
 
         public static int AddStoreLocus(string storeLocusID, string plantID, string storeLocusDescription)
@@ -417,15 +389,6 @@ namespace BL
             return db.ExecProcedure("RF_ArriveStoreInfo_Del", param);
         }
 
-        public static int DelPeople(string ID)
-        {
-            string param = $"{TDBObject.ToDBVal(ID)}";
-
-            db.ExecProcedure("DelInfo", param);
-
-            return 0;
-        }
-
         public static int DelPlant(string plantID)
         {
             string param = TDBObject.ToDBVal(plantID);
@@ -538,29 +501,11 @@ namespace BL
             return dt;
         }
 
-        public static DataTable GetInfo()
-        {
-            string param = "";
-
-            db.OpenProcedure("GetInfo", param, out DataTable dt);
-
-            return dt;
-        }
-
         public static DataTable GetMRoles()
         {
             string param = "";
 
             db.OpenProcedure("RF_M_Roles_Get", param, out DataTable dt);
-
-            return dt;
-        }
-
-        public static DataTable GetNewIDArriveStoreInfoMerge(string arriveListID1, string arriveListID2)
-        {
-            string param = $"{TDBObject.ToDBVal(arriveListID1)}, {TDBObject.ToDBVal(arriveListID2)}";
-
-            db.OpenProcedure("RF_ArriveStoreInfoMerge_GetNewID", param, out DataTable dt);
 
             return dt;
         }
@@ -862,22 +807,6 @@ namespace BL
             return 0;
         }
 
-        public static DataTable LocalStockGetList(ArrayList alParams)
-        {
-            string param = "";
-
-            foreach (object obj2 in alParams)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            db.OpenProcedure("RF_LocalStock_GetList", param, out DataTable dt);
-
-            return dt;
-        }
-
         public static int MaintainDetailAddCount(ArrayList alParams)
         {
             string param = "";
@@ -912,21 +841,6 @@ namespace BL
 
             param = param.Remove(param.Length - 1);
             db.OpenProcedure("RF_Maintain_SelectMaster", param, out DataTable dt);
-
-            return dt;
-        }
-
-        public static DataTable MaintainGetList(ArrayList arriveList)
-        {
-            string param = "";
-
-            foreach (object obj2 in arriveList)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-            db.OpenProcedure("RF_Maintain_GetList", param, out DataTable dt);
 
             return dt;
         }
@@ -1068,20 +982,6 @@ namespace BL
             }
         }
 
-        public static int MergeBill(ArrayList billInfo)
-        {
-            string param = "";
-
-            foreach (object obj2 in billInfo)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_ArriveStoreInfo_Merge", param);
-        }
-
         public static int ModArriveStoreDeal(ArrayList dealInfo)
         {
             string param = "";
@@ -1094,20 +994,6 @@ namespace BL
             param = param.Remove(param.Length - 1);
 
             return db.ExecProcedure("RF_ArriveStoreDeal_Mod", param);
-        }
-
-        public static int ModBill(ArrayList billInfo)
-        {
-            string param = "";
-
-            foreach (object obj2 in billInfo)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_ArriveStoreInfo_Mod", param);
         }
 
         public static int ModPlant(string plantID, string plantDescription)
@@ -1246,76 +1132,6 @@ namespace BL
             return dt;
         }
 
-        public static int SetStartST(string STSerial, out string ErrMsg)
-        {
-            ErrMsg = "";
-            DataTable dt = new DataTable();
-
-            if (0 != db.OpenDataSet("select * from STOrder where STSerial=" + STSerial + " and STStatus =0", out dt))
-            {
-                ErrMsg = "获取盘点单号状态失败";
-                return -1;
-            }
-
-            if (dt.Rows.Count <= 0)
-            {
-                ErrMsg = "该单据所处的状态不能够被开始，请刷新查询";
-                return -1;
-            }
-
-            if (0 != db.OpenDataSet("select count(*) from SapStockInfo where STSerial=" + STSerial, out dt))
-            {
-                ErrMsg = "获取盘点单号状态失败";
-                return -1;
-            }
-
-            if (Convert.ToInt32(dt.Rows[0][0].ToString()) <= 0)
-            {
-                ErrMsg = "该单据的库存信息还没有下载完成,不能够做开始盘点操作";
-                return -1;
-            }
-
-            switch (db.ExecSQL("update STOrder set STStatus=1 where STSerial=" + STSerial + " and STStatus=0"))
-            {
-                case -1:
-                    ErrMsg = "开始盘点单据时出现错误";
-                    return -1;
-
-                case 0:
-                    ErrMsg = "该单据所处的状态不能够被开始，请刷新查询";
-                    return -1;
-            }
-
-            return 0;
-        }
-
-        public static int SplitAddStorage(ArrayList ArriveListID, ArrayList StorePosition, ArrayList Amount, ArrayList Remark)
-        {
-            db.BeginTrans();
-
-            try
-            {
-                for (int i = 0; i < ArriveListID.Count; i++)
-                {
-                    OleDbParameter[] arParams = new OleDbParameter[] { new OleDbParameter("ArriveListID", (string)ArriveListID[i]) };
-                    db.Excute(SqlManager.ARRIVESTORE_SPLIT_ADDZERO, arParams, 0);
-                    OleDbParameter[] parameterArray2 = new OleDbParameter[] { new OleDbParameter("ArriveListID", (string)ArriveListID[i]), new OleDbParameter("StorePosition", (string)StorePosition[i]), new OleDbParameter("Amount", Amount[i].ToString()), new OleDbParameter("Remark", (string)Remark[i]), new OleDbParameter("ArriveListID", (string)ArriveListID[i]) };
-                    db.Excute(SqlManager.ARRIVESTORE_SPLIT, parameterArray2, 0);
-                    OleDbParameter[] parameterArray3 = new OleDbParameter[] { new OleDbParameter("ArriveListID", (string)ArriveListID[i]) };
-                    db.Excute(SqlManager.ARRIVESTORE_SPLIT_DELZERO, parameterArray3, 0);
-                }
-
-                db.Commit();
-
-                return 0;
-            }
-            catch
-            {
-                db.RollBack();
-                return -1;
-            }
-        }
-
         public static string SplitArriveStore(string arriveID, ArrayList billInfo, DataTable storageInfoListF, DataTable storageInfoListS)
         {
             db.BeginTrans();
@@ -1377,29 +1193,6 @@ namespace BL
 
                 return "-1";
             }
-        }
-
-        public static int SplitBill(ArrayList billInfo)
-        {
-            string param = "";
-
-            foreach (object obj2 in billInfo)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_ArriveStoreInfo_Split", param);
-        }
-
-        public static DataSet StatisticInfo(string storeMan, string operatorDateFrom, string operatorDateTo)
-        {
-            string param = $"{TDBObject.ToDBVal(storeMan)}, {TDBObject.ToDBVal(operatorDateFrom)}, {TDBObject.ToDBVal(operatorDateTo)}";
-
-            db.OpenProcedure("RF_Statistic_GetList", param, out DataSet ds);
-
-            return ds;
         }
 
         public static int STOrderChangeState(int STSerial, int STStatus)
@@ -1474,46 +1267,10 @@ namespace BL
                     }
                 }
 
-                /*
-                foreach (DataRow row in stockInfoList.Rows)
-                {
-
-                   
-                    /*
-                    parameterArray = new OleDbParameter[] { 
-                        new OleDbParameter("gch", (string) row["Werks"]),
-                        new OleDbParameter("product_barcode", ((string) row["Werks"]) + ((string) row["Charg"]) + ((string) row["Matnr"])),
-                        new OleDbParameter("product_no", (string) row["Matnr"]),
-                        new OleDbParameter("patch", (string) row["Charg"]),
-                        new OleDbParameter("SL", (string) row["Lgort"]),
-                        new OleDbParameter("product_desc", row["Maktx"]),
-                        new OleDbParameter("unit", (string) row["Meins"]),
-                        new OleDbParameter("bin1", (string) row["Bct50"]),
-                        new OleDbParameter("bin1_qty", Convert.ToDecimal(row["Bct51"])),
-                        new OleDbParameter("bin2", (string) row["Bct60"]),
-                        new OleDbParameter("bin2_qty", Convert.ToDecimal(row["Bct61"])),
-                        new OleDbParameter("bin3", (string) row["Bct70"]),
-                        new OleDbParameter("bin3_qty", Convert.ToDecimal(row["Bct71"])),
-                        new OleDbParameter("storeman", (string) row["Bct10"]),
-                        new OleDbParameter("ejc", (string) row["Bct20"]),
-                        new OleDbParameter("order_no", (string) row["Ebeln"]), 
-                        new OleDbParameter("supplier", (string) row["Name1"]),
-                        new OleDbParameter("weight", Convert.ToDecimal(row["Ntgew"])),
-                        new OleDbParameter("amount", Convert.ToDecimal(row["Verpr"])),
-                        new OleDbParameter("stock_qty", Convert.ToDecimal(row["Menge"]))
-                     };
-                    
-                    
-                    db.Excute(SqlManager.STATISTIC_INSERT, parameterArray, 0);
-                    
-                }
-                db.Commit();
-                 */
                 return "0";
             }
             catch
             {
-                //db.RollBack();
                 return "-1";
             }
         }

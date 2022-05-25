@@ -1,9 +1,7 @@
-﻿using DL;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Data;
 
-namespace BL
+namespace RFSystem
 {
     public class PrintDBOperate
     {
@@ -33,36 +31,20 @@ namespace BL
 
         public static DataTable GetContractorList(string conNo)
         {
-            DataTable dt = null;
-            string param = "";
-            param = param + TDBObject.ToDBVal(conNo);
-            db.OpenProcedure("RF_Contractor_GetList", param, out dt);
+            string param = TDBObject.ToDBVal(conNo);
+
+            db.OpenProcedure("RF_Contractor_GetList", param, out DataTable dt);
 
             return dt;
         }
 
         public static DataTable GetLocationList(string locNo)
         {
-            DataTable dt = null;
-            string param = "";
-            param = param + TDBObject.ToDBVal(locNo);
-            db.OpenProcedure("RF_Location_GetList", param, out dt);
+            string param = TDBObject.ToDBVal(locNo);
+
+            db.OpenProcedure("RF_Location_GetList", param, out DataTable dt);
 
             return dt;
-        }
-
-        public static int ModLocation(ArrayList locItem)
-        {
-            string param = "";
-
-            foreach (object obj2 in locItem)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-
-            return db.ExecProcedure("RF_Location_Mod", param);
         }
 
         public static string ConnStr

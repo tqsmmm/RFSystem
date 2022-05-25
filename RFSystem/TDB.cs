@@ -3,7 +3,7 @@ using System.Collections;
 using System.Data;
 using System.Data.OleDb;
 
-namespace BL
+namespace RFSystem
 {
     public class TDB
     {
@@ -19,14 +19,6 @@ namespace BL
             conn = null;
             m_lock = new object();
             connectionstring = ConnStr;
-        }
-
-        public TDB(string name, string password, string catalog, string serverip)
-        {
-            sqlType = ESQL_TYPE.NonQuery;
-            conn = null;
-            m_lock = new object();
-            connectionstring = "Provider=SQLOLEDB.1;User ID=" + name + ";Password=" + password + ";Initial Catalog=" + catalog + ";Data Source=" + serverip + ";Persist Security Info=False;Auto Translate=True;Packet Size=4096;";
         }
 
         public void BeginTrans()
@@ -408,18 +400,6 @@ namespace BL
                 {
                     conn.Close();
                 }
-            }
-        }
-
-        public ESQL_TYPE SqlType
-        {
-            get
-            {
-                return sqlType;
-            }
-            set
-            {
-                sqlType = value;
             }
         }
 

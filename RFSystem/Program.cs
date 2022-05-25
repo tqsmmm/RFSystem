@@ -1,5 +1,4 @@
-﻿using BL;
-using RFSystem.CommonClass;
+﻿using RFSystem.CommonClass;
 using System;
 using System.Collections;
 using System.Data;
@@ -22,7 +21,7 @@ namespace RFSystem
                 userItem.userID = ConstDefine.g_User;
                 string input = ConstDefine.g_PassWord;
                 userItem.passWord = RFdesOperator.getMd5Hash(input);
-                userItem = User.GetUserByLogin(userItem, out bool flag, out DataTable table);
+                userItem = UserInfo.GetUserByLogin(userItem, out bool flag, out DataTable table);
 
                 ArrayList userRoles = new ArrayList();
 

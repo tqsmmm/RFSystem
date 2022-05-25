@@ -1,4 +1,4 @@
-﻿namespace BL
+﻿namespace RFSystem
 {
     internal class SqlManager
     {

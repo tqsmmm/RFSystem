@@ -1,9 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using System.Threading;
-using BL;
 using System.Collections;
 using RFSystem.CommonClass;
 
@@ -2598,7 +2596,7 @@ namespace RFSystem.Statistic
                 Cursor.Current = Cursors.WaitCursor;
                 bool flag = this.checkBoxEnableDate.Checked;
                 //this.dsStatistic = DBOperate.StatisticInfo(this.textBoxStoreMan.Text, flag ? this.dateTimePickerDateFrom.Value.ToShortDateString() : string.Empty, flag ? this.dateTimePickerDateTo.Value.ToShortDateString() : string.Empty);
-                this.dsStatistic = BL.ClsCommon.StatisticInfo_New(this.textBoxStoreMan.Text, flag ? this.dateTimePickerDateFrom.Value.ToShortDateString() : string.Empty, flag ? this.dateTimePickerDateTo.Value.ToShortDateString() : string.Empty);
+                this.dsStatistic = ClsCommon.StatisticInfo_New(this.textBoxStoreMan.Text, flag ? this.dateTimePickerDateFrom.Value.ToShortDateString() : string.Empty, flag ? this.dateTimePickerDateTo.Value.ToShortDateString() : string.Empty);
 
                 if (this.dsStatistic.Tables.Count != 0)
                 {

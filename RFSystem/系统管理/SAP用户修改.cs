@@ -1,5 +1,4 @@
-﻿using BL;
-using RFSystem.CommonClass;
+﻿using RFSystem.CommonClass;
 using System;
 using System.Windows.Forms;
 

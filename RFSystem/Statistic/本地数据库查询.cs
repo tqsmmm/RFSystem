@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using RFSystem.Properties;
-using BL;
 using System.Threading;
 using RFSystem.CommonClass;
 using System.Collections;
@@ -1090,7 +1088,7 @@ namespace RFSystem.Statistic
                 alParams.Add(this.textBoxSupplier.Text.Trim());
                 alParams.Add(this.textBoxStoreMan.Text.Trim());
                 //this.dtResult = DBOperate.LocalStockGetList_New(alParams);
-                this.dtResult = BL.ClsCommon.LocalStockGetList_New(alParams);
+                this.dtResult = ClsCommon.LocalStockGetList_New(alParams);
 
                 if (CommonFunction.IfHasData(this.dtResult))
                 {

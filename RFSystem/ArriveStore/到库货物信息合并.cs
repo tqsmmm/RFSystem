@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using BL;
 using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
@@ -982,15 +978,18 @@ namespace RFSystem.ArriveStore
             }
             if (num.ToString().Equals(this.textBoxAcceptAmount.Text))
             {
-                ArrayList billInfo = new ArrayList();
-                billInfo.Add(this.labelArriveListID.Text);
-                billInfo.Add(this.comboBoxArriveListID2.SelectedItem.ToString());
+                ArrayList billInfo = new ArrayList
+                {
+                    this.labelArriveListID.Text,
+                    this.comboBoxArriveListID2.SelectedItem.ToString()
+                };
                 Control textBoxBargainID = this.textBoxBargainID;
+
                 for (int i = 0; i < 0x18; i++)
                 {
-                    if (!(!(textBoxBargainID is ComboBox) || textBoxBargainID.Name.Equals("comboBoxQuantityUnits")))
+                    if (!(!(textBoxBargainID is ComboBox box) || textBoxBargainID.Name.Equals("comboBoxQuantityUnits")))
                     {
-                        billInfo.Add(((ComboBox)textBoxBargainID).SelectedIndex + 1);
+                        billInfo.Add(box.SelectedIndex + 1);
                     }
                     else
                     {
@@ -1059,38 +1058,42 @@ namespace RFSystem.ArriveStore
 
         private void comboBoxArriveListID2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!this.comboBoxArriveListID2.SelectedItem.ToString().Equals(string.Empty))
+            if (!comboBoxArriveListID2.SelectedItem.ToString().Equals(string.Empty))
             {
-                ArrayList goodsInfo = new ArrayList();
-                goodsInfo.Add(this.comboBoxArriveListID2.SelectedItem.ToString());
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(-1);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
-                goodsInfo.Add(string.Empty);
+                ArrayList goodsInfo = new ArrayList
+                {
+                    comboBoxArriveListID2.SelectedItem.ToString(),
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    -1,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty
+                };
+
                 DataRow row = DBOperate.SelectArriveStoreInfo(goodsInfo).Rows[0];
-                this.arriveListInfo2.Clear();
+                arriveListInfo2.Clear();
+
                 for (int i = 0; i < 0x19; i++)
                 {
-                    this.arriveListInfo2.Add(row[i]);
+                    arriveListInfo2.Add(row[i]);
                 }
-                this.btnMerge.Enabled = true;
+                btnMerge.Enabled = true;
             }
         }
 
         private void dataGridViewStorageInfo_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewStorageInfo.Rows != null) && (this.dataGridViewStorageInfo.SelectedRows.Count != 0))
+            if ((dataGridViewStorageInfo.Rows != null) && (dataGridViewStorageInfo.SelectedRows.Count != 0))
             {
-                this.btnDel.Enabled = true;
+                btnDel.Enabled = true;
             }
             else
             {
-                this.btnDel.Enabled = false;
+                btnDel.Enabled = false;
             }
         }
 
@@ -1131,9 +1134,9 @@ namespace RFSystem.ArriveStore
             Control textBoxBargainID = this.textBoxBargainID;
             for (int i = 0; i < 0x18; i++)
             {
-                if (!(!(textBoxBargainID is ComboBox) || textBoxBargainID.Name.Equals("comboBoxQuantityUnits")))
+                if (!(!(textBoxBargainID is ComboBox box) || textBoxBargainID.Name.Equals("comboBoxQuantityUnits")))
                 {
-                    ((ComboBox)textBoxBargainID).SelectedIndex = Convert.ToInt32(arriveListInfo[i + 1]) - 1;
+                    box.SelectedIndex = Convert.ToInt32(arriveListInfo[i + 1]) - 1;
                 }
                 else
                 {

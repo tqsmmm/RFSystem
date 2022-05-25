@@ -1,7 +1,5 @@
-﻿using BL;
-using RFSystem.CommonClass;
+﻿using RFSystem.CommonClass;
 using System;
-using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 

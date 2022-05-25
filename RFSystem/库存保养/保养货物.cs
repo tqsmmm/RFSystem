@@ -421,7 +421,7 @@ namespace RFSystem
 
             //this.dtMaintainList = DBOperate.MaintainGetList(arriveList);
             //2015-09-09
-            dtMaintainList = BL.ClsCommon.MaintainGetList_New(arriveList);
+            dtMaintainList = ClsCommon.MaintainGetList_New(arriveList);
             dvMaintainList = dtMaintainList.DefaultView;
             dataGridViewMaintainInfo.DataSource = dvMaintainList;
         }

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using RFSystem.CommonClass;
-using BL;
 using RFSystem.Properties;
 using System.Net.Sockets;
 
@@ -36,11 +34,11 @@ namespace RFSystem.LabelPrint
         // Methods
         public LocationLabel()
         {
-            this.dtLocationList = null;
-            this.dtPrinterList = null;
-            this.InitializeComponent();
-            this.dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dtLocationList = null;
+            dtPrinterList = null;
+            InitializeComponent();
+            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,7 +46,7 @@ namespace RFSystem.LabelPrint
             LocationAdd add = new LocationAdd();
             if (add.ShowDialog() == DialogResult.OK)
             {
-                this.btnSelect.PerformClick();
+                btnSelect.PerformClick();
             }
         }
 
@@ -106,27 +104,27 @@ namespace RFSystem.LabelPrint
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            dtLocationList = PrintDBOperate.GetLocationList(this.txtLocation.Text.Trim());
-            dataGridViewLocationList.DataSource = this.dtLocationList;
+            dtLocationList = PrintDBOperate.GetLocationList(txtLocation.Text.Trim());
+            dataGridViewLocationList.DataSource = dtLocationList;
         }
 
         private void btnSelectPrinter_Click(object sender, EventArgs e)
         {
-            this.dtPrinterList = DBOperate.GetPrinterList("%" + this.txtPrinter.Text + "%", "%");
-            this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void dataGridViewLocationList_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.dataGridViewLocationList.Rows != null) && (this.dataGridViewLocationList.SelectedRows.Count != 0))
+            if ((dataGridViewLocationList.Rows != null) && (dataGridViewLocationList.SelectedRows.Count != 0))
             {
-                this.btnPrint.Enabled = true;
-                this.btnDel.Enabled = true;
+                btnPrint.Enabled = true;
+                btnDel.Enabled = true;
             }
             else
             {
-                this.btnPrint.Enabled = false;
-                this.btnDel.Enabled = false;
+                btnPrint.Enabled = false;
+                btnDel.Enabled = false;
             }
         }
 
