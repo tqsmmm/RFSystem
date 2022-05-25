@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace RFSystem.SystemConfig
 {
-    public class 打印机列表 : Form
+    public class 打印机信息列表 : Form
     {
         // Fields
         private Button btnAdd;
@@ -20,7 +20,6 @@ namespace RFSystem.SystemConfig
         private DataGridViewTextBoxColumn columnPrinterSocket;
         private DataGridView dataGridViewPrinterList;
         private DataTable dtPrinterList;
-        private GroupBox groupBox2;
         private Label label8;
         private Label label9;
         private TextBox textBoxPrinterAddress;
@@ -28,7 +27,6 @@ namespace RFSystem.SystemConfig
 
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSelect = new System.Windows.Forms.Button();
             this.textBoxPrinterAddress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -41,32 +39,14 @@ namespace RFSystem.SystemConfig
             this.btnDel = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnSelect);
-            this.groupBox2.Controls.Add(this.textBoxPrinterAddress);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBoxPrinterName);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(825, 75);
-            this.groupBox2.TabIndex = 36;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "打印机列表";
-            // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(719, 25);
+            this.btnSelect.Location = new System.Drawing.Point(12, 284);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(100, 40);
+            this.btnSelect.Size = new System.Drawing.Size(120, 50);
             this.btnSelect.TabIndex = 30;
             this.btnSelect.Text = "查询";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -74,16 +54,16 @@ namespace RFSystem.SystemConfig
             // 
             // textBoxPrinterAddress
             // 
-            this.textBoxPrinterAddress.Location = new System.Drawing.Point(360, 32);
+            this.textBoxPrinterAddress.Location = new System.Drawing.Point(12, 252);
             this.textBoxPrinterAddress.Name = "textBoxPrinterAddress";
-            this.textBoxPrinterAddress.Size = new System.Drawing.Size(150, 26);
+            this.textBoxPrinterAddress.Size = new System.Drawing.Size(120, 26);
             this.textBoxPrinterAddress.TabIndex = 20;
             this.textBoxPrinterAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(261, 35);
+            this.label8.Location = new System.Drawing.Point(12, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 20);
             this.label8.TabIndex = 35;
@@ -91,16 +71,16 @@ namespace RFSystem.SystemConfig
             // 
             // textBoxPrinterName
             // 
-            this.textBoxPrinterName.Location = new System.Drawing.Point(105, 32);
+            this.textBoxPrinterName.Location = new System.Drawing.Point(12, 200);
             this.textBoxPrinterName.Name = "textBoxPrinterName";
-            this.textBoxPrinterName.Size = new System.Drawing.Size(150, 26);
+            this.textBoxPrinterName.Size = new System.Drawing.Size(120, 26);
             this.textBoxPrinterName.TabIndex = 10;
             this.textBoxPrinterName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 35);
+            this.label9.Location = new System.Drawing.Point(12, 177);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 20);
             this.label9.TabIndex = 33;
@@ -119,14 +99,14 @@ namespace RFSystem.SystemConfig
             this.columnPrinterName,
             this.columnPrinterAddress,
             this.columnPrinterSocket});
-            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 93);
+            this.dataGridViewPrinterList.Location = new System.Drawing.Point(138, 12);
             this.dataGridViewPrinterList.MultiSelect = false;
             this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
             this.dataGridViewPrinterList.ReadOnly = true;
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
             this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrinterList.Size = new System.Drawing.Size(825, 337);
+            this.dataGridViewPrinterList.Size = new System.Drawing.Size(699, 464);
             this.dataGridViewPrinterList.TabIndex = 40;
             this.dataGridViewPrinterList.SelectionChanged += new System.EventHandler(this.dataGridViewPrinterList_SelectionChanged);
             // 
@@ -156,11 +136,10 @@ namespace RFSystem.SystemConfig
             // 
             // btnDel
             // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDel.Enabled = false;
-            this.btnDel.Location = new System.Drawing.Point(737, 436);
+            this.btnDel.Location = new System.Drawing.Point(12, 124);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(100, 40);
+            this.btnDel.Size = new System.Drawing.Size(120, 50);
             this.btnDel.TabIndex = 50;
             this.btnDel.Text = "删除";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -168,11 +147,10 @@ namespace RFSystem.SystemConfig
             // 
             // btnMod
             // 
-            this.btnMod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMod.Enabled = false;
-            this.btnMod.Location = new System.Drawing.Point(631, 436);
+            this.btnMod.Location = new System.Drawing.Point(12, 68);
             this.btnMod.Name = "btnMod";
-            this.btnMod.Size = new System.Drawing.Size(100, 40);
+            this.btnMod.Size = new System.Drawing.Size(120, 50);
             this.btnMod.TabIndex = 50;
             this.btnMod.Text = "修改";
             this.btnMod.UseVisualStyleBackColor = true;
@@ -180,39 +158,41 @@ namespace RFSystem.SystemConfig
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(525, 436);
+            this.btnAdd.Location = new System.Drawing.Point(12, 12);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 40);
+            this.btnAdd.Size = new System.Drawing.Size(120, 50);
             this.btnAdd.TabIndex = 50;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // 打印机信息
+            // 打印机列表
             // 
             this.ClientSize = new System.Drawing.Size(849, 488);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.textBoxPrinterAddress);
             this.Controls.Add(this.btnMod);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.textBoxPrinterName);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridViewPrinterList);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "打印机信息";
+            this.Name = "打印机列表";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "打印机信息";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         // Methods
-        public 打印机列表()
+        public 打印机信息列表()
         {
             dtPrinterList = null;
             InitializeComponent();

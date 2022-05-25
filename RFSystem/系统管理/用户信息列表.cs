@@ -8,18 +8,15 @@ using System.Collections;
 
 namespace RFSystem
 {
-    public class 用户列表 : Form
+    public class 用户信息列表 : Form
     {
         // Fields
         private Button btnAdd;
         private Button btnDel;
-        private Button btnExit;
         private Button btnMod;
-        private Button btnSelect;
         private CheckBox checkBoxUnUsed;
         private DataGridView dataGridViewUserList;
         private DataTable dtUserList;
-        private GroupBox groupBox2;
         private Label label8;
         private Label label9;
         private TextBox textBoxUserID;
@@ -30,13 +27,12 @@ namespace RFSystem
         private DataGridViewTextBoxColumn columnSapRolePoint;
         private DataGridViewTextBoxColumn columnInEffect;
         private DataGridViewTextBoxColumn columnIsAdmin;
+        private Button btnSelect;
         private TextBox textBoxUserName;
 
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxUnUsed = new System.Windows.Forms.CheckBox();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxUserID = new System.Windows.Forms.TextBox();
@@ -48,66 +44,36 @@ namespace RFSystem
             this.columnSapRolePoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnInEffect = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIsAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
+            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.checkBoxUnUsed);
-            this.groupBox2.Controls.Add(this.btnSelect);
-            this.groupBox2.Controls.Add(this.textBoxUserName);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBoxUserID);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(683, 75);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "用户选择";
-            // 
             // checkBoxUnUsed
             // 
-            this.checkBoxUnUsed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxUnUsed.AutoSize = true;
-            this.checkBoxUnUsed.Location = new System.Drawing.Point(445, 34);
+            this.checkBoxUnUsed.Location = new System.Drawing.Point(12, 340);
             this.checkBoxUnUsed.Name = "checkBoxUnUsed";
             this.checkBoxUnUsed.Size = new System.Drawing.Size(126, 24);
             this.checkBoxUnUsed.TabIndex = 40;
             this.checkBoxUnUsed.Text = "被删除过的用户";
             this.checkBoxUnUsed.UseVisualStyleBackColor = true;
             // 
-            // btnSelect
-            // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(577, 25);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(100, 40);
-            this.btnSelect.TabIndex = 2;
-            this.btnSelect.Text = "查询";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(282, 32);
+            this.textBoxUserName.Location = new System.Drawing.Point(12, 308);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(100, 26);
+            this.textBoxUserName.Size = new System.Drawing.Size(120, 26);
             this.textBoxUserName.TabIndex = 1;
             this.textBoxUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(197, 35);
+            this.label8.Location = new System.Drawing.Point(12, 285);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 20);
             this.label8.TabIndex = 35;
@@ -115,16 +81,16 @@ namespace RFSystem
             // 
             // textBoxUserID
             // 
-            this.textBoxUserID.Location = new System.Drawing.Point(91, 32);
+            this.textBoxUserID.Location = new System.Drawing.Point(12, 256);
             this.textBoxUserID.Name = "textBoxUserID";
-            this.textBoxUserID.Size = new System.Drawing.Size(100, 26);
+            this.textBoxUserID.Size = new System.Drawing.Size(120, 26);
             this.textBoxUserID.TabIndex = 0;
             this.textBoxUserID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 35);
+            this.label9.Location = new System.Drawing.Point(12, 233);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 20);
             this.label9.TabIndex = 33;
@@ -147,14 +113,14 @@ namespace RFSystem
             this.columnSapRolePoint,
             this.columnInEffect,
             this.columnIsAdmin});
-            this.dataGridViewUserList.Location = new System.Drawing.Point(12, 93);
+            this.dataGridViewUserList.Location = new System.Drawing.Point(138, 12);
             this.dataGridViewUserList.MultiSelect = false;
             this.dataGridViewUserList.Name = "dataGridViewUserList";
             this.dataGridViewUserList.ReadOnly = true;
             this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 23;
             this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserList.Size = new System.Drawing.Size(683, 323);
+            this.dataGridViewUserList.Size = new System.Drawing.Size(894, 606);
             this.dataGridViewUserList.TabIndex = 32;
             this.dataGridViewUserList.SelectionChanged += new System.EventHandler(this.dataGridViewUserList_SelectionChanged);
             // 
@@ -181,7 +147,7 @@ namespace RFSystem
             this.columnPassWord.Name = "columnPassWord";
             this.columnPassWord.ReadOnly = true;
             this.columnPassWord.Visible = false;
-            this.columnPassWord.Width = 51;
+            this.columnPassWord.Width = 62;
             // 
             // columnSapRolePoint
             // 
@@ -198,7 +164,7 @@ namespace RFSystem
             this.columnInEffect.Name = "columnInEffect";
             this.columnInEffect.ReadOnly = true;
             this.columnInEffect.Visible = false;
-            this.columnInEffect.Width = 61;
+            this.columnInEffect.Width = 90;
             // 
             // columnIsAdmin
             // 
@@ -207,26 +173,14 @@ namespace RFSystem
             this.columnIsAdmin.Name = "columnIsAdmin";
             this.columnIsAdmin.ReadOnly = true;
             this.columnIsAdmin.Visible = false;
-            this.columnIsAdmin.Width = 72;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(595, 422);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 40);
-            this.btnExit.TabIndex = 37;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.columnIsAdmin.Width = 118;
             // 
             // btnDel
             // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDel.Enabled = false;
-            this.btnDel.Location = new System.Drawing.Point(489, 422);
+            this.btnDel.Location = new System.Drawing.Point(12, 124);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(100, 40);
+            this.btnDel.Size = new System.Drawing.Size(120, 50);
             this.btnDel.TabIndex = 38;
             this.btnDel.Text = "删除";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -234,11 +188,10 @@ namespace RFSystem
             // 
             // btnMod
             // 
-            this.btnMod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMod.Enabled = false;
-            this.btnMod.Location = new System.Drawing.Point(383, 422);
+            this.btnMod.Location = new System.Drawing.Point(12, 68);
             this.btnMod.Name = "btnMod";
-            this.btnMod.Size = new System.Drawing.Size(100, 40);
+            this.btnMod.Size = new System.Drawing.Size(120, 50);
             this.btnMod.TabIndex = 39;
             this.btnMod.Text = "修改";
             this.btnMod.UseVisualStyleBackColor = true;
@@ -246,10 +199,9 @@ namespace RFSystem
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(277, 422);
+            this.btnAdd.Location = new System.Drawing.Point(12, 12);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 40);
+            this.btnAdd.Size = new System.Drawing.Size(120, 50);
             this.btnAdd.TabIndex = 40;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -257,44 +209,56 @@ namespace RFSystem
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(151, 422);
+            this.button1.Location = new System.Drawing.Point(12, 180);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 40);
+            this.button1.Size = new System.Drawing.Size(120, 50);
             this.button1.TabIndex = 41;
             this.button1.Text = "同步宝信用户";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // 用户信息
+            // btnSelect
             // 
-            this.ClientSize = new System.Drawing.Size(707, 474);
+            this.btnSelect.Location = new System.Drawing.Point(12, 370);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(120, 50);
+            this.btnSelect.TabIndex = 2;
+            this.btnSelect.Text = "查询";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // 用户信息列表
+            // 
+            this.ClientSize = new System.Drawing.Size(1044, 630);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSelect);
+            this.Controls.Add(this.checkBoxUnUsed);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.textBoxUserName);
             this.Controls.Add(this.btnMod);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.textBoxUserID);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridViewUserList);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "用户信息";
+            this.Name = "用户信息列表";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户信息";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.用户信息_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         // Methods
-        public 用户列表()
+        public 用户信息列表()
         {
             dtUserList = null;
             InitializeComponent();
@@ -354,11 +318,6 @@ namespace RFSystem
             {
                 CommonFunction.Sys_MsgBox("没有检索到任何人员信息，无法删除");
             }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btnMod_Click(object sender, EventArgs e)

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFSystem", "RFSystem\RFSyst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{7871EBAC-D2A5-4475-B57B-ACF284D0C964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SapService", "SapService\SapService.csproj", "{64F6A292-2957-4CFE-821D-9F09FFE6B6F7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7871EBAC-D2A5-4475-B57B-ACF284D0C964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7871EBAC-D2A5-4475-B57B-ACF284D0C964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7871EBAC-D2A5-4475-B57B-ACF284D0C964}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64F6A292-2957-4CFE-821D-9F09FFE6B6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64F6A292-2957-4CFE-821D-9F09FFE6B6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64F6A292-2957-4CFE-821D-9F09FFE6B6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64F6A292-2957-4CFE-821D-9F09FFE6B6F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

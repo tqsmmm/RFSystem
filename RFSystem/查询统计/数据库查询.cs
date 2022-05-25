@@ -18,18 +18,13 @@ namespace RFSystem
         private Button btnPrint;
         private Button btnSelect;
         private ComboBox cmbLabelType;
-        private DataGridViewTextBoxColumn columnPAddress;
-        private DataGridViewTextBoxColumn columnSocket;
         private IContainer components;
         private DataGridView dataGridViewPrinterList;
         private DataGridView dataGridViewStock;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataTable dtPlantList;
         private DataTable dtPrinterList;
         private DataTable dtResult;
         private DataTable dtStoreLocusList;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private Label label10;
         private Label label11;
         private Thread thread;
@@ -75,6 +70,9 @@ namespace RFSystem
         private DataGridViewTextBoxColumn unitWeight;
         private Label label2;
         private NumericUpDown nudCopy;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn columnPAddress;
+        private DataGridViewTextBoxColumn columnSocket;
         private ArrayList userRoles;
 
         protected override void Dispose(bool disposing)
@@ -89,7 +87,6 @@ namespace RFSystem
 
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxStoreMan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
@@ -133,7 +130,7 @@ namespace RFSystem
             this.label10 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnPatchPrint = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nudCopy = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbLabelType = new System.Windows.Forms.ComboBox();
             this.txtPrinter = new System.Windows.Forms.TextBox();
@@ -142,40 +139,23 @@ namespace RFSystem
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nudCopy = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBoxStoreMan);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnSelect);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(987, 90);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "本地数据库查询";
             // 
             // textBoxStoreMan
             // 
             this.textBoxStoreMan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBoxStoreMan.Location = new System.Drawing.Point(158, 37);
+            this.textBoxStoreMan.Location = new System.Drawing.Point(12, 32);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
-            this.textBoxStoreMan.Size = new System.Drawing.Size(200, 26);
+            this.textBoxStoreMan.Size = new System.Drawing.Size(120, 26);
             this.textBoxStoreMan.TabIndex = 30006;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 40);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 30005;
@@ -183,8 +163,7 @@ namespace RFSystem
             // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(861, 25);
+            this.btnSelect.Location = new System.Drawing.Point(12, 64);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(120, 50);
             this.btnSelect.TabIndex = 100;
@@ -240,13 +219,13 @@ namespace RFSystem
             this.productionLine,
             this.invBin,
             this.unitWeight});
-            this.dataGridViewStock.Location = new System.Drawing.Point(12, 108);
+            this.dataGridViewStock.Location = new System.Drawing.Point(138, 12);
             this.dataGridViewStock.Name = "dataGridViewStock";
             this.dataGridViewStock.ReadOnly = true;
             this.dataGridViewStock.RowHeadersVisible = false;
             this.dataGridViewStock.RowTemplate.Height = 23;
             this.dataGridViewStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStock.Size = new System.Drawing.Size(987, 356);
+            this.dataGridViewStock.Size = new System.Drawing.Size(861, 605);
             this.dataGridViewStock.TabIndex = 110;
             this.dataGridViewStock.SelectionChanged += new System.EventHandler(this.dataGridViewStock_SelectionChanged);
             // 
@@ -541,7 +520,7 @@ namespace RFSystem
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(341, 91);
+            this.label10.Location = new System.Drawing.Point(12, 392);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 20);
             this.label10.TabIndex = 1001;
@@ -550,7 +529,7 @@ namespace RFSystem
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(753, 569);
+            this.btnPrint.Location = new System.Drawing.Point(12, 447);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPrint.TabIndex = 1004;
@@ -561,7 +540,7 @@ namespace RFSystem
             // btnPatchPrint
             // 
             this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(879, 569);
+            this.btnPatchPrint.Location = new System.Drawing.Point(12, 503);
             this.btnPatchPrint.Name = "btnPatchPrint";
             this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPatchPrint.TabIndex = 1005;
@@ -569,27 +548,27 @@ namespace RFSystem
             this.btnPatchPrint.UseVisualStyleBackColor = true;
             this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
             // 
-            // groupBox2
+            // nudCopy
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.nudCopy);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cmbLabelType);
-            this.groupBox2.Controls.Add(this.txtPrinter);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.dataGridViewPrinterList);
-            this.groupBox2.Location = new System.Drawing.Point(12, 470);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(622, 147);
-            this.groupBox2.TabIndex = 1006;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "打印机选择";
+            this.nudCopy.Location = new System.Drawing.Point(12, 415);
+            this.nudCopy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCopy.Name = "nudCopy";
+            this.nudCopy.Size = new System.Drawing.Size(120, 26);
+            this.nudCopy.TabIndex = 1006;
+            this.nudCopy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(341, 58);
+            this.label2.Location = new System.Drawing.Point(12, 338);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 1103;
@@ -601,23 +580,23 @@ namespace RFSystem
             this.cmbLabelType.Items.AddRange(new object[] {
             "普通标签",
             "RFID标签"});
-            this.cmbLabelType.Location = new System.Drawing.Point(426, 55);
+            this.cmbLabelType.Location = new System.Drawing.Point(12, 361);
             this.cmbLabelType.Name = "cmbLabelType";
-            this.cmbLabelType.Size = new System.Drawing.Size(150, 28);
+            this.cmbLabelType.Size = new System.Drawing.Size(120, 28);
             this.cmbLabelType.TabIndex = 1102;
             // 
             // txtPrinter
             // 
-            this.txtPrinter.Location = new System.Drawing.Point(426, 23);
+            this.txtPrinter.Location = new System.Drawing.Point(12, 309);
             this.txtPrinter.Name = "txtPrinter";
-            this.txtPrinter.Size = new System.Drawing.Size(150, 26);
+            this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 102;
             this.txtPrinter.TextChanged += new System.EventHandler(this.txtPrinter_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(355, 26);
+            this.label11.Location = new System.Drawing.Point(12, 286);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 101;
@@ -633,14 +612,14 @@ namespace RFSystem
             this.dataGridViewTextBoxColumn1,
             this.columnPAddress,
             this.columnSocket});
-            this.dataGridViewPrinterList.Location = new System.Drawing.Point(10, 23);
+            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 120);
             this.dataGridViewPrinterList.MultiSelect = false;
             this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
             this.dataGridViewPrinterList.ReadOnly = true;
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
             this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrinterList.Size = new System.Drawing.Size(325, 109);
+            this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 163);
             this.dataGridViewPrinterList.TabIndex = 1100;
             // 
             // dataGridViewTextBoxColumn1
@@ -656,6 +635,7 @@ namespace RFSystem
             this.columnPAddress.HeaderText = "IP地址";
             this.columnPAddress.Name = "columnPAddress";
             this.columnPAddress.ReadOnly = true;
+            this.columnPAddress.Visible = false;
             // 
             // columnSocket
             // 
@@ -663,33 +643,25 @@ namespace RFSystem
             this.columnSocket.HeaderText = "端口号";
             this.columnSocket.Name = "columnSocket";
             this.columnSocket.ReadOnly = true;
-            // 
-            // nudCopy
-            // 
-            this.nudCopy.Location = new System.Drawing.Point(426, 89);
-            this.nudCopy.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudCopy.Name = "nudCopy";
-            this.nudCopy.Size = new System.Drawing.Size(150, 26);
-            this.nudCopy.TabIndex = 1006;
-            this.nudCopy.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.columnSocket.Visible = false;
             // 
             // 数据库查询
             // 
             this.ClientSize = new System.Drawing.Size(1011, 629);
             this.ControlBox = false;
+            this.Controls.Add(this.nudCopy);
+            this.Controls.Add(this.btnSelect);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBoxStoreMan);
+            this.Controls.Add(this.cmbLabelType);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnPatchPrint);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPrinter);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.dataGridViewPrinterList);
             this.Controls.Add(this.dataGridViewStock);
-            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -699,14 +671,11 @@ namespace RFSystem
             this.Text = "本地数据库查询";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.数据库查询_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

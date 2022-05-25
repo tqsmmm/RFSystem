@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
@@ -7,7 +6,6 @@ using BL;
 using RFSystem.Properties;
 using RFSystem.CommonClass;
 using System.Net.Sockets;
-using System.Collections;
 using RFSystem.AnSteel;
 
 namespace RFSystem.LabelPrint
@@ -17,8 +15,6 @@ namespace RFSystem.LabelPrint
         private UserInfo userItem;
 
         #region system
-        // Fields
-        private Button btnExit;
         private Button btnPatchPrint;
         private Button btnPrint;
         private Button btnPrintCountMod;
@@ -41,7 +37,6 @@ namespace RFSystem.LabelPrint
         private Label label4;
         private Label label5;
         private TextBox textBoxKeeperID;
-        private TextBox txtCopy;
         private TextBox txtFactoryNo;
         private TextBox txtPatch;
         private DataGridViewTextBoxColumn columnPNo;
@@ -65,25 +60,18 @@ namespace RFSystem.LabelPrint
         private DataGridViewTextBoxColumn C_N_rkrq;
         private DataGridViewTextBoxColumn C_N_ghdw;
         private DataGridViewTextBoxColumn C_N_storeman;
-        private Button button3;
+        private NumericUpDown nudCopy;
         private TextBox txtPrinter;
 
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbLabelType = new System.Windows.Forms.ComboBox();
             this.textBoxKeeperID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnPrintCountMod = new System.Windows.Forms.Button();
-            this.txtCopy = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtPatch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFactoryNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnPatchPrint = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.columnPNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,8 +95,12 @@ namespace RFSystem.LabelPrint
             this.C_N_rkrq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_N_ghdw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_N_storeman = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbLabelType = new System.Windows.Forms.ComboBox();
+            this.btnPrintCountMod = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnPatchPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtPrinter = new System.Windows.Forms.TextBox();
@@ -117,10 +109,12 @@ namespace RFSystem.LabelPrint
             this.columnPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nudCopy = new System.Windows.Forms.NumericUpDown();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -143,18 +137,6 @@ namespace RFSystem.LabelPrint
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "物料选择";
             // 
-            // cmbLabelType
-            // 
-            this.cmbLabelType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmbLabelType.FormattingEnabled = true;
-            this.cmbLabelType.Items.AddRange(new object[] {
-            "普通标签",
-            "RFID标签"});
-            this.cmbLabelType.Location = new System.Drawing.Point(278, 509);
-            this.cmbLabelType.Name = "cmbLabelType";
-            this.cmbLabelType.Size = new System.Drawing.Size(121, 28);
-            this.cmbLabelType.TabIndex = 101;
-            // 
             // textBoxKeeperID
             // 
             this.textBoxKeeperID.Location = new System.Drawing.Point(524, 32);
@@ -174,38 +156,6 @@ namespace RFSystem.LabelPrint
             this.label4.TabIndex = 0;
             this.label4.Text = "保管员：";
             this.label4.Visible = false;
-            // 
-            // btnPrintCountMod
-            // 
-            this.btnPrintCountMod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPrintCountMod.Enabled = false;
-            this.btnPrintCountMod.Location = new System.Drawing.Point(172, 502);
-            this.btnPrintCountMod.Name = "btnPrintCountMod";
-            this.btnPrintCountMod.Size = new System.Drawing.Size(100, 40);
-            this.btnPrintCountMod.TabIndex = 60;
-            this.btnPrintCountMod.Text = "修改";
-            this.btnPrintCountMod.UseVisualStyleBackColor = true;
-            this.btnPrintCountMod.Click += new System.EventHandler(this.btnPrintCountMod_Click);
-            // 
-            // txtCopy
-            // 
-            this.txtCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCopy.Location = new System.Drawing.Point(102, 509);
-            this.txtCopy.Name = "txtCopy";
-            this.txtCopy.Size = new System.Drawing.Size(64, 26);
-            this.txtCopy.TabIndex = 50;
-            this.txtCopy.Text = "0";
-            this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 512);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "打印份数：";
             // 
             // txtPatch
             // 
@@ -240,41 +190,6 @@ namespace RFSystem.LabelPrint
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "凭证年度：";
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(405, 502);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 40);
-            this.btnPrint.TabIndex = 70;
-            this.btnPrint.Text = "单个打印";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnPatchPrint
-            // 
-            this.btnPatchPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(511, 502);
-            this.btnPatchPrint.Name = "btnPatchPrint";
-            this.btnPatchPrint.Size = new System.Drawing.Size(100, 40);
-            this.btnPatchPrint.TabIndex = 80;
-            this.btnPatchPrint.Text = "批量打印";
-            this.btnPatchPrint.UseVisualStyleBackColor = true;
-            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(712, 502);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 40);
-            this.btnExit.TabIndex = 90;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnSelect
             // 
@@ -498,11 +413,68 @@ namespace RFSystem.LabelPrint
             this.C_N_storeman.ReadOnly = true;
             this.C_N_storeman.Width = 129;
             // 
+            // cmbLabelType
+            // 
+            this.cmbLabelType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbLabelType.FormattingEnabled = true;
+            this.cmbLabelType.Items.AddRange(new object[] {
+            "普通标签",
+            "RFID标签"});
+            this.cmbLabelType.Location = new System.Drawing.Point(278, 509);
+            this.cmbLabelType.Name = "cmbLabelType";
+            this.cmbLabelType.Size = new System.Drawing.Size(121, 28);
+            this.cmbLabelType.TabIndex = 101;
+            // 
+            // btnPrintCountMod
+            // 
+            this.btnPrintCountMod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrintCountMod.Enabled = false;
+            this.btnPrintCountMod.Location = new System.Drawing.Point(172, 502);
+            this.btnPrintCountMod.Name = "btnPrintCountMod";
+            this.btnPrintCountMod.Size = new System.Drawing.Size(100, 40);
+            this.btnPrintCountMod.TabIndex = 60;
+            this.btnPrintCountMod.Text = "修改";
+            this.btnPrintCountMod.UseVisualStyleBackColor = true;
+            this.btnPrintCountMod.Click += new System.EventHandler(this.btnPrintCountMod_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 512);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "打印份数：";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrint.Enabled = false;
+            this.btnPrint.Location = new System.Drawing.Point(405, 502);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(100, 40);
+            this.btnPrint.TabIndex = 70;
+            this.btnPrint.Text = "单个打印";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnPatchPrint
+            // 
+            this.btnPatchPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPatchPrint.Enabled = false;
+            this.btnPatchPrint.Location = new System.Drawing.Point(511, 502);
+            this.btnPatchPrint.Name = "btnPatchPrint";
+            this.btnPatchPrint.Size = new System.Drawing.Size(100, 40);
+            this.btnPatchPrint.TabIndex = 80;
+            this.btnPatchPrint.Text = "批量打印";
+            this.btnPatchPrint.UseVisualStyleBackColor = true;
+            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtPrinter);
@@ -514,18 +486,6 @@ namespace RFSystem.LabelPrint
             this.groupBox1.TabIndex = 1000;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "打印机选择";
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(588, 71);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 40);
-            this.button3.TabIndex = 102;
-            this.button3.Text = "模拟打印";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -610,17 +570,33 @@ namespace RFSystem.LabelPrint
             this.columnSocket.Name = "columnSocket";
             this.columnSocket.ReadOnly = true;
             // 
+            // nudCopy
+            // 
+            this.nudCopy.Location = new System.Drawing.Point(102, 510);
+            this.nudCopy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCopy.Name = "nudCopy";
+            this.nudCopy.Size = new System.Drawing.Size(63, 26);
+            this.nudCopy.TabIndex = 1001;
+            this.nudCopy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // ProductLabel
             // 
             this.ClientSize = new System.Drawing.Size(824, 554);
             this.ControlBox = false;
+            this.Controls.Add(this.nudCopy);
             this.Controls.Add(this.cmbLabelType);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtCopy);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnPrintCountMod);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPatchPrint);
             this.Controls.Add(this.btnPrint);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -629,12 +605,14 @@ namespace RFSystem.LabelPrint
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "物料标签打印";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ProductLabel_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,18 +628,13 @@ namespace RFSystem.LabelPrint
             this.userItem = null;
             InitializeComponent();
             dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
-            dataGridViewPrinterList.DataSource = this.dtPrinterList;
+            dataGridViewPrinterList.DataSource = dtPrinterList;
             dataGridViewProductList.AutoGenerateColumns = false;
             this.userItem = userItem;
             textBoxKeeperID.Text = userItem.userID;
             txtFactoryNo.Text = DateTime.Now.Year.ToString();
             dsWl = new DataSet();
             cmbLabelType.Text = "普通标签";
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btnPatchPrint_Click(object sender, EventArgs e)
@@ -692,7 +665,7 @@ namespace RFSystem.LabelPrint
 
         private void btnPrintCountMod_Click(object sender, EventArgs e)
         {
-            dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value = txtCopy.Text;
+            dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value = nudCopy.Value;
             dataGridViewLocationList_SelectionChanged(null, null);
         }
 
@@ -704,7 +677,7 @@ namespace RFSystem.LabelPrint
 
                 try
                 {
-                    num = Convert.ToDecimal(this.txtFactoryNo.Text.Trim());
+                    num = Convert.ToDecimal(txtFactoryNo.Text.Trim());
                 }
                 catch
                 {
@@ -778,93 +751,35 @@ namespace RFSystem.LabelPrint
         //新增补充信息
         private void getbcxx()
         {
-            #region test
-            ////TEST..................................................
-            //System.Data.DataTable Detail = new DataTable();
-            //Detail.Columns.Add(new DataColumn("Bct10"));
-            //Detail.Columns.Add(new DataColumn("Bct20"));
-            //Detail.Columns.Add(new DataColumn("Bct50"));
-            //Detail.Columns.Add(new DataColumn("Bct51"));
-            //Detail.Columns.Add(new DataColumn("Bct60"));
-            //Detail.Columns.Add(new DataColumn("Bct61"));
-            //Detail.Columns.Add(new DataColumn("Bct70"));
-            //Detail.Columns.Add(new DataColumn("Bct71"));
-            //Detail.Columns.Add(new DataColumn("Budat"));
-            //Detail.Columns.Add(new DataColumn("Charg"));
-            //Detail.Columns.Add(new DataColumn("Dmbtr"));
-            //Detail.Columns.Add(new DataColumn("Lgort"));
-            //Detail.Columns.Add(new DataColumn("Maktx"));
-            //Detail.Columns.Add(new DataColumn("Matnr"));
-            //Detail.Columns.Add(new DataColumn("Meins"));
-            //Detail.Columns.Add(new DataColumn("Menge"));
-            //Detail.Columns.Add(new DataColumn("Name1"));
-            //Detail.Columns.Add(new DataColumn("Ntgew"));
-            //Detail.Columns.Add(new DataColumn("Sgtxt"));
-            //Detail.Columns.Add(new DataColumn("Werks"));
-            //Detail.Columns.Add(new DataColumn("Zeile"));
-            //Detail.Columns.Add(new DataColumn("Ebeln"));
-            //Detail.Columns.Add(new DataColumn("Xauto"));
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    System.Data.DataRow dr = Detail.NewRow();
-            //    dr["Bct10"] = "BGY" + (i + 1).ToString();
-            //    dr["Bct20"] = "Bct20" + (i + 1).ToString();
-            //    dr["Bct50"] = "Bct50" + (i + 1).ToString();
-            //    dr["Bct51"] = "Bct51" + (i + 1).ToString();
-            //    dr["Bct60"] = "Bct60" + (i + 1).ToString();
-            //    dr["Bct61"] = "Bct61" + (i + 1).ToString();
-            //    dr["Bct70"] = "Bct70" + (i + 1).ToString();
-            //    dr["Bct71"] = "Bct71" + (i + 1).ToString();
-            //    dr["Budat"] = "Budat" + (i + 1).ToString();
-            //    dr["Charg"] = "Charg" + (i + 1).ToString();
-            //    dr["Dmbtr"] = "Dmbtr" + (i + 1).ToString();
-            //    dr["Lgort"] = "Lgort" + (i + 1).ToString();
-            //    dr["Maktx"] = "Maktx" + (i + 1).ToString();
-            //    dr["Matnr"] = "Matnr" + (i + 1).ToString();
-            //    dr["Meins"] = "Meins" + (i + 1).ToString();
-            //    dr["Menge"] = "Menge" + (i + 1).ToString();
-            //    dr["Name1"] = "Name1" + (i + 1).ToString();
-            //    dr["Ntgew"] = "Ntgew" + (i + 1).ToString();
-            //    dr["Sgtxt"] = "Sgtxt" + (i + 1).ToString();
-            //    dr["Werks"] = "Werks" + (i + 1).ToString();
-            //    dr["Zeile"] = "Zeile" + (i + 1).ToString();
-            //    dr["Ebeln"] = "Ebeln" + (i + 1).ToString();
-            //    dr["Xauto"] = "Xauto" + (i + 1).ToString();
-            //    Detail.Rows.Add(dr);
-            //}
-            //dsWl.Tables.Add(Detail);
-            ////ENDTEST..................................................
-            #endregion
-
-
 
             #region m_poDs增加一维条码列
-            string proNo = "", patch = "", wareNo = "";
-            int _len = this.dsWl.Tables[0].Rows.Count;
+            int _len = dsWl.Tables[0].Rows.Count;
             string wltms = "";
             //给m_poDs增加列
-            this.dsWl.Tables[0].Columns.Add("N_ywtm");
-            this.dsWl.Tables[0].Columns.Add("N_pch");
-            this.dsWl.Tables[0].Columns.Add("N_storeman");
-            this.dsWl.Tables[0].Columns.Add("N_rkrq");
-            this.dsWl.Tables[0].Columns.Add("N_pzh");
-            this.dsWl.Tables[0].Columns.Add("N_pznd");
-            this.dsWl.Tables[0].Columns.Add("N_ghdw");
-
+            dsWl.Tables[0].Columns.Add("N_ywtm");
+            dsWl.Tables[0].Columns.Add("N_pch");
+            dsWl.Tables[0].Columns.Add("N_storeman");
+            dsWl.Tables[0].Columns.Add("N_rkrq");
+            dsWl.Tables[0].Columns.Add("N_pzh");
+            dsWl.Tables[0].Columns.Add("N_pznd");
+            dsWl.Tables[0].Columns.Add("N_ghdw");
+            string proNo;
+            string patch;
+            string wareNo;
             for (int i = 0; i < _len; i++)
             {
-                DataRow row = this.dsWl.Tables[0].Rows[i];
+                DataRow row = dsWl.Tables[0].Rows[i];
                 proNo = row["Matnr"].ToString().Trim();
                 patch = row["Charg"].ToString().Trim();
                 wareNo = row["Werks"].ToString().Trim();
-                wltms += "'" +wareNo+ patch +proNo+ "',";
-                this.dsWl.Tables[0].Rows[i]["N_ywtm"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_pch"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_storeman"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_rkrq"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_pzh"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_pznd"] = "";
-                this.dsWl.Tables[0].Rows[i]["N_ghdw"] = "";
+                wltms += "'" + wareNo + patch + proNo + "',";
+                dsWl.Tables[0].Rows[i]["N_ywtm"] = "";
+                dsWl.Tables[0].Rows[i]["N_pch"] = "";
+                dsWl.Tables[0].Rows[i]["N_storeman"] = "";
+                dsWl.Tables[0].Rows[i]["N_rkrq"] = "";
+                dsWl.Tables[0].Rows[i]["N_pzh"] = "";
+                dsWl.Tables[0].Rows[i]["N_pznd"] = "";
+                dsWl.Tables[0].Rows[i]["N_ghdw"] = "";
             }
 
             wltms = wltms.Substring(0, wltms.Length - 1);
@@ -872,7 +787,7 @@ namespace RFSystem.LabelPrint
 
             DataSet ds = new DataSet();
             ClsCommon cls = new ClsCommon();
-            AnSteel.MessagePack pak = cls.queryYwtms(wltms, out ds);
+            MessagePack pak = cls.queryYwtms(wltms, out ds);
 
             if (pak.Code != 0)
             {
@@ -925,6 +840,7 @@ namespace RFSystem.LabelPrint
         public string Data_Hex(string old)
         {
             string str = "";
+
             try
             {
                 int num = 0;
@@ -934,7 +850,7 @@ namespace RFSystem.LabelPrint
                 {
                     num = ch;
                     string str3 = string.Format("{0:x2}", Convert.ToUInt32(num.ToString()));
-                    str2 = str2 + str3;
+                    str2 += str3;
                 }
 
                 str = str2;
@@ -953,7 +869,7 @@ namespace RFSystem.LabelPrint
             {
                 if (dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value != null)
                 {
-                    txtCopy.Text = dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value.ToString();
+                    nudCopy.Value = Convert.ToDecimal(dataGridViewProductList.SelectedRows[0].Cells["ColumnPrintCount"].Value);
                     btnPrintCountMod.Enabled = true;
                 }
 
@@ -962,7 +878,7 @@ namespace RFSystem.LabelPrint
             }
             else
             {
-                txtCopy.Text = "0";
+                nudCopy.Value = 0;
                 btnPrintCountMod.Enabled = false;
                 btnPrint.Enabled = false;
                 btnPatchPrint.Enabled = false;
@@ -1117,153 +1033,9 @@ namespace RFSystem.LabelPrint
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ProductLabel_Load(object sender, EventArgs e)
         {
-            TcpClient client = new TcpClient();
-            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
-            try
-            {
-                client.Connect(hostname, port);
-
-                string s = string.Empty;
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280300", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280301", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280302", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280303", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280304", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280305", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-                s = ClsCommon.dealData("", "(升级测试)电磁阀-Q23XD-2 24V", "20003612110280", "", "", "", "", "", "", "", "", "", "", "", "PC", "303.0000", "", "3000.00", "1", "R20004500005310002020003612110280306", "", this.cmbLabelType.Text);
-
-                //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
-
-                client.Close();
-
-            }
-            catch (Exception exception)
-            {
-                CommonFunction.Sys_MsgBox(exception.Message);
-            }
         }
     }
 }
-
-        //private string dealData(string f, string proName, string proNo, string Patch, string wareNo, string deNo, string ckDate, string manu, string pC, string cert, string pL, string supp, string loca, string q, string u, string w, string r, string p, string cop, string ywtm, string baoguanyuan)
-        //{
-        //    string str = "";
-        //    string str2 = f;
-        //    string str3 = proName;
-        //    string str4 = proNo;
-        //    string str5 = Patch;
-        //    string str6 = wareNo;
-        //    string str7 = deNo;
-        //    string str8 = ckDate;
-        //    string str9 = manu;
-        //    string str10 = pC;
-        //    string str11 = cert;
-        //    string str12 = baoguanyuan;// pL;
-        //    string str13 = supp;
-        //    string str14 = loca;
-        //    string str15 = q;
-        //    string str16 = u;
-        //    string str17 = w;
-        //    string str18 = r;
-        //    string str19 = p;
-        //    string str20 = cop;
-        //    if (str3.Length > 20)
-        //    {
-        //        str3 = str3.Substring(0, 20);
-        //    }
-        //    str = ((((((((((((((((((str + "@NORMAL\r\n") + "@PAPER;WIDTH 50;LENGTH 99;SPEED IPS 2;INTENSITY 0;LANDSCAPE\r\n" + "@CREATE;ANSTEELLAB\r\n") + "SCALE;DOT;300;300\r\n" + "LOGO\r\n") + "43;380;ANGANG;DISK\r\n" + "STOP\r\n") + "BOX\r\n" + "12;20;22;1100;1740\r\n") + "STOP\r\n" + "HORZ\r\n") + "5;136;22;1740\r\n" + "5;232;22;1740\r\n") + "5;424;22;1740\r\n" + "5;528;22;1740\r\n") + "5;616;22;1740\r\n" + "5;712;22;1740\r\n") + "5;808;22;1740\r\n" + "5;904;22;1740\r\n") + "5;1000;22;1740\r\n" + "5;1096;22;1740\r\n") + "STOP\r\n" + "VERT\r\n") + "5;290;136;1100\r\n" + "5;550;136;232\r\n") + "5;850;424;808\r\n" + "5;710;904;1100\r\n") + "5;750;136;232\r\n" + "5;1100;424;808\r\n") + "5;900;904;1100\r\n" + "5;1150;904;1100\r\n") + "5;1350;904;1100\r\n" + "STOP\r\n") + "FONT;FACE 92250;BOLD OFF;SLANT OFF;SYMSET 0\r\n" + "ALPHA\r\n") + "POINT;205;350;15;15;'" + str2 + "'\r\n";
-
-
-        //    //条码
-
-            
-        //    if (ywtm != "")
-        //    {
-        //        str = str + "POINT;285;345;15;15;'" + ywtm + "'\r\n";
-        //    }
-        //    else
-        //    {
-        //        //原先的物料条码
-        //        if ((str5 == null) || str5.Equals(""))
-        //        {
-        //            str = str + "POINT;285;345;15;15;'" + str4 + "'\r\n";
-        //        }
-        //        else
-        //        {
-        //            str = str + "POINT;285;345;15;15;'" + str6 + str5 + str4 + "'\r\n";
-        //        }
-        //    }
-        //    str = (((((((((((((((((((((((((((((str + "POINT;490;350;15;15;'" + str7 + "'\r\n") + "POINT;490;1150;15;15;'" + str4 + "'\r\n") + "POINT;585;350;15;15;'" + str5 + "'\r\n") + "POINT;585;1150;15;15;'" + str8 + "'\r\n") + "POINT;965;350;15;15;'" + str14 + "'\r\n") + "POINT;965;930;15;15;'" + str15 + "'\r\n") + "POINT;1060;930;15;15;'" + str17 + "'\r\n") + "POINT;1060;1370;15;15;'" + str19 + "'\r\n") + "POINT;775;1150;15;15;'" + str12 + "'\r\n") + "POINT;690;350;15;15;'" + str9 + "'\r\n") + "POINT;680;1150;15;15;'" + str10 + "'\r\n") + "POINT;775;350;15;15;'" + str11 + "'\r\n") + "STOP\r\n" + "FONT;FACE 92250;BOLD ON;SLANT OFF;SYMSET 0\r\n") + "TWOBYTE\r\n" + "POINT;110;500;18;18;'鞍钢股份设备处备件卡'\r\n") + "POINT;195;90;10;8;'二级厂'\r\n" + "POINT;205;590;10;8;'物料描述'\r\n") + "POINT;205;810;12;10;'" + str3 + "'\r\n") + "POINT;345;90;10;8;'设备代码'\r\n" + "POINT;490;90;10;8;'采购订单号'\r\n") + "POINT;490;900;10;8;'物料号'\r\n" + "POINT;585;90;10;8;'批次号'\r\n") + "POINT;585;900;10;8;'入库日期'\r\n" + "POINT;680;90;10;8;'说明书'\r\n") + "POINT;680;900;10;8;'产品证书'\r\n" + "POINT;775;90;10;8;'合格证'\r\n") + "POINT;775;900;10;8;'装箱单'\r\n" + "POINT;870;90;10;8;'供货单位'\r\n") + "POINT;880;340;15;15;'" + str13 + "'\r\n") + "POINT;965;90;10;8;'货  位'\r\n") + "POINT;965;730;10;8;'货位数量'\r\n" + "POINT;965;1180;10;8;'货位备注'\r\n") + "POINT;965;1370;10;8;'" + str18 + "'\r\n") + "POINT;1060;90;10;8;'单  位'\r\n") + "POINT;1070;350;15;15;'" + str16 + "'\r\n") + "POINT;1060;730;10;8;'单  重'\r\n") + "POINT;1060;1180;10;8;'单　价'\r\n" + "STOP\r\n") + "BARCODE\r\n" + "C128C;H4.55;DARK;265;345\r\n";
-        //    if (ywtm != "")
-        //    {
-        //        str = str + "*" + ywtm + "*\r\n";
-        //    }
-        //    else
-        //    {
-        //        if ((str5 == null) || str5.Equals(""))
-        //        {
-        //            str = str + "*" + str4 + "*\r\n";
-        //        }
-        //        else
-        //        {
-        //            str = str + "*" + str6 + str5 + str4 + "*\r\n";
-        //        }
-        //    }
-
-
-        //    str = str + "PDF;S\r\n" + "STOP\r\n";
-        //    string old = "";
-        //    if (this.cmbLabelType.Text.Equals("RFID标签"))
-        //    {
-        //        if (ywtm != "")
-        //        {
-        //            old = ywtm;
-        //        }
-        //        else
-        //        {
-        //            if ((str5 == null) || str5.Equals(""))
-        //            {
-        //                old = str4;
-        //            }
-        //            else
-        //            {
-        //                old = str6 + str5 + str4;
-        //            }
-        //        }
-        //        string str22 = (this.Data_Hex(old) + "000000000000000000000000000000000000").Substring(0, 0x44);
-        //        str = ((((str + "RFWTAG;272;USR\r\n") + "128;H;*" + str22.Substring(0, 0x20) + "*\r\n") + "128;H;*" + str22.Substring(0x20, 0x20) + "*\r\n") + "16;H;*" + str22.Substring(0x40, 4) + "*\r\n") + "STOP\r\n";
-        //    }
-        //    return (((str + "END\r\n") + "@EXECUTE;ANSTEELLAB;" + str20 + "\r\n") + "@NORMAL\r\n");
-        //}
-      
-

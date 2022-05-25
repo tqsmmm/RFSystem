@@ -38,15 +38,15 @@ namespace RFSystem
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(568, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(568, 310);
             this.dataGridView1.TabIndex = 0;
             // 
             // btSee
             // 
             this.btSee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSee.Location = new System.Drawing.Point(374, 338);
+            this.btSee.Location = new System.Drawing.Point(334, 328);
             this.btSee.Name = "btSee";
-            this.btSee.Size = new System.Drawing.Size(100, 40);
+            this.btSee.Size = new System.Drawing.Size(120, 50);
             this.btSee.TabIndex = 1;
             this.btSee.Text = "查看";
             this.btSee.UseVisualStyleBackColor = true;
@@ -55,9 +55,9 @@ namespace RFSystem
             // btDel
             // 
             this.btDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDel.Location = new System.Drawing.Point(480, 338);
+            this.btDel.Location = new System.Drawing.Point(460, 328);
             this.btDel.Name = "btDel";
-            this.btDel.Size = new System.Drawing.Size(100, 40);
+            this.btDel.Size = new System.Drawing.Size(120, 50);
             this.btDel.TabIndex = 2;
             this.btDel.Text = "删除";
             this.btDel.UseVisualStyleBackColor = true;

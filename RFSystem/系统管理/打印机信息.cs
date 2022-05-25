@@ -2,11 +2,10 @@
 using RFSystem.CommonClass;
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace RFSystem.SystemConfig
+namespace RFSystem
 {
     public class 打印机信息 : Form
     {
@@ -84,9 +83,9 @@ namespace RFSystem.SystemConfig
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(245, 209);
+            this.btnCancel.Location = new System.Drawing.Point(245, 199);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.Size = new System.Drawing.Size(120, 50);
             this.btnCancel.TabIndex = 40;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -94,9 +93,9 @@ namespace RFSystem.SystemConfig
             // 
             // btnMod
             // 
-            this.btnMod.Location = new System.Drawing.Point(139, 209);
+            this.btnMod.Location = new System.Drawing.Point(119, 199);
             this.btnMod.Name = "btnMod";
-            this.btnMod.Size = new System.Drawing.Size(100, 40);
+            this.btnMod.Size = new System.Drawing.Size(120, 50);
             this.btnMod.TabIndex = 30;
             this.btnMod.Text = "修改";
             this.btnMod.UseVisualStyleBackColor = true;
@@ -155,7 +154,7 @@ namespace RFSystem.SystemConfig
             this.label1.TabIndex = 0;
             this.label1.Text = "打印机名称：";
             // 
-            // 修改打印机信息
+            // 打印机信息
             // 
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.ControlBox = false;
@@ -169,7 +168,7 @@ namespace RFSystem.SystemConfig
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "修改打印机信息";
+            this.Name = "打印机信息";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "修改打印机信息";
             this.ResumeLayout(false);

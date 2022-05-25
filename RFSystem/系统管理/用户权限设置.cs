@@ -22,8 +22,6 @@ namespace RFSystem
         private bool ifMouseClick;
         private Label label1;
         private Label label2;
-        private RadioButton rbSelectAll;
-        private RadioButton rbUnSelectAll;
         private TextBox textBoxUserID;
         private TextBox textBoxUserName;
         private TreeView treeViewRoles;
@@ -31,8 +29,6 @@ namespace RFSystem
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbUnSelectAll = new System.Windows.Forms.RadioButton();
-            this.rbSelectAll = new System.Windows.Forms.RadioButton();
             this.treeViewRoles = new System.Windows.Forms.TreeView();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -51,56 +47,25 @@ namespace RFSystem
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.rbUnSelectAll);
-            this.groupBox1.Controls.Add(this.rbSelectAll);
             this.groupBox1.Controls.Add(this.treeViewRoles);
-            this.groupBox1.Location = new System.Drawing.Point(449, 12);
+            this.groupBox1.Location = new System.Drawing.Point(567, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(432, 493);
+            this.groupBox1.Size = new System.Drawing.Size(545, 675);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "权限管理：";
             // 
-            // rbUnSelectAll
-            // 
-            this.rbUnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rbUnSelectAll.AutoSize = true;
-            this.rbUnSelectAll.Checked = true;
-            this.rbUnSelectAll.Enabled = false;
-            this.rbUnSelectAll.Location = new System.Drawing.Point(59, 463);
-            this.rbUnSelectAll.Name = "rbUnSelectAll";
-            this.rbUnSelectAll.Size = new System.Drawing.Size(83, 24);
-            this.rbUnSelectAll.TabIndex = 50;
-            this.rbUnSelectAll.TabStop = true;
-            this.rbUnSelectAll.Text = "取消全选";
-            this.rbUnSelectAll.UseVisualStyleBackColor = true;
-            this.rbUnSelectAll.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
-            // 
-            // rbSelectAll
-            // 
-            this.rbSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rbSelectAll.AutoSize = true;
-            this.rbSelectAll.Enabled = false;
-            this.rbSelectAll.Location = new System.Drawing.Point(6, 463);
-            this.rbSelectAll.Name = "rbSelectAll";
-            this.rbSelectAll.Size = new System.Drawing.Size(55, 24);
-            this.rbSelectAll.TabIndex = 50;
-            this.rbSelectAll.Text = "全选";
-            this.rbSelectAll.UseVisualStyleBackColor = true;
-            this.rbSelectAll.CheckedChanged += new System.EventHandler(this.rbSelectAll_CheckedChanged);
-            // 
             // treeViewRoles
             // 
-            this.treeViewRoles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeViewRoles.CheckBoxes = true;
+            this.treeViewRoles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewRoles.Enabled = false;
-            this.treeViewRoles.Location = new System.Drawing.Point(6, 20);
+            this.treeViewRoles.Location = new System.Drawing.Point(3, 22);
             this.treeViewRoles.Name = "treeViewRoles";
-            this.treeViewRoles.Size = new System.Drawing.Size(420, 437);
+            this.treeViewRoles.Size = new System.Drawing.Size(539, 650);
             this.treeViewRoles.TabIndex = 40;
             this.treeViewRoles.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewRoles_BeforeCheck);
             this.treeViewRoles.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRoles_AfterCheck);
@@ -108,11 +73,10 @@ namespace RFSystem
             // 
             // btnOK
             // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(781, 511);
+            this.btnOK.Location = new System.Drawing.Point(12, 172);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(100, 40);
+            this.btnOK.Size = new System.Drawing.Size(120, 50);
             this.btnOK.TabIndex = 60;
             this.btnOK.Text = "确认";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -120,28 +84,21 @@ namespace RFSystem
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnSelect);
-            this.groupBox2.Controls.Add(this.textBoxUserName);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBoxUserID);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.dataGridViewUserList);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(138, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(431, 539);
+            this.groupBox2.Size = new System.Drawing.Size(423, 675);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "用户选择";
             // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(325, 25);
+            this.btnSelect.Location = new System.Drawing.Point(12, 116);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(100, 40);
+            this.btnSelect.Size = new System.Drawing.Size(120, 50);
             this.btnSelect.TabIndex = 20;
             this.btnSelect.Text = "查询";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -150,16 +107,16 @@ namespace RFSystem
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(91, 57);
+            this.textBoxUserName.Location = new System.Drawing.Point(12, 84);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(150, 26);
+            this.textBoxUserName.Size = new System.Drawing.Size(120, 26);
             this.textBoxUserName.TabIndex = 10;
             this.textBoxUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 60);
+            this.label2.Location = new System.Drawing.Point(12, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 35;
@@ -167,16 +124,16 @@ namespace RFSystem
             // 
             // textBoxUserID
             // 
-            this.textBoxUserID.Location = new System.Drawing.Point(91, 25);
+            this.textBoxUserID.Location = new System.Drawing.Point(12, 32);
             this.textBoxUserID.Name = "textBoxUserID";
-            this.textBoxUserID.Size = new System.Drawing.Size(150, 26);
+            this.textBoxUserID.Size = new System.Drawing.Size(120, 26);
             this.textBoxUserID.TabIndex = 5;
             this.textBoxUserID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 28);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 33;
@@ -186,22 +143,20 @@ namespace RFSystem
             // 
             this.dataGridViewUserList.AllowUserToAddRows = false;
             this.dataGridViewUserList.AllowUserToResizeRows = false;
-            this.dataGridViewUserList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewUserList.ColumnHeadersHeight = 30;
             this.dataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnUser_ID,
             this.ColumnUser_Name});
-            this.dataGridViewUserList.Location = new System.Drawing.Point(6, 89);
+            this.dataGridViewUserList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewUserList.Location = new System.Drawing.Point(3, 22);
             this.dataGridViewUserList.MultiSelect = false;
             this.dataGridViewUserList.Name = "dataGridViewUserList";
             this.dataGridViewUserList.ReadOnly = true;
             this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 23;
             this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserList.Size = new System.Drawing.Size(419, 444);
+            this.dataGridViewUserList.Size = new System.Drawing.Size(417, 650);
             this.dataGridViewUserList.TabIndex = 30;
             this.dataGridViewUserList.SelectionChanged += new System.EventHandler(this.dataGridViewUserList_SelectionChanged);
             this.dataGridViewUserList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
@@ -224,11 +179,16 @@ namespace RFSystem
             // 
             // 用户权限设置
             // 
-            this.ClientSize = new System.Drawing.Size(893, 563);
+            this.ClientSize = new System.Drawing.Size(1124, 699);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.textBoxUserName);
             this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.textBoxUserID);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -239,11 +199,10 @@ namespace RFSystem
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.用户权限设置_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -299,8 +258,6 @@ namespace RFSystem
             if ((dataGridViewUserList.Rows != null) && (dataGridViewUserList.SelectedRows.Count != 0))
             {
                 treeViewRoles.Enabled = true;
-                rbSelectAll.Enabled = true;
-                rbUnSelectAll.Enabled = true;
                 btnOK.Enabled = true;
                 dtUserRoles = DBOperate.GetUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString());
                 RoleInit.InitUserRoles(treeViewRoles, dtUserRoles);
@@ -309,21 +266,7 @@ namespace RFSystem
             {
                 RoleInit.ClearNodesCheckState(treeViewRoles.Nodes);
                 treeViewRoles.Enabled = false;
-                rbSelectAll.Enabled = false;
-                rbUnSelectAll.Enabled = false;
                 btnOK.Enabled = false;
-            }
-        }
-
-        private void rbSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbSelectAll.Checked)
-            {
-                SelectAllNodes(treeViewRoles.Nodes, false);
-            }
-            else
-            {
-                SelectAllNodes(treeViewRoles.Nodes, true);
             }
         }
 

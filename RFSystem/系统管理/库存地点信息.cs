@@ -94,9 +94,9 @@ namespace RFSystem
             // 
             // btnMod
             // 
-            this.btnMod.Location = new System.Drawing.Point(139, 209);
+            this.btnMod.Location = new System.Drawing.Point(119, 199);
             this.btnMod.Name = "btnMod";
-            this.btnMod.Size = new System.Drawing.Size(100, 40);
+            this.btnMod.Size = new System.Drawing.Size(120, 50);
             this.btnMod.TabIndex = 40;
             this.btnMod.Text = "修改";
             this.btnMod.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@ namespace RFSystem
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(245, 209);
+            this.btnCancel.Location = new System.Drawing.Point(245, 199);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.Size = new System.Drawing.Size(120, 50);
             this.btnCancel.TabIndex = 50;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;

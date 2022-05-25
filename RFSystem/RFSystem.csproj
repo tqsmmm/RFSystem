@@ -269,6 +269,12 @@
       <DependentUpon>货位数据同步.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\公司信息列表.resx">
+      <DependentUpon>公司信息列表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\库存地点信息列表.resx">
+      <DependentUpon>库存地点信息列表.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="系统管理\打印机信息.resx">
       <DependentUpon>打印机信息.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -277,16 +283,12 @@
       <DependentUpon>公司信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\公司及库存地点信息.resx">
-      <DependentUpon>公司及库存地点信息.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="系统管理\库存地点信息.resx">
       <DependentUpon>库存地点信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\打印机列表.resx">
-      <DependentUpon>打印机列表.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\打印机信息列表.resx">
+      <DependentUpon>打印机信息列表.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\日志信息查看.resx">
@@ -313,8 +315,8 @@
       <DependentUpon>用户信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\用户列表.resx">
-      <DependentUpon>用户列表.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\用户信息列表.resx">
+      <DependentUpon>用户信息列表.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\用户权限设置.resx">
@@ -407,19 +409,28 @@
     <Compile Include="Statistic\货位数据同步.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="系统管理\公司信息列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\公司信息列表.Designer.cs">
+      <DependentUpon>公司信息列表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="系统管理\库存地点信息列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\库存地点信息列表.Designer.cs">
+      <DependentUpon>库存地点信息列表.cs</DependentUpon>
+    </Compile>
     <Compile Include="系统管理\打印机信息.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\公司信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\公司及库存地点信息.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="系统管理\库存地点信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\打印机列表.cs">
+    <Compile Include="系统管理\打印机信息列表.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\日志信息查看.cs">
@@ -440,7 +451,7 @@
     <Compile Include="系统管理\用户信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\用户列表.cs">
+    <Compile Include="系统管理\用户信息列表.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\用户权限设置.cs">

@@ -15,7 +15,6 @@ namespace RFSystem.LabelPrint
         // Fields
         private Button btnAdd;
         private Button btnDel;
-        private Button btnExit;
         private Button btnPrint;
         private Button btnSelect;
         private Button btnSelectPrinter;
@@ -76,31 +75,45 @@ namespace RFSystem.LabelPrint
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            base.Close();
-        }
-
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            this.PrintLocationLabel();
+            string copy = "1";
+            TcpClient client = new TcpClient();
+            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+
+            try
+            {
+                client.Connect(hostname, port);
+
+                for (int i = 0; i < dataGridViewLocationList.RowCount; i++)
+                {
+                    string loc = dataGridViewLocationList.Rows[i].Cells["columnLocation"].Value.ToString();
+                    string xx = "5.5";
+                    string xz = "13";
+                    string s = dealPrintData(loc, xx, xz, copy);
+                    client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
+                    client.GetStream().Flush();
+                }
+
+                client.Close();
+            }
+            catch (Exception exception)
+            {
+                CommonFunction.Sys_MsgBox(exception.Message);
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            this.dtLocationList = PrintDBOperate.GetLocationList(this.txtLocation.Text.Trim());
-            this.dataGridViewLocationList.DataSource = this.dtLocationList;
+            dtLocationList = PrintDBOperate.GetLocationList(this.txtLocation.Text.Trim());
+            dataGridViewLocationList.DataSource = this.dtLocationList;
         }
 
         private void btnSelectPrinter_Click(object sender, EventArgs e)
         {
             this.dtPrinterList = DBOperate.GetPrinterList("%" + this.txtPrinter.Text + "%", "%");
             this.dataGridViewPrinterList.DataSource = this.dtPrinterList;
-        }
-
-        private void dataGridViewLocationList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dataGridViewLocationList_SelectionChanged(object sender, EventArgs e)
@@ -127,15 +140,14 @@ namespace RFSystem.LabelPrint
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridViewLocationList = new System.Windows.Forms.DataGridView();
             this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSelectPrinter = new System.Windows.Forms.Button();
             this.txtPrinter = new System.Windows.Forms.TextBox();
@@ -164,52 +176,6 @@ namespace RFSystem.LabelPrint
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "货位选择";
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(645, 527);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 40);
-            this.btnPrint.TabIndex = 50;
-            this.btnPrint.Text = "打印";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(433, 527);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 40);
-            this.btnAdd.TabIndex = 40;
-            this.btnAdd.Text = "新增";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Enabled = false;
-            this.btnDel.Location = new System.Drawing.Point(539, 527);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(100, 40);
-            this.btnDel.TabIndex = 60;
-            this.btnDel.Text = "删除";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(751, 527);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 40);
-            this.btnExit.TabIndex = 70;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnSelect
             // 
@@ -257,7 +223,6 @@ namespace RFSystem.LabelPrint
             this.dataGridViewLocationList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewLocationList.Size = new System.Drawing.Size(312, 432);
             this.dataGridViewLocationList.TabIndex = 30;
-            this.dataGridViewLocationList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLocationList_CellContentClick);
             this.dataGridViewLocationList.SelectionChanged += new System.EventHandler(this.dataGridViewLocationList_SelectionChanged);
             // 
             // columnLocation
@@ -266,6 +231,41 @@ namespace RFSystem.LabelPrint
             this.columnLocation.HeaderText = "货位号";
             this.columnLocation.Name = "columnLocation";
             this.columnLocation.ReadOnly = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Enabled = false;
+            this.btnPrint.Location = new System.Drawing.Point(751, 527);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(100, 40);
+            this.btnPrint.TabIndex = 50;
+            this.btnPrint.Text = "打印";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Location = new System.Drawing.Point(539, 527);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 40);
+            this.btnAdd.TabIndex = 40;
+            this.btnAdd.Text = "新增";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.Enabled = false;
+            this.btnDel.Location = new System.Drawing.Point(645, 527);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(100, 40);
+            this.btnDel.TabIndex = 60;
+            this.btnDel.Text = "删除";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // groupBox1
             // 
@@ -363,7 +363,6 @@ namespace RFSystem.LabelPrint
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnExit);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LocationLabel";
@@ -378,35 +377,6 @@ namespace RFSystem.LabelPrint
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
             this.ResumeLayout(false);
 
-        }
-
-        private void PrintLocationLabel()
-        {
-            string copy = "1";
-            TcpClient client = new TcpClient();
-            string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
-
-            try
-            {
-                client.Connect(hostname, port);
-
-                for (int i = 0; i < dataGridViewLocationList.RowCount; i++)
-                {
-                    string loc = dataGridViewLocationList.Rows[i].Cells["columnLocation"].Value.ToString();
-                    string xx = "5.5";
-                    string xz = "13";
-                    string s = dealPrintData(loc, xx, xz, copy);
-                    client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                    client.GetStream().Flush();
-                }
-
-                client.Close();
-            }
-            catch (Exception exception)
-            {
-                CommonFunction.Sys_MsgBox(exception.Message);
-            }
         }
 
         private void SelectNextControl(object sender, KeyEventArgs e)
