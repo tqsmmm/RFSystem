@@ -1,5 +1,4 @@
-﻿using RFSystem.CommonClass;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace RFSystem

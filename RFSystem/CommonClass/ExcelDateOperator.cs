@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RFSystem.CommonClass
+namespace RFSystem
 {
     public class ExcelDateOperator
     {

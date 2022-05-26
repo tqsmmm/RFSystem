@@ -3,7 +3,6 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections;
-using RFSystem.CommonClass;
 
 namespace RFSystem.ArriveStore
 {

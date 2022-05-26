@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using RFSystem.CommonClass;
 using System.Collections;
 
-namespace RFSystem.SystemConfig
+namespace RFSystem
 {
     public class 打印机信息列表 : Form
     {

@@ -4,7 +4,6 @@ using System.Text;
 using System.Windows.Forms;
 using RFSystem.Properties;
 using System.Net.Sockets;
-using RFSystem.CommonClass;
 
 namespace RFSystem.LabelPrint
 {
@@ -303,12 +302,7 @@ namespace RFSystem.LabelPrint
 
         private void PrintContractorLabel()
         {
-            string s = "";
-            string con = "";
             string copy = "1";
-            string xx = "4";
-            string xz = "10";
-
             TcpClient client = new TcpClient();
             string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
             int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
@@ -319,10 +313,10 @@ namespace RFSystem.LabelPrint
 
                 for (int i = 0; i < dataGridViewContractorList.RowCount; i++)
                 {
-                    con = dataGridViewContractorList.Rows[i].Cells["columnContractor"].Value.ToString();
-                    xx = "4";
-                    xz = "10";
-                    s = dealPrintData(con, xx, xz, copy);
+                    string con = dataGridViewContractorList.Rows[i].Cells["columnContractor"].Value.ToString();
+                    string xx = "4";
+                    string xz = "10";
+                    string s = dealPrintData(con, xx, xz, copy);
                     client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                     client.GetStream().Flush();
                 }

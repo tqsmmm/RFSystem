@@ -2,7 +2,7 @@
 using System.Data;
 using System.Collections;
 
-namespace RFSystem.CommonClass
+namespace RFSystem
 {
     internal class RoleInit
     {

@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows.Forms;
 using RFSystem.Properties;
 using System.Threading;
-using RFSystem.CommonClass;
 using System.Collections;
 using System.Net.Sockets;
 
@@ -519,7 +518,7 @@ namespace RFSystem
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 392);
+            this.label10.Location = new System.Drawing.Point(12, 409);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 20);
             this.label10.TabIndex = 1001;
@@ -528,7 +527,7 @@ namespace RFSystem
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(12, 447);
+            this.btnPrint.Location = new System.Drawing.Point(12, 464);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPrint.TabIndex = 1004;
@@ -539,7 +538,7 @@ namespace RFSystem
             // btnPatchPrint
             // 
             this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(12, 503);
+            this.btnPatchPrint.Location = new System.Drawing.Point(12, 520);
             this.btnPatchPrint.Name = "btnPatchPrint";
             this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPatchPrint.TabIndex = 1005;
@@ -549,7 +548,7 @@ namespace RFSystem
             // 
             // nudCopy
             // 
-            this.nudCopy.Location = new System.Drawing.Point(12, 415);
+            this.nudCopy.Location = new System.Drawing.Point(12, 432);
             this.nudCopy.Minimum = new decimal(new int[] {
             1,
             0,
@@ -567,7 +566,7 @@ namespace RFSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 338);
+            this.label2.Location = new System.Drawing.Point(12, 355);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 1103;
@@ -579,14 +578,14 @@ namespace RFSystem
             this.cmbLabelType.Items.AddRange(new object[] {
             "普通标签",
             "RFID标签"});
-            this.cmbLabelType.Location = new System.Drawing.Point(12, 361);
+            this.cmbLabelType.Location = new System.Drawing.Point(12, 378);
             this.cmbLabelType.Name = "cmbLabelType";
             this.cmbLabelType.Size = new System.Drawing.Size(120, 28);
             this.cmbLabelType.TabIndex = 1102;
             // 
             // txtPrinter
             // 
-            this.txtPrinter.Location = new System.Drawing.Point(12, 309);
+            this.txtPrinter.Location = new System.Drawing.Point(12, 326);
             this.txtPrinter.Name = "txtPrinter";
             this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 102;
@@ -595,7 +594,7 @@ namespace RFSystem
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 286);
+            this.label11.Location = new System.Drawing.Point(12, 303);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 101;
@@ -618,7 +617,7 @@ namespace RFSystem
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
             this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 163);
+            this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 180);
             this.dataGridViewPrinterList.TabIndex = 1100;
             // 
             // dataGridViewTextBoxColumn1

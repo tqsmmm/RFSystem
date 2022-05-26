@@ -3,10 +3,8 @@ using System.Collections;
 using System.Windows.Forms;
 using RFSystem.Statistic;
 using RFSystem.LabelPrint;
-using RFSystem.SystemConfig;
 using RFSystem.ArriveStore;
 using System.Data;
-using RFSystem.CommonClass;
 
 namespace RFSystem
 {

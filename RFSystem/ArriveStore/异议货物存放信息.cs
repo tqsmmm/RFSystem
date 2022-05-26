@@ -1,12 +1,11 @@
-﻿namespace RFSystem.ArriveStore
-{
-    using RFSystem.CommonClass;
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Windows.Forms;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
+namespace RFSystem.ArriveStore
+{
     public class 异议货物存放信息 : Form
     {
         private Button btnCancel;
@@ -21,23 +20,26 @@
 
         public 异议货物存放信息()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            base.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (this.ValidateInput())
+            if (ValidateInput())
             {
-                this.demurralStorageInfo = new ArrayList();
-                this.demurralStorageInfo.Add(this.textBoxStorePosition.Text);
-                this.demurralStorageInfo.Add((int)this.numericUpDownAmount.Value);
-                this.demurralStorageInfo.Add(this.textBoxRemark.Text);
-                base.DialogResult = DialogResult.OK;
+                demurralStorageInfo = new ArrayList
+                {
+                    textBoxStorePosition.Text,
+                    (int)numericUpDownAmount.Value,
+                    textBoxRemark.Text
+                };
+
+                DialogResult = DialogResult.OK;
             }
         }
 

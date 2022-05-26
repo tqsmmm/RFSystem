@@ -1,5 +1,4 @@
-﻿using RFSystem.CommonClass;
-using RFSystem.rfid2021Service;
+﻿using RFSystem.rfid2021Service;
 using System;
 using System.Data;
 using System.Windows.Forms;

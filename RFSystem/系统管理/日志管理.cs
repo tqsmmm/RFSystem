@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using RFSystem.AnSteel;
-using RFSystem.CommonClass;
 using System.Net;
 
 namespace RFSystem

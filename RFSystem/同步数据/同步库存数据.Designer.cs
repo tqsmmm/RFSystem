@@ -52,7 +52,6 @@ namespace RFSystem
             // 
             // btnDownload
             // 
-            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownload.Location = new System.Drawing.Point(12, 70);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(120, 50);
@@ -84,7 +83,6 @@ namespace RFSystem
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.Enabled = false;
             this.btnUpdate.Location = new System.Drawing.Point(12, 152);
             this.btnUpdate.Name = "btnUpdate";
@@ -106,7 +104,6 @@ namespace RFSystem
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 208);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
@@ -139,6 +136,7 @@ namespace RFSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "同步库存数据";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.同步库存数据_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSapStockInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

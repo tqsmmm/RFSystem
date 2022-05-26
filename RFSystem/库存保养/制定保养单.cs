@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using System.Collections;
 using RFSystem.AnSteel;
-using RFSystem.CommonClass;
 
 namespace RFSystem
 {

@@ -104,8 +104,8 @@
     <Compile Include="CommonClass\Printer.cs" />
     <Compile Include="CommonClass\RFdesOperator.cs" />
     <Compile Include="CommonClass\RoleInit.cs" />
-    <Compile Include="DBOperate.cs" />
-    <Compile Include="GetData.cs" />
+    <Compile Include="CommonClass\DBOperate.cs" />
+    <Compile Include="CommonClass\GetData.cs" />
     <Compile Include="LabelPrint\ContractorLabel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,12 +124,12 @@
     <Compile Include="LabelPrint\库位查询.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrintDBOperate.cs" />
-    <Compile Include="SqlManager.cs" />
-    <Compile Include="TDB.cs" />
-    <Compile Include="TDBObject.cs" />
-    <Compile Include="TLogError.cs" />
-    <Compile Include="UserInfo.cs" />
+    <Compile Include="CommonClass\PrintDBOperate.cs" />
+    <Compile Include="CommonClass\SqlManager.cs" />
+    <Compile Include="CommonClass\TDB.cs" />
+    <Compile Include="CommonClass\TDBObject.cs" />
+    <Compile Include="CommonClass\TLogError.cs" />
+    <Compile Include="CommonClass\UserInfo.cs" />
     <Compile Include="库存保养\保养单列表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,7 +148,7 @@
     <Compile Include="库存保养\管理保养单.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="CommonClass\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArriveStore\到库货物信息合并.resx">
       <DependentUpon>到库货物信息合并.cs</DependentUpon>
@@ -375,9 +375,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -399,8 +396,8 @@
     <Compile Include="RF库存管理系统登录.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Serivce.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="CommonClass\Serivce.cs" />
+    <Compile Include="CommonClass\Settings.cs" />
     <Compile Include="Statistic\Excel文件数据同步.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,7 +464,7 @@
     <Compile Include="系统管理\用户权限设置.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utility.cs" />
+    <Compile Include="CommonClass\Utility.cs" />
     <Compile Include="Web References\rfid2021Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -517,7 +514,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Compile Include="ClsCommon.cs" />
+    <Compile Include="CommonClass\ClsCommon.cs" />
     <Compile Include="Web References\AnSteel\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

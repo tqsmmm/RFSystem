@@ -3,7 +3,6 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using RFSystem.Properties;
-using RFSystem.CommonClass;
 using System.Net.Sockets;
 using RFSystem.AnSteel;
 

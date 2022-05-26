@@ -1,5 +1,4 @@
-﻿using RFSystem.CommonClass;
-using System;
+﻿using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Data;
@@ -69,12 +68,14 @@ namespace RFSystem
             }
             else if (ValidateInput())
             {
-                ArrayList userItem = new ArrayList();
-                userItem.Add(textBoxUserID.Text.Trim());
-                userItem.Add(textBoxUserName.Text.Trim());
-                userItem.Add(RFdesOperator.getMd5Hash(textBoxPassWord.Text.Trim()));
-                userItem.Add(comboBoxSapRolePoint.Text.Trim());
-                userItem.Add(checkBoxIsAdmin.Checked ? 1 : 0);
+                ArrayList userItem = new ArrayList
+                {
+                    textBoxUserID.Text.Trim(),
+                    textBoxUserName.Text.Trim(),
+                    RFdesOperator.getMd5Hash(textBoxPassWord.Text.Trim()),
+                    comboBoxSapRolePoint.Text.Trim(),
+                    checkBoxIsAdmin.Checked ? 1 : 0
+                };
 
                 if (Text == "用户新增")
                 {

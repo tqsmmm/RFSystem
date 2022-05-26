@@ -686,9 +686,9 @@ namespace RFSystem
         public static void clearE1DV11(string bxJobId)
         {
             //db.SqlType = TDB.ESQL_TYPE.NonQuery;
-            db.Excute("delete bx_transaction_E1DV11 where custodianJobId = '" + bxJobId + "'");
+            db.Excute("DELETE bx_transaction_E1DV11 WHERE custodianJobId = '" + bxJobId + "'");
 
-            db.Excute("delete bx_transaction_E1DV12 where custodianJobId = '" + bxJobId + "'");
+            db.Excute("DELETE bx_transaction_E1DV12 WHERE custodianJobId = '" + bxJobId + "'");
         }
 
         public static void clearbx_transaction(string bxJobId)

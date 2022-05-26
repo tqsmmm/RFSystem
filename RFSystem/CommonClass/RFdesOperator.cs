@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RFSystem.CommonClass
+namespace RFSystem
 {
     public class RFdesOperator
     {

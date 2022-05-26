@@ -1,5 +1,4 @@
 ﻿using RFSystem.AnSteel;
-using RFSystem.CommonClass;
 using System.IO;
 using System.Text;
 

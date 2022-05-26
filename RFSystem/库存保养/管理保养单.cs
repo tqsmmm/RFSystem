@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Collections;
-using RFSystem.CommonClass;
 
 namespace RFSystem
 {
@@ -815,7 +814,7 @@ namespace RFSystem
 
         private void btnReMaintain_Click(object sender, EventArgs e)
         {
-            SetButtonsEnable(false, false, false, false);
+            SetButtonsEnable(false, false, false);
             SetModControlsEnable(true);
             dataGridViewMaintainDetail_SelectionChanged(null, null);
         }
@@ -823,13 +822,16 @@ namespace RFSystem
         private void btnSelect_Click(object sender, EventArgs e)
         {
             dataGridViewMaintainDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            ArrayList arriveList = new ArrayList();
-            arriveList.Add(textBoxMaintainNo.Text.Trim());
-            arriveList.Add(comboBoxPlant.Text.Trim().Replace("无", string.Empty));
-            arriveList.Add(comboBoxSLocation.Text.Trim().Replace("无", string.Empty));
-            arriveList.Add(textBoxStoreMan.Text.Trim());
-            arriveList.Add(textBoxOperator.Text.Trim());
-            arriveList.Add((comboBoxState.SelectedIndex == -1) ? "" : comboBoxState.SelectedIndex.ToString());
+
+            ArrayList arriveList = new ArrayList
+            {
+                textBoxMaintainNo.Text.Trim(),
+                comboBoxPlant.Text.Trim().Replace("无", string.Empty),
+                comboBoxSLocation.Text.Trim().Replace("无", string.Empty),
+                textBoxStoreMan.Text.Trim(),
+                textBoxOperator.Text.Trim(),
+                (comboBoxState.SelectedIndex == -1) ? "" : comboBoxState.SelectedIndex.ToString()
+            };
 
             if (checkBoxTableMakeDate.Checked)
             {
@@ -910,7 +912,7 @@ namespace RFSystem
         {
             if ((dataGridViewMaintain.Rows == null) || (dataGridViewMaintain.SelectedRows.Count == 0))
             {
-                SetButtonsEnable(false, false, false, false);
+                SetButtonsEnable(false, false, false);
             }
             else
             {
@@ -922,20 +924,20 @@ namespace RFSystem
                     {
                         if (str == "保养完成")
                         {
-                            SetButtonsEnable(false, true, false, true);
+                            SetButtonsEnable(false, true, true);
                         }
                         else if ((str == "保养中") || (str == "作废单据"))
                         {
-                            SetButtonsEnable(false, false, false, false);
+                            SetButtonsEnable(false, false, false);
                         }
                         else if (str == "结束保养")
                         {
-                            SetButtonsEnable(false, true, false, false);
+                            SetButtonsEnable(false, true, false);
                         }
                     }
                     else
                     {
-                        SetButtonsEnable(true, false, true, false);
+                        SetButtonsEnable(true, false, false);
                     }
                 }
 
@@ -1013,7 +1015,7 @@ namespace RFSystem
             dtReport.Columns.Add("货位");
         }
 
-        private void SetButtonsEnable(bool startEnable, bool endEnable, bool delEnable, bool reMaintain)
+        private void SetButtonsEnable(bool startEnable, bool delEnable, bool reMaintain)
         {
             btnStart.Enabled = startEnable;
             btnDel.Enabled = delEnable;

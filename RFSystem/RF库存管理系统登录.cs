@@ -1,5 +1,4 @@
 using RFSystem.AnSteel;
-using RFSystem.CommonClass;
 using RFSystem.Properties;
 using System;
 using System.ComponentModel;

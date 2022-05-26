@@ -1,4 +1,4 @@
-﻿namespace RFSystem.CommonClass
+﻿namespace RFSystem
 {
     internal class ConstDefine
     {

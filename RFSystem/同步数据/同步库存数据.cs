@@ -1,5 +1,4 @@
-﻿using RFSystem.CommonClass;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -14,22 +13,22 @@ namespace RFSystem
         public 同步库存数据()
         {
             InitializeComponent();
-            dgInit();
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
             if (textBoxStoreMan.Text.Trim() == "")
             {
-                CommonFunction.Sys_MsgBox("请输入正确管理员码");
+                CommonFunction.Sys_MsgBox("请输入正确保管员岗位号。");
                 return;
             }
-
-            DBOperate.clearE1DV11(textBoxStoreMan.Text.Trim());
 
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
+                btnDownload.Enabled = false;
+
+                DBOperate.clearE1DV11(textBoxStoreMan.Text.Trim());
 
                 rfid2021Service.rfidService newService = new rfid2021Service.rfidService();
                 DataSet _sendDs = new DataSet();
@@ -44,8 +43,7 @@ namespace RFSystem
 
                 _dt.Rows.Add(_dr);
 
-                DataSet _outDs;
-                rfid2021Service.MessagePack pack = newService.sendMsg("DVE111", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs, out _outDs);
+                rfid2021Service.MessagePack pack = newService.sendMsg("DVE111", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs, out DataSet _outDs);
 
                 if (pack.Result)
                 {
@@ -58,13 +56,14 @@ namespace RFSystem
                     CommonFunction.Sys_MsgBox(pack.Message);
                 }
             }
-            catch (Exception ee)
+            catch (Exception Ex)
             {
-                CommonFunction.Sys_MsgBox(ee.Message);
+                CommonFunction.Sys_MsgBox(Ex.Message);
             }
             finally
             {
                 Cursor.Current = Cursors.Default;
+                btnDownload.Enabled = true;
             }
         }
 
@@ -91,7 +90,29 @@ namespace RFSystem
             }
         }
 
-        private void dgInit()
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (rC < 0 || rC != recC)
+            {
+                CommonFunction.Sys_MsgBox("没有接收到数据，或记录数为0");
+                return;
+            }
+
+            DBOperate.clearbx_transaction(textBoxStoreMan.Text.Trim());
+
+            int updateCount = DBOperate.updateTransaction(textBoxStoreMan.Text.Trim());
+
+            if (updateCount > -1)
+            {
+                CommonFunction.Sys_MsgBox("同步成功，同步 " + updateCount + "条数据");
+            }
+            else
+            {
+                CommonFunction.Sys_MsgBox("同步失败");
+            }
+        }
+
+        private void 同步库存数据_Load(object sender, EventArgs e)
         {
             dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "送货单行号", DataPropertyName = "deliveryLineId" });
             dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "收货单号", DataPropertyName = "receiveId" });
@@ -114,28 +135,6 @@ namespace RFSystem
             dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "验收员", DataPropertyName = "inspectorJobId" });
             dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存明细交易号", DataPropertyName = "transactionId" });
             dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存主表交易号", DataPropertyName = "invTransactionId" });
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (rC < 0 || rC != recC)
-            {
-                CommonFunction.Sys_MsgBox("没有接收到数据，或记录数为0");
-                return;
-            }
-
-            DBOperate.clearbx_transaction(textBoxStoreMan.Text.Trim());
-
-            int updateCount = DBOperate.updateTransaction(textBoxStoreMan.Text.Trim());
-
-            if (updateCount > -1)
-            {
-                CommonFunction.Sys_MsgBox("同步成功，同步 " + updateCount + "条数据");
-            }
-            else
-            {
-                CommonFunction.Sys_MsgBox("同步失败");
-            }
         }
     }
 }

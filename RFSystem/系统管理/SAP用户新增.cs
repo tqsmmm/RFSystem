@@ -1,5 +1,4 @@
-﻿using RFSystem.CommonClass;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace RFSystem
@@ -22,9 +21,12 @@ namespace RFSystem
         {
             if (ValidateInput())
             {
-                RFdesOperator @operator = new RFdesOperator();
-                @operator.EncryptKey = "12345678";
-                @operator.InputString = textBoxSapPassword.Text;
+                RFdesOperator @operator = new RFdesOperator
+                {
+                    EncryptKey = "12345678",
+                    InputString = textBoxSapPassword.Text
+                };
+
                 @operator.DesEncrypt();
 
                 if (DBOperate.AddSapUser(textBoxSapUserID.Text, @operator.OutString) != -1)

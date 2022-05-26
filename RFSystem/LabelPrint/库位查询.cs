@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using System.Threading;
 using System.Collections;
-using RFSystem.CommonClass;
 using RFSystem.AnSteel;
 
 namespace RFSystem.LabelPrint

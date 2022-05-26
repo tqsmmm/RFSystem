@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Threading;
 using System.Data;
-using RFSystem.CommonClass;
 using RFSystem.AnSteel;
 
 namespace RFSystem

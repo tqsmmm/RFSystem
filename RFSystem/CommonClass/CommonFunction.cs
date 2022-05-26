@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Windows.Forms;
 
-namespace RFSystem.CommonClass
+namespace RFSystem
 {
     internal class CommonFunction
     {

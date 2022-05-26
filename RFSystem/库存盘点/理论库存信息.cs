@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Data;
 using System.Collections;
-using RFSystem.CommonClass;
 
 namespace RFSystem
 {
