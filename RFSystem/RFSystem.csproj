@@ -397,7 +397,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommonClass\Serivce.cs" />
-    <Compile Include="CommonClass\Settings.cs" />
     <Compile Include="Statistic\Excel文件数据同步.cs">
       <SubType>Form</SubType>
     </Compile>

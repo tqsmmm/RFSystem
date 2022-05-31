@@ -701,7 +701,7 @@ namespace RFSystem
             dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
 
             dataGridViewStock.AutoGenerateColumns = false;
-            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dtPrinterList = DBOperate.GetPrinterList("''", "''");
             dataGridViewPrinterList.DataSource = dtPrinterList;
             cmbLabelType.Text = "普通标签";
         }

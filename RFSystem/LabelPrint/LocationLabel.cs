@@ -36,7 +36,7 @@ namespace RFSystem.LabelPrint
             dtLocationList = null;
             dtPrinterList = null;
             InitializeComponent();
-            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dtPrinterList = DBOperate.GetPrinterList("''", "''");
             dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 

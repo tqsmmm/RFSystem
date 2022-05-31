@@ -18,7 +18,6 @@ namespace RFSystem.LabelPrint
         private Button btnPrintCountMod;
         private Button btnSelect;
         private Button button1;
-        private Button button2;
         private ComboBox cmbLabelType;
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnPName;
@@ -99,7 +98,6 @@ namespace RFSystem.LabelPrint
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnPatchPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtPrinter = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -473,7 +471,6 @@ namespace RFSystem.LabelPrint
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtPrinter);
             this.groupBox1.Controls.Add(this.label5);
@@ -484,18 +481,6 @@ namespace RFSystem.LabelPrint
             this.groupBox1.TabIndex = 1000;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "打印机选择";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(694, 71);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
-            this.button2.TabIndex = 1101;
-            this.button2.Text = "默认打印机";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -625,7 +610,7 @@ namespace RFSystem.LabelPrint
             dtPrinterList = null;
             this.userItem = null;
             InitializeComponent();
-            dtPrinterList = DBOperate.GetPrinterList("%", "%" + Settings.Default.DefaultPrinterIP.ToString() + "%");
+            dtPrinterList = DBOperate.GetPrinterList("''", "''");
             dataGridViewPrinterList.DataSource = dtPrinterList;
             dataGridViewProductList.AutoGenerateColumns = false;
             this.userItem = userItem;
@@ -828,13 +813,6 @@ namespace RFSystem.LabelPrint
             dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string str = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-            Settings.Default.DefaultPrinterIP = str;
-            Settings.Default.Save();
-        }
-
         public string Data_Hex(string old)
         {
             string str = "";
@@ -885,14 +863,7 @@ namespace RFSystem.LabelPrint
 
         private void dataGridViewPrinterList_SelectionChanged(object sender, EventArgs e)
         {
-            if ((dataGridViewPrinterList.Rows != null) && (dataGridViewPrinterList.SelectedRows.Count != 0))
-            {
-                button2.Enabled = true;
-            }
-            else
-            {
-                button2.Enabled = false;
-            }
+
         }
 
         private void dataGridViewProductList_Sorted(object sender, EventArgs e)
