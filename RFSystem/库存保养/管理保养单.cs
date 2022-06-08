@@ -686,7 +686,7 @@ namespace RFSystem
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "管理保养单";
@@ -707,18 +707,16 @@ namespace RFSystem
         // Methods
         public 管理保养单(UserInfo userItem, ArrayList userRoles)
         {
-            this.userItem = null;
-            this.userRoles = null;
-            dtPlantList = null;
-            dtStoreLocusList = null;
             dtReport = null;
             InitializeComponent();
             this.userItem = userItem;
             this.userRoles = userRoles;
             dtPlantList = DBOperate.GetPlantList(string.Empty);
             dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
+
             comboBoxSLocation.Items.Add("无");
             comboBoxSLocation.SelectedIndex = 0;
+
             comboBoxPlant.Items.Add("无");
 
             if (CommonFunction.IfHasData(dtPlantList))
@@ -730,8 +728,10 @@ namespace RFSystem
             }
 
             comboBoxPlant.SelectedIndex = 0;
+
             dataGridViewMaintain.AutoGenerateColumns = false;
             dataGridViewMaintainDetail.AutoGenerateColumns = false;
+
             InitTableColumns();
         }
 
@@ -992,7 +992,7 @@ namespace RFSystem
             dtMaintainHeader.Columns.Add("OPERATOR");
             dtMaintainHeader.Columns.Add("OPERATE_TIME");
             dtMaintainHeader.Columns.Add("State");
-            dataGridViewMaintain.DataSource = this.dtMaintainHeader;
+            dataGridViewMaintain.DataSource = dtMaintainHeader;
             dtMaintainDetail = new DataTable();
             dtMaintainDetail.Columns.Add("MAINTAIN_NO");
             dtMaintainDetail.Columns.Add("BARCODE");
@@ -1005,7 +1005,7 @@ namespace RFSystem
             dtMaintainDetail.Columns.Add("BIN_NUM");
             dtMaintainDetail.Columns.Add("MAINTAINNUM");
             dtMaintainDetail.Columns.Add("SUPPLIER_NO");
-            dataGridViewMaintainDetail.DataSource = this.dtMaintainDetail;
+            dataGridViewMaintainDetail.DataSource = dtMaintainDetail;
             dtReport = new DataTable();
             dtReport.Columns.Add("物料号");
             dtReport.Columns.Add("批次号");

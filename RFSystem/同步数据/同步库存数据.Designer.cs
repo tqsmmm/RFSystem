@@ -35,6 +35,7 @@ namespace RFSystem
             // 
             // textBoxStoreMan
             // 
+            this.textBoxStoreMan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxStoreMan.Location = new System.Drawing.Point(12, 38);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
             this.textBoxStoreMan.Size = new System.Drawing.Size(120, 26);

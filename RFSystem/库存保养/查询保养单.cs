@@ -558,13 +558,15 @@ namespace RFSystem
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            ArrayList arriveList = new ArrayList();
-            arriveList.Add(textBoxMaintainID.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxMaintainID.Text.Trim());
-            arriveList.Add(comboBoxPlant.Text.Equals("无") ? string.Empty : comboBoxPlant.Text);
-            arriveList.Add(comboBoxSLocation.Text.Equals("无") ? string.Empty : comboBoxSLocation.Text);
-            arriveList.Add(textBoxBin.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxBin.Text.Trim());
-            arriveList.Add(textBoxStoreMan.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxStoreMan.Text.Trim());
-            arriveList.Add(textBoxOperator.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxOperator.Text.Trim());
+            ArrayList arriveList = new ArrayList
+            {
+                textBoxMaintainID.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxMaintainID.Text.Trim(),
+                comboBoxPlant.Text.Equals("无") ? string.Empty : comboBoxPlant.Text,
+                comboBoxSLocation.Text.Equals("无") ? string.Empty : comboBoxSLocation.Text,
+                textBoxBin.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxBin.Text.Trim(),
+                textBoxStoreMan.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxStoreMan.Text.Trim(),
+                textBoxOperator.Text.Trim().Equals(string.Empty) ? string.Empty : textBoxOperator.Text.Trim()
+            };
 
             if (checkBoxTableMakeDate.Checked)
             {
@@ -578,7 +580,6 @@ namespace RFSystem
             }
 
             arriveList.Add(checkBoxComplete.Checked ? "1" : string.Empty);
-            //this.dataGridViewMaintainInfo.DataSource = DBOperate.MaintainGetList(arriveList);
             dataGridViewMaintainInfo.DataSource = ClsCommon.MaintainGetList_New(arriveList);
         }
 

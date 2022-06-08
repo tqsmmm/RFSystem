@@ -891,13 +891,11 @@ namespace RFSystem.LabelPrint
                     string proName = dgvr[i].Cells["columnProduct"].Value.ToString();
                     string proNo = dgvr[i].Cells["columnPNo"].Value.ToString();
                     ////string patch = dgvr[i].Cells["columnPatch"].Value.ToString();
-                    string wareNo = dgvr[i].Cells["columnFactory"].Value.ToString();
                     ////string deNo = this.txtPatch.Text.Trim();
                     ////string ckDate = dgvr[i].Cells["columnDate"].Value.ToString();
                     string manu = "";
                     string pC = "";
                     string cert = "";
-                    string pL = "";
                     ////string supp = dgvr[i].Cells["ColumnPro"].Value.ToString();
                     string loca = "";
                     string q = "";
@@ -913,7 +911,7 @@ namespace RFSystem.LabelPrint
                     string ckDate = dgvr[i].Cells["columnDate"] == null || dgvr[i].Cells["columnDate"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_rkrq"].Value.ToString().Trim() : dgvr[i].Cells["columnDate"].Value.ToString().Trim();
                     string supp = dgvr[i].Cells["ColumnPro"] == null || dgvr[i].Cells["ColumnPro"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_ghdw"].Value.ToString().Trim() : dgvr[i].Cells["ColumnPro"].Value.ToString().Trim();
                     string baoguanyuan = dgvr[i].Cells["C_Bct10"] == null || dgvr[i].Cells["C_Bct10"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_storeman"].Value.ToString().Trim() : dgvr[i].Cells["C_Bct10"].Value.ToString().Trim();
-                    s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
+                    s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
 
                     //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
                     client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
@@ -947,13 +945,11 @@ namespace RFSystem.LabelPrint
                         string proName = dgvr[i].Cells["columnProduct"].Value.ToString();
                         string proNo = dgvr[i].Cells["columnPNo"].Value.ToString();
                         ////string patch = dgvr[i].Cells["columnPatch"].Value.ToString();
-                        string wareNo = dgvr[i].Cells["columnFactory"].Value.ToString();
                         ////string deNo = this.txtPatch.Text.Trim();
                         ////string ckDate = dgvr[i].Cells["columnDate"].Value.ToString();
                         string manu = "";
                         string pC = "";
                         string cert = "";
-                        string pL = "";
                         ////string supp = dgvr[i].Cells["ColumnPro"].Value.ToString();
                         string loca = "";
                         string q = "";
@@ -969,7 +965,7 @@ namespace RFSystem.LabelPrint
                         string ckDate = dgvr[i].Cells["columnDate"] == null || dgvr[i].Cells["columnDate"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_rkrq"].Value.ToString().Trim() : dgvr[i].Cells["columnDate"].Value.ToString().Trim();
                         string supp = dgvr[i].Cells["ColumnPro"] == null || dgvr[i].Cells["ColumnPro"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_ghdw"].Value.ToString().Trim() : dgvr[i].Cells["ColumnPro"].Value.ToString().Trim();
                         string baoguanyuan = dgvr[i].Cells["C_Bct10"] == null || dgvr[i].Cells["C_Bct10"].Value.ToString().Trim() == "" ? dgvr[i].Cells["C_N_storeman"].Value.ToString().Trim() : dgvr[i].Cells["C_Bct10"].Value.ToString().Trim();
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
                        
                         //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);

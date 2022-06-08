@@ -861,13 +861,11 @@ namespace RFSystem.Statistic
                         string proName = dgvr[i].Cells["ColumnPRODUCT_NAME"].Value.ToString();
                         string proNo = dgvr[i].Cells["ColumnPRODUCT_NO"].Value.ToString();
                         string patch = dgvr[i].Cells["ColumnPATCH_NO"].Value.ToString();
-                        string wareNo = dgvr[i].Cells["ColumnFACT_NO"].Value.ToString();
                         string deNo = dgvr[i].Cells["pzh"].Value.ToString();//凭证号 string.Empty;
                         string ckDate = dgvr[i].Cells["rkrq"].Value.ToString();//入库日期 string.Empty;
                         string manu = "";
                         string pC = dgvr[i].Cells["ColumnBillNo"].Value.ToString();//ColumnBillNo
                         string cert = "";
-                        string pL = "";
                         string supp = dgvr[i].Cells["ColumnPName"].Value.ToString();
                         string loca = dgvr[i].Cells["ColumnBIN"].Value.ToString();
                         string q = dgvr[i].Cells["ColumnBct1"].Value.ToString();
@@ -881,7 +879,7 @@ namespace RFSystem.Statistic
                         string baoguanyuan = dgvr[i].Cells["ColumnStoreManDetail"].Value.ToString();
                         string ywtm = dgvr[i].Cells["ywtm"].Value.ToString();
                         //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                         client.GetStream().Flush();
                     }
@@ -920,13 +918,11 @@ namespace RFSystem.Statistic
                         string proName = dgvr[i].Cells["ColumnPRODUCT_NAME"].Value.ToString();
                         string proNo = dgvr[i].Cells["ColumnPRODUCT_NO"].Value.ToString();
                         string patch = dgvr[i].Cells["ColumnPATCH_NO"].Value.ToString();
-                        string wareNo = dgvr[i].Cells["ColumnFACT_NO"].Value.ToString();
                         string deNo = dgvr[i].Cells["pzh"].Value.ToString();//凭证号 string.Empty;
                         string ckDate = dgvr[i].Cells["rkrq"].Value.ToString();//入库日期 string.Empty;
                         string manu = "";
                         string pC = dgvr[i].Cells["ColumnBillNo"].Value.ToString(); 
                         string cert = "";
-                        string pL = "";
                         string supp = dgvr[i].Cells["ColumnPName"].Value.ToString();
                         string loca = dgvr[i].Cells["ColumnBIN"].Value.ToString();
                         string q = dgvr[i].Cells["ColumnBct1"].Value.ToString();
@@ -940,7 +936,7 @@ namespace RFSystem.Statistic
                         string ywtm =  dgvr[i].Cells["ywtm"].Value.ToString();//"R2000450000531020000401030814";
                         //string ywtm = "R2000450000531020000401030814";
                         //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, this.cmbLabelType.Text);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                         client.GetStream().Flush();
                     }

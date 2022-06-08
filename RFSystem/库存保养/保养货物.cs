@@ -410,6 +410,7 @@ namespace RFSystem
         public 保养货物(string maintainNo)
         {
             InitializeComponent();
+
             dtMaintainList = new DataTable();
             ArrayList arriveList = new ArrayList();
             arriveList.Add(maintainNo);
@@ -443,22 +444,22 @@ namespace RFSystem
             StringBuilder builder = new StringBuilder();
             builder.Append(" 1=1 ");
 
-            if (!textBoxBin.Text.Trim().Equals(string.Empty))
+            if (!string.IsNullOrEmpty(textBoxBin.Text))
             {
                 builder.Append(" and BIN LIKE '%" + textBoxBin.Text.Trim() + "%'");
             }
 
-            if (!textBoxBARCODE.Text.Trim().Equals(string.Empty))
+            if (!string.IsNullOrEmpty(textBoxBARCODE.Text))
             {
                 builder.Append(" and BARCODE LIKE '%" + textBoxBARCODE.Text.Trim() + "%'");
             }
 
-            if (!textBoxBARCODE.Text.Trim().Equals(string.Empty))
+            if (!string.IsNullOrEmpty(textBoxBARCODE.Text))
             {
                 builder.Append(" and ywtm LIKE '%" + textBoxBARCODE.Text.Trim() + "%'");
             }
 
-            if (!textBoxPRODUCT_NAME.Text.Trim().Equals(string.Empty))
+            if (!string.IsNullOrEmpty(textBoxPRODUCT_NAME.Text))
             {
                 builder.Append(" and PRODUCT_NAME LIKE'%" + textBoxPRODUCT_NAME.Text.Trim() + "%'");
             }

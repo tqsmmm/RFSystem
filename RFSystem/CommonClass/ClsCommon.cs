@@ -51,7 +51,6 @@ namespace RFSystem
             }
 
             param = param.Remove(param.Length - 1);
-            //db.OpenProcedure("RF_Maintain_GetList", param, out dt);
             db.OpenProcedure("RF_Maintain_GetList_New", param, out DataTable dt);
 
             return dt;
@@ -190,22 +189,21 @@ namespace RFSystem
         }
         #endregion
 
-        public static string dealData(string f, string proName, string proNo, string Patch, string wareNo, string deNo, string ckDate, string manu, string pC, string cert, string pL, string supp, string loca, string q, string u, string w, string r, string p, string cop, string ywtm, string baoguanyuan,string RFID)
+        public static string dealData(string f, string proName, string proNo, string Patch, string deNo, string ckDate, string manu, string pC, string cert, string supp, string loca, string q, string u, string w, string r, string p, string cop, string ywtm, string baoguanyuan,string RFID)
         {
             string str = "";
 
             string str2 = f;//产线部门
-            string str3 = proName;//物料名称
+            string str3 = proName;//物料描述
             string str4 = proNo;//物料号
-            string str5 = Patch;//批次号
-            string str6 = wareNo;//工厂号
+            string str5 = Patch;//物料名称
             string str7 = deNo;//凭证号
             string str8 = ckDate;//入库日期
             string str9 = manu;//说明书
-            string str10 = pC;//产品证书
+            string str10 = pC;//送货单号
             string str11 = cert;//合格证
-            string str12 = baoguanyuan;//保管员
-            string str13 = supp;//供货单位
+            string str12 = baoguanyuan;//保管员岗位号
+            string str13 = supp;//供货单位名称
             string str14 = loca;//储位
             string str15 = q;//储位数量
             string str16 = u;//单位
@@ -235,10 +233,10 @@ namespace RFSystem
             if (ywtm == "")
             {
                 //原先的物料条码
-                if ((str5 == null) || str5.Equals(""))
+                if (string.IsNullOrEmpty(str5))
                     _s_tm = str4;
                 else
-                    _s_tm = str6 + str5 + str4;
+                    _s_tm = str5 + str4;
             }
 
             str = str + "POINT;285;300;12;10;'" + _s_tm + "'\r\n";

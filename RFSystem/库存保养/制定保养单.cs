@@ -127,7 +127,7 @@ namespace RFSystem
             this.groupBoxInputInfo.Controls.Add(this.label1);
             this.groupBoxInputInfo.Location = new System.Drawing.Point(12, 12);
             this.groupBoxInputInfo.Name = "groupBoxInputInfo";
-            this.groupBoxInputInfo.Size = new System.Drawing.Size(988, 100);
+            this.groupBoxInputInfo.Size = new System.Drawing.Size(992, 100);
             this.groupBoxInputInfo.TabIndex = 0;
             this.groupBoxInputInfo.TabStop = false;
             this.groupBoxInputInfo.Text = "保养单信息添加";
@@ -210,7 +210,7 @@ namespace RFSystem
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(776, 25);
+            this.btnClear.Location = new System.Drawing.Point(780, 25);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 40);
             this.btnClear.TabIndex = 510;
@@ -221,7 +221,7 @@ namespace RFSystem
             // btnAddItem
             // 
             this.btnAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddItem.Location = new System.Drawing.Point(882, 25);
+            this.btnAddItem.Location = new System.Drawing.Point(886, 25);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(100, 40);
             this.btnAddItem.TabIndex = 70;
@@ -255,7 +255,7 @@ namespace RFSystem
             this.groupBox2.Controls.Add(this.dataGridViewMaintain);
             this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(988, 193);
+            this.groupBox2.Size = new System.Drawing.Size(992, 193);
             this.groupBox2.TabIndex = 200;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "保养单基本信息";
@@ -280,7 +280,7 @@ namespace RFSystem
             this.dataGridViewMaintain.RowHeadersVisible = false;
             this.dataGridViewMaintain.RowTemplate.Height = 23;
             this.dataGridViewMaintain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMaintain.Size = new System.Drawing.Size(982, 168);
+            this.dataGridViewMaintain.Size = new System.Drawing.Size(986, 168);
             this.dataGridViewMaintain.TabIndex = 20000;
             this.dataGridViewMaintain.SelectionChanged += new System.EventHandler(this.dataGridViewMaintain_SelectionChanged);
             // 
@@ -325,7 +325,7 @@ namespace RFSystem
             // 
             this.btnDelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelMain.Enabled = false;
-            this.btnDelMain.Location = new System.Drawing.Point(232, 577);
+            this.btnDelMain.Location = new System.Drawing.Point(232, 613);
             this.btnDelMain.Name = "btnDelMain";
             this.btnDelMain.Size = new System.Drawing.Size(100, 40);
             this.btnDelMain.TabIndex = 90;
@@ -361,7 +361,7 @@ namespace RFSystem
             this.dataGridViewSapStockInfo.RowHeadersVisible = false;
             this.dataGridViewSapStockInfo.RowTemplate.Height = 23;
             this.dataGridViewSapStockInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSapStockInfo.Size = new System.Drawing.Size(982, 229);
+            this.dataGridViewSapStockInfo.Size = new System.Drawing.Size(986, 265);
             this.dataGridViewSapStockInfo.TabIndex = 30000;
             this.dataGridViewSapStockInfo.SelectionChanged += new System.EventHandler(this.dataGridViewSapStockInfo_SelectionChanged);
             // 
@@ -469,7 +469,7 @@ namespace RFSystem
             // 
             this.btnMaintainPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaintainPlan.Enabled = false;
-            this.btnMaintainPlan.Location = new System.Drawing.Point(900, 577);
+            this.btnMaintainPlan.Location = new System.Drawing.Point(904, 613);
             this.btnMaintainPlan.Name = "btnMaintainPlan";
             this.btnMaintainPlan.Size = new System.Drawing.Size(100, 40);
             this.btnMaintainPlan.TabIndex = 500;
@@ -485,7 +485,7 @@ namespace RFSystem
             this.groupBox1.Controls.Add(this.dataGridViewSapStockInfo);
             this.groupBox1.Location = new System.Drawing.Point(12, 317);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(988, 254);
+            this.groupBox1.Size = new System.Drawing.Size(992, 290);
             this.groupBox1.TabIndex = 300;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "保养货物信息";
@@ -494,7 +494,7 @@ namespace RFSystem
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 587);
+            this.label6.Location = new System.Drawing.Point(8, 623);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 20);
             this.label6.TabIndex = 0;
@@ -504,7 +504,7 @@ namespace RFSystem
             // textBoxBinDel
             // 
             this.textBoxBinDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxBinDel.Location = new System.Drawing.Point(135, 584);
+            this.textBoxBinDel.Location = new System.Drawing.Point(135, 620);
             this.textBoxBinDel.Name = "textBoxBinDel";
             this.textBoxBinDel.Size = new System.Drawing.Size(91, 26);
             this.textBoxBinDel.TabIndex = 80;
@@ -513,7 +513,7 @@ namespace RFSystem
             // 
             this.btnItemDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnItemDel.Enabled = false;
-            this.btnItemDel.Location = new System.Drawing.Point(338, 577);
+            this.btnItemDel.Location = new System.Drawing.Point(338, 613);
             this.btnItemDel.Name = "btnItemDel";
             this.btnItemDel.Size = new System.Drawing.Size(100, 40);
             this.btnItemDel.TabIndex = 521;
@@ -524,7 +524,7 @@ namespace RFSystem
             // textBoxPlanNum
             // 
             this.textBoxPlanNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxPlanNum.Location = new System.Drawing.Point(557, 584);
+            this.textBoxPlanNum.Location = new System.Drawing.Point(557, 620);
             this.textBoxPlanNum.Name = "textBoxPlanNum";
             this.textBoxPlanNum.Size = new System.Drawing.Size(91, 26);
             this.textBoxPlanNum.TabIndex = 523;
@@ -533,7 +533,7 @@ namespace RFSystem
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(444, 587);
+            this.label7.Location = new System.Drawing.Point(444, 623);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 20);
             this.label7.TabIndex = 522;
@@ -544,7 +544,7 @@ namespace RFSystem
             // 
             this.btnModPlanNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnModPlanNum.Enabled = false;
-            this.btnModPlanNum.Location = new System.Drawing.Point(654, 577);
+            this.btnModPlanNum.Location = new System.Drawing.Point(654, 613);
             this.btnModPlanNum.Name = "btnModPlanNum";
             this.btnModPlanNum.Size = new System.Drawing.Size(100, 40);
             this.btnModPlanNum.TabIndex = 524;
@@ -554,7 +554,7 @@ namespace RFSystem
             // 
             // 制定保养单
             // 
-            this.ClientSize = new System.Drawing.Size(1012, 629);
+            this.ClientSize = new System.Drawing.Size(1016, 665);
             this.ControlBox = false;
             this.Controls.Add(this.textBoxPlanNum);
             this.Controls.Add(this.label7);

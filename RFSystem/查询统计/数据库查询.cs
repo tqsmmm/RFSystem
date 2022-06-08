@@ -795,6 +795,8 @@ namespace RFSystem
 
                     for (int i = 0; i < dgvr.Count; i++)
                     {
+                        string s = string.Empty;
+
                         string manu = string.Empty;
                         string cert = string.Empty;
 
@@ -804,40 +806,33 @@ namespace RFSystem
 
                             if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
                             {
-                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();
-                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();
+                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
+                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
                             }
                         }
 
-                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();
-                        string patch = dgvr[i].Cells["itemName"].Value.ToString();
-                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();
+                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();//产线部门
+                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();//物料描述
+                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();//物料号
+                        string patch = dgvr[i].Cells["itemName"].Value.ToString();//物料名称
+                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号
+                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期
 
-                        string s = string.Empty;
-                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();
-                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();
+                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString();//送货单号
 
-                        string wareNo = "";
-                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号 string.Empty;
-                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期 string.Empty;
+                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();//保管员岗位号
+                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();//供货单位名称
+                        string loca = dgvr[i].Cells["invBin"].Value.ToString();//储位
+                        string q = dgvr[i].Cells["invQty"].Value.ToString();//储位数量
+                        string u = dgvr[i].Cells["itemUom"].Value.ToString();//单位
+                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();//单重
+                        string r = dgvr[i].Cells["batchId"].Value.ToString();//批次号
+                        string p = dgvr[i].Cells["invPrice"].Value.ToString();//单价
+                        string cop = nudCopy.Text;
 
-                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString();//ColumnBillNo
-                        string pL = "";
-                        string loca = dgvr[i].Cells["invBin"].Value.ToString();
-
-                        string q = dgvr[i].Cells["invQty"].Value.ToString();
-                        string r = dgvr[i].Cells["batchId"].Value.ToString();
-                        string u = dgvr[i].Cells["itemUom"].Value.ToString();
-
-                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();
-                        string p = dgvr[i].Cells["invPrice"].Value.ToString();
-                        //string cop = Math.Truncate(Convert.ToDecimal(dgvr[i].Cells["ColumnPrintCount"].Value)).ToString();
-                        string cop = "1";
-                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();
                         string ywtm = deNo + "-" + proNo;
-                        //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
 
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                         client.GetStream().Flush();
                     }
@@ -860,8 +855,7 @@ namespace RFSystem
             else
             {
                 TcpClient client = new TcpClient();
-                //string hostname = "192.1.77.12";
-                //int port = 9100;
+
                 string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
                 int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
 
@@ -871,6 +865,8 @@ namespace RFSystem
 
                     for (int i = 0; i < dgvr.Count; i++)
                     {
+                        string s = string.Empty;
+
                         string manu = string.Empty;
                         string cert = string.Empty;
 
@@ -880,42 +876,33 @@ namespace RFSystem
 
                             if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
                             {
-                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();
-                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();
+                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
+                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
                             }
                         }
 
-                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();
-                        string patch = dgvr[i].Cells["itemName"].Value.ToString();
-                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();
+                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();//产线部门
+                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();//物料描述
+                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();//物料号
+                        string patch = dgvr[i].Cells["itemName"].Value.ToString();//物料名称
+                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号
+                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期
 
-                        string s = string.Empty;
-                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();
-                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();
-                        
-                        string wareNo = "";
-                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号 string.Empty;
-                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期 string.Empty;
-                        
-                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString(); ; 
-                        string pL = "";
-                        string loca = dgvr[i].Cells["invBin"].Value.ToString();
+                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString();//送货单号
 
-                        string q = dgvr[i].Cells["invQty"].Value.ToString();
-                        string r = dgvr[i].Cells["batchId"].Value.ToString();
-                        string u = dgvr[i].Cells["itemUom"].Value.ToString();
-
-                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();
-                        string p = dgvr[i].Cells["invPrice"].Value.ToString();
-                        //string cop = Math.Truncate(Convert.ToDecimal(dgvr[i].Cells["ColumnPrintCount"].Value)).ToString();
+                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();//保管员岗位号
+                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();//供货单位名称
+                        string loca = dgvr[i].Cells["invBin"].Value.ToString();//储位
+                        string q = dgvr[i].Cells["invQty"].Value.ToString();//储位数量
+                        string u = dgvr[i].Cells["itemUom"].Value.ToString();//单位
+                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();//单重
+                        string r = dgvr[i].Cells["batchId"].Value.ToString();//批次号
+                        string p = dgvr[i].Cells["invPrice"].Value.ToString();//单价
                         string cop = nudCopy.Text;
+                        
+                        string ywtm = deNo + "-" + proNo;
 
-                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();
-                        string ywtm = deNo + "-" + proNo;//"R2000450000531020000401030814";
-                        //string ywtm = "R2000450000531020000401030814";
-                        //s = this.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop);
-
-                        s = ClsCommon.dealData(f, proName, proNo, patch, wareNo, deNo, ckDate, manu, pC, cert, pL, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
                         client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
                         client.GetStream().Flush();
                     }
