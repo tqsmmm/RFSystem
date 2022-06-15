@@ -10,7 +10,7 @@ using System.Net.Sockets;
 
 namespace RFSystem
 {
-    public class 数据库查询 : Form
+    public class 物料标签打印 : Form
     {
         private Button btnPatchPrint;
         private Button btnPrint;
@@ -678,7 +678,7 @@ namespace RFSystem
         }
 
         // Methods
-        public 数据库查询(UserInfo userItem, ArrayList userRoles)
+        public 物料标签打印(UserInfo userItem, ArrayList userRoles)
         {
             components = null;
             this.userItem = null;

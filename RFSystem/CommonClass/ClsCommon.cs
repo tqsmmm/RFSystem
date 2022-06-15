@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
-using RFSystem.AnSteel;
 
 namespace RFSystem
 {
@@ -321,131 +320,6 @@ namespace RFSystem
             }
 
             return str;
-        }
-
-        //public string getBarCode(string ywtm,string pch,ref string srtn)
-        //{
-        //    //条码查询
-        //    DataSet ds = new DataSet();
-        //    ClsCommon clscommon = new ClsCommon();
-        //    AnSteel.MessagePack mspak = new MessagePack();
-        //    //输入条码长度为32位时按一维条码查询，为28位时按原来的物料条码查询
-        //    mspak = clscommon.queryYwtm_Wltm(ywtm, AnSteel.enumOpType.批次查询, out ds);    //这处需要改调用的方法
-        //    if (mspak.Code != 0)
-        //    {
-        //        srtn = mspak.Message;
-        //        return "";
-        //    }
-        //    if (ds.Tables[0] == null || ds.Tables[0].Rows.Count <= 0)
-        //    {
-        //        srtn = "此条码不存在。";
-        //        return "";
-        //    }
-
-        //    return ds.Tables[0].Rows[0]["product_barcode"].ToString();//一维条码的值，不是原来的物料条码了
-        //}
-
-        /// <summary>
-        /// 查询一维条码与原先的物料条码对照关系
-        /// </summary>
-        /// <param name="ywtm"></param>
-        /// <returns>0成功；非0失败</returns>
-        public MessagePack queryYwtm(string ywtm, enumOpType enumopType, out DataSet ds)
-        {
-            //验收入库
-            //代管入库
-
-            MessagePack mspak = Utility.getSerive().queryYwtm(ywtm, enumopType, out ds);
-            return mspak;
-
-        }
-
-        public bool tmlimit_cgsh(string ywtm, ref string err)
-        {
-            err = "";
-
-            MessagePack mspak = queryYwtm(ywtm, enumOpType.采购收货, out DataSet ds);
-
-            if (mspak.Code != 0)
-            {
-                err = mspak.Message;
-                return false;
-            }
-
-            if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
-            {
-                err = "此条码已存在，不能再收货";
-                return false;
-            }
-
-            return true;
-        }
-
-        ///// <summary>
-        ///// 生成一维条码
-        ///// </summary>
-        ///// <param name="xtdm"></param>
-        ///// <param name="gch"></param>
-        ///// <param name="ddh"></param>
-        ///// <param name="wlbm"></param>
-        ///// <returns></returns>
-        //public string createYwtm(string xtdm, string gch, string ddh, string wlbm, out string errmsg)
-        //{
-        //    errmsg = "";
-        //    AnSteel.MessagePack mspak = new SapDoWork.AnSteel.MessagePack();
-        //    mspak = Utility.getSerive().createYwtm(xtdm, gch, ddh, wlbm);
-        //    if (mspak.Code == 0)
-        //    {
-        //        return mspak.Message;
-        //    }
-        //    else
-        //    {
-        //        errmsg = mspak.Message;
-        //        return "";
-        //    }
-        //}
-
-        /// <summary>
-        /// 查询订单
-        /// </summary>
-        /// <param name="ywtm"></param>
-        /// <returns>0成功；非0失败</returns>
-        public MessagePack queryDd(string ywtm, string pch, enumOpType enumoptype, out DataSet ds)
-        {
-            MessagePack mspak = Utility.getSerive().queryDd(ywtm, pch, enumoptype, out ds);
-
-            return mspak;
-        }
-
-        /// <summary>
-        /// 查询一维条码和物料条码的对照关系，返回一维条码、物料条码及其它信息
-        /// </summary>
-        /// <param name="ywtm"></param>
-        /// <param name="enumoptype"></param>
-        /// <param name="ds"></param>
-        /// <returns></returns>
-        public MessagePack queryYwtm_Wltm(string ywtm, enumOpType enumoptype, out DataSet ds)
-        {
-            MessagePack mspak = Utility.getSerive().queryYwtm_Wltm(ywtm, enumoptype, out ds);
-
-            return mspak;
-        }
-
-        /// <summary>
-        /// 根据物料条码查询一维条码
-        /// </summary>
-        /// <param name="ywtm"></param>
-        /// <param name="enumopType"></param>
-        /// <param name="ds"></param>
-        /// <returns></returns>
-        public MessagePack queryYwtms(string wltms, out DataSet ds)
-        {
-            //验收入库
-            //代管入库
-
-            MessagePack mspak = Utility.getSerive().queryYwtms(wltms, out ds);
-
-            return mspak;
         }
     }
 }

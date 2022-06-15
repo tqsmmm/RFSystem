@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RFSystem.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="RFSystem_AnSteel_AnSteelInterFace" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://192.1.77.3/SapServiceCZ/Service1.asmx</Value>
-    </Setting>
     <Setting Name="RFSystem_rfid2021_rfidService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://192.1.77.3:7766/rfidService.asmx</Value>
     </Setting>

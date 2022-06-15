@@ -1,7 +1,6 @@
 ﻿using RFSystem.rfid2021Service;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace RFSystem
 {

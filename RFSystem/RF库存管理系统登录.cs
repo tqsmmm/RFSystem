@@ -1,4 +1,3 @@
-using RFSystem.AnSteel;
 using RFSystem.Properties;
 using System;
 using System.ComponentModel;
@@ -50,11 +49,8 @@ namespace RFSystem
             else
             {
                 string str2;
-                string str = Settings.Default.RFSystem_AnSteel_AnSteelInterFace.ToString();
                 ConstDefine.g_User = textBoxUserID.Text.Trim().ToUpperInvariant();
                 ConstDefine.g_PassWord = textBoxPassWord.Text.Trim();
-                ConstDefine.g_ConnStr = str;
-                privilidge privateStr = new privilidge();
 
                 try
                 {

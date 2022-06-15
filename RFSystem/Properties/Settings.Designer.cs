@@ -26,16 +26,6 @@ namespace RFSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.1.77.3/SapServiceCZ/Service1.asmx")]
-        public string RFSystem_AnSteel_AnSteelInterFace {
-            get {
-                return ((string)(this["RFSystem_AnSteel_AnSteelInterFace"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://192.1.77.3:7766/rfidService.asmx")]
         public string RFSystem_rfid2021_rfidService {
             get {

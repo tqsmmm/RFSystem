@@ -1024,17 +1024,7 @@ namespace RFSystem.ArriveStore
             if (!this.textBoxBargainID.Text.Trim().Equals(string.Empty))
             {
                 DataSet poDs = null;
-                if (Utility.getSerive().GetPoInfo(this.textBoxBargainID.Text.Trim(), "采购收货", true, out poDs).Code == -1)
-                {
-                    CommonFunction.Sys_MsgBox("找不到相应的合同号，请确认输入");
-                }
-                else
-                {
-                    this.textBoxBargainMakerID.Text = poDs.Tables[0].Rows[0]["ERNAM"].ToString();
-                    this.textBoxConsigner.Text = this.textBoxProvider.Text = poDs.Tables[0].Rows[0]["NAME1"].ToString();
-                    this.textBoxEquipmentName.Text = poDs.Tables[1].Rows[0]["TXZ01"].ToString();
-                    this.textBoxConsignmentAmount.Text = this.textBoxAcceptAmount.Text = poDs.Tables[1].Rows[0]["MENGE"].ToString();
-                }
+                
             }
         }
 

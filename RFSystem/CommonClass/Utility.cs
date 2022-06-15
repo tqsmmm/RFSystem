@@ -1,5 +1,4 @@
-﻿using RFSystem.AnSteel;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace RFSystem
@@ -40,13 +39,6 @@ namespace RFSystem
             findLine = "";
 
             return 0;
-        }
-
-        public static AnSteelInterFace getSerive()
-        {
-            Serivce serivce = new Serivce(ConstDefine.g_User, ConstDefine.g_PassWord, ConstDefine.g_ConnStr);
-
-            return serivce.ServiceS;
         }
     }
 }

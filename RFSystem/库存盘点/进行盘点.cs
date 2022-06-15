@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Threading;
 using System.Data;
-using RFSystem.AnSteel;
 
 namespace RFSystem
 {
@@ -357,17 +356,7 @@ namespace RFSystem
 
             try
             {
-                Utility.getSerive().Timeout = 0x2dc6c0;
-                MessagePack pack = Utility.getSerive().DownLoadSTInfo(STSerial);
-
-                if (pack.Code != 0)
-                {
-                    CommonFunction.Sys_MsgBox(pack.Message);
-                }
-                else
-                {
-                    Invoke(new EventHandler(ReflashProcess100));
-                }
+                
             }
             catch (Exception exception)
             {
@@ -386,17 +375,7 @@ namespace RFSystem
 
             try
             {
-                Utility.getSerive().Timeout = 0x2dc6c0;
-                MessagePack pack = Utility.getSerive().UpLoadSTInfo(STSerial);
 
-                if (pack.Code != 0)
-                {
-                    CommonFunction.Sys_MsgBox(pack.Message);
-                }
-                else
-                {
-                    Invoke(new EventHandler(ReflashProcess101));
-                }
             }
             catch (Exception exception)
             {

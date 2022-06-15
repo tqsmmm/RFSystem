@@ -2,7 +2,6 @@
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using RFSystem.AnSteel;
 using System.Net;
 
 namespace RFSystem
@@ -95,17 +94,6 @@ namespace RFSystem
                 if ((dataGridView1.SelectedRows.Count > 0) && CommonFunction.Sys_MsgYN("你确认要删除该文件么？"))
                 {
                     string fileName = dataGridView1.SelectedRows[0].Cells["fileName"].Value.ToString();
-                    MessagePack pack = Utility.getSerive().DelLog(fileName);
-
-                    if (pack.Code != 0)
-                    {
-                        CommonFunction.Sys_MsgBox(pack.Message);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
-                        CommonFunction.Sys_MsgBox("删除成功");
-                    }
                 }
             }
             catch (Exception exception)
@@ -138,20 +126,7 @@ namespace RFSystem
         {
             try
             {
-                MessagePack pack = Utility.getSerive().SeeLog(out m_poDs);
-
-                if (pack.Code != 0)
-                {
-                    CommonFunction.Sys_MsgBox(pack.Message);
-                }
-                else
-                {
-                    dataGridView1.DataSource = m_poDs.Tables[0];
-                    dataGridView1.Columns["Time"].HeaderText = "日志时间";
-                    dataGridView1.Columns["fileName"].HeaderText = "日志文件名";
-                    dataGridView1.Columns["fileName"].Width = 180;
-                    dataGridView1.Columns["Time"].Width = 150;
-                }
+                
             }
             catch (Exception exception)
             {

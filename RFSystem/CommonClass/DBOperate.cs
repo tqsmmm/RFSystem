@@ -742,44 +742,54 @@ namespace RFSystem
         public static int InSertSTOrder(DataTable DtUserID, string CreateUser, string STType, string STDesc, string STNumber, string DocumentID, string Plant, out string ErrMsg)
         {
             ErrMsg = "";
+
             OleDbParameter parameter = new OleDbParameter();
             parameter.DbType = DbType.String;
             parameter.SourceColumn = "User_ID";
             parameter.ParameterName = "@User_ID";
             parameter.Size = 100;
+
             OleDbParameter parameter2 = new OleDbParameter();
             parameter2.DbType = DbType.String;
             parameter2.ParameterName = "@STSerial";
             parameter2.Value = STNumber;
+
             OleDbParameter parameter3 = new OleDbParameter();
             parameter3.DbType = DbType.String;
             parameter3.Value = CreateUser;
             parameter3.ParameterName = "@STCreateUser";
+
             OleDbParameter parameter4 = new OleDbParameter();
             parameter4.DbType = DbType.String;
             parameter4.Size = 100;
             parameter4.Value = STDesc;
             parameter4.ParameterName = "@STDesc";
+
             OleDbParameter parameter5 = new OleDbParameter();
             parameter5.DbType = DbType.String;
             parameter5.Value = "0";
             parameter5.ParameterName = "@STStatus";
+
             OleDbParameter parameter6 = new OleDbParameter();
             parameter6.DbType = DbType.Int32;
             parameter6.Value = STNumber;
             parameter6.ParameterName = "@STSerial";
+
             OleDbParameter parameter7 = new OleDbParameter();
             parameter7.DbType = DbType.String;
             parameter7.Value = STType;
             parameter7.ParameterName = "@STType";
+
             OleDbParameter parameter8 = new OleDbParameter();
             parameter8.DbType = DbType.String;
             parameter8.Value = DocumentID;
             parameter8.ParameterName = "@DocumentID";
+
             OleDbParameter parameter9 = new OleDbParameter();
             parameter9.DbType = DbType.String;
             parameter9.Value = Plant;
             parameter9.ParameterName = "@Plant";
+
             OleDbCommand command = new OleDbCommand();
             command.CommandText = "insert into STOrder (STSerial,STType,STStatus,STDesc,STCreateUser,DocumentID,Plant) values(?,?,?,?,?,?,?)";
             command.Parameters.Add(parameter6);
@@ -789,9 +799,11 @@ namespace RFSystem
             command.Parameters.Add(parameter3);
             command.Parameters.Add(parameter8);
             command.Parameters.Add(parameter9);
+
             OleDbCommand command2 = new OleDbCommand();
             command2.CommandText = "insert into STOrderDetail (STSerial,OperatorUser) values(" + STNumber + ",?)";
             command2.Parameters.Add(parameter);
+
             DictionaryEntry entry = new DictionaryEntry();
             entry.Key = command;
             entry.Value = null;

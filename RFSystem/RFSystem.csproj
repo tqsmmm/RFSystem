@@ -10,13 +10,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RFSystem</RootNamespace>
     <AssemblyName>RFSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,10 +31,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,7 +64,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -106,22 +106,10 @@
     <Compile Include="CommonClass\RoleInit.cs" />
     <Compile Include="CommonClass\DBOperate.cs" />
     <Compile Include="CommonClass\GetData.cs" />
-    <Compile Include="LabelPrint\ContractorLabel.cs">
+    <Compile Include="标签打印\保管员标签打印.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LabelPrint\LocationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LabelPrint\LocationLabel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LabelPrint\ProductLabel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LabelPrint\保管员货品.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LabelPrint\库位查询.cs">
+    <Compile Include="标签打印\储位标签打印.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommonClass\PrintDBOperate.cs" />
@@ -148,7 +136,7 @@
     <Compile Include="库存保养\管理保养单.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CommonClass\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArriveStore\到库货物信息合并.resx">
       <DependentUpon>到库货物信息合并.cs</DependentUpon>
@@ -190,28 +178,12 @@
       <DependentUpon>异议货物存放信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\ContractorLabel.resx">
-      <DependentUpon>ContractorLabel.cs</DependentUpon>
+    <EmbeddedResource Include="标签打印\保管员标签打印.resx">
+      <DependentUpon>保管员标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\LocationAdd.resx">
-      <DependentUpon>LocationAdd.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\LocationLabel.resx">
-      <DependentUpon>LocationLabel.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\ProductLabel.resx">
-      <DependentUpon>ProductLabel.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\保管员货品.resx">
-      <DependentUpon>保管员货品.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LabelPrint\库位查询.resx">
-      <DependentUpon>库位查询.cs</DependentUpon>
+    <EmbeddedResource Include="标签打印\储位标签打印.resx">
+      <DependentUpon>储位标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="库存保养\保养单列表.resx">
@@ -252,28 +224,8 @@
       <DependentUpon>RF库存管理系统登录.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Statistic\Excel文件数据同步.resx">
-      <DependentUpon>Excel文件数据同步.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistic\工作日志统计.resx">
-      <DependentUpon>工作日志统计.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistic\数据同步.resx">
-      <DependentUpon>数据同步.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="查询统计\数据库查询.resx">
-      <DependentUpon>数据库查询.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistic\本地数据库查询.resx">
-      <DependentUpon>本地数据库查询.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistic\货位数据同步.resx">
-      <DependentUpon>货位数据同步.cs</DependentUpon>
+    <EmbeddedResource Include="标签打印\物料标签打印.resx">
+      <DependentUpon>物料标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\公司信息列表.resx">
@@ -397,22 +349,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommonClass\Serivce.cs" />
-    <Compile Include="Statistic\Excel文件数据同步.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Statistic\工作日志统计.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Statistic\数据同步.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="查询统计\数据库查询.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Statistic\本地数据库查询.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Statistic\货位数据同步.cs">
+    <Compile Include="标签打印\物料标签打印.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\公司信息列表.cs">
@@ -514,26 +451,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <Compile Include="CommonClass\ClsCommon.cs" />
-    <Compile Include="Web References\AnSteel\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <None Include="Web References\AnSteel\clsYwtm.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\AnSteel\MessagePack.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\AnSteel\privilidge.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\AnSteel\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\AnSteel\Service1.disco" />
-    <None Include="Web References\AnSteel\Service1.wsdl" />
     <None Include="Web References\rfid2021Service\rfidService.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -543,17 +460,6 @@
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.1.77.3/SapServiceCZ/Service1.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\AnSteel\</RelPath>
-      <UpdateFromURL>http://192.1.77.3/SapServiceCZ/Service1.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>RFSystem_AnSteel_AnSteelInterFace</CachedSettingsPropName>
-    </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.1.77.3:7766/rfidService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\rfid2021Service\</RelPath>

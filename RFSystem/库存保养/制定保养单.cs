@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Collections;
-using RFSystem.AnSteel;
 
 namespace RFSystem
 {
@@ -616,34 +615,6 @@ namespace RFSystem
             if (!comboBoxPlant.Text.Trim().Equals("无") && !comboBoxSLocation.Text.Trim().Equals("无") && !textBoxBin.Text.Trim().Equals(string.Empty) && !textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
             {
                 DataSet cxDs = new DataSet("货位查询");
-                MessagePack pack = new MessagePack();
-
-                try
-                {
-                    pack = Utility.getSerive().GetHWCXInfo(textBoxSTOREMAN.Text, textBoxBin.Text, comboBoxSLocation.Text, comboBoxPlant.Text, out cxDs);
-                }
-                catch
-                {
-                    CommonFunction.Sys_MsgBox(pack.Message);
-                }
-
-                if (pack.Code == 0)
-                {
-                    if (FilterTheUsefulInfo(cxDs.Tables[0], dtGoods, textBoxBin.Text) && !CommonFunction.IfHasData(dtMaintain))
-                    {
-                        dtMaintain.Rows.Add(new object[] { comboBoxPlant.Text, comboBoxSLocation.Text, textBoxSTOREMAN.Text, userItem.userID, DateTime.Today });
-                    }
-
-                    if (CommonFunction.IfHasData(dtGoods))
-                    {
-                        btnItemDel.Enabled = true;
-                        btnDelMain.Enabled = true;
-                    }
-                }
-                else
-                {
-                    CommonFunction.Sys_MsgBox(pack.Message);
-                }
             }
             else
             {
