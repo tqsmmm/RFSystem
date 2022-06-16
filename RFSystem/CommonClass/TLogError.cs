@@ -24,13 +24,6 @@ namespace RFSystem
             this.E = E;
         }
 
-        public TLogError(string des)
-        {
-            E = null;
-            this.des = null;
-            this.des = des;
-        }
-
         public TLogError(Exception E, string des)
         {
             this.E = null;

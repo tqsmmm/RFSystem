@@ -339,7 +339,7 @@ namespace RFSystem.ArriveStore
             // 
             this.textBoxProvider.Location = new System.Drawing.Point(97, 223);
             this.textBoxProvider.Name = "textBoxProvider";
-            this.textBoxProvider.Size = new System.Drawing.Size(271, 26);
+            this.textBoxProvider.Size = new System.Drawing.Size(272, 26);
             this.textBoxProvider.TabIndex = 200;
             this.textBoxProvider.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
             // 

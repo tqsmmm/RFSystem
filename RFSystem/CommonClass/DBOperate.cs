@@ -1244,6 +1244,24 @@ namespace RFSystem
             return dt;
         }
 
+        public static DataTable GetContractorList(string conNo)
+        {
+            string param = TDBObject.ToDBVal(conNo);
+
+            db.OpenProcedure("RF_Contractor_GetList", param, out DataTable dt);
+
+            return dt;
+        }
+
+        public static DataTable GetLocationList(string locNo)
+        {
+            string param = TDBObject.ToDBVal(locNo);
+
+            db.OpenProcedure("RF_Location_GetList", param, out DataTable dt);
+
+            return dt;
+        }
+
         public static string UpdateStock(DataTable stockInfoList, string keyWord, bool updateKind)
         {
             //db.BeginTrans();

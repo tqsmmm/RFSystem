@@ -73,7 +73,6 @@ namespace RFSystem
                 ConstDefine.g_DbConnStr = str2;
                 DBOperate.ConnStr = str2;
                 ClsCommon.ConnStr = str2;
-                PrintDBOperate.ConnStr = str2;
                 DialogResult = DialogResult.OK;
             }
         }

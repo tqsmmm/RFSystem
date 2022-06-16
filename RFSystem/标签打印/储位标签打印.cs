@@ -18,21 +18,25 @@ namespace RFSystem
         private Button btnPatchPrint;
         private DataGridViewTextBoxColumn columnPName;
         private DataGridViewTextBoxColumn columnPAddress;
+        private NumericUpDown nudCopy;
+        private Label label10;
+        private TextBox txtPrinter;
+        private Label label11;
         private DataGridViewTextBoxColumn columnSocket;
 
         // Methods
         public 储位标签打印()
         {
-            dtLocationList = null;
-            dtPrinterList = null;
             InitializeComponent();
+
             dtPrinterList = DBOperate.GetPrinterList("''", "''");
             dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            string copy = "1";
+            string copy = nudCopy.Value.ToString();
+
             TcpClient client = new TcpClient();
             string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
             int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
@@ -81,12 +85,17 @@ namespace RFSystem
             this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPrint = new System.Windows.Forms.Button();
             this.dataGridViewPrinterList = new System.Windows.Forms.DataGridView();
-            this.btnPatchPrint = new System.Windows.Forms.Button();
             this.columnPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPatchPrint = new System.Windows.Forms.Button();
+            this.nudCopy = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPrinter = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocationList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewLocationList
@@ -121,7 +130,7 @@ namespace RFSystem
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(12, 198);
+            this.btnPrint.Location = new System.Drawing.Point(12, 302);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPrint.TabIndex = 50;
@@ -149,17 +158,6 @@ namespace RFSystem
             this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 180);
             this.dataGridViewPrinterList.TabIndex = 210;
             // 
-            // btnPatchPrint
-            // 
-            this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(12, 254);
-            this.btnPatchPrint.Name = "btnPatchPrint";
-            this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
-            this.btnPatchPrint.TabIndex = 201;
-            this.btnPatchPrint.Text = "批量打印";
-            this.btnPatchPrint.UseVisualStyleBackColor = true;
-            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
-            // 
             // columnPName
             // 
             this.columnPName.DataPropertyName = "PrinterName";
@@ -183,10 +181,67 @@ namespace RFSystem
             this.columnSocket.ReadOnly = true;
             this.columnSocket.Visible = false;
             // 
+            // btnPatchPrint
+            // 
+            this.btnPatchPrint.Enabled = false;
+            this.btnPatchPrint.Location = new System.Drawing.Point(12, 358);
+            this.btnPatchPrint.Name = "btnPatchPrint";
+            this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
+            this.btnPatchPrint.TabIndex = 201;
+            this.btnPatchPrint.Text = "批量打印";
+            this.btnPatchPrint.UseVisualStyleBackColor = true;
+            this.btnPatchPrint.Click += new System.EventHandler(this.btnPatchPrint_Click);
+            // 
+            // nudCopy
+            // 
+            this.nudCopy.Location = new System.Drawing.Point(12, 270);
+            this.nudCopy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCopy.Name = "nudCopy";
+            this.nudCopy.Size = new System.Drawing.Size(120, 26);
+            this.nudCopy.TabIndex = 1010;
+            this.nudCopy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 247);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(79, 20);
+            this.label10.TabIndex = 1009;
+            this.label10.Text = "打印份数：";
+            // 
+            // txtPrinter
+            // 
+            this.txtPrinter.Location = new System.Drawing.Point(12, 218);
+            this.txtPrinter.Name = "txtPrinter";
+            this.txtPrinter.Size = new System.Drawing.Size(120, 26);
+            this.txtPrinter.TabIndex = 1008;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 195);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 20);
+            this.label11.TabIndex = 1007;
+            this.label11.Text = "打印机：";
+            // 
             // 储位标签打印
             // 
             this.ClientSize = new System.Drawing.Size(863, 579);
             this.ControlBox = false;
+            this.Controls.Add(this.nudCopy);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtPrinter);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnPatchPrint);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dataGridViewLocationList);
@@ -200,22 +255,25 @@ namespace RFSystem
             this.Load += new System.EventHandler(this.储位标签打印_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocationList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         private void 储位标签打印_Load(object sender, EventArgs e)
         {
-            dtLocationList = PrintDBOperate.GetLocationList("");
+            dtLocationList = DBOperate.GetLocationList("");
             dataGridViewLocationList.DataSource = dtLocationList;
 
-            dtPrinterList = DBOperate.GetPrinterList("", "%");
+            dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "%");
             dataGridViewPrinterList.DataSource = dtPrinterList;
         }
 
         private void btnPatchPrint_Click(object sender, EventArgs e)
         {
-            string copy = "1";
+            string copy = nudCopy.Value.ToString();
+
             TcpClient client = new TcpClient();
             string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
             int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());

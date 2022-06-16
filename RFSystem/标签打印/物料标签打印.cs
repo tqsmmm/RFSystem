@@ -680,14 +680,8 @@ namespace RFSystem
         // Methods
         public 物料标签打印(UserInfo userItem, ArrayList userRoles)
         {
-            components = null;
-            this.userItem = null;
-            this.userRoles = null;
-            dtPlantList = null;
-            dtStoreLocusList = null;
-            dtPrinterList = null;
-            thread = null;
             InitializeComponent();
+
             this.userItem = userItem;
             this.userRoles = userRoles;
 
@@ -696,235 +690,150 @@ namespace RFSystem
                 textBoxStoreMan.ReadOnly = false;
             }
 
-            //this.textBoxStoreMan.Text = this.userItem.userID;
-            dtPlantList = DBOperate.GetPlantList(string.Empty);
-            dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
-
             dataGridViewStock.AutoGenerateColumns = false;
-            dtPrinterList = DBOperate.GetPrinterList("''", "''");
+            dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "''");
             dataGridViewPrinterList.DataSource = dtPrinterList;
             cmbLabelType.Text = "普通标签";
         }
 
         private void btnPatchPrint_Click(object sender, EventArgs e)
         {
-            PrintProductLabelNew_Patch(dataGridViewStock.Rows);
+            if (dataGridViewPrinterList.RowCount < 1)
+            {
+                CommonFunction.Sys_MsgBox("请指定打印机!");
+            }
+            else
+            {
+                TcpClient client = new TcpClient();
+
+                string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+                int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+
+                try
+                {
+                    client.Connect(hostname, port);
+
+                    for (int i = 0; i < dataGridViewStock.RowCount; i++)
+                    {
+                        string s = string.Empty;
+
+                        string manu = string.Empty;
+                        string cert = string.Empty;
+
+                        if (dataGridViewStock.Rows[i].Cells["deliveryLineId"].Value.ToString().Trim().Length != 0)
+                        {
+                            DataSet ds17 = GetData.Get_17(dataGridViewStock.Rows[i].Cells["deliveryLineId"].Value.ToString());
+
+                            if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
+                            {
+                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
+                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
+                            }
+                        }
+
+                        string f = dataGridViewStock.Rows[i].Cells["prodLineDeptName"].Value.ToString();//产线部门
+                        string proName = dataGridViewStock.Rows[i].Cells["itemDesc"].Value.ToString();//物料描述
+                        string proNo = dataGridViewStock.Rows[i].Cells["itemId"].Value.ToString();//物料号
+                        string patch = dataGridViewStock.Rows[i].Cells["itemName"].Value.ToString();//物料名称
+                        string deNo = dataGridViewStock.Rows[i].Cells["transactionId"].Value.ToString();//凭证号
+                        string ckDate = dataGridViewStock.Rows[i].Cells["depositDate"].Value.ToString();//入库日期
+
+                        string pC = dataGridViewStock.Rows[i].Cells["deliveryLineId"].Value.ToString();//送货单号
+
+                        string baoguanyuan = dataGridViewStock.Rows[i].Cells["custodianJobId"].Value.ToString();//保管员岗位号
+                        string supp = dataGridViewStock.Rows[i].Cells["supplierName"].Value.ToString();//供货单位名称
+                        string loca = dataGridViewStock.Rows[i].Cells["invBin"].Value.ToString();//储位
+                        string q = dataGridViewStock.Rows[i].Cells["invQty"].Value.ToString();//储位数量
+                        string u = dataGridViewStock.Rows[i].Cells["itemUom"].Value.ToString();//单位
+                        string w = dataGridViewStock.Rows[i].Cells["unitWeight"].Value.ToString();//单重
+                        string r = dataGridViewStock.Rows[i].Cells["batchId"].Value.ToString();//批次号
+                        string p = dataGridViewStock.Rows[i].Cells["invPrice"].Value.ToString();//单价
+                        string cop = nudCopy.Value.ToString();
+
+                        string ywtm = deNo + "-" + proNo;
+
+                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
+                        client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
+                        client.GetStream().Flush();
+                    }
+
+                    client.Close();
+                }
+                catch (Exception exception)
+                {
+                    CommonFunction.Sys_MsgBox(exception.Message);
+                }
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            PrintProductLabelNew_Patch(dataGridViewStock.SelectedRows);
+            if (dataGridViewPrinterList.RowCount < 1)
+            {
+                CommonFunction.Sys_MsgBox("请指定打印机!");
+            }
+            else
+            {
+                TcpClient client = new TcpClient();
+
+                string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
+                int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
+
+                try
+                {
+                    client.Connect(hostname, port);
+
+                    string s = string.Empty;
+
+                    string manu = string.Empty;
+                    string cert = string.Empty;
+
+                    if (dataGridViewStock.SelectedRows[0].Cells["deliveryLineId"].Value.ToString().Trim().Length != 0)
+                    {
+                        DataSet ds17 = GetData.Get_17(dataGridViewStock.SelectedRows[0].Cells["deliveryLineId"].Value.ToString());
+
+                        if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
+                        {
+                            manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
+                            cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
+                        }
+                    }
+
+                    string f = dataGridViewStock.SelectedRows[0].Cells["prodLineDeptName"].Value.ToString();//产线部门
+                    string proName = dataGridViewStock.SelectedRows[0].Cells["itemDesc"].Value.ToString();//物料描述
+                    string proNo = dataGridViewStock.SelectedRows[0].Cells["itemId"].Value.ToString();//物料号
+                    string patch = dataGridViewStock.SelectedRows[0].Cells["itemName"].Value.ToString();//物料名称
+                    string deNo = dataGridViewStock.SelectedRows[0].Cells["transactionId"].Value.ToString();//凭证号
+                    string ckDate = dataGridViewStock.SelectedRows[0].Cells["depositDate"].Value.ToString();//入库日期
+
+                    string pC = dataGridViewStock.SelectedRows[0].Cells["deliveryLineId"].Value.ToString();//送货单号
+
+                    string baoguanyuan = dataGridViewStock.SelectedRows[0].Cells["custodianJobId"].Value.ToString();//保管员岗位号
+                    string supp = dataGridViewStock.SelectedRows[0].Cells["supplierName"].Value.ToString();//供货单位名称
+                    string loca = dataGridViewStock.SelectedRows[0].Cells["invBin"].Value.ToString();//储位
+                    string q = dataGridViewStock.SelectedRows[0].Cells["invQty"].Value.ToString();//储位数量
+                    string u = dataGridViewStock.SelectedRows[0].Cells["itemUom"].Value.ToString();//单位
+                    string w = dataGridViewStock.SelectedRows[0].Cells["unitWeight"].Value.ToString();//单重
+                    string r = dataGridViewStock.SelectedRows[0].Cells["batchId"].Value.ToString();//批次号
+                    string p = dataGridViewStock.SelectedRows[0].Cells["invPrice"].Value.ToString();//单价
+                    string cop = nudCopy.Value.ToString();
+
+                    string ywtm = deNo + "-" + proNo;
+
+                    s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
+                    client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
+                    client.GetStream().Flush();
+
+                    client.Close();
+                }
+                catch (Exception exception)
+                {
+                    CommonFunction.Sys_MsgBox(exception.Message);
+                }
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
-        {
-            thread = new Thread(new ThreadStart(ShowWaitingMsg));
-            thread.Start();
-        }
-
-        public string Data_Hex(string old)
-        {
-            string str = "";
-
-            try
-            {
-                int num = 0;
-                string str2 = "";
-
-                foreach (char ch in old)
-                {
-                    num = ch;
-                    string str3 = string.Format("{0:x2}", Convert.ToUInt32(num.ToString()));
-                    str2 += str3;
-                }
-
-                str = str2;
-            }
-            catch (Exception exception)
-            {
-                CommonFunction.Sys_MsgBox("Failed to convert!!! Please check your input format!" + exception.Message);
-            }
-            return str;
-        }
-
-        private void dataGridViewStock_SelectionChanged(object sender, EventArgs e)
-        {
-            if ((dataGridViewStock.Rows.Count > 0 ) && (dataGridViewStock.SelectedRows.Count > 0))
-            {
-                //this.txtCopy.Text = this.dataGridViewStock.SelectedRows[0].Cells["ColumnPrintCount"].Value.ToString();
-                nudCopy.Text = "1";
-
-                btnPrint.Enabled = true;
-                btnPatchPrint.Enabled = true;
-            }
-            else
-            {
-                nudCopy.Text = "0";
-                btnPrint.Enabled = false;
-                btnPatchPrint.Enabled = false;
-            }
-        }
-
-        private Control GetNextSelectControl(Control activeControl)
-        {
-            Control nextControl = GetNextControl(activeControl, true);
-
-            if ((!nextControl.Enabled || !nextControl.TabStop) || (nextControl.TabStop && !nextControl.CanSelect))
-            {
-                nextControl = GetNextSelectControl(nextControl);
-            }
-
-            return nextControl;
-        }
-
-        private void PrintProductLabelNew_Patch(DataGridViewRowCollection dgvr)
-        {
-            if (dataGridViewPrinterList.RowCount < 1)
-            {
-                CommonFunction.Sys_MsgBox("请指定打印机!");
-            }
-            else
-            {
-                TcpClient client = new TcpClient();
-                string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-                int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
-
-                try
-                {
-                    client.Connect(hostname, port);
-
-                    for (int i = 0; i < dgvr.Count; i++)
-                    {
-                        string s = string.Empty;
-
-                        string manu = string.Empty;
-                        string cert = string.Empty;
-
-                        if (dgvr[i].Cells["deliveryLineId"].Value.ToString().Trim().Length != 0)
-                        {
-                            DataSet ds17 = GetData.Get_17(dgvr[i].Cells["deliveryLineId"].Value.ToString());
-
-                            if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
-                            {
-                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
-                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
-                            }
-                        }
-
-                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();//产线部门
-                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();//物料描述
-                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();//物料号
-                        string patch = dgvr[i].Cells["itemName"].Value.ToString();//物料名称
-                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号
-                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期
-
-                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString();//送货单号
-
-                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();//保管员岗位号
-                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();//供货单位名称
-                        string loca = dgvr[i].Cells["invBin"].Value.ToString();//储位
-                        string q = dgvr[i].Cells["invQty"].Value.ToString();//储位数量
-                        string u = dgvr[i].Cells["itemUom"].Value.ToString();//单位
-                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();//单重
-                        string r = dgvr[i].Cells["batchId"].Value.ToString();//批次号
-                        string p = dgvr[i].Cells["invPrice"].Value.ToString();//单价
-                        string cop = nudCopy.Text;
-
-                        string ywtm = deNo + "-" + proNo;
-
-                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
-                        client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                        client.GetStream().Flush();
-                    }
-
-                    client.Close();
-                }
-                catch (Exception exception)
-                {
-                    CommonFunction.Sys_MsgBox(exception.Message);
-                }
-            }
-        }
-
-        private void PrintProductLabelNew_Patch(DataGridViewSelectedRowCollection dgvr)
-        {
-            if (dataGridViewPrinterList.RowCount < 1)
-            {
-                CommonFunction.Sys_MsgBox("请指定打印机!");
-            }
-            else
-            {
-                TcpClient client = new TcpClient();
-
-                string hostname = dataGridViewPrinterList.SelectedRows[0].Cells["columnPAddress"].Value.ToString();
-                int port = int.Parse(dataGridViewPrinterList.SelectedRows[0].Cells["columnSocket"].Value.ToString());
-
-                try
-                {
-                    client.Connect(hostname, port);
-
-                    for (int i = 0; i < dgvr.Count; i++)
-                    {
-                        string s = string.Empty;
-
-                        string manu = string.Empty;
-                        string cert = string.Empty;
-
-                        if (dgvr[i].Cells["deliveryLineId"].Value.ToString().Trim().Length != 0)
-                        {
-                            DataSet ds17 = GetData.Get_17(dgvr[i].Cells["deliveryLineId"].Value.ToString());
-
-                            if (ds17 != null && ds17.Tables[0].Rows.Count > 0)
-                            {
-                                manu = ds17.Tables[0].Rows[0]["instructions"].ToString();//说明书
-                                cert = ds17.Tables[0].Rows[0]["qualifiedCertificate"].ToString();//合格证
-                            }
-                        }
-
-                        string f = dgvr[i].Cells["prodLineDeptName"].Value.ToString();//产线部门
-                        string proName = dgvr[i].Cells["itemDesc"].Value.ToString();//物料描述
-                        string proNo = dgvr[i].Cells["itemId"].Value.ToString();//物料号
-                        string patch = dgvr[i].Cells["itemName"].Value.ToString();//物料名称
-                        string deNo = dgvr[i].Cells["transactionId"].Value.ToString();//凭证号
-                        string ckDate = dgvr[i].Cells["depositDate"].Value.ToString();//入库日期
-
-                        string pC = dgvr[i].Cells["deliveryLineId"].Value.ToString();//送货单号
-
-                        string baoguanyuan = dgvr[i].Cells["custodianJobId"].Value.ToString();//保管员岗位号
-                        string supp = dgvr[i].Cells["supplierName"].Value.ToString();//供货单位名称
-                        string loca = dgvr[i].Cells["invBin"].Value.ToString();//储位
-                        string q = dgvr[i].Cells["invQty"].Value.ToString();//储位数量
-                        string u = dgvr[i].Cells["itemUom"].Value.ToString();//单位
-                        string w = dgvr[i].Cells["unitWeight"].Value.ToString();//单重
-                        string r = dgvr[i].Cells["batchId"].Value.ToString();//批次号
-                        string p = dgvr[i].Cells["invPrice"].Value.ToString();//单价
-                        string cop = nudCopy.Text;
-                        
-                        string ywtm = deNo + "-" + proNo;
-
-                        s = ClsCommon.dealData(f, proName, proNo, patch, deNo, ckDate, manu, pC, cert, supp, loca, q, u, w, r, p, cop, ywtm, baoguanyuan, cmbLabelType.Text);
-                        client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                        client.GetStream().Flush();
-                    }
-
-                    client.Close();
-                }
-                catch (Exception exception)
-                {
-                    CommonFunction.Sys_MsgBox(exception.Message);
-                }
-            }
-        }
-
-        private void SelectNextControl(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                GetNextSelectControl(ActiveControl).Focus();
-            }
-        }
-
-        private void ShowMsg(object o, EventArgs e)
         {
             try
             {
@@ -932,7 +841,6 @@ namespace RFSystem
                 ArrayList alParams = new ArrayList();
 
                 alParams.Add(textBoxStoreMan.Text.Trim());
-                //this.dtResult = DBOperate.LocalStockGetList_New(alParams);
 
                 dtResult = ClsCommon.LocalStockGetList(alParams);
 
@@ -958,9 +866,42 @@ namespace RFSystem
             }
         }
 
-        private void ShowWaitingMsg()
+        private void dataGridViewStock_SelectionChanged(object sender, EventArgs e)
         {
-            Invoke(new EventHandler(ShowMsg));
+            if ((dataGridViewStock.Rows.Count > 0 ) && (dataGridViewStock.SelectedRows.Count > 0))
+            {
+                nudCopy.Value = 1;
+
+                btnPrint.Enabled = true;
+                btnPatchPrint.Enabled = true;
+            }
+            else
+            {
+                nudCopy.Value = 0;
+
+                btnPrint.Enabled = false;
+                btnPatchPrint.Enabled = false;
+            }
+        }
+
+        private Control GetNextSelectControl(Control activeControl)
+        {
+            Control nextControl = GetNextControl(activeControl, true);
+
+            if ((!nextControl.Enabled || !nextControl.TabStop) || (nextControl.TabStop && !nextControl.CanSelect))
+            {
+                nextControl = GetNextSelectControl(nextControl);
+            }
+
+            return nextControl;
+        }
+
+        private void SelectNextControl(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetNextSelectControl(ActiveControl).Focus();
+            }
         }
 
         private void 数据库查询_Load(object sender, EventArgs e)
@@ -970,7 +911,7 @@ namespace RFSystem
 
         private void txtPrinter_TextChanged(object sender, EventArgs e)
         {
-            dtPrinterList = DBOperate.GetPrinterList("%" + txtPrinter.Text + "%", "%");
+            dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "");
             dataGridViewPrinterList.DataSource = dtPrinterList;
         }
     }
