@@ -55,29 +55,27 @@ namespace RFSystem
             return dt;
         }
 
-        //转移至历史库
         public static int MaintainItemToHis(DateTime dTime1, DateTime dTime2, string czr)
         {
+
             try
             {
                 db.BeginTrans();
-
-                string param = TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ","
+                string param = "";
+                //param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",") + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59"));
+                param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",")
                     + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59")) + ","
                     + TDBObject.ToDBVal(czr);
                 db.ExecProcedure("RF_Maintain_ToHis", param);
                 db.Commit();
-
                 return 0;
             }
             catch
             {
                 db.RollBack();
-
                 return -1;
             }
         }
-        #endregion
 
         //本地数据库查询
         public static DataTable LocalStockGetList_New(ArrayList alParams)
@@ -111,6 +109,7 @@ namespace RFSystem
 
             return dt;
         }
+        #endregion
 
         //工作日志统计
         public static DataSet StatisticInfo_New(string storeMan, string operatorDateFrom, string operatorDateTo)

@@ -9,6 +9,7 @@ namespace RFSystem
         public string passWord;
         public string userID;
         public string userName;
+        public string postID;
 
         public static UserInfo GetUserByLogin(UserInfo userItem, out bool ifExist, out DataTable dtUserRoles)
         {
@@ -28,6 +29,7 @@ namespace RFSystem
             foreach (DataRow row in table.Rows)
             {
                 TDBObject.GetField(row, "User_ID", ref userItem.userID);
+                TDBObject.GetField(row, "Post_ID", ref userItem.postID);
                 TDBObject.GetField(row, "User_Name", ref userItem.userName);
                 TDBObject.GetField(row, "InEffect", ref userItem.isEffect);
                 TDBObject.GetField(row, "IsAdmin", ref userItem.isAdmin);

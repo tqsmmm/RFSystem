@@ -12,7 +12,6 @@ namespace RFSystem
         public 日志信息查看()
         {
             InitializeComponent();
-            Load += new EventHandler(日志信息查看_Load);
         }
 
         private void InitializeComponent()
@@ -33,11 +32,13 @@ namespace RFSystem
             // 
             this.ClientSize = new System.Drawing.Size(792, 473);
             this.Controls.Add(this.richTextBox1);
+            this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "日志信息查看";
             this.Text = "日志信息查看";
+            this.Load += new System.EventHandler(this.日志信息查看_Load);
             this.ResumeLayout(false);
 
         }

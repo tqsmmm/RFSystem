@@ -73,7 +73,7 @@ namespace RFSystem
             {
                 ifTurnRight = false;
 
-                if (!CommonFunction.Sys_MsgYN("当前盘点货位信息或数量信息与SAP理论库存信息不一致，是否继续修改？"))
+                if (!CommonFunction.Sys_MsgYN("当前盘点货位信息或数量信息与PSCS理论库存信息不一致，是否继续修改？"))
                 {
                     flag = false;
                 }

@@ -12,7 +12,6 @@ namespace RFSystem
         private Button btDel;
         private Button btSee;
         private DataGridView dataGridView1;
-        private DataSet m_poDs;
 
         private void InitializeComponent()
         {
@@ -74,6 +73,7 @@ namespace RFSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "日志管理";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.日志管理_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -82,9 +82,7 @@ namespace RFSystem
         // Methods
         public 日志管理()
         {
-            m_poDs = null;
             InitializeComponent();
-            Load += new EventHandler(日志管理_Load);
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -126,7 +124,7 @@ namespace RFSystem
         {
             try
             {
-                
+
             }
             catch (Exception exception)
             {

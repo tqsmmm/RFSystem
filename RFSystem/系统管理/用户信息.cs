@@ -11,48 +11,39 @@ namespace RFSystem
         private Button btnCancel;
         private Button btnMod;
         private CheckBox checkBoxIsAdmin;
-        private ComboBox comboBoxSapRolePoint;
         private IContainer components = null;
-        private DataTable dtSapUser = null;
         private ErrorProvider errorProvider;
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label5;
         private Label label6;
-        private string strSapUser = string.Empty;
         private TextBox textBoxPassWord;
         private TextBox textBoxRePassWord;
         private TextBox textBoxUserID;
+        private TextBox txtSapRolePoint;
+        private Label label4;
         private TextBox textBoxUserName;
 
         public 用户信息(Hashtable userItem)
         {
             InitializeComponent();
 
-            dtSapUser = DBOperate.GetSapUser();
-
-            foreach (DataRow row in dtSapUser.Rows)
+            if (userItem != null)
             {
-                comboBoxSapRolePoint.Items.Add(row["SapUserID"]);
-            }
+                textBoxUserID.Text = (string)userItem["User_ID"];
+                textBoxUserName.Text = (string)userItem["User_Name"];
 
-            textBoxUserID.Text = (string)userItem["User_ID"];
-            textBoxUserName.Text = (string)userItem["User_Name"];
+                txtSapRolePoint.Text = (string)userItem["Post_ID"];
 
-            if (!userItem["SapRolePoint"].ToString().Equals(string.Empty))
-            {
-                if (comboBoxSapRolePoint.Items.Contains((string)userItem["SapRolePoint"]))
+                if (userItem["IsAdmin"].ToString() == "是")
                 {
-                    comboBoxSapRolePoint.SelectedIndex = comboBoxSapRolePoint.Items.IndexOf((string)userItem["SapRolePoint"]);
+                    checkBoxIsAdmin.Checked = true;
                 }
                 else
                 {
-                    CommonFunction.Sys_MsgBox("当前用户对应的SAP用户不存在，请对应修改");
+                    checkBoxIsAdmin.Checked = false;
                 }
             }
-
-            checkBoxIsAdmin.Checked = (bool)userItem["IsAdmin"];
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -62,18 +53,14 @@ namespace RFSystem
 
         private void btnMod_Click(object sender, EventArgs e)
         {
-            if (textBoxUserID.Text.Trim().Length != 4)
-            {
-                CommonFunction.Sys_MsgBox("用户ID固定为4位，请检查更改");
-            }
-            else if (ValidateInput())
+            if (ValidateInput())
             {
                 ArrayList userItem = new ArrayList
                 {
                     textBoxUserID.Text.Trim(),
                     textBoxUserName.Text.Trim(),
                     RFdesOperator.getMd5Hash(textBoxPassWord.Text.Trim()),
-                    comboBoxSapRolePoint.Text.Trim(),
+                    txtSapRolePoint.Text.Trim(),
                     checkBoxIsAdmin.Checked ? 1 : 0
                 };
 
@@ -81,7 +68,7 @@ namespace RFSystem
                 {
                     int num = DBOperate.AddUser(userItem);
 
-                    if (DBOperate.AddUser(userItem) != -1)
+                    if (num != -1)
                     {
                         CommonFunction.Sys_MsgBox("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 添加成功");
                         DialogResult = DialogResult.OK;
@@ -116,34 +103,34 @@ namespace RFSystem
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxIsAdmin = new System.Windows.Forms.CheckBox();
             this.textBoxUserID = new System.Windows.Forms.TextBox();
-            this.comboBoxSapRolePoint = new System.Windows.Forms.ComboBox();
             this.textBoxRePassWord = new System.Windows.Forms.TextBox();
             this.textBoxPassWord = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtSapRolePoint = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(63, 46);
+            this.label6.Location = new System.Drawing.Point(99, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 28;
-            this.label6.Text = "用户帐号：";
+            this.label6.Text = "用户工号：";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(200, 273);
+            this.btnCancel.Location = new System.Drawing.Point(248, 202);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.Size = new System.Drawing.Size(120, 50);
             this.btnCancel.TabIndex = 908;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -151,27 +138,18 @@ namespace RFSystem
             // 
             // btnMod
             // 
-            this.btnMod.Location = new System.Drawing.Point(94, 273);
+            this.btnMod.Location = new System.Drawing.Point(122, 202);
             this.btnMod.Name = "btnMod";
-            this.btnMod.Size = new System.Drawing.Size(100, 40);
+            this.btnMod.Size = new System.Drawing.Size(120, 50);
             this.btnMod.TabIndex = 907;
             this.btnMod.Text = "确定";
             this.btnMod.UseVisualStyleBackColor = true;
             this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 186);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 20);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "对应SAP用户：";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 151);
+            this.label3.Location = new System.Drawing.Point(99, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 17;
@@ -180,7 +158,7 @@ namespace RFSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 116);
+            this.label2.Location = new System.Drawing.Point(99, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 16;
@@ -189,7 +167,7 @@ namespace RFSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 81);
+            this.label1.Location = new System.Drawing.Point(99, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 15;
@@ -198,7 +176,7 @@ namespace RFSystem
             // checkBoxIsAdmin
             // 
             this.checkBoxIsAdmin.AutoSize = true;
-            this.checkBoxIsAdmin.Location = new System.Drawing.Point(149, 217);
+            this.checkBoxIsAdmin.Location = new System.Drawing.Point(184, 172);
             this.checkBoxIsAdmin.Name = "checkBoxIsAdmin";
             this.checkBoxIsAdmin.Size = new System.Drawing.Size(112, 24);
             this.checkBoxIsAdmin.TabIndex = 906;
@@ -208,27 +186,15 @@ namespace RFSystem
             // 
             // textBoxUserID
             // 
-            this.textBoxUserID.Location = new System.Drawing.Point(148, 43);
+            this.textBoxUserID.Location = new System.Drawing.Point(184, 12);
             this.textBoxUserID.Name = "textBoxUserID";
             this.textBoxUserID.Size = new System.Drawing.Size(200, 26);
             this.textBoxUserID.TabIndex = 901;
             this.textBoxUserID.TabStop = false;
             // 
-            // comboBoxSapRolePoint
-            // 
-            this.comboBoxSapRolePoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSapRolePoint.FormattingEnabled = true;
-            this.comboBoxSapRolePoint.Location = new System.Drawing.Point(149, 183);
-            this.comboBoxSapRolePoint.Name = "comboBoxSapRolePoint";
-            this.comboBoxSapRolePoint.Size = new System.Drawing.Size(199, 28);
-            this.comboBoxSapRolePoint.TabIndex = 905;
-            this.comboBoxSapRolePoint.Enter += new System.EventHandler(this.comboBoxSapRolePoint_Enter);
-            this.comboBoxSapRolePoint.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectNextControl);
-            this.comboBoxSapRolePoint.Leave += new System.EventHandler(this.comboBoxSapRolePoint_Leave);
-            // 
             // textBoxRePassWord
             // 
-            this.textBoxRePassWord.Location = new System.Drawing.Point(148, 148);
+            this.textBoxRePassWord.Location = new System.Drawing.Point(184, 140);
             this.textBoxRePassWord.Name = "textBoxRePassWord";
             this.textBoxRePassWord.PasswordChar = '*';
             this.textBoxRePassWord.Size = new System.Drawing.Size(200, 26);
@@ -237,7 +203,7 @@ namespace RFSystem
             // 
             // textBoxPassWord
             // 
-            this.textBoxPassWord.Location = new System.Drawing.Point(148, 113);
+            this.textBoxPassWord.Location = new System.Drawing.Point(184, 108);
             this.textBoxPassWord.Name = "textBoxPassWord";
             this.textBoxPassWord.PasswordChar = '*';
             this.textBoxPassWord.Size = new System.Drawing.Size(200, 26);
@@ -246,7 +212,7 @@ namespace RFSystem
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(148, 78);
+            this.textBoxUserName.Location = new System.Drawing.Point(184, 44);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(200, 26);
             this.textBoxUserName.TabIndex = 902;
@@ -256,20 +222,36 @@ namespace RFSystem
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // txtSapRolePoint
+            // 
+            this.txtSapRolePoint.Location = new System.Drawing.Point(184, 76);
+            this.txtSapRolePoint.Name = "txtSapRolePoint";
+            this.txtSapRolePoint.Size = new System.Drawing.Size(200, 26);
+            this.txtSapRolePoint.TabIndex = 910;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(71, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 909;
+            this.label4.Text = "保管员岗位号：";
+            // 
             // 用户信息
             // 
-            this.ClientSize = new System.Drawing.Size(394, 325);
+            this.ClientSize = new System.Drawing.Size(484, 262);
             this.ControlBox = false;
+            this.Controls.Add(this.txtSapRolePoint);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBoxIsAdmin);
             this.Controls.Add(this.textBoxUserID);
-            this.Controls.Add(this.comboBoxSapRolePoint);
             this.Controls.Add(this.textBoxRePassWord);
             this.Controls.Add(this.textBoxPassWord);
             this.Controls.Add(this.textBoxUserName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnMod);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -327,35 +309,6 @@ namespace RFSystem
             else if (Text == "用户修改")
             {
                 textBoxUserID.ReadOnly = true;
-            }
-
-            dtSapUser = DBOperate.GetSapUser();
-
-            foreach (DataRow row in dtSapUser.Rows)
-            {
-                comboBoxSapRolePoint.Items.Add(row["SapUserID"]);
-            }
-
-            if (CommonFunction.IfHasData(dtSapUser))
-            {
-                comboBoxSapRolePoint.Text = (string)dtSapUser.Rows[0]["SapUserID"];
-            }
-        }
-
-        private void comboBoxSapRolePoint_Enter(object sender, EventArgs e)
-        {
-            strSapUser = comboBoxSapRolePoint.Text;
-        }
-
-        private void comboBoxSapRolePoint_Leave(object sender, EventArgs e)
-        {
-            if (dtSapUser.Select("SapUserID='" + ((Control)sender).Text + "'").Length == 0)
-            {
-                ((Control)sender).Text = strSapUser;
-            }
-            else
-            {
-                strSapUser = ((Control)sender).Text;
             }
         }
     }

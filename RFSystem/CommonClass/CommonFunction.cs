@@ -7,12 +7,12 @@ namespace RFSystem
     {
         public static void Sys_MsgBox(string strMsg)
         {
-            MessageBox.Show(strMsg, "RF库存管理系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(strMsg, "RF-PSCS库存管理系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static bool Sys_MsgYN(string strMsg)
         {
-            if (MessageBox.Show(strMsg, "RF库存管理系统", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(strMsg, "RF-PSCS库存管理系统", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 return true;
             }

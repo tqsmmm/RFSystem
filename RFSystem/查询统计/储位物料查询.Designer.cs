@@ -74,7 +74,7 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(683, 137);
+            this.btnClear.Location = new System.Drawing.Point(812, 137);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 50);
             this.btnClear.TabIndex = 542;
@@ -86,7 +86,7 @@
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(683, 81);
+            this.btnDelete.Location = new System.Drawing.Point(812, 81);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 50);
             this.btnDelete.TabIndex = 541;
@@ -197,7 +197,7 @@
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelect.Enabled = false;
-            this.btnSelect.Location = new System.Drawing.Point(683, 25);
+            this.btnSelect.Location = new System.Drawing.Point(812, 25);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(120, 50);
             this.btnSelect.TabIndex = 539;
@@ -213,7 +213,7 @@
             this.groupBox1.Controls.Add(this.dataGridViewSapStockInfo);
             this.groupBox1.Location = new System.Drawing.Point(6, 312);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(955, 333);
+            this.groupBox1.Size = new System.Drawing.Size(1084, 361);
             this.groupBox1.TabIndex = 538;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "货物信息";
@@ -249,7 +249,7 @@
             this.dataGridViewSapStockInfo.RowHeadersVisible = false;
             this.dataGridViewSapStockInfo.RowTemplate.Height = 23;
             this.dataGridViewSapStockInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSapStockInfo.Size = new System.Drawing.Size(949, 308);
+            this.dataGridViewSapStockInfo.Size = new System.Drawing.Size(1078, 336);
             this.dataGridViewSapStockInfo.TabIndex = 30001;
             // 
             // ColumnFACT_NO
@@ -386,7 +386,7 @@
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Location = new System.Drawing.Point(152, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(809, 300);
+            this.groupBox2.Size = new System.Drawing.Size(938, 300);
             this.groupBox2.TabIndex = 537;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "查询条件";
@@ -413,7 +413,7 @@
             this.dataGridViewMaintain.RowHeadersVisible = false;
             this.dataGridViewMaintain.RowTemplate.Height = 23;
             this.dataGridViewMaintain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMaintain.Size = new System.Drawing.Size(671, 269);
+            this.dataGridViewMaintain.Size = new System.Drawing.Size(800, 269);
             this.dataGridViewMaintain.TabIndex = 20000;
             this.dataGridViewMaintain.SelectionChanged += new System.EventHandler(this.dataGridViewMaintain_SelectionChanged);
             // 
@@ -453,7 +453,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 651);
+            this.ClientSize = new System.Drawing.Size(1096, 679);
             this.Controls.Add(this.groupBoxInputInfo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

@@ -73,13 +73,6 @@ namespace RFSystem
             return db.ExecProcedure("RF_Printer_Add", param);
         }
 
-        public static int AddSapUser(string sapUserID, string sapPassword)
-        {
-            string param = $"{TDBObject.ToDBVal(sapUserID)}, {TDBObject.ToDBVal(sapPassword)}";
-
-            return db.ExecProcedure("RF_SapUser_Add", param);
-        }
-
         public static int AddStorageExceptionInfo(ArrayList exceptionStorageInfo)
         {
             string param = "";
@@ -546,33 +539,6 @@ namespace RFSystem
             return dt;
         }
 
-        public static DataTable GetSapInfoBySapID(string sapRolePoint)
-        {
-            string param = $"{TDBObject.ToDBVal(sapRolePoint)}";
-
-            db.OpenProcedure("RF_User_GetSapInfo", param, out DataTable dt);
-
-            return dt;
-        }
-
-        public static DataTable GetSapUser()
-        {
-            string param = "";
-
-            db.OpenProcedure("RF_SapUser_Get", param, out DataTable dt);
-
-            return dt;
-        }
-
-        public static DataTable GetSapUserList(string sapUserID)
-        {
-            string param = $"{TDBObject.ToDBVal(sapUserID)}";
-
-            db.OpenProcedure("RF_SapUser_GetList", param, out DataTable dt);
-
-            return dt;
-        }
-
         public static int GetSTItem(string Type, DateTime dTime, out DataTable dt, out string ErrMsg)
         {
             ErrMsg = "";
@@ -669,7 +635,7 @@ namespace RFSystem
         {
             string param = $"{TDBObject.ToDBVal(userItem.userID)}, {TDBObject.ToDBVal(userItem.passWord)}";
             
-            db.OpenProcedure("rfid2021.dbo.RF_User_GetByLogin", param, out DataSet ds);
+            db.OpenProcedure("dbo.RF_User_GetByLogin", param, out DataSet ds);
 
             return ds;
         }
@@ -679,6 +645,35 @@ namespace RFSystem
             string param = TDBObject.ToDBVal(userID);
 
             db.OpenProcedure("RF_User_GetIDName", param, out DataTable dt);
+
+            return dt;
+        }
+
+        public static void clearRF_Users()
+        {
+            db.Excute("DELETE FROM RF_Users");
+        }
+
+        public static int updateRF_Users()
+        {
+            db.BeginTrans();
+
+            try
+            {
+                int updateCount = db.ExecSQL("INSERT INTO RF_Database_CZ.dbo.RF_Users(User_ID,Post_ID,User_Name,Password,SapRolePoint,InEffect,IsAdmin) SELECT userid,postid,userName,'','','True','False' from rfid2021.dbo.bx_E1DV30");
+                db.Commit();
+                return updateCount;
+            }
+            catch
+            {
+                db.RollBack();
+                return -1;
+            }
+        }
+
+        public static DataTable getE1DV30()
+        {
+            db.OpenDataSet("SELECT userid,postid,userName from rfid2021.dbo.bx_E1DV30", out DataTable dt);
 
             return dt;
         }

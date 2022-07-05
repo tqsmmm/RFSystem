@@ -1,10 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using RFSystem.Properties;
-using System.Threading;
 using System.Collections;
 using System.Net.Sockets;
 
@@ -16,16 +13,12 @@ namespace RFSystem
         private Button btnPrint;
         private Button btnSelect;
         private ComboBox cmbLabelType;
-        private IContainer components;
         private DataGridView dataGridViewPrinterList;
         private DataGridView dataGridViewStock;
-        private DataTable dtPlantList;
         private DataTable dtPrinterList;
         private DataTable dtResult;
-        private DataTable dtStoreLocusList;
         private Label label10;
         private Label label11;
-        private Thread thread;
         private TextBox txtPrinter;
         private UserInfo userItem;
         private TextBox textBoxStoreMan;
@@ -71,17 +64,9 @@ namespace RFSystem
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn columnPAddress;
         private DataGridViewTextBoxColumn columnSocket;
+        private TextBox textBox1;
+        private Label label6;
         private ArrayList userRoles;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
 
         private void InitializeComponent()
         {
@@ -137,6 +122,8 @@ namespace RFSystem
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
@@ -518,7 +505,7 @@ namespace RFSystem
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 409);
+            this.label10.Location = new System.Drawing.Point(12, 461);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 20);
             this.label10.TabIndex = 1001;
@@ -527,7 +514,7 @@ namespace RFSystem
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(12, 464);
+            this.btnPrint.Location = new System.Drawing.Point(12, 516);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPrint.TabIndex = 1004;
@@ -538,7 +525,7 @@ namespace RFSystem
             // btnPatchPrint
             // 
             this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(12, 520);
+            this.btnPatchPrint.Location = new System.Drawing.Point(12, 572);
             this.btnPatchPrint.Name = "btnPatchPrint";
             this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPatchPrint.TabIndex = 1005;
@@ -548,7 +535,7 @@ namespace RFSystem
             // 
             // nudCopy
             // 
-            this.nudCopy.Location = new System.Drawing.Point(12, 432);
+            this.nudCopy.Location = new System.Drawing.Point(12, 484);
             this.nudCopy.Minimum = new decimal(new int[] {
             1,
             0,
@@ -566,7 +553,7 @@ namespace RFSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 355);
+            this.label2.Location = new System.Drawing.Point(12, 407);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 1103;
@@ -578,14 +565,14 @@ namespace RFSystem
             this.cmbLabelType.Items.AddRange(new object[] {
             "普通标签",
             "RFID标签"});
-            this.cmbLabelType.Location = new System.Drawing.Point(12, 378);
+            this.cmbLabelType.Location = new System.Drawing.Point(12, 430);
             this.cmbLabelType.Name = "cmbLabelType";
             this.cmbLabelType.Size = new System.Drawing.Size(120, 28);
             this.cmbLabelType.TabIndex = 1102;
             // 
             // txtPrinter
             // 
-            this.txtPrinter.Location = new System.Drawing.Point(12, 326);
+            this.txtPrinter.Location = new System.Drawing.Point(12, 378);
             this.txtPrinter.Name = "txtPrinter";
             this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 102;
@@ -594,7 +581,7 @@ namespace RFSystem
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 303);
+            this.label11.Location = new System.Drawing.Point(12, 355);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 101;
@@ -610,7 +597,7 @@ namespace RFSystem
             this.dataGridViewTextBoxColumn1,
             this.columnPAddress,
             this.columnSocket});
-            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 120);
+            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 172);
             this.dataGridViewPrinterList.MultiSelect = false;
             this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
             this.dataGridViewPrinterList.ReadOnly = true;
@@ -643,10 +630,30 @@ namespace RFSystem
             this.columnSocket.ReadOnly = true;
             this.columnSocket.Visible = false;
             // 
-            // 数据库查询
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 140);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(120, 26);
+            this.textBox1.TabIndex = 30026;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.TabIndex = 30025;
+            this.label6.Text = "查询数据：";
+            // 
+            // 物料标签打印
             // 
             this.ClientSize = new System.Drawing.Size(1011, 629);
             this.ControlBox = false;
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.nudCopy);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.label10);
@@ -664,7 +671,7 @@ namespace RFSystem
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "数据库查询";
+            this.Name = "物料标签打印";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "本地数据库查询";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -847,6 +854,7 @@ namespace RFSystem
                 if (CommonFunction.IfHasData(dtResult))
                 {
                     dataGridViewStock.DataSource = dtResult;
+                    textBox1.Text = dtResult.Rows.Count.ToString();
                 }
                 else
                 {
@@ -856,9 +864,9 @@ namespace RFSystem
 
                 dataGridViewStock_SelectionChanged(null, null);
             }
-            catch
+            catch (Exception ex)
             {
-
+                CommonFunction.Sys_MsgBox(ex.Message);
             }
             finally
             {
@@ -877,7 +885,7 @@ namespace RFSystem
             }
             else
             {
-                nudCopy.Value = 0;
+                nudCopy.Value = 1;
 
                 btnPrint.Enabled = false;
                 btnPatchPrint.Enabled = false;

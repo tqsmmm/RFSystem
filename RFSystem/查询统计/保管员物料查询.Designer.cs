@@ -71,6 +71,8 @@
             this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ntgew = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Clabs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -79,7 +81,7 @@
             // 
             // nudCopy
             // 
-            this.nudCopy.Location = new System.Drawing.Point(12, 378);
+            this.nudCopy.Location = new System.Drawing.Point(12, 430);
             this.nudCopy.Minimum = new decimal(new int[] {
             1,
             0,
@@ -97,7 +99,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 355);
+            this.label10.Location = new System.Drawing.Point(12, 407);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 20);
             this.label10.TabIndex = 1122;
@@ -106,7 +108,7 @@
             // btnPatchPrint
             // 
             this.btnPatchPrint.Enabled = false;
-            this.btnPatchPrint.Location = new System.Drawing.Point(12, 466);
+            this.btnPatchPrint.Location = new System.Drawing.Point(12, 518);
             this.btnPatchPrint.Name = "btnPatchPrint";
             this.btnPatchPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPatchPrint.TabIndex = 1124;
@@ -116,7 +118,7 @@
             // 
             // txtPrinter
             // 
-            this.txtPrinter.Location = new System.Drawing.Point(12, 326);
+            this.txtPrinter.Location = new System.Drawing.Point(12, 378);
             this.txtPrinter.Name = "txtPrinter";
             this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 1121;
@@ -124,7 +126,7 @@
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(12, 410);
+            this.btnPrint.Location = new System.Drawing.Point(12, 462);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 50);
             this.btnPrint.TabIndex = 1123;
@@ -135,7 +137,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 303);
+            this.label11.Location = new System.Drawing.Point(12, 355);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 1120;
@@ -151,7 +153,7 @@
             this.dataGridViewTextBoxColumn1,
             this.columnPAddress,
             this.columnSocket});
-            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 120);
+            this.dataGridViewPrinterList.Location = new System.Drawing.Point(12, 172);
             this.dataGridViewPrinterList.MultiSelect = false;
             this.dataGridViewPrinterList.Name = "dataGridViewPrinterList";
             this.dataGridViewPrinterList.ReadOnly = true;
@@ -478,11 +480,31 @@
             this.Clabs.ReadOnly = true;
             this.Clabs.Width = 90;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 140);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(120, 26);
+            this.textBox1.TabIndex = 30024;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.TabIndex = 30023;
+            this.label6.Text = "查询数据：";
+            // 
             // 保管员物料查询
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 596);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.textBoxStoreMan);
@@ -557,5 +579,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ntgew;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clabs;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
     }
 }

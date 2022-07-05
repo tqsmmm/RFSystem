@@ -104,6 +104,36 @@
     <Compile Include="CommonClass\RoleInit.cs" />
     <Compile Include="CommonClass\DBOperate.cs" />
     <Compile Include="CommonClass\GetData.cs" />
+    <Compile Include="同步数据\同步保管员信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="同步数据\同步保管员信息.Designer.cs">
+      <DependentUpon>同步保管员信息.cs</DependentUpon>
+    </Compile>
+    <Compile Include="同步数据\同步物理库区.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="同步数据\同步物理库区.Designer.cs">
+      <DependentUpon>同步物理库区.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存保养\保养单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\保养货物.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\制定保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\新增保养数量.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\查询保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\管理保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="查询统计\保管员物料查询.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,24 +163,6 @@
     <Compile Include="CommonClass\TDBObject.cs" />
     <Compile Include="CommonClass\TLogError.cs" />
     <Compile Include="CommonClass\UserInfo.cs" />
-    <Compile Include="库存保养\保养单列表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\保养货物.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\制定保养单.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\新增保养数量.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\查询保养单.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\管理保养单.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArriveStore\到库货物信息合并.resx">
@@ -193,6 +205,19 @@
       <DependentUpon>异议货物存放信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="同步数据\同步保管员信息.resx">
+      <DependentUpon>同步保管员信息.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="同步数据\同步物理库区.resx">
+      <DependentUpon>同步物理库区.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\保养单列表.resx" />
+    <EmbeddedResource Include="库存保养\保养货物.resx" />
+    <EmbeddedResource Include="库存保养\制定保养单.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\新增保养数量.resx" />
+    <EmbeddedResource Include="库存保养\查询保养单.resx" />
     <EmbeddedResource Include="查询统计\保管员物料查询.resx">
       <DependentUpon>保管员物料查询.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,29 +235,6 @@
       <DependentUpon>储位标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\保养单列表.resx">
-      <DependentUpon>保养单列表.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\保养货物.resx">
-      <DependentUpon>保养货物.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\制定保养单.resx">
-      <DependentUpon>制定保养单.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\新增保养数量.resx">
-      <DependentUpon>新增保养数量.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\查询保养单.resx">
-      <DependentUpon>查询保养单.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\管理保养单.resx">
-      <DependentUpon>管理保养单.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -240,6 +242,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="同步数据\同步库存数据.resx">
       <DependentUpon>同步库存数据.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RF库存管理系统.resx">
       <DependentUpon>RF库存管理系统.cs</DependentUpon>
@@ -280,18 +283,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\日志管理.resx">
       <DependentUpon>日志管理.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\SAP用户修改.resx">
-      <DependentUpon>SAP用户修改.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\SAP用户新增.resx">
-      <DependentUpon>SAP用户新增.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\SAP用户管理.resx">
-      <DependentUpon>SAP用户管理.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\用户信息.resx">
@@ -403,15 +394,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\日志管理.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="系统管理\SAP用户修改.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="系统管理\SAP用户新增.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="系统管理\SAP用户管理.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\用户信息.cs">

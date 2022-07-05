@@ -48,7 +48,7 @@ namespace RFSystem
                 if (pack.Result)
                 {
                     rC = Convert.ToInt32(_outDs.Tables[0].Rows[0]["totalNumber"]);
-                    label2.Text = "查询到 " + _outDs.Tables[0].Rows[0]["totalNumber"].ToString() + " 条数据，程序将自动刷新收到的数据，将稍等......";
+                    textBox1.Text = rC.ToString();
                     timer1.Enabled = true;
                 }
                 else
@@ -74,7 +74,7 @@ namespace RFSystem
             if (mDt != null)
             {
                 dataGridViewSapStockInfo.DataSource = mDt;
-                label3.Text = "接收到 "+mDt.Rows.Count.ToString()+" 条数据";
+                textBox2.Text = mDt.Rows.Count.ToString();
                 recC = mDt.Rows.Count;
 
                 if (rC == recC)
@@ -86,7 +86,7 @@ namespace RFSystem
             }
             else 
             {
-                label3.Text = "接收到 0 条数据";
+                textBox2.Text = "0";
             }
         }
 
@@ -114,27 +114,7 @@ namespace RFSystem
 
         private void 同步库存数据_Load(object sender, EventArgs e)
         {
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "送货单行号", DataPropertyName = "deliveryLineId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "收货单号", DataPropertyName = "receiveId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "物料代码", DataPropertyName = "itemId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "物料名称", DataPropertyName = "itemName" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "物料短描述", DataPropertyName = "itemDesc" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "计量单位", DataPropertyName = "itemUom" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "逻辑库区", DataPropertyName = "invLogicCode" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存账套", DataPropertyName = "invBillTo" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "送货合格数量", DataPropertyName = "invQualifiedQty" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存预约量", DataPropertyName = "invOrQty" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存数量", DataPropertyName = "invQty" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "物理库区", DataPropertyName = "invPhysicCode" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存责任人", DataPropertyName = "invResponserUserId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "责任人部门", DataPropertyName = "invResponserDeptId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "收货日期", DataPropertyName = "accountTime" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "收货人", DataPropertyName = "accountUserId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "订单行号", DataPropertyName = "orderLineId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "保管员", DataPropertyName = "custodianJobId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "验收员", DataPropertyName = "inspectorJobId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存明细交易号", DataPropertyName = "transactionId" });
-            dataGridViewSapStockInfo.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "库存主表交易号", DataPropertyName = "invTransactionId" });
+            dataGridViewSapStockInfo.AutoGenerateColumns = false;
         }
     }
 }

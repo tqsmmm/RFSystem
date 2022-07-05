@@ -43,7 +43,7 @@ namespace RFSystem
             {
                 foreach (DataRow row in dtPlantList.Rows)
                 {
-                    comboBoxPlant.Items.Add(row["PlantID"].ToString());
+                    comboBoxPlant.Items.Add(row["PlantDescription"].ToString());
                 }
             }
 
@@ -78,7 +78,7 @@ namespace RFSystem
         {
             if (textBoxSapInventoryNo.Text.Equals(string.Empty) || comboBoxPlant.Text.Trim().Equals("无"))
             {
-                CommonFunction.Sys_MsgBox("SAP盘点序号以及盘点货物所属公司均为必填(选)条件，请完成填写");
+                CommonFunction.Sys_MsgBox("PSCS盘点序号以及盘点货物所属公司均为必填(选)条件，请完成填写");
             }
             else if (CommonFunction.Sys_MsgYN("你确认要开始盘点么？"))
             {
@@ -290,7 +290,7 @@ namespace RFSystem
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 20);
             this.label4.TabIndex = 11;
-            this.label4.Text = "SAP盘点序号：";
+            this.label4.Text = "PSCS盘点序号：";
             // 
             // btBack
             // 

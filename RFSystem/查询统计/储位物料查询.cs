@@ -1,6 +1,4 @@
-﻿using RFSystem.rfid2021Service;
-using System.Collections;
-using System.Data;
+﻿using System.Data;
 using System.Windows.Forms;
 
 namespace RFSystem
@@ -8,7 +6,6 @@ namespace RFSystem
     public partial class 储位物料查询 : Form
     {
         private UserInfo userItem;
-        private ArrayList userRoles;
 
         private DataTable dtPlantList;
         private DataTable dtStoreLocusList;
@@ -19,13 +16,6 @@ namespace RFSystem
         public 储位物料查询()
         {
             InitializeComponent();
-
-            textBoxSTOREMAN.Text = userItem.userID;
-
-            if (userItem.isAdmin)
-            {
-                textBoxSTOREMAN.ReadOnly = false;
-            }
 
             InitFctAndStore();
             InitTableColumns();

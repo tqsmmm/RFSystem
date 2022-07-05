@@ -1021,9 +1021,8 @@ namespace RFSystem.ArriveStore
 
         private void textBoxBargainID_Leave(object sender, EventArgs e)
         {
-            if (!this.textBoxBargainID.Text.Trim().Equals(string.Empty))
+            if (!textBoxBargainID.Text.Trim().Equals(string.Empty))
             {
-                DataSet poDs = null;
                 
             }
         }

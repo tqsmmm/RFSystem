@@ -134,7 +134,7 @@ namespace RFSystem
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 33;
-            this.label1.Text = "用户编号：";
+            this.label1.Text = "用户工号：";
             // 
             // dataGridViewUserList
             // 
@@ -161,7 +161,7 @@ namespace RFSystem
             // ColumnUser_ID
             // 
             this.ColumnUser_ID.DataPropertyName = "User_ID";
-            this.ColumnUser_ID.HeaderText = "用户编号";
+            this.ColumnUser_ID.HeaderText = "用户工号";
             this.ColumnUser_ID.Name = "ColumnUser_ID";
             this.ColumnUser_ID.ReadOnly = true;
             this.ColumnUser_ID.Width = 125;

@@ -12,6 +12,7 @@ namespace RFSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             RF库存管理系统登录 rf库存管理系统登录 = new RF库存管理系统登录();
 
             if (DialogResult.No != rf库存管理系统登录.ShowDialog())

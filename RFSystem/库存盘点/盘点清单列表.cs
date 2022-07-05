@@ -84,7 +84,7 @@ namespace RFSystem
             this.dtVHead.RowHeadersVisible = false;
             this.dtVHead.RowTemplate.Height = 23;
             this.dtVHead.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtVHead.Size = new System.Drawing.Size(942, 237);
+            this.dtVHead.Size = new System.Drawing.Size(922, 237);
             this.dtVHead.TabIndex = 3;
             this.dtVHead.SelectionChanged += new System.EventHandler(this.dtVHead_SelectionChanged);
             // 
@@ -93,9 +93,9 @@ namespace RFSystem
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dtVHead);
-            this.groupBox1.Location = new System.Drawing.Point(118, 98);
+            this.groupBox1.Location = new System.Drawing.Point(138, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(948, 262);
+            this.groupBox1.Size = new System.Drawing.Size(928, 262);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "盘点清单列表";
@@ -106,9 +106,9 @@ namespace RFSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dtVDetail);
-            this.groupBox2.Location = new System.Drawing.Point(118, 366);
+            this.groupBox2.Location = new System.Drawing.Point(138, 366);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(948, 247);
+            this.groupBox2.Size = new System.Drawing.Size(928, 247);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "盘点清单详细";
@@ -128,14 +128,14 @@ namespace RFSystem
             this.dtVDetail.RowHeadersVisible = false;
             this.dtVDetail.RowTemplate.Height = 23;
             this.dtVDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtVDetail.Size = new System.Drawing.Size(942, 222);
+            this.dtVDetail.Size = new System.Drawing.Size(922, 222);
             this.dtVDetail.TabIndex = 3;
             // 
             // btDel
             // 
-            this.btDel.Location = new System.Drawing.Point(12, 58);
+            this.btDel.Location = new System.Drawing.Point(12, 68);
             this.btDel.Name = "btDel";
-            this.btDel.Size = new System.Drawing.Size(100, 40);
+            this.btDel.Size = new System.Drawing.Size(120, 50);
             this.btDel.TabIndex = 9;
             this.btDel.Text = "作废单据";
             this.btDel.UseVisualStyleBackColor = true;
@@ -143,9 +143,9 @@ namespace RFSystem
             // 
             // btReflash
             // 
-            this.btReflash.Location = new System.Drawing.Point(12, 380);
+            this.btReflash.Location = new System.Drawing.Point(12, 460);
             this.btReflash.Name = "btReflash";
-            this.btReflash.Size = new System.Drawing.Size(100, 40);
+            this.btReflash.Size = new System.Drawing.Size(120, 50);
             this.btReflash.TabIndex = 10;
             this.btReflash.Text = "刷新";
             this.btReflash.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@ namespace RFSystem
             // 
             this.btnOperate.Location = new System.Drawing.Point(12, 12);
             this.btnOperate.Name = "btnOperate";
-            this.btnOperate.Size = new System.Drawing.Size(100, 40);
+            this.btnOperate.Size = new System.Drawing.Size(120, 50);
             this.btnOperate.TabIndex = 11;
             this.btnOperate.Text = "进行盘点";
             this.btnOperate.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@ namespace RFSystem
             // 
             // btnTheoryAmount
             // 
-            this.btnTheoryAmount.Location = new System.Drawing.Point(12, 104);
+            this.btnTheoryAmount.Location = new System.Drawing.Point(12, 124);
             this.btnTheoryAmount.Name = "btnTheoryAmount";
-            this.btnTheoryAmount.Size = new System.Drawing.Size(100, 40);
+            this.btnTheoryAmount.Size = new System.Drawing.Size(120, 50);
             this.btnTheoryAmount.TabIndex = 12;
             this.btnTheoryAmount.Text = "理论库存";
             this.btnTheoryAmount.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@ namespace RFSystem
             // 
             // btnEntry
             // 
-            this.btnEntry.Location = new System.Drawing.Point(12, 150);
+            this.btnEntry.Location = new System.Drawing.Point(12, 180);
             this.btnEntry.Name = "btnEntry";
-            this.btnEntry.Size = new System.Drawing.Size(100, 40);
+            this.btnEntry.Size = new System.Drawing.Size(120, 50);
             this.btnEntry.TabIndex = 13;
             this.btnEntry.Text = "盘点条目";
             this.btnEntry.UseVisualStyleBackColor = true;
@@ -183,9 +183,9 @@ namespace RFSystem
             // 
             // btnCollate
             // 
-            this.btnCollate.Location = new System.Drawing.Point(12, 196);
+            this.btnCollate.Location = new System.Drawing.Point(12, 236);
             this.btnCollate.Name = "btnCollate";
-            this.btnCollate.Size = new System.Drawing.Size(100, 40);
+            this.btnCollate.Size = new System.Drawing.Size(120, 50);
             this.btnCollate.TabIndex = 14;
             this.btnCollate.Text = "盘点对照";
             this.btnCollate.UseVisualStyleBackColor = true;
@@ -193,9 +193,9 @@ namespace RFSystem
             // 
             // btnReport
             // 
-            this.btnReport.Location = new System.Drawing.Point(12, 242);
+            this.btnReport.Location = new System.Drawing.Point(12, 292);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(100, 40);
+            this.btnReport.Size = new System.Drawing.Size(120, 50);
             this.btnReport.TabIndex = 15;
             this.btnReport.Text = "盘点报表";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -237,9 +237,10 @@ namespace RFSystem
             // 
             // btn_query
             // 
-            this.btn_query.Location = new System.Drawing.Point(455, 25);
+            this.btn_query.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_query.Location = new System.Drawing.Point(802, 24);
             this.btn_query.Name = "btn_query";
-            this.btn_query.Size = new System.Drawing.Size(100, 40);
+            this.btn_query.Size = new System.Drawing.Size(120, 50);
             this.btn_query.TabIndex = 75;
             this.btn_query.Text = "查　　询";
             this.btn_query.UseVisualStyleBackColor = true;
@@ -247,9 +248,9 @@ namespace RFSystem
             // 
             // btn_tohis
             // 
-            this.btn_tohis.Location = new System.Drawing.Point(12, 288);
+            this.btn_tohis.Location = new System.Drawing.Point(12, 348);
             this.btn_tohis.Name = "btn_tohis";
-            this.btn_tohis.Size = new System.Drawing.Size(100, 40);
+            this.btn_tohis.Size = new System.Drawing.Size(120, 50);
             this.btn_tohis.TabIndex = 134;
             this.btn_tohis.Text = "批量转移";
             this.btn_tohis.UseVisualStyleBackColor = true;
@@ -257,9 +258,9 @@ namespace RFSystem
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 334);
+            this.button1.Location = new System.Drawing.Point(12, 404);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 40);
+            this.button1.Size = new System.Drawing.Size(120, 50);
             this.button1.TabIndex = 135;
             this.button1.Text = "移至历史库";
             this.button1.UseVisualStyleBackColor = true;
@@ -274,9 +275,9 @@ namespace RFSystem
             this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateFrom);
             this.groupBox3.Controls.Add(this.btn_query);
             this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateTo);
-            this.groupBox3.Location = new System.Drawing.Point(118, 12);
+            this.groupBox3.Location = new System.Drawing.Point(138, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(948, 80);
+            this.groupBox3.Size = new System.Drawing.Size(928, 80);
             this.groupBox3.TabIndex = 136;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "查询条件";
@@ -305,6 +306,7 @@ namespace RFSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "盘点清单列表";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.盘点清单列表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtVHead)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -318,19 +320,10 @@ namespace RFSystem
         // Methods
         public 盘点清单列表(UserInfo userItem, ArrayList userRoles)
         {
-            userItem = null;
-            this.userRoles = null;
-            m_ErrMsg = "";
-            m_HeadDt = null;
-            m_DsvHead = null;
-            m_DetailDt = null;
-            m_DsvDetail = null;
-            ds = new DataSet();
-            hs = new Hashtable();
             InitializeComponent();
+
             this.userItem = userItem;
             this.userRoles = userRoles;
-            Load += new EventHandler(盘点清单列表_Load);
         }
 
         private void BindDetail()
@@ -353,7 +346,7 @@ namespace RFSystem
             dtVHead.Columns["STCreateDate"].HeaderText = "盘点创建时间";
             dtVHead.Columns["STDesc"].HeaderText = "盘点描述";
             dtVHead.Columns["Plant"].HeaderText = "公司";
-            dtVHead.Columns["DocumentID"].HeaderText = "SAP盘点单号";
+            dtVHead.Columns["DocumentID"].HeaderText = "PSCS盘点单号";
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -456,7 +449,7 @@ namespace RFSystem
 
         private void btReflash_Click(object sender, EventArgs e)
         {
-            盘点清单列表_Load(null, null);
+
         }
 
         private void dtVHead_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -557,33 +550,6 @@ namespace RFSystem
             btnEntry.Enabled = entryEnabled;
             btnCollate.Enabled = collateEnable;
             btnReport.Enabled = reportEnable;
-        }
-
-        private void 盘点清单列表_Load(object sender, EventArgs e)
-        {
-            if (0 != DBOperate.GetSTItem("", DateTime.Now, out m_HeadDt, out m_ErrMsg))
-            {
-                CommonFunction.Sys_MsgBox(m_ErrMsg);
-            }
-            else if (!CommonFunction.IfHasData(m_HeadDt))
-            {
-                CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
-                SetButtonsEnable(false, false, false, false, false, false);
-                button1.Enabled = false;
-            }
-            else
-            {
-                BindHead();
-                ds.Tables.Add(m_HeadDt);
-                hs.Clear();
-
-                for (int i = 0; i < dtVHead.Columns.Count; i++)
-                {
-                    hs.Add(dtVHead.Columns[i].Name, dtVHead.Columns[i].HeaderText);
-                }
-            }
-
-            btn_tohis.Enabled = false;
         }
 
         #region new 
@@ -718,7 +684,7 @@ namespace RFSystem
             dgv.Columns["STCreateDate"].HeaderText = "盘点创建时间";
             dgv.Columns["STDesc"].HeaderText = "盘点描述";
             dgv.Columns["Plant"].HeaderText = "公司";
-            dgv.Columns["DocumentID"].HeaderText = "SAP盘点单号";
+            dgv.Columns["DocumentID"].HeaderText = "PSCS盘点单号";
         }
         #endregion
 
@@ -799,6 +765,33 @@ namespace RFSystem
                 ((Button)sender).Enabled = false;
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void 盘点清单列表_Load(object sender, EventArgs e)
+        {
+            if (0 != DBOperate.GetSTItem("", DateTime.Now, out m_HeadDt, out m_ErrMsg))
+            {
+                CommonFunction.Sys_MsgBox(m_ErrMsg);
+            }
+            else if (!CommonFunction.IfHasData(m_HeadDt))
+            {
+                CommonFunction.Sys_MsgBox("没有检索到任何有效单据，请确认");
+                SetButtonsEnable(false, false, false, false, false, false);
+                button1.Enabled = false;
+            }
+            else
+            {
+                BindHead();
+                ds.Tables.Add(m_HeadDt);
+                hs.Clear();
+
+                for (int i = 0; i < dtVHead.Columns.Count; i++)
+                {
+                    hs.Add(dtVHead.Columns[i].Name, dtVHead.Columns[i].HeaderText);
+                }
+            }
+
+            btn_tohis.Enabled = false;
         }
     }
 }

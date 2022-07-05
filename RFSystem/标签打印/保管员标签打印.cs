@@ -131,7 +131,7 @@ namespace RFSystem
             // userid
             // 
             this.userid.DataPropertyName = "userid";
-            this.userid.HeaderText = "用户帐号";
+            this.userid.HeaderText = "用户工号";
             this.userid.Name = "userid";
             this.userid.ReadOnly = true;
             // 
