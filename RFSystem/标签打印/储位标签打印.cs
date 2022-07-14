@@ -43,16 +43,19 @@ namespace RFSystem
 
             try
             {
-                client.Connect(hostname, port);
+                for (int i = 0; i < dataGridViewLocationList.SelectedRows.Count; i++)
+                {
+                    client.Connect(hostname, port);
 
-                string loc = dataGridViewLocationList.SelectedRows[0].Cells["columnLocation"].Value.ToString();
-                string xx = "5.5";
-                string xz = "13";
-                string s = dealPrintData(loc, xx, xz, copy);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
+                    string loc = dataGridViewLocationList.SelectedRows[i].Cells["columnLocation"].Value.ToString();
+                    string xx = "5.5";
+                    string xz = "13";
+                    string s = dealPrintData(loc, xx, xz, copy);
+                    client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
+                    client.GetStream().Flush();
 
-                client.Close();
+                    client.Close();
+                }
             }
             catch (Exception exception)
             {
@@ -250,7 +253,7 @@ namespace RFSystem
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "储位标签打印";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "货位标签打印";
+            this.Text = "储位标签打印";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.储位标签打印_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocationList)).EndInit();

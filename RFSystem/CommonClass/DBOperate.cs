@@ -52,9 +52,9 @@ namespace RFSystem
             return db.ExecProcedure("RF_ST_STOriginAddNew", param);
         }
 
-        public static int AddPlant(string plantID, string plantDescription)
+        public static int AddPlant(string plantID, string plantDescription,bool bIsActive)
         {
-            string param = $"{TDBObject.ToDBVal(plantID)}, {TDBObject.ToDBVal(plantDescription)}";
+            string param = $"{TDBObject.ToDBVal(plantID)}, {TDBObject.ToDBVal(plantDescription)}, {bIsActive}";
 
             return db.ExecProcedure("RF_Plant_Add", param);
         }
@@ -443,7 +443,7 @@ namespace RFSystem
                     db.Excute(SqlManager.EXCELSTOCK_DELETE, arParams, 0);
                     OleDbParameter[] parameterArray2 = new OleDbParameter[] { 
                         new OleDbParameter("工厂", Convert.ToString(row["工厂"])), new OleDbParameter("库存地", Convert.ToString(row["库存地"])), new OleDbParameter("物料代码", Convert.ToString(row["物料代码"])), new OleDbParameter("物料描述", Convert.ToString(row["物料描述"])), new OleDbParameter("详细描述", Convert.ToString(row["详细描述"])), new OleDbParameter("物料类型", Convert.ToString(row["物料类型"])), new OleDbParameter("    数量", Convert.ToDecimal(row["    数量"])), new OleDbParameter("收货数量", Convert.ToDecimal(row["收货数量"])), new OleDbParameter("支出数量", Convert.ToDecimal(row["支出数量"])), new OleDbParameter("批号", Convert.ToString(row["批号"])), new OleDbParameter("       金额", Convert.ToDecimal(row["       金额"])), new OleDbParameter("  单重", Convert.ToDecimal(row["  单重"])), new OleDbParameter("产线代码", Convert.ToString(row["产线代码"])), new OleDbParameter("产线描述", Convert.ToString(row["产线描述"])), new OleDbParameter("保管员", Convert.ToString(row["保管员"])), new OleDbParameter("入库日期", Convert.ToDateTime(row["入库日期"])), 
-                        new OleDbParameter("货位1", Convert.ToString(row["货位1"])), new OleDbParameter("货位1数量", Convert.ToDecimal(row["货位1数量"])), new OleDbParameter("货位2", Convert.ToString(row["货位2"])), new OleDbParameter("货位2数量", Convert.ToDecimal(row["货位2数量"])), new OleDbParameter("货位3", Convert.ToString(row["货位3"])), new OleDbParameter("货位3数量", Convert.ToDecimal(row["货位3数量"])), new OleDbParameter("备件类别", Convert.ToString(row["备件类别"])), new OleDbParameter("点检员", Convert.ToString(row["点检员"])), new OleDbParameter("采购申请", Convert.ToString(row["采购申请"])), new OleDbParameter("采购申请行项目", Convert.ToString(row["采购申请行项目"])), new OleDbParameter("计划号", Convert.ToString(row["计划号"])), new OleDbParameter("计划行项目", Convert.ToString(row["计划行项目"])), new OleDbParameter("采购订单号", Convert.ToString(row["采购订单号"])), new OleDbParameter("订单行项目", Convert.ToString(row["订单行项目"]))
+                        new OleDbParameter("储位1", Convert.ToString(row["储位1"])), new OleDbParameter("储位1数量", Convert.ToDecimal(row["储位1数量"])), new OleDbParameter("储位2", Convert.ToString(row["储位2"])), new OleDbParameter("储位2数量", Convert.ToDecimal(row["储位2数量"])), new OleDbParameter("储位3", Convert.ToString(row["储位3"])), new OleDbParameter("储位3数量", Convert.ToDecimal(row["储位3数量"])), new OleDbParameter("备件类别", Convert.ToString(row["备件类别"])), new OleDbParameter("点检员", Convert.ToString(row["点检员"])), new OleDbParameter("采购申请", Convert.ToString(row["采购申请"])), new OleDbParameter("采购申请行项目", Convert.ToString(row["采购申请行项目"])), new OleDbParameter("计划号", Convert.ToString(row["计划号"])), new OleDbParameter("计划行项目", Convert.ToString(row["计划行项目"])), new OleDbParameter("采购订单号", Convert.ToString(row["采购订单号"])), new OleDbParameter("订单行项目", Convert.ToString(row["订单行项目"]))
                      };
                     db.Excute(SqlManager.EXCELSTOCK_INSERT, parameterArray2, 0);
                 }
@@ -521,9 +521,9 @@ namespace RFSystem
             return dt;
         }
 
-        public static DataTable GetPlantList(string plantID)
+        public static DataTable GetPlantList(string plantID, bool isActive)
         {
-            string param = $"{TDBObject.ToDBVal(plantID)}";
+            string param = $"{TDBObject.ToDBVal(plantID)},{isActive}";
 
             db.OpenProcedure("RF_Plant_GetList", param, out DataTable dt);
 
@@ -697,6 +697,32 @@ namespace RFSystem
             db.OpenDataSet("select * from bx_transaction_E1DV11 where custodianJobId = '" + bxJobId + "'", out DataTable dt);
 
             return dt;
+        }
+
+        public static DataTable get_E1DV31()
+        {
+            db.OpenDataSet("select * from rfid2021.dbo.bx_E1DV31", out DataTable dt);
+
+            return dt;
+        }
+
+        public static void update_E1DV31_BillTo()
+        {
+            db.OpenDataSet("select distinct billto,billtoName from rfid2021.dbo.bx_E1DV31", out DataTable dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                db.Excute("delete from RF_Database_CZ.dbo.RF_M_Plant");
+
+                db.Excute("insert into RF_Database_CZ.dbo.RF_M_Plant(PlantID,PlantDescription) select distinct billto,billtoName from rfid2021.dbo.bx_E1DV31 ");
+            }
+        }
+
+        public static void update_E1DV31_Logic()
+        {
+            db.Excute("delete from RF_Database_CZ.dbo.RF_M_StoreLocus");
+
+            db.Excute("insert into RF_Database_CZ.dbo.RF_M_StoreLocus(PlantID,StoreLocusID,StoreLocusDescription) select distinct billTo,invLogicCode,invLogicName from rfid2021.dbo.bx_E1DV31");
         }
 
         public static int updateTransaction(string bxJobId)
@@ -1003,9 +1029,9 @@ namespace RFSystem
             return db.ExecProcedure("RF_ArriveStoreDeal_Mod", param);
         }
 
-        public static int ModPlant(string plantID, string plantDescription)
+        public static int ModPlant(string plantID, string plantDescription, bool bIsActive)
         {
-            string param = $"{TDBObject.ToDBVal(plantID)}, {TDBObject.ToDBVal(plantDescription)}";
+            string param = $"{TDBObject.ToDBVal(plantID)}, {TDBObject.ToDBVal(plantDescription)},{bIsActive}";
 
             return db.ExecProcedure("RF_Plant_Mod", param);
         }

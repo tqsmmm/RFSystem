@@ -5,8 +5,6 @@ namespace RFSystem
 {
     public partial class 储位物料查询 : Form
     {
-        private UserInfo userItem;
-
         private DataTable dtPlantList;
         private DataTable dtStoreLocusList;
 
@@ -23,7 +21,7 @@ namespace RFSystem
 
         private void InitFctAndStore()
         {
-            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
             comboBoxSLocation.Items.Add("无");
             comboBoxSLocation.SelectedIndex = 0;
@@ -157,7 +155,7 @@ namespace RFSystem
 
                 foreach (DataRow row in dtMaintain.Rows)
                 {
-                    DataSet cxDs = new DataSet("货位查询");
+                    DataSet cxDs = new DataSet("储位查询");
                 }
 
                 if (!CommonFunction.IfHasData(dtGoods))

@@ -36,7 +36,7 @@ namespace RFSystem
         {
             InitializeComponent();
             
-            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             comboBoxPlant.Items.Add("无");
 
             if (CommonFunction.IfHasData(dtPlantList))
@@ -78,7 +78,7 @@ namespace RFSystem
         {
             if (textBoxSapInventoryNo.Text.Equals(string.Empty) || comboBoxPlant.Text.Trim().Equals("无"))
             {
-                CommonFunction.Sys_MsgBox("PSCS盘点序号以及盘点货物所属公司均为必填(选)条件，请完成填写");
+                CommonFunction.Sys_MsgBox("PSCS盘点序号以及盘点货物所属库存账套均为必填(选)条件，请完成填写");
             }
             else if (CommonFunction.Sys_MsgYN("你确认要开始盘点么？"))
             {
@@ -224,7 +224,7 @@ namespace RFSystem
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(135, 20);
             this.label5.TabIndex = 13;
-            this.label5.Text = "盘点货物所属公司：";
+            this.label5.Text = "盘点货物所属库存账套：";
             // 
             // radioButton2
             // 

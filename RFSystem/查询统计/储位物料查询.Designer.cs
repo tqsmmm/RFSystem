@@ -153,7 +153,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 20);
             this.label5.TabIndex = 0;
-            this.label5.Text = "库存地点：";
+            this.label5.Text = "逻辑库区：";
             // 
             // label4
             // 
@@ -162,7 +162,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 20);
             this.label4.TabIndex = 0;
-            this.label4.Text = "公司号：";
+            this.label4.Text = "库存账套编号：";
             // 
             // comboBoxPlant
             // 
@@ -191,7 +191,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 0;
-            this.label3.Text = "货位号：";
+            this.label3.Text = "储位号：";
             // 
             // btnSelect
             // 
@@ -255,7 +255,7 @@
             // ColumnFACT_NO
             // 
             this.ColumnFACT_NO.DataPropertyName = "Werks";
-            this.ColumnFACT_NO.HeaderText = "公司号";
+            this.ColumnFACT_NO.HeaderText = "库存账套编号";
             this.ColumnFACT_NO.Name = "ColumnFACT_NO";
             this.ColumnFACT_NO.ReadOnly = true;
             this.ColumnFACT_NO.Visible = false;
@@ -280,7 +280,7 @@
             // ColumnSLocation
             // 
             this.ColumnSLocation.DataPropertyName = "Lgort";
-            this.ColumnSLocation.HeaderText = "库存地点";
+            this.ColumnSLocation.HeaderText = "逻辑库区";
             this.ColumnSLocation.Name = "ColumnSLocation";
             this.ColumnSLocation.ReadOnly = true;
             this.ColumnSLocation.Width = 90;
@@ -304,7 +304,7 @@
             // ColumnBIN
             // 
             this.ColumnBIN.DataPropertyName = "Bct0";
-            this.ColumnBIN.HeaderText = "货位";
+            this.ColumnBIN.HeaderText = "储位";
             this.ColumnBIN.Name = "ColumnBIN";
             this.ColumnBIN.ReadOnly = true;
             this.ColumnBIN.Width = 62;
@@ -328,7 +328,7 @@
             // ColumnSUPPLIER_NO
             // 
             this.ColumnSUPPLIER_NO.DataPropertyName = "Bct20";
-            this.ColumnSUPPLIER_NO.HeaderText = "二级厂码";
+            this.ColumnSUPPLIER_NO.HeaderText = "产线部门代码";
             this.ColumnSUPPLIER_NO.Name = "ColumnSUPPLIER_NO";
             this.ColumnSUPPLIER_NO.ReadOnly = true;
             this.ColumnSUPPLIER_NO.Visible = false;
@@ -420,7 +420,7 @@
             // ColumnFACTORY_NO
             // 
             this.ColumnFACTORY_NO.DataPropertyName = "FACTORY_NO";
-            this.ColumnFACTORY_NO.HeaderText = "公司";
+            this.ColumnFACTORY_NO.HeaderText = "库存账套";
             this.ColumnFACTORY_NO.Name = "ColumnFACTORY_NO";
             this.ColumnFACTORY_NO.ReadOnly = true;
             this.ColumnFACTORY_NO.Width = 62;
@@ -428,7 +428,7 @@
             // ColumnSL
             // 
             this.ColumnSL.DataPropertyName = "SL";
-            this.ColumnSL.HeaderText = "库存地点";
+            this.ColumnSL.HeaderText = "逻辑库区";
             this.ColumnSL.Name = "ColumnSL";
             this.ColumnSL.ReadOnly = true;
             this.ColumnSL.Width = 90;
@@ -444,7 +444,7 @@
             // ColumnBINKEY
             // 
             this.ColumnBINKEY.DataPropertyName = "BINKEY";
-            this.ColumnBINKEY.HeaderText = "货位";
+            this.ColumnBINKEY.HeaderText = "储位";
             this.ColumnBINKEY.Name = "ColumnBINKEY";
             this.ColumnBINKEY.ReadOnly = true;
             this.ColumnBINKEY.Width = 62;

@@ -5,19 +5,19 @@ using System.Windows.Forms;
 
 namespace RFSystem
 {
-    public partial class 库存地点信息列表 : Form
+    public partial class 逻辑库区信息列表 : Form
     {
         DataTable dtStoreLocusList = null;
 
-        public 库存地点信息列表()
+        public 逻辑库区信息列表()
         {
             InitializeComponent();
         }
 
-        private void 库存地点信息列表_Load(object sender, EventArgs e)
+        private void 逻辑库区信息列表_Load(object sender, EventArgs e)
         {
             comboBoxPlantList.Items.Clear();
-            DataTable plantList = DBOperate.GetPlantList(string.Empty);
+            DataTable plantList = DBOperate.GetPlantList(string.Empty, true);
             comboBoxPlantList.Items.Add("无");
 
             if (CommonFunction.IfHasData(plantList))
@@ -34,7 +34,7 @@ namespace RFSystem
 
         private void btnAddStore_Click(object sender, EventArgs e)
         {
-            库存地点信息 frm = new 库存地点信息(null);
+            逻辑库区信息 frm = new 逻辑库区信息(null);
             frm.Text = "库存新增";
 
             if (frm.ShowDialog() == DialogResult.OK)
@@ -49,20 +49,20 @@ namespace RFSystem
             {
                 if (dataGridViewStoreList.SelectedRows != null)
                 {
-                    if (CommonFunction.Sys_MsgYN("确认删除此条库存地点信息么？") && (DBOperate.DelStoreLocus((string)this.dataGridViewStoreList.SelectedRows[0].Cells["columnStoreLocusID"].Value, (string)dataGridViewStoreList.SelectedRows[0].Cells["columnStorePlantID"].Value) == 1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条逻辑库区信息么？") && (DBOperate.DelStoreLocus((string)this.dataGridViewStoreList.SelectedRows[0].Cells["columnStoreLocusID"].Value, (string)dataGridViewStoreList.SelectedRows[0].Cells["columnStorePlantID"].Value) == 1))
                     {
-                        CommonFunction.Sys_MsgBox("库存地点信息删除成功");
+                        CommonFunction.Sys_MsgBox("逻辑库区信息删除成功");
                         btnSelectStore.PerformClick();
                     }
                 }
                 else
                 {
-                    CommonFunction.Sys_MsgBox("请选择一条库存地点信息");
+                    CommonFunction.Sys_MsgBox("请选择一条逻辑库区信息");
                 }
             }
             else
             {
-                CommonFunction.Sys_MsgBox("没有检索到任何库存地点信息，无法修改");
+                CommonFunction.Sys_MsgBox("没有检索到任何逻辑库区信息，无法修改");
             }
         }
 
@@ -79,7 +79,7 @@ namespace RFSystem
                         storeItem.Add(cell.OwningColumn.DataPropertyName, cell.Value);
                     }
 
-                    库存地点信息 frm = new 库存地点信息(storeItem);
+                    逻辑库区信息 frm = new 逻辑库区信息(storeItem);
                     frm.Text = "库存修改";
 
                     if (frm.ShowDialog() == DialogResult.OK)
@@ -89,12 +89,12 @@ namespace RFSystem
                 }
                 else
                 {
-                    CommonFunction.Sys_MsgBox("请选择一条库存地点信息");
+                    CommonFunction.Sys_MsgBox("请选择一条逻辑库区信息");
                 }
             }
             else
             {
-                CommonFunction.Sys_MsgBox("没有检索到任何库存地点信息，无法修改");
+                CommonFunction.Sys_MsgBox("没有检索到任何逻辑库区信息，无法修改");
             }
         }
 

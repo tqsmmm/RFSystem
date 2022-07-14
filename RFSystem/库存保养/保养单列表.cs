@@ -56,9 +56,9 @@ namespace RFSystem
             // 
             this.dataGridViewMaintain.AllowUserToAddRows = false;
             this.dataGridViewMaintain.AllowUserToResizeRows = false;
-            this.dataGridViewMaintain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewMaintain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewMaintain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewMaintain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewMaintain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -99,7 +99,7 @@ namespace RFSystem
             // ColumnFACTORY_NO
             // 
             this.ColumnFACTORY_NO.DataPropertyName = "FACTORY_NO";
-            this.ColumnFACTORY_NO.HeaderText = "公司";
+            this.ColumnFACTORY_NO.HeaderText = "库存账套";
             this.ColumnFACTORY_NO.Name = "ColumnFACTORY_NO";
             this.ColumnFACTORY_NO.ReadOnly = true;
             this.ColumnFACTORY_NO.Width = 54;
@@ -107,7 +107,7 @@ namespace RFSystem
             // ColumnSL
             // 
             this.ColumnSL.DataPropertyName = "SL";
-            this.ColumnSL.HeaderText = "库存地点";
+            this.ColumnSL.HeaderText = "逻辑库区";
             this.ColumnSL.Name = "ColumnSL";
             this.ColumnSL.ReadOnly = true;
             this.ColumnSL.Width = 78;
@@ -164,6 +164,8 @@ namespace RFSystem
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dataGridViewMaintain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "保养单列表";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "保养单列表";
@@ -173,28 +175,18 @@ namespace RFSystem
         }
 
         // Methods
-        public 保养单列表(UserInfo userItem, ArrayList userRoles)
+        public 保养单列表()
         {
             this.components = null;
             this.userItem = null;
             this.userRoles = null;
             this.InitializeComponent();
-            this.userItem = userItem;
-            this.userRoles = userRoles;
             this.InitTableColumns();
             this.dataGridViewMaintain.AutoGenerateColumns = false;
             ArrayList arriveList = new ArrayList();
             arriveList.Add(string.Empty);
             arriveList.Add(string.Empty);
             arriveList.Add(string.Empty);
-            if (userItem.isAdmin)
-            {
-                arriveList.Add(string.Empty);
-            }
-            else
-            {
-                arriveList.Add(userItem.userID);
-            }
             arriveList.Add(string.Empty);
             arriveList.Add("1");
             arriveList.Add(string.Empty);

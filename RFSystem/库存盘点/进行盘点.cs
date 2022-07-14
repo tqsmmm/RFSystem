@@ -260,7 +260,7 @@ namespace RFSystem
 
             if (CommonFunction.IfHasData(dataList))
             {
-                string str = string.Empty + "存在超过四个货位存放的货物信息为：\r\n\r\n盘点单号|公司|库存地点|物料号|批次\r\n";
+                string str = string.Empty + "存在超过四个储位存放的货物信息为：\r\n\r\n盘点单号|库存账套|逻辑库区|物料号|批次\r\n";
 
                 foreach (DataRow row in dataList.Rows)
                 {
@@ -268,7 +268,7 @@ namespace RFSystem
                     str = str2 + row["STSerial"].ToString() + "|" + row["Plant"].ToString() + "|" + row["SLocation"].ToString() + "|" + row["Material"].ToString() + "|" + row["BNumber"].ToString() + "\r\n";
                 }
 
-                CommonFunction.Sys_MsgBox(str + "\r\n请调整其货位至少于等于三个");
+                CommonFunction.Sys_MsgBox(str + "\r\n请调整其储位至少于等于三个");
             }
             else if (DBOperate.AddCompare(Convert.ToDecimal(toolStripStatusLabel2.Text)) != -1)
             {

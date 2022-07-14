@@ -1,6 +1,6 @@
 ﻿namespace RFSystem
 {
-    partial class 库存地点信息列表
+    partial class 逻辑库区信息列表
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 20);
             this.label5.TabIndex = 1052;
-            this.label5.Text = "从属公司：";
+            this.label5.Text = "从属库存账套：";
             // 
             // btnSelectStore
             // 
@@ -137,7 +137,7 @@
             // columnStoreLocusID
             // 
             this.columnStoreLocusID.DataPropertyName = "StoreLocusID";
-            this.columnStoreLocusID.HeaderText = "库存地点编号";
+            this.columnStoreLocusID.HeaderText = "逻辑库区编号";
             this.columnStoreLocusID.Name = "columnStoreLocusID";
             this.columnStoreLocusID.ReadOnly = true;
             this.columnStoreLocusID.Width = 118;
@@ -145,7 +145,7 @@
             // columnStorePlantID
             // 
             this.columnStorePlantID.DataPropertyName = "PlantID";
-            this.columnStorePlantID.HeaderText = "从属公司编号";
+            this.columnStorePlantID.HeaderText = "从属库存账套编号";
             this.columnStorePlantID.Name = "columnStorePlantID";
             this.columnStorePlantID.ReadOnly = true;
             this.columnStorePlantID.Width = 118;
@@ -153,7 +153,7 @@
             // columnStoreDescription
             // 
             this.columnStoreDescription.DataPropertyName = "StoreLocusDescription";
-            this.columnStoreDescription.HeaderText = "库存地点描述";
+            this.columnStoreDescription.HeaderText = "逻辑库区描述";
             this.columnStoreDescription.Name = "columnStoreDescription";
             this.columnStoreDescription.ReadOnly = true;
             this.columnStoreDescription.Width = 118;
@@ -169,7 +169,7 @@
             this.btnModStore.UseVisualStyleBackColor = true;
             this.btnModStore.Click += new System.EventHandler(this.btnModStore_Click);
             // 
-            // 库存地点信息列表
+            // 逻辑库区信息列表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,10 +187,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "库存地点信息列表";
-            this.Text = "库存地点信息列表";
+            this.Name = "逻辑库区信息列表";
+            this.Text = "逻辑库区信息列表";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.库存地点信息列表_Load);
+            this.Load += new System.EventHandler(this.逻辑库区信息列表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStoreList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,6 +1,6 @@
 ﻿namespace RFSystem
 {
-    partial class 公司信息列表
+    partial class 库存账套信息列表
     {
         /// <summary>
         /// Required designer variable.
@@ -34,9 +34,10 @@
             this.btnAddPlant = new System.Windows.Forms.Button();
             this.btnModPlant = new System.Windows.Forms.Button();
             this.dataGridViewPlantList = new System.Windows.Forms.DataGridView();
+            this.btnDelPlant = new System.Windows.Forms.Button();
             this.columnPlantID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPlantDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDelPlant = new System.Windows.Forms.Button();
+            this.是否启用 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlantList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +101,8 @@
             this.dataGridViewPlantList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPlantList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnPlantID,
-            this.columnPlantDescription});
+            this.columnPlantDescription,
+            this.是否启用});
             this.dataGridViewPlantList.Location = new System.Drawing.Point(138, 12);
             this.dataGridViewPlantList.MultiSelect = false;
             this.dataGridViewPlantList.Name = "dataGridViewPlantList";
@@ -111,22 +113,6 @@
             this.dataGridViewPlantList.Size = new System.Drawing.Size(805, 539);
             this.dataGridViewPlantList.TabIndex = 54;
             this.dataGridViewPlantList.SelectionChanged += new System.EventHandler(this.dataGridViewPlantList_SelectionChanged);
-            // 
-            // columnPlantID
-            // 
-            this.columnPlantID.DataPropertyName = "PlantID";
-            this.columnPlantID.HeaderText = "公司编号";
-            this.columnPlantID.Name = "columnPlantID";
-            this.columnPlantID.ReadOnly = true;
-            this.columnPlantID.Width = 90;
-            // 
-            // columnPlantDescription
-            // 
-            this.columnPlantDescription.DataPropertyName = "PlantDescription";
-            this.columnPlantDescription.HeaderText = "公司描述";
-            this.columnPlantDescription.Name = "columnPlantDescription";
-            this.columnPlantDescription.ReadOnly = true;
-            this.columnPlantDescription.Width = 90;
             // 
             // btnDelPlant
             // 
@@ -139,7 +125,35 @@
             this.btnDelPlant.UseVisualStyleBackColor = true;
             this.btnDelPlant.Click += new System.EventHandler(this.btnDelPlant_Click);
             // 
-            // 公司信息列表
+            // columnPlantID
+            // 
+            this.columnPlantID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.columnPlantID.DataPropertyName = "PlantID";
+            this.columnPlantID.HeaderText = "库存账套编号";
+            this.columnPlantID.Name = "columnPlantID";
+            this.columnPlantID.ReadOnly = true;
+            this.columnPlantID.Width = 118;
+            // 
+            // columnPlantDescription
+            // 
+            this.columnPlantDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.columnPlantDescription.DataPropertyName = "PlantDescription";
+            this.columnPlantDescription.HeaderText = "库存账套描述";
+            this.columnPlantDescription.Name = "columnPlantDescription";
+            this.columnPlantDescription.ReadOnly = true;
+            this.columnPlantDescription.Width = 118;
+            // 
+            // 是否启用
+            // 
+            this.是否启用.DataPropertyName = "isActive";
+            this.是否启用.HeaderText = "是否启用";
+            this.是否启用.Name = "是否启用";
+            this.是否启用.ReadOnly = true;
+            this.是否启用.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.是否启用.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.是否启用.Width = 90;
+            // 
+            // 库存账套信息列表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,10 +169,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "公司信息列表";
-            this.Text = "公司信息列表";
+            this.Name = "库存账套信息列表";
+            this.Text = "库存账套信息列表";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.公司信息列表_Load);
+            this.Load += new System.EventHandler(this.库存账套信息列表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlantList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,8 +187,9 @@
         private System.Windows.Forms.Button btnAddPlant;
         private System.Windows.Forms.Button btnModPlant;
         private System.Windows.Forms.DataGridView dataGridViewPlantList;
+        private System.Windows.Forms.Button btnDelPlant;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPlantID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPlantDescription;
-        private System.Windows.Forms.Button btnDelPlant;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn 是否启用;
     }
 }

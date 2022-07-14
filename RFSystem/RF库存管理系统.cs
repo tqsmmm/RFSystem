@@ -14,7 +14,7 @@ namespace RFSystem
         private ToolStripMenuItem 打印机管理ToolStripMenuItem;
         private ToolStripMenuItem 到库通知ToolStripMenuItem;
         private ToolStripMenuItem 到库通知单列表ToolStripMenuItem;
-        private ToolStripMenuItem 公司管理ToolStripMenuItem;
+        private ToolStripMenuItem 库存账套管理ToolStripMenuItem;
         private ToolStripMenuItem 库存保养ToolStripMenuItem;
         private ToolStripMenuItem 库存盘点ToolStripMenuItem;
         private ToolStripMenuItem 盘点清单列表ToolStripMenuItem;
@@ -31,7 +31,7 @@ namespace RFSystem
         private ToolStripMenuItem 同步保管员信息ToolStripMenuItem;
         private Panel panel1;
         private ToolStripSeparator toolStripMenuItem1;
-        private ToolStripMenuItem 库存地点管理ToolStripMenuItem;
+        private ToolStripMenuItem 逻辑库区管理ToolStripMenuItem;
         private ToolStripMenuItem 标签打印ToolStripMenuItem1;
         private ToolStripMenuItem 物料标签打印ToolStripMenuItem1;
         private ToolStripMenuItem 储位标签打印ToolStripMenuItem;
@@ -62,8 +62,8 @@ namespace RFSystem
             this.权限管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日志管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打印机管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.公司管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.库存地点管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库存账套管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.逻辑库区管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.到库通知ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,8 +118,8 @@ namespace RFSystem
             this.权限管理ToolStripMenuItem,
             this.日志管理ToolStripMenuItem,
             this.打印机管理ToolStripMenuItem,
-            this.公司管理ToolStripMenuItem,
-            this.库存地点管理ToolStripMenuItem,
+            this.库存账套管理ToolStripMenuItem,
+            this.逻辑库区管理ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.退出系统ToolStripMenuItem});
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
@@ -154,19 +154,19 @@ namespace RFSystem
             this.打印机管理ToolStripMenuItem.Text = "打印机管理";
             this.打印机管理ToolStripMenuItem.Click += new System.EventHandler(this.打印机管理ToolStripMenuItem_Click);
             // 
-            // 公司管理ToolStripMenuItem
+            // 库存账套管理ToolStripMenuItem
             // 
-            this.公司管理ToolStripMenuItem.Name = "公司管理ToolStripMenuItem";
-            this.公司管理ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.公司管理ToolStripMenuItem.Text = "公司管理";
-            this.公司管理ToolStripMenuItem.Click += new System.EventHandler(this.公司及库存点信息管理ToolStripMenuItem_Click);
+            this.库存账套管理ToolStripMenuItem.Name = "库存账套管理ToolStripMenuItem";
+            this.库存账套管理ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.库存账套管理ToolStripMenuItem.Text = "库存账套管理";
+            this.库存账套管理ToolStripMenuItem.Click += new System.EventHandler(this.库存账套及库存点信息管理ToolStripMenuItem_Click);
             // 
-            // 库存地点管理ToolStripMenuItem
+            // 逻辑库区管理ToolStripMenuItem
             // 
-            this.库存地点管理ToolStripMenuItem.Name = "库存地点管理ToolStripMenuItem";
-            this.库存地点管理ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.库存地点管理ToolStripMenuItem.Text = "库存地点管理";
-            this.库存地点管理ToolStripMenuItem.Click += new System.EventHandler(this.库存地点管理ToolStripMenuItem_Click);
+            this.逻辑库区管理ToolStripMenuItem.Name = "逻辑库区管理ToolStripMenuItem";
+            this.逻辑库区管理ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.逻辑库区管理ToolStripMenuItem.Text = "逻辑库区管理";
+            this.逻辑库区管理ToolStripMenuItem.Click += new System.EventHandler(this.逻辑库区管理ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -348,21 +348,21 @@ namespace RFSystem
             // 同步库存数据ToolStripMenuItem
             // 
             this.同步库存数据ToolStripMenuItem.Name = "同步库存数据ToolStripMenuItem";
-            this.同步库存数据ToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
+            this.同步库存数据ToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
             this.同步库存数据ToolStripMenuItem.Text = "同步库存数据";
             this.同步库存数据ToolStripMenuItem.Click += new System.EventHandler(this.同步库存数据ToolStripMenuItem_Click);
             // 
             // 同步物理库区ToolStripMenuItem
             // 
             this.同步物理库区ToolStripMenuItem.Name = "同步物理库区ToolStripMenuItem";
-            this.同步物理库区ToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
-            this.同步物理库区ToolStripMenuItem.Text = "同步物理库区";
+            this.同步物理库区ToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
+            this.同步物理库区ToolStripMenuItem.Text = "同步库存账套及逻辑库区";
             this.同步物理库区ToolStripMenuItem.Click += new System.EventHandler(this.同步物理库区ToolStripMenuItem_Click);
             // 
             // 同步保管员信息ToolStripMenuItem
             // 
             this.同步保管员信息ToolStripMenuItem.Name = "同步保管员信息ToolStripMenuItem";
-            this.同步保管员信息ToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
+            this.同步保管员信息ToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
             this.同步保管员信息ToolStripMenuItem.Text = "同步保管员信息";
             this.同步保管员信息ToolStripMenuItem.Click += new System.EventHandler(this.同步保管员信息ToolStripMenuItem_Click);
             // 
@@ -454,9 +454,7 @@ namespace RFSystem
         private void 创建盘点清单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             创建盘点清单 f = new 创建盘点清单();
-            f.TopLevel = false;
-            panel1.Controls.Add(f);
-            f.Show();
+            f.ShowDialog();
         }
 
         private void 打印机管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -483,9 +481,9 @@ namespace RFSystem
             f.Show();
         }
 
-        private void 公司及库存点信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 库存账套及库存点信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            公司信息列表 f = new 公司信息列表();
+            库存账套信息列表 f = new 库存账套信息列表();
             f.TopLevel = false;
             panel1.Controls.Add(f);
             f.Show();
@@ -560,9 +558,9 @@ namespace RFSystem
             f.Show();
         }
 
-        private void 库存地点管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 逻辑库区管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            库存地点信息列表 f = new 库存地点信息列表();
+            逻辑库区信息列表 f = new 逻辑库区信息列表();
             f.TopLevel = false;
             panel1.Controls.Add(f);
             f.Show();
@@ -618,22 +616,30 @@ namespace RFSystem
 
         private void 查询保养单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new 查询保养单(this.userItem, this.userRoles) { MdiParent = this }.Show();
+            查询保养单 f = new 查询保养单();
+            f.TopLevel = false;
+            panel1.Controls.Add(f);
+            f.Show();
         }
 
         private void 制定保养单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new 制定保养单(this.userItem, this.userRoles) { MdiParent = this }.Show();
+            制定保养单 f = new 制定保养单();
+            f.ShowDialog();
         }
 
         private void 进行库存保养ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new 保养单列表(this.userItem, this.userRoles) { MdiParent = this }.Show();
+            保养单列表 f = new 保养单列表();
+            f.ShowDialog();
         }
 
         private void 管理保养单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new 管理保养单(this.userItem, this.userRoles) { MdiParent = this }.Show();
+            管理保养单 f = new 管理保养单();
+            f.TopLevel = false;
+            panel1.Controls.Add(f);
+            f.Show();
         }
     }
 }

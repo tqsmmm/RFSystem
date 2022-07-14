@@ -138,7 +138,7 @@ namespace RFSystem
             // ColumnPlant
             // 
             this.ColumnPlant.DataPropertyName = "Plant";
-            this.ColumnPlant.HeaderText = "公司";
+            this.ColumnPlant.HeaderText = "库存账套";
             this.ColumnPlant.Name = "ColumnPlant";
             this.ColumnPlant.ReadOnly = true;
             this.ColumnPlant.Width = 62;
@@ -178,7 +178,7 @@ namespace RFSystem
             // ColumnSubPlant
             // 
             this.ColumnSubPlant.DataPropertyName = "SubPlant";
-            this.ColumnSubPlant.HeaderText = "二级厂";
+            this.ColumnSubPlant.HeaderText = "产线部门代码";
             this.ColumnSubPlant.Name = "ColumnSubPlant";
             this.ColumnSubPlant.ReadOnly = true;
             this.ColumnSubPlant.Width = 76;
@@ -194,7 +194,7 @@ namespace RFSystem
             // ColumnBin1
             // 
             this.ColumnBin1.DataPropertyName = "Bin1";
-            this.ColumnBin1.HeaderText = "货位①";
+            this.ColumnBin1.HeaderText = "储位①";
             this.ColumnBin1.Name = "ColumnBin1";
             this.ColumnBin1.ReadOnly = true;
             this.ColumnBin1.Width = 76;
@@ -210,7 +210,7 @@ namespace RFSystem
             // ColumnBin2
             // 
             this.ColumnBin2.DataPropertyName = "Bin2";
-            this.ColumnBin2.HeaderText = "货位②";
+            this.ColumnBin2.HeaderText = "储位②";
             this.ColumnBin2.Name = "ColumnBin2";
             this.ColumnBin2.ReadOnly = true;
             this.ColumnBin2.Width = 76;
@@ -226,7 +226,7 @@ namespace RFSystem
             // ColumnBin3
             // 
             this.ColumnBin3.DataPropertyName = "Bin3";
-            this.ColumnBin3.HeaderText = "货位③";
+            this.ColumnBin3.HeaderText = "储位③";
             this.ColumnBin3.Name = "ColumnBin3";
             this.ColumnBin3.ReadOnly = true;
             this.ColumnBin3.Width = 76;
@@ -375,7 +375,7 @@ namespace RFSystem
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 20);
             this.label8.TabIndex = 0;
-            this.label8.Text = "货位：";
+            this.label8.Text = "储位：";
             // 
             // comboBoxPlant
             // 
@@ -395,7 +395,7 @@ namespace RFSystem
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 20);
             this.label7.TabIndex = 0;
-            this.label7.Text = "公司：";
+            this.label7.Text = "库存账套：";
             // 
             // comboBoxSLocation
             // 
@@ -414,7 +414,7 @@ namespace RFSystem
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "库存地点：";
+            this.label6.Text = "逻辑库区：";
             // 
             // label3
             // 
@@ -423,7 +423,7 @@ namespace RFSystem
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 0;
-            this.label3.Text = "二级厂：";
+            this.label3.Text = "产线部门代码：";
             // 
             // 理论库存信息
             // 
@@ -485,7 +485,7 @@ namespace RFSystem
                 comboBoxOperatorUser.Enabled = false;
             }
 
-            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
             comboBoxSLocation.Items.Add("无");
             comboBoxSLocation.SelectedIndex = 0;

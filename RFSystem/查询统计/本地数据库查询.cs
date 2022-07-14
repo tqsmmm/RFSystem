@@ -20,8 +20,8 @@ namespace RFSystem
             {
                 Cursor.Current = Cursors.WaitCursor;
                 ArrayList alParams = new ArrayList();
-                alParams.Add(comboBoxPlant.Text.Equals("无") ? string.Empty : comboBoxPlant.Text);
-                alParams.Add(comboBoxSLocation.Text.Equals("无") ? string.Empty : comboBoxSLocation.Text);
+                alParams.Add(comboBoxPlant.Text.Equals("无") ? string.Empty : comboBoxPlant.SelectedValue.ToString());
+                alParams.Add(comboBoxSLocation.Text.Equals("无") ? string.Empty : comboBoxSLocation.SelectedValue.ToString());
                 alParams.Add(textBoxBarcode.Text.Trim());
                 alParams.Add(textBoxDes.Text.Trim());
                 alParams.Add(textBoxBin.Text.Trim());
@@ -187,6 +187,42 @@ namespace RFSystem
         {
             DataTable dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "%");
             dataGridViewPrinterList.DataSource = dtPrinterList;
+
+            //comboBoxPlant
+            DataTable dtPlantList = DBOperate.GetPlantList(string.Empty, true);
+
+            DataRow row = dtPlantList.NewRow();
+
+            row["PlantID"] = 0;
+            row["PlantDescription"] = "无";
+
+            dtPlantList.Rows.InsertAt(row, 0);
+
+            comboBoxPlant.DataSource = dtPlantList;
+            comboBoxPlant.DisplayMember = "PlantDescription";
+            comboBoxPlant.ValueMember = "PlantID";
+
+            comboBoxPlant.SelectedIndex = 0;
+        }
+
+        private void comboBoxPlant_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            DataTable dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
+
+            comboBoxSLocation.Items.Clear();
+
+            DataRow row = dtStoreLocusList.NewRow();
+
+            row["PlantID"] = 0;
+            row["PlantDescription"] = "无";
+
+            dtStoreLocusList.Rows.InsertAt(row, 0);
+
+            comboBoxSLocation.DataSource = dtStoreLocusList;
+            comboBoxSLocation.DisplayMember = "StoreLocusDescription";
+            comboBoxSLocation.ValueMember = "StoreLocusID";
+
+            comboBoxSLocation.SelectedIndex = 0;
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using RFSystem.Properties;
 using System.Net.Sockets;
 
 namespace RFSystem
@@ -41,16 +40,19 @@ namespace RFSystem
 
             try
             {
-                client.Connect(hostname, port);
+                for (int i = 0; i < dataGridViewContractorList.SelectedRows.Count; i++)
+                {
+                    client.Connect(hostname, port);
 
-                string con = dataGridViewContractorList.SelectedRows[0].Cells["userid"].Value.ToString();
-                string xx = "4";
-                string xz = "10";
-                string s = dealPrintData(con, xx, xz, copy);
-                client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
-                client.GetStream().Flush();
+                    string con = dataGridViewContractorList.SelectedRows[i].Cells["userid"].Value.ToString();
+                    string xx = "4";
+                    string xz = "10";
+                    string s = dealPrintData(con, xx, xz, copy);
+                    client.GetStream().Write(Encoding.GetEncoding("gb2312").GetBytes(s), 0, Encoding.GetEncoding("gb2312").GetBytes(s).Length);
+                    client.GetStream().Flush();
 
-                client.Close();
+                    client.Close();
+                }
             }
             catch (Exception exception)
             {

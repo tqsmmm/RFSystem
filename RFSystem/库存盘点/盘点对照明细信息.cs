@@ -137,7 +137,7 @@ namespace RFSystem
             // ColumnPlant
             // 
             this.ColumnPlant.DataPropertyName = "Plant";
-            this.ColumnPlant.HeaderText = "所属公司";
+            this.ColumnPlant.HeaderText = "所属库存账套";
             this.ColumnPlant.Name = "ColumnPlant";
             this.ColumnPlant.ReadOnly = true;
             this.ColumnPlant.Width = 90;
@@ -177,7 +177,7 @@ namespace RFSystem
             // ColumnBin1
             // 
             this.ColumnBin1.DataPropertyName = "Bin1";
-            this.ColumnBin1.HeaderText = "货位1";
+            this.ColumnBin1.HeaderText = "储位1";
             this.ColumnBin1.Name = "ColumnBin1";
             this.ColumnBin1.ReadOnly = true;
             this.ColumnBin1.Width = 70;
@@ -193,7 +193,7 @@ namespace RFSystem
             // ColumnBin2
             // 
             this.ColumnBin2.DataPropertyName = "Bin2";
-            this.ColumnBin2.HeaderText = "货位2";
+            this.ColumnBin2.HeaderText = "储位2";
             this.ColumnBin2.Name = "ColumnBin2";
             this.ColumnBin2.ReadOnly = true;
             this.ColumnBin2.Width = 70;
@@ -209,7 +209,7 @@ namespace RFSystem
             // ColumnBin3
             // 
             this.ColumnBin3.DataPropertyName = "Bin3";
-            this.ColumnBin3.HeaderText = "货位3";
+            this.ColumnBin3.HeaderText = "储位3";
             this.ColumnBin3.Name = "ColumnBin3";
             this.ColumnBin3.ReadOnly = true;
             this.ColumnBin3.Width = 70;
@@ -225,7 +225,7 @@ namespace RFSystem
             // ColumnSubPlant
             // 
             this.ColumnSubPlant.DataPropertyName = "SubPlant";
-            this.ColumnSubPlant.HeaderText = "二级厂";
+            this.ColumnSubPlant.HeaderText = "产线部门代码";
             this.ColumnSubPlant.Name = "ColumnSubPlant";
             this.ColumnSubPlant.ReadOnly = true;
             this.ColumnSubPlant.Width = 76;
@@ -342,7 +342,7 @@ namespace RFSystem
             // ColumnPlantS
             // 
             this.ColumnPlantS.DataPropertyName = "Plant";
-            this.ColumnPlantS.HeaderText = "所属公司";
+            this.ColumnPlantS.HeaderText = "所属库存账套";
             this.ColumnPlantS.Name = "ColumnPlantS";
             this.ColumnPlantS.ReadOnly = true;
             this.ColumnPlantS.Width = 90;
@@ -374,7 +374,7 @@ namespace RFSystem
             // ColumnBinS
             // 
             this.ColumnBinS.DataPropertyName = "Bin";
-            this.ColumnBinS.HeaderText = "货位";
+            this.ColumnBinS.HeaderText = "储位";
             this.ColumnBinS.Name = "ColumnBinS";
             this.ColumnBinS.ReadOnly = true;
             this.ColumnBinS.Width = 62;

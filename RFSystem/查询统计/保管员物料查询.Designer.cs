@@ -231,7 +231,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 0;
-            this.label5.Text = "二级厂：";
+            this.label5.Text = "产线部门代码：";
             // 
             // txtPlant
             // 
@@ -356,7 +356,7 @@
             // 
             // Bct20
             // 
-            this.Bct20.HeaderText = "二级厂";
+            this.Bct20.HeaderText = "产线部门代码";
             this.Bct20.Name = "Bct20";
             this.Bct20.ReadOnly = true;
             this.Bct20.Width = 76;
@@ -377,42 +377,42 @@
             // 
             // Bct50
             // 
-            this.Bct50.HeaderText = "货位1";
+            this.Bct50.HeaderText = "储位1";
             this.Bct50.Name = "Bct50";
             this.Bct50.ReadOnly = true;
             this.Bct50.Width = 70;
             // 
             // Bct51
             // 
-            this.Bct51.HeaderText = "货位1数量";
+            this.Bct51.HeaderText = "储位1数量";
             this.Bct51.Name = "Bct51";
             this.Bct51.ReadOnly = true;
             this.Bct51.Width = 98;
             // 
             // Bct60
             // 
-            this.Bct60.HeaderText = "货位2";
+            this.Bct60.HeaderText = "储位2";
             this.Bct60.Name = "Bct60";
             this.Bct60.ReadOnly = true;
             this.Bct60.Width = 70;
             // 
             // Bct61
             // 
-            this.Bct61.HeaderText = "货位2数量";
+            this.Bct61.HeaderText = "储位2数量";
             this.Bct61.Name = "Bct61";
             this.Bct61.ReadOnly = true;
             this.Bct61.Width = 98;
             // 
             // Bct70
             // 
-            this.Bct70.HeaderText = "货位3";
+            this.Bct70.HeaderText = "储位3";
             this.Bct70.Name = "Bct70";
             this.Bct70.ReadOnly = true;
             this.Bct70.Width = 70;
             // 
             // Bct71
             // 
-            this.Bct71.HeaderText = "货位3数量";
+            this.Bct71.HeaderText = "储位3数量";
             this.Bct71.Name = "Bct71";
             this.Bct71.ReadOnly = true;
             this.Bct71.Width = 98;
@@ -426,7 +426,7 @@
             // 
             // Lgort
             // 
-            this.Lgort.HeaderText = "库存地点";
+            this.Lgort.HeaderText = "逻辑库区";
             this.Lgort.Name = "Lgort";
             this.Lgort.ReadOnly = true;
             this.Lgort.Width = 90;

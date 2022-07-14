@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace RFSystem
 {
-    public class 库存地点信息 : Form
+    public class 逻辑库区信息 : Form
     {
         private Button btnCancel;
         private Button btnMod;
@@ -17,7 +17,7 @@ namespace RFSystem
         private TextBox textBoxStoreLocusID;
         private TextBox textBoxStoreLocusDescription;
 
-        public 库存地点信息(Hashtable storeItem)
+        public 逻辑库区信息(Hashtable storeItem)
         {
             InitializeComponent();
             dtPlant = DBOperate.GetPlant();
@@ -45,19 +45,19 @@ namespace RFSystem
                 {
                     if (DBOperate.AddStoreLocus(textBoxStoreLocusID.Text.Trim(), comboBoxPlantID.Text.Trim(), textBoxStoreLocusDescription.Text.Trim()) != -1)
                     {
-                        CommonFunction.Sys_MsgBox("库存地点 " + textBoxStoreLocusID.Text.Trim() + " 添加成功");
+                        CommonFunction.Sys_MsgBox("逻辑库区 " + textBoxStoreLocusID.Text.Trim() + " 添加成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        CommonFunction.Sys_MsgBox("库存地点信息添加失败，请确认没有添加重复库存地点编号并且数据库联接正常");
+                        CommonFunction.Sys_MsgBox("逻辑库区信息添加失败，请确认没有添加重复逻辑库区编号并且数据库联接正常");
                     }
                 }
                 else if (Text == "库存修改")
                 {
                     if (DBOperate.ModStoreLocus(textBoxStoreLocusID.Text, comboBoxPlantID.Text.Trim(), textBoxStoreLocusDescription.Text.Trim()) != -1)
                     {
-                        CommonFunction.Sys_MsgBox("库存地点 " + textBoxStoreLocusID.Text + " 信息修改成功");
+                        CommonFunction.Sys_MsgBox("逻辑库区 " + textBoxStoreLocusID.Text + " 信息修改成功");
                         DialogResult = DialogResult.OK;
                     }
                     else
@@ -87,7 +87,7 @@ namespace RFSystem
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 27;
-            this.label3.Text = "所属公司编号：";
+            this.label3.Text = "所属库存账套编号：";
             // 
             // btnMod
             // 
@@ -124,7 +124,7 @@ namespace RFSystem
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 20);
             this.label2.TabIndex = 22;
-            this.label2.Text = "库存地点描述：";
+            this.label2.Text = "逻辑库区描述：";
             // 
             // label1
             // 
@@ -133,7 +133,7 @@ namespace RFSystem
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 21;
-            this.label1.Text = "库存地点编号：";
+            this.label1.Text = "逻辑库区编号：";
             // 
             // comboBoxPlantID
             // 
@@ -152,7 +152,7 @@ namespace RFSystem
             this.textBoxStoreLocusID.Size = new System.Drawing.Size(308, 26);
             this.textBoxStoreLocusID.TabIndex = 51;
             // 
-            // 库存地点信息
+            // 逻辑库区信息
             // 
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.ControlBox = false;
@@ -166,10 +166,10 @@ namespace RFSystem
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "库存地点信息";
+            this.Name = "逻辑库区信息";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "库存地点修改";
-            this.Load += new System.EventHandler(this.库存地点修改_Load);
+            this.Text = "逻辑库区修改";
+            this.Load += new System.EventHandler(this.逻辑库区修改_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,7 +194,7 @@ namespace RFSystem
             return true;
         }
 
-        private void 库存地点修改_Load(object sender, EventArgs e)
+        private void 逻辑库区修改_Load(object sender, EventArgs e)
         {
             if (Text == "库存新增")
             {

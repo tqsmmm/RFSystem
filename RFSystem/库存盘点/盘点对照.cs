@@ -131,7 +131,7 @@ namespace RFSystem
             this.radioButtonBinDif.Name = "radioButtonBinDif";
             this.radioButtonBinDif.Size = new System.Drawing.Size(139, 24);
             this.radioButtonBinDif.TabIndex = 48;
-            this.radioButtonBinDif.Text = "货位数量存在差异";
+            this.radioButtonBinDif.Text = "储位数量存在差异";
             this.radioButtonBinDif.UseVisualStyleBackColor = true;
             // 
             // radioButtonSumErr
@@ -193,7 +193,7 @@ namespace RFSystem
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 20);
             this.label7.TabIndex = 35;
-            this.label7.Text = "公司：";
+            this.label7.Text = "库存账套：";
             // 
             // comboBoxSLocation
             // 
@@ -360,7 +360,7 @@ namespace RFSystem
                 comboBoxOperatorUser.Enabled = false;
             }
 
-            dtPlantList = DBOperate.GetPlantList(string.Empty);
+            dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
             comboBoxSLocation.Items.Add("无");
             comboBoxSLocation.SelectedIndex = 0;
@@ -381,7 +381,7 @@ namespace RFSystem
         {
             ArrayList adjustItem = new ArrayList();
             adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["盘点号"].Value.ToString());
-            adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["所属公司"].Value.ToString());
+            adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["所属库存账套"].Value.ToString());
             adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["存储地点"].Value.ToString());
             adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["物料号"].Value.ToString());
             adjustItem.Add(dataGridViewSTCompare.SelectedRows[0].Cells["批次号"].Value.ToString());

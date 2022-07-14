@@ -195,7 +195,7 @@ namespace RFSystem
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 20);
             this.label14.TabIndex = 32;
-            this.label14.Text = "公司：";
+            this.label14.Text = "库存账套：";
             // 
             // label11
             // 
@@ -213,7 +213,7 @@ namespace RFSystem
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 20);
             this.label13.TabIndex = 34;
-            this.label13.Text = "货位：";
+            this.label13.Text = "储位：";
             // 
             // label15
             // 

@@ -110,11 +110,11 @@
     <Compile Include="同步数据\同步保管员信息.Designer.cs">
       <DependentUpon>同步保管员信息.cs</DependentUpon>
     </Compile>
-    <Compile Include="同步数据\同步物理库区.cs">
+    <Compile Include="同步数据\同步库存账套及逻辑库区.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="同步数据\同步物理库区.Designer.cs">
-      <DependentUpon>同步物理库区.cs</DependentUpon>
+    <Compile Include="同步数据\同步库存账套及逻辑库区.Designer.cs">
+      <DependentUpon>同步库存账套及逻辑库区.cs</DependentUpon>
     </Compile>
     <Compile Include="库存保养\保养单列表.cs">
       <SubType>Form</SubType>
@@ -208,8 +208,8 @@
     <EmbeddedResource Include="同步数据\同步保管员信息.resx">
       <DependentUpon>同步保管员信息.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="同步数据\同步物理库区.resx">
-      <DependentUpon>同步物理库区.cs</DependentUpon>
+    <EmbeddedResource Include="同步数据\同步库存账套及逻辑库区.resx">
+      <DependentUpon>同步库存账套及逻辑库区.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="库存保养\保养单列表.resx" />
     <EmbeddedResource Include="库存保养\保养货物.resx" />
@@ -218,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="库存保养\新增保养数量.resx" />
     <EmbeddedResource Include="库存保养\查询保养单.resx" />
+    <EmbeddedResource Include="库存保养\管理保养单.resx">
+      <DependentUpon>管理保养单.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="查询统计\保管员物料查询.resx">
       <DependentUpon>保管员物料查询.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,22 +258,22 @@
       <DependentUpon>物料标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\公司信息列表.resx">
-      <DependentUpon>公司信息列表.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\库存账套信息列表.resx">
+      <DependentUpon>库存账套信息列表.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\库存地点信息列表.resx">
-      <DependentUpon>库存地点信息列表.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\逻辑库区信息列表.resx">
+      <DependentUpon>逻辑库区信息列表.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\打印机信息.resx">
       <DependentUpon>打印机信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\公司信息.resx">
-      <DependentUpon>公司信息.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\库存账套信息.resx">
+      <DependentUpon>库存账套信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="系统管理\库存地点信息.resx">
-      <DependentUpon>库存地点信息.cs</DependentUpon>
+    <EmbeddedResource Include="系统管理\逻辑库区信息.resx">
+      <DependentUpon>逻辑库区信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\打印机信息列表.resx">
@@ -366,25 +369,25 @@
     <Compile Include="标签打印\物料标签打印.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\公司信息列表.cs">
+    <Compile Include="系统管理\库存账套信息列表.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\公司信息列表.Designer.cs">
-      <DependentUpon>公司信息列表.cs</DependentUpon>
+    <Compile Include="系统管理\库存账套信息列表.Designer.cs">
+      <DependentUpon>库存账套信息列表.cs</DependentUpon>
     </Compile>
-    <Compile Include="系统管理\库存地点信息列表.cs">
+    <Compile Include="系统管理\逻辑库区信息列表.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\库存地点信息列表.Designer.cs">
-      <DependentUpon>库存地点信息列表.cs</DependentUpon>
+    <Compile Include="系统管理\逻辑库区信息列表.Designer.cs">
+      <DependentUpon>逻辑库区信息列表.cs</DependentUpon>
     </Compile>
     <Compile Include="系统管理\打印机信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\公司信息.cs">
+    <Compile Include="系统管理\库存账套信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\库存地点信息.cs">
+    <Compile Include="系统管理\逻辑库区信息.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="系统管理\打印机信息列表.cs">

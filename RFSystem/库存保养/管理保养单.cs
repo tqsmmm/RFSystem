@@ -15,14 +15,12 @@ namespace RFSystem
         private Button btnCancel;
         private Button btnDel;
         private Button btnEnd;
-        private Button btnExit;
         private Button btnModNum;
         private Button btnPrint;
         private Button btnReMaintain;
         private Button btnSelect;
         private Button btnStart;
         private Button btnSubmitMod;
-        private CheckBox checkBoxTableMakeDate;
         private DataGridViewTextBoxColumn ColumnBARCODE;
         private DataGridViewTextBoxColumn ColumnBIN;
         private DataGridViewTextBoxColumn ColumnBIN_NUM;
@@ -49,8 +47,6 @@ namespace RFSystem
         private IContainer components;
         private DataGridView dataGridViewMaintain;
         private DataGridView dataGridViewMaintainDetail;
-        private DateTimePicker dateTimePickerTableMakeDateFrom;
-        private DateTimePicker dateTimePickerTableMakeDateTo;
         private DataTable dtMaintainDetail;
         private DataTable dtMaintainHeader;
         private DataTable dtPlantList;
@@ -60,11 +56,9 @@ namespace RFSystem
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private Label label1;
-        private Label label10;
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
         private Label label6;
         private Label label7;
         private Label label8;
@@ -86,273 +80,374 @@ namespace RFSystem
 
         private void InitializeComponent()
         {
-            this.dataGridViewMaintain = new DataGridView();
-            this.ColumnState = new DataGridViewTextBoxColumn();
-            this.ColumnMAINTAIN_NO = new DataGridViewTextBoxColumn();
-            this.ColumnFACTORY_NO = new DataGridViewTextBoxColumn();
-            this.ColumnSL = new DataGridViewTextBoxColumn();
-            this.ColumnSTOREMAN = new DataGridViewTextBoxColumn();
-            this.ColumnOPERATOR = new DataGridViewTextBoxColumn();
-            this.ColumnOPERATE_TIME = new DataGridViewTextBoxColumn();
-            this.dataGridViewMaintainDetail = new DataGridView();
-            this.ColumnBARCODE = new DataGridViewTextBoxColumn();
-            this.ColumnFACT_NO = new DataGridViewTextBoxColumn();
-            this.ColumnPRODUCT_NO = new DataGridViewTextBoxColumn();
-            this.ColumnPATCH_NO = new DataGridViewTextBoxColumn();
-            this.ColumnPRODUCT_NAME = new DataGridViewTextBoxColumn();
-            this.ColumnBIN = new DataGridViewTextBoxColumn();
-            this.ColumnBIN_NUM = new DataGridViewTextBoxColumn();
-            this.ColumnPLAN_NUM = new DataGridViewTextBoxColumn();
-            this.ColumnMAINTAINNUM = new DataGridViewTextBoxColumn();
-            this.ColumnWeight = new DataGridViewTextBoxColumn();
-            this.ColumnUNIT = new DataGridViewTextBoxColumn();
-            this.ColumnSUPPLIER_NO = new DataGridViewTextBoxColumn();
-            this.ColumnDetailMAINTAIN_NO = new DataGridViewTextBoxColumn();
-            this.groupBox1 = new GroupBox();
-            this.btnReMaintain = new Button();
-            this.btnPrint = new Button();
-            this.btnStart = new Button();
-            this.btnDel = new Button();
-            this.btnExit = new Button();
-            this.btnEnd = new Button();
-            this.groupBox2 = new GroupBox();
-            this.groupBox3 = new GroupBox();
-            this.checkBoxTableMakeDate = new CheckBox();
-            this.dateTimePickerTableMakeDateTo = new DateTimePicker();
-            this.dateTimePickerTableMakeDateFrom = new DateTimePicker();
-            this.label10 = new Label();
-            this.label5 = new Label();
-            this.textBoxMaintainNo = new TextBox();
-            this.label4 = new Label();
-            this.comboBoxState = new ComboBox();
-            this.label3 = new Label();
-            this.comboBoxPlant = new ComboBox();
-            this.label7 = new Label();
-            this.comboBoxSLocation = new ComboBox();
-            this.textBoxOperator = new TextBox();
-            this.label6 = new Label();
-            this.label2 = new Label();
-            this.label1 = new Label();
-            this.textBoxStoreMan = new TextBox();
-            this.btnSelect = new Button();
-            this.textBoxMaintain = new TextBox();
-            this.label8 = new Label();
-            this.btnModNum = new Button();
-            this.btnCancel = new Button();
-            this.btnSubmitMod = new Button();
-            ((ISupportInitialize)this.dataGridViewMaintain).BeginInit();
-            ((ISupportInitialize)this.dataGridViewMaintainDetail).BeginInit();
+            this.dataGridViewMaintain = new System.Windows.Forms.DataGridView();
+            this.ColumnState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMAINTAIN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFACTORY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSTOREMAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOPERATOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOPERATE_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewMaintainDetail = new System.Windows.Forms.DataGridView();
+            this.ColumnBARCODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFACT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPRODUCT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPATCH_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPRODUCT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBIN_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPLAN_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMAINTAINNUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSUPPLIER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDetailMAINTAIN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReMaintain = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxMaintainNo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxPlant = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxSLocation = new System.Windows.Forms.ComboBox();
+            this.textBoxOperator = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxStoreMan = new System.Windows.Forms.TextBox();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.textBoxMaintain = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnModNum = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmitMod = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintainDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            base.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dataGridViewMaintain
+            // 
             this.dataGridViewMaintain.AllowUserToAddRows = false;
             this.dataGridViewMaintain.AllowUserToResizeRows = false;
-            this.dataGridViewMaintain.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top;
-            this.dataGridViewMaintain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewMaintain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewMaintain.Columns.AddRange(new DataGridViewColumn[] { this.ColumnState, this.ColumnMAINTAIN_NO, this.ColumnFACTORY_NO, this.ColumnSL, this.ColumnSTOREMAN, this.ColumnOPERATOR, this.ColumnOPERATE_TIME });
-            this.dataGridViewMaintain.Location = new Point(6, 20);
+            this.dataGridViewMaintain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewMaintain.ColumnHeadersHeight = 30;
+            this.dataGridViewMaintain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewMaintain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnState,
+            this.ColumnMAINTAIN_NO,
+            this.ColumnFACTORY_NO,
+            this.ColumnSL,
+            this.ColumnSTOREMAN,
+            this.ColumnOPERATOR,
+            this.ColumnOPERATE_TIME});
+            this.dataGridViewMaintain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMaintain.Location = new System.Drawing.Point(3, 22);
             this.dataGridViewMaintain.MultiSelect = false;
             this.dataGridViewMaintain.Name = "dataGridViewMaintain";
             this.dataGridViewMaintain.ReadOnly = true;
             this.dataGridViewMaintain.RowHeadersVisible = false;
-            this.dataGridViewMaintain.RowTemplate.Height = 0x17;
-            this.dataGridViewMaintain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMaintain.Size = new Size(0x359, 0x8a);
-            this.dataGridViewMaintain.TabIndex = 0x4e21;
-            this.dataGridViewMaintain.SelectionChanged += new EventHandler(this.dataGridViewMaintain_SelectionChanged);
+            this.dataGridViewMaintain.RowTemplate.Height = 23;
+            this.dataGridViewMaintain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMaintain.Size = new System.Drawing.Size(818, 193);
+            this.dataGridViewMaintain.TabIndex = 20001;
+            this.dataGridViewMaintain.SelectionChanged += new System.EventHandler(this.dataGridViewMaintain_SelectionChanged);
+            // 
+            // ColumnState
+            // 
             this.ColumnState.DataPropertyName = "State";
             this.ColumnState.HeaderText = "状态";
             this.ColumnState.Name = "ColumnState";
             this.ColumnState.ReadOnly = true;
-            this.ColumnState.Width = 0x36;
+            this.ColumnState.Width = 62;
+            // 
+            // ColumnMAINTAIN_NO
+            // 
             this.ColumnMAINTAIN_NO.DataPropertyName = "MAINTAIN_NO";
             this.ColumnMAINTAIN_NO.HeaderText = "保养单号";
             this.ColumnMAINTAIN_NO.Name = "ColumnMAINTAIN_NO";
             this.ColumnMAINTAIN_NO.ReadOnly = true;
-            this.ColumnMAINTAIN_NO.Width = 0x4e;
+            this.ColumnMAINTAIN_NO.Width = 90;
+            // 
+            // ColumnFACTORY_NO
+            // 
             this.ColumnFACTORY_NO.DataPropertyName = "FACTORY_NO";
-            this.ColumnFACTORY_NO.HeaderText = "公司";
+            this.ColumnFACTORY_NO.HeaderText = "库存账套";
             this.ColumnFACTORY_NO.Name = "ColumnFACTORY_NO";
             this.ColumnFACTORY_NO.ReadOnly = true;
-            this.ColumnFACTORY_NO.Width = 0x36;
+            this.ColumnFACTORY_NO.Width = 90;
+            // 
+            // ColumnSL
+            // 
             this.ColumnSL.DataPropertyName = "SL";
-            this.ColumnSL.HeaderText = "库存地点";
+            this.ColumnSL.HeaderText = "逻辑库区";
             this.ColumnSL.Name = "ColumnSL";
             this.ColumnSL.ReadOnly = true;
-            this.ColumnSL.Width = 0x4e;
+            this.ColumnSL.Width = 90;
+            // 
+            // ColumnSTOREMAN
+            // 
             this.ColumnSTOREMAN.DataPropertyName = "STOREMAN";
             this.ColumnSTOREMAN.HeaderText = "保管员";
             this.ColumnSTOREMAN.Name = "ColumnSTOREMAN";
             this.ColumnSTOREMAN.ReadOnly = true;
-            this.ColumnSTOREMAN.Width = 0x42;
+            this.ColumnSTOREMAN.Width = 76;
+            // 
+            // ColumnOPERATOR
+            // 
             this.ColumnOPERATOR.DataPropertyName = "OPERATOR";
             this.ColumnOPERATOR.HeaderText = "制单人";
             this.ColumnOPERATOR.Name = "ColumnOPERATOR";
             this.ColumnOPERATOR.ReadOnly = true;
-            this.ColumnOPERATOR.Width = 0x42;
+            this.ColumnOPERATOR.Width = 76;
+            // 
+            // ColumnOPERATE_TIME
+            // 
             this.ColumnOPERATE_TIME.DataPropertyName = "OPERATE_TIME";
             this.ColumnOPERATE_TIME.HeaderText = "制单日期";
             this.ColumnOPERATE_TIME.Name = "ColumnOPERATE_TIME";
             this.ColumnOPERATE_TIME.ReadOnly = true;
-            this.ColumnOPERATE_TIME.Width = 0x4e;
+            this.ColumnOPERATE_TIME.Width = 90;
+            // 
+            // dataGridViewMaintainDetail
+            // 
             this.dataGridViewMaintainDetail.AllowUserToAddRows = false;
             this.dataGridViewMaintainDetail.AllowUserToResizeRows = false;
-            this.dataGridViewMaintainDetail.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top;
-            this.dataGridViewMaintainDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewMaintainDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewMaintainDetail.Columns.AddRange(new DataGridViewColumn[] { this.ColumnBARCODE, this.ColumnFACT_NO, this.ColumnPRODUCT_NO, this.ColumnPATCH_NO, this.ColumnPRODUCT_NAME, this.ColumnBIN, this.ColumnBIN_NUM, this.ColumnPLAN_NUM, this.ColumnMAINTAINNUM, this.ColumnWeight, this.ColumnUNIT, this.ColumnSUPPLIER_NO, this.ColumnDetailMAINTAIN_NO });
-            this.dataGridViewMaintainDetail.Location = new Point(6, 20);
+            this.dataGridViewMaintainDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewMaintainDetail.ColumnHeadersHeight = 30;
+            this.dataGridViewMaintainDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewMaintainDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnBARCODE,
+            this.ColumnFACT_NO,
+            this.ColumnPRODUCT_NO,
+            this.ColumnPATCH_NO,
+            this.ColumnPRODUCT_NAME,
+            this.ColumnBIN,
+            this.ColumnBIN_NUM,
+            this.ColumnPLAN_NUM,
+            this.ColumnMAINTAINNUM,
+            this.ColumnWeight,
+            this.ColumnUNIT,
+            this.ColumnSUPPLIER_NO,
+            this.ColumnDetailMAINTAIN_NO});
+            this.dataGridViewMaintainDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMaintainDetail.Location = new System.Drawing.Point(3, 22);
             this.dataGridViewMaintainDetail.MultiSelect = false;
             this.dataGridViewMaintainDetail.Name = "dataGridViewMaintainDetail";
             this.dataGridViewMaintainDetail.ReadOnly = true;
             this.dataGridViewMaintainDetail.RowHeadersVisible = false;
-            this.dataGridViewMaintainDetail.RowTemplate.Height = 0x17;
-            this.dataGridViewMaintainDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMaintainDetail.Size = new Size(0x3aa, 280);
-            this.dataGridViewMaintainDetail.TabIndex = 0x7531;
-            this.dataGridViewMaintainDetail.SelectionChanged += new EventHandler(this.dataGridViewMaintainDetail_SelectionChanged);
+            this.dataGridViewMaintainDetail.RowTemplate.Height = 23;
+            this.dataGridViewMaintainDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMaintainDetail.Size = new System.Drawing.Size(944, 87);
+            this.dataGridViewMaintainDetail.TabIndex = 30001;
+            this.dataGridViewMaintainDetail.SelectionChanged += new System.EventHandler(this.dataGridViewMaintainDetail_SelectionChanged);
+            // 
+            // ColumnBARCODE
+            // 
             this.ColumnBARCODE.DataPropertyName = "BARCODE";
             this.ColumnBARCODE.HeaderText = "条码号";
             this.ColumnBARCODE.Name = "ColumnBARCODE";
             this.ColumnBARCODE.ReadOnly = true;
             this.ColumnBARCODE.Visible = false;
+            this.ColumnBARCODE.Width = 61;
+            // 
+            // ColumnFACT_NO
+            // 
             this.ColumnFACT_NO.DataPropertyName = "FACT_NO";
-            this.ColumnFACT_NO.HeaderText = "公司号";
+            this.ColumnFACT_NO.HeaderText = "库存账套编号";
             this.ColumnFACT_NO.Name = "ColumnFACT_NO";
             this.ColumnFACT_NO.ReadOnly = true;
             this.ColumnFACT_NO.Visible = false;
-            this.ColumnFACT_NO.Width = 60;
+            this.ColumnFACT_NO.Width = 72;
+            // 
+            // ColumnPRODUCT_NO
+            // 
             this.ColumnPRODUCT_NO.DataPropertyName = "PRODUCT_NO";
             this.ColumnPRODUCT_NO.HeaderText = "物料号";
             this.ColumnPRODUCT_NO.Name = "ColumnPRODUCT_NO";
             this.ColumnPRODUCT_NO.ReadOnly = true;
-            this.ColumnPRODUCT_NO.Width = 0x42;
+            this.ColumnPRODUCT_NO.Width = 76;
+            // 
+            // ColumnPATCH_NO
+            // 
             this.ColumnPATCH_NO.DataPropertyName = "PATCH_NO";
             this.ColumnPATCH_NO.HeaderText = "批次号";
             this.ColumnPATCH_NO.Name = "ColumnPATCH_NO";
             this.ColumnPATCH_NO.ReadOnly = true;
-            this.ColumnPATCH_NO.Width = 0x42;
+            this.ColumnPATCH_NO.Width = 76;
+            // 
+            // ColumnPRODUCT_NAME
+            // 
             this.ColumnPRODUCT_NAME.DataPropertyName = "PRODUCT_NAME";
             this.ColumnPRODUCT_NAME.HeaderText = "物品名称";
             this.ColumnPRODUCT_NAME.Name = "ColumnPRODUCT_NAME";
             this.ColumnPRODUCT_NAME.ReadOnly = true;
-            this.ColumnPRODUCT_NAME.Width = 0x4e;
+            this.ColumnPRODUCT_NAME.Width = 90;
+            // 
+            // ColumnBIN
+            // 
             this.ColumnBIN.DataPropertyName = "BIN";
-            this.ColumnBIN.HeaderText = "货位";
+            this.ColumnBIN.HeaderText = "储位";
             this.ColumnBIN.Name = "ColumnBIN";
             this.ColumnBIN.ReadOnly = true;
-            this.ColumnBIN.Width = 0x36;
+            this.ColumnBIN.Width = 62;
+            // 
+            // ColumnBIN_NUM
+            // 
             this.ColumnBIN_NUM.DataPropertyName = "BIN_NUM";
             this.ColumnBIN_NUM.HeaderText = "库存数量";
             this.ColumnBIN_NUM.Name = "ColumnBIN_NUM";
             this.ColumnBIN_NUM.ReadOnly = true;
             this.ColumnBIN_NUM.Visible = false;
-            this.ColumnBIN_NUM.Width = 60;
+            this.ColumnBIN_NUM.Width = 61;
+            // 
+            // ColumnPLAN_NUM
+            // 
             this.ColumnPLAN_NUM.DataPropertyName = "PLAN_NUM";
             this.ColumnPLAN_NUM.HeaderText = "计划数量";
             this.ColumnPLAN_NUM.Name = "ColumnPLAN_NUM";
             this.ColumnPLAN_NUM.ReadOnly = true;
-            this.ColumnPLAN_NUM.Width = 0x4e;
+            this.ColumnPLAN_NUM.Width = 90;
+            // 
+            // ColumnMAINTAINNUM
+            // 
             this.ColumnMAINTAINNUM.DataPropertyName = "MAINTAINNUM";
             this.ColumnMAINTAINNUM.HeaderText = "保养数量";
             this.ColumnMAINTAINNUM.Name = "ColumnMAINTAINNUM";
             this.ColumnMAINTAINNUM.ReadOnly = true;
-            this.ColumnMAINTAINNUM.Width = 0x4e;
+            this.ColumnMAINTAINNUM.Width = 90;
+            // 
+            // ColumnWeight
+            // 
             this.ColumnWeight.DataPropertyName = "WEIGHT";
             this.ColumnWeight.HeaderText = "单重";
             this.ColumnWeight.Name = "ColumnWeight";
             this.ColumnWeight.ReadOnly = true;
-            this.ColumnWeight.Width = 0x36;
+            this.ColumnWeight.Width = 62;
+            // 
+            // ColumnUNIT
+            // 
             this.ColumnUNIT.DataPropertyName = "UNIT";
             this.ColumnUNIT.HeaderText = "单位";
             this.ColumnUNIT.Name = "ColumnUNIT";
             this.ColumnUNIT.ReadOnly = true;
-            this.ColumnUNIT.Width = 0x36;
+            this.ColumnUNIT.Width = 62;
+            // 
+            // ColumnSUPPLIER_NO
+            // 
             this.ColumnSUPPLIER_NO.DataPropertyName = "SUPPLIER_NO";
             this.ColumnSUPPLIER_NO.HeaderText = "生产厂代码";
             this.ColumnSUPPLIER_NO.Name = "ColumnSUPPLIER_NO";
             this.ColumnSUPPLIER_NO.ReadOnly = true;
             this.ColumnSUPPLIER_NO.Visible = false;
-            this.ColumnSUPPLIER_NO.Width = 90;
+            this.ColumnSUPPLIER_NO.Width = 72;
+            // 
+            // ColumnDetailMAINTAIN_NO
+            // 
             this.ColumnDetailMAINTAIN_NO.DataPropertyName = "MAINTAIN_NO";
             this.ColumnDetailMAINTAIN_NO.HeaderText = "保养单号";
             this.ColumnDetailMAINTAIN_NO.Name = "ColumnDetailMAINTAIN_NO";
             this.ColumnDetailMAINTAIN_NO.ReadOnly = true;
             this.ColumnDetailMAINTAIN_NO.Visible = false;
-            this.groupBox1.Controls.Add(this.btnReMaintain);
-            this.groupBox1.Controls.Add(this.btnPrint);
+            this.ColumnDetailMAINTAIN_NO.Width = 61;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridViewMaintain);
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Controls.Add(this.btnDel);
-            this.groupBox1.Controls.Add(this.btnExit);
-            this.groupBox1.Controls.Add(this.btnEnd);
-            this.groupBox1.Location = new Point(12, 0x67);
+            this.groupBox1.Location = new System.Drawing.Point(12, 118);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(950, 0xa4);
-            this.groupBox1.TabIndex = 0x7532;
+            this.groupBox1.Size = new System.Drawing.Size(824, 218);
+            this.groupBox1.TabIndex = 30002;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "保养单列表";
+            // 
+            // btnReMaintain
+            // 
+            this.btnReMaintain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReMaintain.Enabled = false;
-            this.btnReMaintain.Location = new Point(0x365, 0x4e);
+            this.btnReMaintain.Location = new System.Drawing.Point(842, 230);
             this.btnReMaintain.Name = "btnReMaintain";
-            this.btnReMaintain.Size = new Size(0x4b, 0x17);
-            this.btnReMaintain.TabIndex = 0x4e27;
+            this.btnReMaintain.Size = new System.Drawing.Size(120, 50);
+            this.btnReMaintain.TabIndex = 20007;
             this.btnReMaintain.Text = "重新保养";
             this.btnReMaintain.UseVisualStyleBackColor = true;
-            this.btnReMaintain.Click += new EventHandler(this.btnReMaintain_Click);
+            this.btnReMaintain.Click += new System.EventHandler(this.btnReMaintain_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new Point(0x365, 0x6b);
+            this.btnPrint.Location = new System.Drawing.Point(842, 286);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new Size(0x4b, 0x17);
-            this.btnPrint.TabIndex = 0x4e26;
+            this.btnPrint.Size = new System.Drawing.Size(120, 50);
+            this.btnPrint.TabIndex = 20006;
             this.btnPrint.Text = "结束保养";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new EventHandler(this.btnPrint_Click);
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.Enabled = false;
-            this.btnStart.Location = new Point(0x365, 20);
+            this.btnStart.Location = new System.Drawing.Point(842, 118);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new Size(0x4b, 0x17);
-            this.btnStart.TabIndex = 0x4e22;
+            this.btnStart.Size = new System.Drawing.Size(120, 50);
+            this.btnStart.TabIndex = 20002;
             this.btnStart.Text = "开始保养";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new EventHandler(this.btnStart_Click);
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDel.Enabled = false;
-            this.btnDel.Location = new Point(0x365, 0x31);
+            this.btnDel.Location = new System.Drawing.Point(842, 174);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new Size(0x4b, 0x17);
-            this.btnDel.TabIndex = 0x4e23;
+            this.btnDel.Size = new System.Drawing.Size(120, 50);
+            this.btnDel.TabIndex = 20003;
             this.btnDel.Text = "作废保养";
             this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new EventHandler(this.btnDel_Click);
-            this.btnExit.Location = new Point(0x365, 0x88);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new Size(0x4b, 0x17);
-            this.btnExit.TabIndex = 0x4e25;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new EventHandler(this.btnExit_Click);
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnEnd
+            // 
             this.btnEnd.Enabled = false;
-            this.btnEnd.Location = new Point(0x365, 0x3a);
+            this.btnEnd.Location = new System.Drawing.Point(887, 156);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new Size(0, 0);
-            this.btnEnd.TabIndex = 0x4e24;
+            this.btnEnd.Size = new System.Drawing.Size(0, 0);
+            this.btnEnd.TabIndex = 20004;
             this.btnEnd.Text = "结束保养";
             this.btnEnd.UseVisualStyleBackColor = true;
-            this.btnEnd.Click += new EventHandler(this.btnEnd_Click);
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridViewMaintainDetail);
-            this.groupBox2.Location = new Point(12, 0x111);
+            this.groupBox2.Location = new System.Drawing.Point(12, 342);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new Size(950, 0x132);
-            this.groupBox2.TabIndex = 0x7533;
+            this.groupBox2.Size = new System.Drawing.Size(950, 112);
+            this.groupBox2.TabIndex = 30003;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "保养单详细";
-            this.groupBox3.Controls.Add(this.checkBoxTableMakeDate);
-            this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateTo);
-            this.groupBox3.Controls.Add(this.dateTimePickerTableMakeDateFrom);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label5);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.textBoxMaintainNo);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.comboBoxState);
@@ -366,181 +461,223 @@ namespace RFSystem
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.textBoxStoreMan);
             this.groupBox3.Controls.Add(this.btnSelect);
-            this.groupBox3.Location = new Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new Size(950, 0x55);
-            this.groupBox3.TabIndex = 0x7534;
+            this.groupBox3.Size = new System.Drawing.Size(950, 100);
+            this.groupBox3.TabIndex = 30004;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "保养单列表";
-            this.checkBoxTableMakeDate.AutoSize = true;
-            this.checkBoxTableMakeDate.Location = new Point(0x218, 0x33);
-            this.checkBoxTableMakeDate.Name = "checkBoxTableMakeDate";
-            this.checkBoxTableMakeDate.Size = new Size(15, 14);
-            this.checkBoxTableMakeDate.TabIndex = 0x4e33;
-            this.checkBoxTableMakeDate.UseVisualStyleBackColor = true;
-            this.checkBoxTableMakeDate.CheckedChanged += new EventHandler(this.checkBoxTableMakeDate_CheckedChanged);
-            this.dateTimePickerTableMakeDateTo.Enabled = false;
-            this.dateTimePickerTableMakeDateTo.Location = new Point(0x19d, 0x30);
-            this.dateTimePickerTableMakeDateTo.Name = "dateTimePickerTableMakeDateTo";
-            this.dateTimePickerTableMakeDateTo.Size = new Size(110, 0x15);
-            this.dateTimePickerTableMakeDateTo.TabIndex = 0x4e32;
-            this.dateTimePickerTableMakeDateFrom.Enabled = false;
-            this.dateTimePickerTableMakeDateFrom.Location = new Point(0x112, 0x30);
-            this.dateTimePickerTableMakeDateFrom.Name = "dateTimePickerTableMakeDateFrom";
-            this.dateTimePickerTableMakeDateFrom.Size = new Size(110, 0x15);
-            this.dateTimePickerTableMakeDateFrom.TabIndex = 0x4e31;
-            this.label10.AutoSize = true;
-            this.label10.Location = new Point(390, 0x34);
-            this.label10.Name = "label10";
-            this.label10.Size = new Size(0x11, 12);
-            this.label10.TabIndex = 0x4e2f;
-            this.label10.Text = "TO";
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(0xcb, 0x34);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x41, 12);
-            this.label5.TabIndex = 0x4e30;
-            this.label5.Text = "制单日期：";
-            this.textBoxMaintainNo.Location = new Point(0x4d, 0x15);
+            // 
+            // textBoxMaintainNo
+            // 
+            this.textBoxMaintainNo.Location = new System.Drawing.Point(91, 25);
             this.textBoxMaintainNo.Name = "textBoxMaintainNo";
-            this.textBoxMaintainNo.Size = new Size(120, 0x15);
-            this.textBoxMaintainNo.TabIndex = 0x4e2e;
+            this.textBoxMaintainNo.Size = new System.Drawing.Size(120, 26);
+            this.textBoxMaintainNo.TabIndex = 20014;
+            // 
+            // label4
+            // 
             this.label4.AutoSize = true;
-            this.label4.Location = new Point(6, 0x19);
+            this.label4.Location = new System.Drawing.Point(6, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new Size(0x41, 12);
-            this.label4.TabIndex = 0x4e2d;
+            this.label4.Size = new System.Drawing.Size(79, 20);
+            this.label4.TabIndex = 20013;
             this.label4.Text = "保养单号：";
-            this.comboBoxState.DropDownStyle = ComboBoxStyle.DropDownList;
+            // 
+            // comboBoxState
+            // 
+            this.comboBoxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxState.FormattingEnabled = true;
-            this.comboBoxState.Items.AddRange(new object[] { "等待批准", "保养中", "保养完成", "结束保养", "作废单据", "全部" });
-            this.comboBoxState.Location = new Point(0x4d, 0x30);
+            this.comboBoxState.Items.AddRange(new object[] {
+            "等待批准",
+            "保养中",
+            "保养完成",
+            "结束保养",
+            "作废单据",
+            "全部"});
+            this.comboBoxState.Location = new System.Drawing.Point(513, 60);
             this.comboBoxState.Name = "comboBoxState";
-            this.comboBoxState.Size = new Size(120, 20);
-            this.comboBoxState.TabIndex = 0x4e2c;
+            this.comboBoxState.Size = new System.Drawing.Size(120, 28);
+            this.comboBoxState.TabIndex = 20012;
+            // 
+            // label3
+            // 
             this.label3.AutoSize = true;
-            this.label3.Location = new Point(6, 0x34);
+            this.label3.Location = new System.Drawing.Point(428, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new Size(0x41, 12);
-            this.label3.TabIndex = 0x4e2b;
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 20011;
             this.label3.Text = "单据状态：";
-            this.comboBoxPlant.DropDownStyle = ComboBoxStyle.DropDownList;
+            // 
+            // comboBoxPlant
+            // 
+            this.comboBoxPlant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPlant.FormattingEnabled = true;
-            this.comboBoxPlant.Location = new Point(0x112, 0x15);
+            this.comboBoxPlant.Location = new System.Drawing.Point(302, 25);
             this.comboBoxPlant.Name = "comboBoxPlant";
-            this.comboBoxPlant.Size = new Size(120, 20);
-            this.comboBoxPlant.TabIndex = 0x4e29;
-            this.comboBoxPlant.SelectedIndexChanged += new EventHandler(this.comboBoxPlant_SelectedIndexChanged);
+            this.comboBoxPlant.Size = new System.Drawing.Size(120, 28);
+            this.comboBoxPlant.TabIndex = 20009;
+            this.comboBoxPlant.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlant_SelectedIndexChanged);
+            // 
+            // label7
+            // 
             this.label7.AutoSize = true;
-            this.label7.Location = new Point(0xcb, 0x19);
+            this.label7.Location = new System.Drawing.Point(217, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new Size(0x41, 12);
-            this.label7.TabIndex = 0x4e28;
-            this.label7.Text = "公　　司：";
-            this.comboBoxSLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 20008;
+            this.label7.Text = "库存账套：";
+            // 
+            // comboBoxSLocation
+            // 
+            this.comboBoxSLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSLocation.FormattingEnabled = true;
-            this.comboBoxSLocation.Location = new Point(0x1d7, 0x15);
+            this.comboBoxSLocation.Location = new System.Drawing.Point(513, 25);
             this.comboBoxSLocation.Name = "comboBoxSLocation";
-            this.comboBoxSLocation.Size = new Size(120, 20);
-            this.comboBoxSLocation.TabIndex = 0x4e2a;
-            this.textBoxOperator.Location = new Point(0x341, 0x16);
+            this.comboBoxSLocation.Size = new System.Drawing.Size(120, 28);
+            this.comboBoxSLocation.TabIndex = 20010;
+            // 
+            // textBoxOperator
+            // 
+            this.textBoxOperator.Location = new System.Drawing.Point(302, 62);
             this.textBoxOperator.Name = "textBoxOperator";
-            this.textBoxOperator.Size = new Size(100, 0x15);
-            this.textBoxOperator.TabIndex = 0x4e26;
+            this.textBoxOperator.Size = new System.Drawing.Size(120, 26);
+            this.textBoxOperator.TabIndex = 20006;
+            // 
+            // label6
+            // 
             this.label6.AutoSize = true;
-            this.label6.Location = new Point(400, 0x19);
+            this.label6.Location = new System.Drawing.Point(428, 28);
             this.label6.Name = "label6";
-            this.label6.Size = new Size(0x41, 12);
-            this.label6.TabIndex = 0x4e27;
-            this.label6.Text = "库存地点：";
+            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.TabIndex = 20007;
+            this.label6.Text = "逻辑库区：";
+            // 
+            // label2
+            // 
             this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x2fa, 0x19);
+            this.label2.Location = new System.Drawing.Point(231, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new Size(0x41, 12);
-            this.label2.TabIndex = 0x4e25;
-            this.label2.Text = "制 单 人：";
+            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.TabIndex = 20005;
+            this.label2.Text = "制单人：";
+            // 
+            // label1
+            // 
             this.label1.AutoSize = true;
-            this.label1.Location = new Point(0x255, 0x19);
+            this.label1.Location = new System.Drawing.Point(20, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new Size(0x35, 12);
-            this.label1.TabIndex = 0x4e23;
+            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.TabIndex = 20003;
             this.label1.Text = "保管员：";
-            this.textBoxStoreMan.Location = new Point(0x290, 0x15);
+            // 
+            // textBoxStoreMan
+            // 
+            this.textBoxStoreMan.Location = new System.Drawing.Point(91, 60);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
-            this.textBoxStoreMan.Size = new Size(100, 0x15);
-            this.textBoxStoreMan.TabIndex = 0x4e24;
-            this.btnSelect.Location = new Point(0x35a, 0x2e);
+            this.textBoxStoreMan.Size = new System.Drawing.Size(120, 26);
+            this.textBoxStoreMan.TabIndex = 20004;
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Location = new System.Drawing.Point(824, 25);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new Size(0x4b, 0x17);
-            this.btnSelect.TabIndex = 0x4e22;
+            this.btnSelect.Size = new System.Drawing.Size(120, 50);
+            this.btnSelect.TabIndex = 20002;
             this.btnSelect.Text = "查询";
             this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new EventHandler(this.btnSelect_Click);
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // textBoxMaintain
+            // 
+            this.textBoxMaintain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxMaintain.Enabled = false;
-            this.textBoxMaintain.Location = new Point(0x69, 0x249);
+            this.textBoxMaintain.Location = new System.Drawing.Point(133, 472);
             this.textBoxMaintain.Name = "textBoxMaintain";
-            this.textBoxMaintain.Size = new Size(80, 0x15);
-            this.textBoxMaintain.TabIndex = 0x7536;
+            this.textBoxMaintain.Size = new System.Drawing.Size(80, 26);
+            this.textBoxMaintain.TabIndex = 30006;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new Point(10, 0x24c);
+            this.label8.Location = new System.Drawing.Point(20, 475);
             this.label8.Name = "label8";
-            this.label8.Size = new Size(0x59, 12);
-            this.label8.TabIndex = 0x7537;
+            this.label8.Size = new System.Drawing.Size(107, 20);
+            this.label8.TabIndex = 30007;
             this.label8.Text = "修改已保养数量";
+            // 
+            // btnModNum
+            // 
+            this.btnModNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnModNum.Enabled = false;
-            this.btnModNum.Location = new Point(0xbf, 0x247);
+            this.btnModNum.Location = new System.Drawing.Point(219, 460);
             this.btnModNum.Name = "btnModNum";
-            this.btnModNum.Size = new Size(0x4b, 0x17);
-            this.btnModNum.TabIndex = 0x7538;
+            this.btnModNum.Size = new System.Drawing.Size(120, 50);
+            this.btnModNum.TabIndex = 30008;
             this.btnModNum.Text = "修改";
             this.btnModNum.UseVisualStyleBackColor = true;
-            this.btnModNum.Click += new EventHandler(this.btnModNum_Click);
+            this.btnModNum.Click += new System.EventHandler(this.btnModNum_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new Point(0x110, 0x247);
+            this.btnCancel.Location = new System.Drawing.Point(345, 460);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x4b, 0x17);
-            this.btnCancel.TabIndex = 0x7539;
+            this.btnCancel.Size = new System.Drawing.Size(120, 50);
+            this.btnCancel.TabIndex = 30009;
             this.btnCancel.Text = "取消修改";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSubmitMod
+            // 
+            this.btnSubmitMod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSubmitMod.Enabled = false;
-            this.btnSubmitMod.Location = new Point(0x161, 0x247);
+            this.btnSubmitMod.Location = new System.Drawing.Point(471, 460);
             this.btnSubmitMod.Name = "btnSubmitMod";
-            this.btnSubmitMod.Size = new Size(100, 0x17);
-            this.btnSubmitMod.TabIndex = 0x753a;
+            this.btnSubmitMod.Size = new System.Drawing.Size(120, 50);
+            this.btnSubmitMod.TabIndex = 30010;
             this.btnSubmitMod.Text = "提交重新保养";
             this.btnSubmitMod.UseVisualStyleBackColor = true;
-            this.btnSubmitMod.Click += new EventHandler(this.btnSubmitMod_Click);
-            //base.AutoScaleDimensions = new SizeF(6f, 12f);
-            //base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x3ce, 0x26a);
-            base.ControlBox = false;
-            base.Controls.Add(this.btnSubmitMod);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnModNum);
-            base.Controls.Add(this.label8);
-            base.Controls.Add(this.textBoxMaintain);
-            base.Controls.Add(this.groupBox3);
-            base.Controls.Add(this.groupBox2);
-            base.Controls.Add(this.groupBox1);
-            //base.FormBorderStyle = FormBorderStyle.FixedDialog;
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "管理保养单";
-            base.StartPosition = FormStartPosition.CenterScreen;
+            this.btnSubmitMod.Click += new System.EventHandler(this.btnSubmitMod_Click);
+            // 
+            // 管理保养单
+            // 
+            this.ClientSize = new System.Drawing.Size(974, 522);
+            this.Controls.Add(this.btnReMaintain);
+            this.Controls.Add(this.btnSubmitMod);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnModNum);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.btnDel);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBoxMaintain);
+            this.Controls.Add(this.btnEnd);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "管理保养单";
             this.Text = "管理保养单";
-            ((ISupportInitialize)this.dataGridViewMaintain).EndInit();
-            ((ISupportInitialize)this.dataGridViewMaintainDetail).EndInit();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaintainDetail)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            base.ResumeLayout(false);
-            base.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         // Methods
-        public 管理保养单(UserInfo userItem, ArrayList userRoles)
+        public 管理保养单()
         {
             this.userItem = null;
             this.userRoles = null;
@@ -549,9 +686,7 @@ namespace RFSystem
             this.dtReport = null;
             this.components = null;
             this.InitializeComponent();
-            this.userItem = userItem;
-            this.userRoles = userRoles;
-            this.dtPlantList = DBOperate.GetPlantList(string.Empty);
+            this.dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             this.dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
             this.comboBoxSLocation.Items.Add("无");
             this.comboBoxSLocation.SelectedIndex = 0;
@@ -695,16 +830,8 @@ namespace RFSystem
             arriveList.Add(this.textBoxStoreMan.Text.Trim());
             arriveList.Add(this.textBoxOperator.Text.Trim());
             arriveList.Add((this.comboBoxState.SelectedIndex == -1) ? "" : this.comboBoxState.SelectedIndex.ToString());
-            if (this.checkBoxTableMakeDate.Checked)
-            {
-                arriveList.Add(this.dateTimePickerTableMakeDateFrom.Value.Date.ToString());
-                arriveList.Add(this.dateTimePickerTableMakeDateTo.Value.Date.ToString());
-            }
-            else
-            {
-                arriveList.Add(string.Empty);
-                arriveList.Add(string.Empty);
-            }
+            arriveList.Add(string.Empty);
+            arriveList.Add(string.Empty);
             this.dtMaintainHeader = DBOperate.MaintainGetHead(arriveList);
             this.dataGridViewMaintain.DataSource = this.dtMaintainHeader;
             if (!CommonFunction.IfHasData(this.dtMaintainHeader))
@@ -747,11 +874,6 @@ namespace RFSystem
                     MessageBox.Show("退保养失败，请重新查看单据是否已经被改动");
                 }
             }
-        }
-
-        private void checkBoxTableMakeDate_CheckedChanged(object sender, EventArgs e)
-        {
-            this.dateTimePickerTableMakeDateFrom.Enabled = this.dateTimePickerTableMakeDateTo.Enabled = this.checkBoxTableMakeDate.Checked;
         }
 
         private void comboBoxPlant_SelectedIndexChanged(object sender, EventArgs e)
@@ -868,7 +990,7 @@ namespace RFSystem
             this.dtReport.Columns.Add("物料名称");
             this.dtReport.Columns.Add("保养数量");
             this.dtReport.Columns.Add("物品单重");
-            this.dtReport.Columns.Add("货位");
+            this.dtReport.Columns.Add("储位");
         }
 
         private void SetButtonsEnable(bool startEnable, bool endEnable, bool delEnable, bool reMaintain)

@@ -16,12 +16,12 @@ namespace RFSystem
         private Button btnTheoryAmount;
         private Button btReflash;
         private 理论库存信息 dataInStore;
-        private DataSet ds;
+        private DataSet ds = new DataSet();
         private DataGridView dtVDetail;
         private DataGridView dtVHead;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Hashtable hs;
+        private Hashtable hs =new Hashtable();
         private 盘点对照 invertoryCompare;
         private 盘点条目 invertoryData;
         private 盘点报表 invertoryReport;
@@ -345,7 +345,7 @@ namespace RFSystem
             dtVHead.Columns["STType"].HeaderText = "盘点类型";
             dtVHead.Columns["STCreateDate"].HeaderText = "盘点创建时间";
             dtVHead.Columns["STDesc"].HeaderText = "盘点描述";
-            dtVHead.Columns["Plant"].HeaderText = "公司";
+            dtVHead.Columns["Plant"].HeaderText = "库存账套";
             dtVHead.Columns["DocumentID"].HeaderText = "PSCS盘点单号";
         }
 
@@ -683,7 +683,7 @@ namespace RFSystem
             dgv.Columns["STType"].HeaderText = "盘点类型";
             dgv.Columns["STCreateDate"].HeaderText = "盘点创建时间";
             dgv.Columns["STDesc"].HeaderText = "盘点描述";
-            dgv.Columns["Plant"].HeaderText = "公司";
+            dgv.Columns["Plant"].HeaderText = "库存账套";
             dgv.Columns["DocumentID"].HeaderText = "PSCS盘点单号";
         }
         #endregion

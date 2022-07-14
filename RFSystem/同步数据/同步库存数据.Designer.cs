@@ -28,8 +28,13 @@ namespace RFSystem
             this.dataGridViewSapStockInfo = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.deliveryLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.储位 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,10 +54,6 @@ namespace RFSystem
             this.inspectorJobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invTransactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSapStockInfo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,6 +99,7 @@ namespace RFSystem
             this.dataGridViewSapStockInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deliveryLineId,
             this.receiveId,
+            this.储位,
             this.itemId,
             this.itemName,
             this.itemDesc,
@@ -143,6 +145,42 @@ namespace RFSystem
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 30009;
+            this.label2.Text = "查询数据：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 146);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(120, 26);
+            this.textBox1.TabIndex = 30010;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(12, 254);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(120, 26);
+            this.textBox2.TabIndex = 30011;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 231);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 30012;
+            this.label3.Text = "同步数据：";
+            // 
             // deliveryLineId
             // 
             this.deliveryLineId.DataPropertyName = "deliveryLineId";
@@ -158,6 +196,14 @@ namespace RFSystem
             this.receiveId.Name = "receiveId";
             this.receiveId.ReadOnly = true;
             this.receiveId.Width = 90;
+            // 
+            // 储位
+            // 
+            this.储位.DataPropertyName = "invBin";
+            this.储位.HeaderText = "储位";
+            this.储位.Name = "储位";
+            this.储位.ReadOnly = true;
+            this.储位.Width = 62;
             // 
             // itemId
             // 
@@ -311,42 +357,6 @@ namespace RFSystem
             this.invTransactionId.ReadOnly = true;
             this.invTransactionId.Width = 132;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
-            this.label2.TabIndex = 30009;
-            this.label2.Text = "查询数据：";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(120, 26);
-            this.textBox1.TabIndex = 30010;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(12, 254);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(120, 26);
-            this.textBox2.TabIndex = 30011;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 231);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
-            this.label3.TabIndex = 30012;
-            this.label3.Text = "同步数据：";
-            // 
             // 同步库存数据
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -383,8 +393,13 @@ namespace RFSystem
         private System.Windows.Forms.DataGridView dataGridViewSapStockInfo;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryLineId;
         private System.Windows.Forms.DataGridViewTextBoxColumn receiveId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 储位;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemDesc;
@@ -404,9 +419,5 @@ namespace RFSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorJobId;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionId;
         private System.Windows.Forms.DataGridViewTextBoxColumn invTransactionId;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
     }
 }

@@ -158,11 +158,11 @@ namespace RFSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 111);
+            this.label2.Location = new System.Drawing.Point(127, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 16;
-            this.label2.Text = "初始密码：";
+            this.label2.Text = "密码：";
             // 
             // label1
             // 

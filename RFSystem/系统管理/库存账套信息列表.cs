@@ -5,25 +5,25 @@ using System.Windows.Forms;
 
 namespace RFSystem
 {
-    public partial class 公司信息列表 : Form
+    public partial class 库存账套信息列表 : Form
     {
         DataTable dtPlantList = null;
 
-        public 公司信息列表()
+        public 库存账套信息列表()
         {
             InitializeComponent();
             
         }
 
-        private void 公司信息列表_Load(object sender, EventArgs e)
+        private void 库存账套信息列表_Load(object sender, EventArgs e)
         {
 
         }
 
         private void btnAddPlant_Click(object sender, EventArgs e)
         {
-            公司信息 frm = new 公司信息(null);
-            frm.Text = "公司新增";
+            库存账套信息 frm = new 库存账套信息(null);
+            frm.Text = "库存账套新增";
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -39,22 +39,22 @@ namespace RFSystem
                 {
                     if (CommonFunction.IfHasData(DBOperate.GetStoreLocusWithPlant((string)dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value)))
                     {
-                        CommonFunction.Sys_MsgBox("该公司信息下包含仓库地点信息，请先删除仓库地点信息");
+                        CommonFunction.Sys_MsgBox("该库存账套信息下包含仓库地点信息，请先删除仓库地点信息");
                     }
-                    else if (CommonFunction.Sys_MsgYN("确认删除此条公司信息么？") && (DBOperate.DelPlant((string)dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value) == 1))
+                    else if (CommonFunction.Sys_MsgYN("确认删除此条库存账套信息么？") && (DBOperate.DelPlant((string)dataGridViewPlantList.SelectedRows[0].Cells["columnPlantID"].Value) == 1))
                     {
-                        CommonFunction.Sys_MsgBox("公司信息删除成功");
+                        CommonFunction.Sys_MsgBox("库存账套信息删除成功");
                         btnSelectPlant.PerformClick();
                     }
                 }
                 else
                 {
-                    CommonFunction.Sys_MsgBox("请选择一条公司信息");
+                    CommonFunction.Sys_MsgBox("请选择一条库存账套信息");
                 }
             }
             else
             {
-                CommonFunction.Sys_MsgBox("没有检索到任何公司信息，无法修改");
+                CommonFunction.Sys_MsgBox("没有检索到任何库存账套信息，无法修改");
             }
         }
 
@@ -71,8 +71,8 @@ namespace RFSystem
                         plantItem.Add(cell.OwningColumn.DataPropertyName, cell.Value);
                     }
 
-                    公司信息 frm = new 公司信息(plantItem);
-                    frm.Text = "公司修改";
+                    库存账套信息 frm = new 库存账套信息(plantItem);
+                    frm.Text = "库存账套修改";
 
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
@@ -81,18 +81,18 @@ namespace RFSystem
                 }
                 else
                 {
-                    CommonFunction.Sys_MsgBox("请选择一条公司信息");
+                    CommonFunction.Sys_MsgBox("请选择一条库存账套信息");
                 }
             }
             else
             {
-                CommonFunction.Sys_MsgBox("没有检索到任何公司信息，无法修改");
+                CommonFunction.Sys_MsgBox("没有检索到任何库存账套信息，无法修改");
             }
         }
 
         private void btnSelectPlant_Click(object sender, EventArgs e)
         {
-            dtPlantList = DBOperate.GetPlantList(textBoxPlantID.Text.Trim());
+            dtPlantList = DBOperate.GetPlantList(textBoxPlantID.Text.Trim(), false);
             dataGridViewPlantList.DataSource = dtPlantList;
         }
 

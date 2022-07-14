@@ -332,7 +332,7 @@ namespace RFSystem
             // ColumnFACTORY_NO
             // 
             this.ColumnFACTORY_NO.DataPropertyName = "FACTORY_NO";
-            this.ColumnFACTORY_NO.HeaderText = "公司";
+            this.ColumnFACTORY_NO.HeaderText = "库存账套";
             this.ColumnFACTORY_NO.Name = "ColumnFACTORY_NO";
             this.ColumnFACTORY_NO.ReadOnly = true;
             this.ColumnFACTORY_NO.Width = 54;
@@ -372,7 +372,7 @@ namespace RFSystem
             // ColumnBIN
             // 
             this.ColumnBIN.DataPropertyName = "BIN";
-            this.ColumnBIN.HeaderText = "货位";
+            this.ColumnBIN.HeaderText = "储位";
             this.ColumnBIN.Name = "ColumnBIN";
             this.ColumnBIN.ReadOnly = true;
             this.ColumnBIN.Width = 54;
@@ -396,7 +396,7 @@ namespace RFSystem
             // ColumnSUPPLIER_NO
             // 
             this.ColumnSUPPLIER_NO.DataPropertyName = "SUPPLIER_NO";
-            this.ColumnSUPPLIER_NO.HeaderText = "二级厂";
+            this.ColumnSUPPLIER_NO.HeaderText = "产线部门代码";
             this.ColumnSUPPLIER_NO.Name = "ColumnSUPPLIER_NO";
             this.ColumnSUPPLIER_NO.ReadOnly = true;
             this.ColumnSUPPLIER_NO.Width = 66;

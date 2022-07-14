@@ -118,6 +118,7 @@
             // 
             // cmbLabelType
             // 
+            this.cmbLabelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLabelType.FormattingEnabled = true;
             this.cmbLabelType.Items.AddRange(new object[] {
             "普通标签",
@@ -264,10 +265,10 @@
             // ColumnFACT_NO
             // 
             this.ColumnFACT_NO.DataPropertyName = "gch";
-            this.ColumnFACT_NO.HeaderText = "公司号";
+            this.ColumnFACT_NO.HeaderText = "库存账套";
             this.ColumnFACT_NO.Name = "ColumnFACT_NO";
             this.ColumnFACT_NO.ReadOnly = true;
-            this.ColumnFACT_NO.Width = 76;
+            this.ColumnFACT_NO.Width = 90;
             // 
             // ColumnPRODUCT_NO
             // 
@@ -288,7 +289,7 @@
             // ColumnSLocation
             // 
             this.ColumnSLocation.DataPropertyName = "SL";
-            this.ColumnSLocation.HeaderText = "库存地点";
+            this.ColumnSLocation.HeaderText = "逻辑库区";
             this.ColumnSLocation.Name = "ColumnSLocation";
             this.ColumnSLocation.ReadOnly = true;
             this.ColumnSLocation.Width = 90;
@@ -312,7 +313,7 @@
             // ColumnBIN
             // 
             this.ColumnBIN.DataPropertyName = "bin1";
-            this.ColumnBIN.HeaderText = "货位1";
+            this.ColumnBIN.HeaderText = "储位1";
             this.ColumnBIN.Name = "ColumnBIN";
             this.ColumnBIN.ReadOnly = true;
             this.ColumnBIN.Width = 70;
@@ -320,7 +321,7 @@
             // ColumnBct1
             // 
             this.ColumnBct1.DataPropertyName = "bin1_qty";
-            this.ColumnBct1.HeaderText = "货位1数量";
+            this.ColumnBct1.HeaderText = "储位1数量";
             this.ColumnBct1.Name = "ColumnBct1";
             this.ColumnBct1.ReadOnly = true;
             this.ColumnBct1.Width = 98;
@@ -328,7 +329,7 @@
             // ColumnBct60
             // 
             this.ColumnBct60.DataPropertyName = "bin2";
-            this.ColumnBct60.HeaderText = "货位2";
+            this.ColumnBct60.HeaderText = "储位2";
             this.ColumnBct60.Name = "ColumnBct60";
             this.ColumnBct60.ReadOnly = true;
             this.ColumnBct60.Width = 70;
@@ -336,7 +337,7 @@
             // ColumnBct61
             // 
             this.ColumnBct61.DataPropertyName = "bin2_qty";
-            this.ColumnBct61.HeaderText = "货位2数量";
+            this.ColumnBct61.HeaderText = "储位2数量";
             this.ColumnBct61.Name = "ColumnBct61";
             this.ColumnBct61.ReadOnly = true;
             this.ColumnBct61.Width = 98;
@@ -344,7 +345,7 @@
             // ColumnBct70
             // 
             this.ColumnBct70.DataPropertyName = "bin3";
-            this.ColumnBct70.HeaderText = "货位3";
+            this.ColumnBct70.HeaderText = "储位3";
             this.ColumnBct70.Name = "ColumnBct70";
             this.ColumnBct70.ReadOnly = true;
             this.ColumnBct70.Width = 70;
@@ -352,7 +353,7 @@
             // ColumnBct71
             // 
             this.ColumnBct71.DataPropertyName = "bin3_qty";
-            this.ColumnBct71.HeaderText = "货位3数量";
+            this.ColumnBct71.HeaderText = "储位3数量";
             this.ColumnBct71.Name = "ColumnBct71";
             this.ColumnBct71.ReadOnly = true;
             this.ColumnBct71.Width = 98;
@@ -368,19 +369,19 @@
             // ColumnSUPPLIER_NO
             // 
             this.ColumnSUPPLIER_NO.DataPropertyName = "ejc";
-            this.ColumnSUPPLIER_NO.HeaderText = "二级厂码";
+            this.ColumnSUPPLIER_NO.HeaderText = "产线部门代码";
             this.ColumnSUPPLIER_NO.Name = "ColumnSUPPLIER_NO";
             this.ColumnSUPPLIER_NO.ReadOnly = true;
-            this.ColumnSUPPLIER_NO.Width = 90;
+            this.ColumnSUPPLIER_NO.Width = 118;
             // 
             // ColumnBillNo
             // 
             this.ColumnBillNo.DataPropertyName = "order_no";
-            this.ColumnBillNo.HeaderText = "订单号";
+            this.ColumnBillNo.HeaderText = "送货单号";
             this.ColumnBillNo.Name = "ColumnBillNo";
             this.ColumnBillNo.ReadOnly = true;
             this.ColumnBillNo.ToolTipText = "Ebeln";
-            this.ColumnBillNo.Width = 76;
+            this.ColumnBillNo.Width = 90;
             // 
             // ColumnPName
             // 
@@ -479,15 +480,15 @@
             // 
             // textBoxSupplier
             // 
-            this.textBoxSupplier.Location = new System.Drawing.Point(306, 91);
+            this.textBoxSupplier.Location = new System.Drawing.Point(468, 91);
             this.textBoxSupplier.Name = "textBoxSupplier";
-            this.textBoxSupplier.Size = new System.Drawing.Size(120, 26);
+            this.textBoxSupplier.Size = new System.Drawing.Size(240, 26);
             this.textBoxSupplier.TabIndex = 80;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(235, 94);
+            this.label5.Location = new System.Drawing.Point(397, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 87;
@@ -495,47 +496,47 @@
             // 
             // textBoxOrderNo
             // 
-            this.textBoxOrderNo.Location = new System.Drawing.Point(511, 59);
+            this.textBoxOrderNo.Location = new System.Drawing.Point(779, 59);
             this.textBoxOrderNo.Name = "textBoxOrderNo";
-            this.textBoxOrderNo.Size = new System.Drawing.Size(120, 26);
+            this.textBoxOrderNo.Size = new System.Drawing.Size(240, 26);
             this.textBoxOrderNo.TabIndex = 60;
             // 
             // textBoxBin
             // 
-            this.textBoxBin.Location = new System.Drawing.Point(306, 59);
+            this.textBoxBin.Location = new System.Drawing.Point(468, 59);
             this.textBoxBin.Name = "textBoxBin";
-            this.textBoxBin.Size = new System.Drawing.Size(120, 26);
+            this.textBoxBin.Size = new System.Drawing.Size(240, 26);
             this.textBoxBin.TabIndex = 50;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(249, 62);
+            this.label8.Location = new System.Drawing.Point(411, 62);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 20);
             this.label8.TabIndex = 0;
-            this.label8.Text = "货位：";
+            this.label8.Text = "储位：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(440, 62);
+            this.label4.Location = new System.Drawing.Point(714, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.Size = new System.Drawing.Size(79, 20);
             this.label4.TabIndex = 85;
-            this.label4.Text = "订单号：";
+            this.label4.Text = "送货单号：";
             // 
             // textBoxDes
             // 
-            this.textBoxDes.Location = new System.Drawing.Point(95, 59);
+            this.textBoxDes.Location = new System.Drawing.Point(137, 59);
             this.textBoxDes.Name = "textBoxDes";
-            this.textBoxDes.Size = new System.Drawing.Size(120, 26);
+            this.textBoxDes.Size = new System.Drawing.Size(240, 26);
             this.textBoxDes.TabIndex = 40;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 62);
+            this.label1.Location = new System.Drawing.Point(52, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 83;
@@ -543,16 +544,15 @@
             // 
             // textBoxStoreMan
             // 
-            this.textBoxStoreMan.Location = new System.Drawing.Point(511, 91);
+            this.textBoxStoreMan.Location = new System.Drawing.Point(779, 91);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
-            this.textBoxStoreMan.ReadOnly = true;
-            this.textBoxStoreMan.Size = new System.Drawing.Size(120, 26);
+            this.textBoxStoreMan.Size = new System.Drawing.Size(240, 26);
             this.textBoxStoreMan.TabIndex = 90;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 94);
+            this.label3.Location = new System.Drawing.Point(714, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 81;
@@ -560,16 +560,16 @@
             // 
             // textBoxSubPlant
             // 
-            this.textBoxSubPlant.Location = new System.Drawing.Point(95, 91);
+            this.textBoxSubPlant.Location = new System.Drawing.Point(137, 91);
             this.textBoxSubPlant.Name = "textBoxSubPlant";
-            this.textBoxSubPlant.Size = new System.Drawing.Size(120, 26);
+            this.textBoxSubPlant.Size = new System.Drawing.Size(240, 26);
             this.textBoxSubPlant.TabIndex = 70;
             // 
             // textBoxBarcode
             // 
-            this.textBoxBarcode.Location = new System.Drawing.Point(511, 25);
+            this.textBoxBarcode.Location = new System.Drawing.Point(779, 25);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(120, 26);
+            this.textBoxBarcode.Size = new System.Drawing.Size(240, 26);
             this.textBoxBarcode.TabIndex = 30;
             // 
             // btnSelect
@@ -586,7 +586,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(440, 28);
+            this.label9.Location = new System.Drawing.Point(714, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
             this.label9.TabIndex = 0;
@@ -595,47 +595,50 @@
             // comboBoxPlant
             // 
             this.comboBoxPlant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPlant.DropDownWidth = 300;
             this.comboBoxPlant.FormattingEnabled = true;
-            this.comboBoxPlant.Location = new System.Drawing.Point(95, 25);
+            this.comboBoxPlant.Location = new System.Drawing.Point(137, 25);
             this.comboBoxPlant.Name = "comboBoxPlant";
-            this.comboBoxPlant.Size = new System.Drawing.Size(120, 28);
+            this.comboBoxPlant.Size = new System.Drawing.Size(240, 28);
             this.comboBoxPlant.TabIndex = 10;
+            this.comboBoxPlant.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPlant_SelectionChangeCommitted);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 28);
+            this.label7.Location = new System.Drawing.Point(52, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 20);
+            this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 0;
-            this.label7.Text = "公司：";
+            this.label7.Text = "库存账套：";
             // 
             // comboBoxSLocation
             // 
             this.comboBoxSLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSLocation.DropDownWidth = 300;
             this.comboBoxSLocation.FormattingEnabled = true;
-            this.comboBoxSLocation.Location = new System.Drawing.Point(306, 25);
+            this.comboBoxSLocation.Location = new System.Drawing.Point(468, 25);
             this.comboBoxSLocation.Name = "comboBoxSLocation";
-            this.comboBoxSLocation.Size = new System.Drawing.Size(120, 28);
+            this.comboBoxSLocation.Size = new System.Drawing.Size(240, 28);
             this.comboBoxSLocation.TabIndex = 20;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(221, 28);
+            this.label6.Location = new System.Drawing.Point(383, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "库存地点：";
+            this.label6.Text = "逻辑库区：";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(24, 94);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 20);
+            this.label12.Size = new System.Drawing.Size(107, 20);
             this.label12.TabIndex = 0;
-            this.label12.Text = "二级厂：";
+            this.label12.Text = "产线部门代码：";
             // 
             // 本地数据库查询
             // 
@@ -685,6 +688,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSocket;
         private System.Windows.Forms.DataGridView dataGridViewStock;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxSupplier;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxOrderNo;
+        private System.Windows.Forms.TextBox textBoxBin;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxDes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxStoreMan;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSubPlant;
+        private System.Windows.Forms.TextBox textBoxBarcode;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxPlant;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBoxSLocation;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFACT_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPRODUCT_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPATCH_NO;
@@ -708,25 +731,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn YWTM;
         private System.Windows.Forms.DataGridViewTextBoxColumn PZH;
         private System.Windows.Forms.DataGridViewTextBoxColumn RKRQ;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxSupplier;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxOrderNo;
-        private System.Windows.Forms.TextBox textBoxBin;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxDes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxStoreMan;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxSubPlant;
-        private System.Windows.Forms.TextBox textBoxBarcode;
-        private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBoxPlant;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBoxSLocation;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label12;
     }
 }

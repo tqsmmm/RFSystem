@@ -192,7 +192,7 @@ namespace RFSystem
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 0;
-            this.label5.Text = "库存地点：";
+            this.label5.Text = "逻辑库区：";
             // 
             // label4
             // 
@@ -300,14 +300,14 @@ namespace RFSystem
             // ColumnFACTORY_NO
             // 
             this.ColumnFACTORY_NO.DataPropertyName = "FACTORY_NO";
-            this.ColumnFACTORY_NO.HeaderText = "公司";
+            this.ColumnFACTORY_NO.HeaderText = "库存账套";
             this.ColumnFACTORY_NO.Name = "ColumnFACTORY_NO";
             this.ColumnFACTORY_NO.ReadOnly = true;
             // 
             // ColumnSL
             // 
             this.ColumnSL.DataPropertyName = "SL";
-            this.ColumnSL.HeaderText = "库存地点";
+            this.ColumnSL.HeaderText = "逻辑库区";
             this.ColumnSL.Name = "ColumnSL";
             this.ColumnSL.ReadOnly = true;
             this.ColumnSL.Width = 120;
@@ -390,7 +390,7 @@ namespace RFSystem
             // ColumnFACT_NO
             // 
             this.ColumnFACT_NO.DataPropertyName = "FACT_NO";
-            this.ColumnFACT_NO.HeaderText = "公司号";
+            this.ColumnFACT_NO.HeaderText = "库存账套编号";
             this.ColumnFACT_NO.Name = "ColumnFACT_NO";
             this.ColumnFACT_NO.ReadOnly = true;
             this.ColumnFACT_NO.Visible = false;
@@ -463,7 +463,7 @@ namespace RFSystem
             // ColumnBIN
             // 
             this.ColumnBIN.DataPropertyName = "BIN";
-            this.ColumnBIN.HeaderText = "货位";
+            this.ColumnBIN.HeaderText = "储位";
             this.ColumnBIN.Name = "ColumnBIN";
             this.ColumnBIN.ReadOnly = true;
             this.ColumnBIN.Width = 54;
@@ -524,7 +524,7 @@ namespace RFSystem
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 12);
             this.label6.TabIndex = 0;
-            this.label6.Text = "需删除的货位号：";
+            this.label6.Text = "需删除的储位号：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxBinDel
@@ -576,7 +576,6 @@ namespace RFSystem
             // 制定保养单
             // 
             this.ClientSize = new System.Drawing.Size(744, 618);
-            this.ControlBox = false;
             this.Controls.Add(this.textBoxPlanNum);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnModPlanNum);
@@ -608,17 +607,10 @@ namespace RFSystem
         }
 
         // Methods
-        public 制定保养单(UserInfo userItem, ArrayList userRoles)
+        public 制定保养单()
         {
             InitializeComponent();
-            this.userItem = userItem;
-            this.userRoles = userRoles;
-            labelMaintainID.Text = this.userItem.userID + DateTime.Now.ToString("yyMMdd") + "****";
-            textBoxSTOREMAN.Text = userItem.userID;
-            if (userItem.isAdmin)
-            {
-                textBoxSTOREMAN.ReadOnly = false;
-            }
+            labelMaintainID.Text = DateTime.Now.ToString("yyMMdd") + "****";
             InitFctAndStore();
             InitTableColumns();
         }
@@ -627,7 +619,7 @@ namespace RFSystem
         {
             if (((!comboBoxPlant.Text.Trim().Equals("无") && !comboBoxSLocation.Text.Trim().Equals("无")) && !textBoxBin.Text.Trim().Equals(string.Empty)) && !textBoxSTOREMAN.Text.Trim().Equals(string.Empty))
             {
-                //DataSet cxDs = new DataSet("货位查询");
+                //DataSet cxDs = new DataSet("储位查询");
                 //MessagePack pack = new MessagePack();
 
                 //try
@@ -680,7 +672,7 @@ namespace RFSystem
                     row.Delete();
                 }
                 this.dtGoods.AcceptChanges();
-                MessageBox.Show("货位 " + textBoxBinDel.Text.Trim() + " 的保养计划被删除");
+                MessageBox.Show("储位 " + textBoxBinDel.Text.Trim() + " 的保养计划被删除");
                 if (!CommonFunction.IfHasData(this.dtGoods))
                 {
                     this.btnItemDel.Enabled = false;
@@ -863,7 +855,7 @@ namespace RFSystem
 
         private void InitFctAndStore()
         {
-            this.dtPlantList = DBOperate.GetPlantList(string.Empty);
+            this.dtPlantList = DBOperate.GetPlantList(string.Empty, true);
             this.dtStoreLocusList = DBOperate.GetStoreLocusList(string.Empty, string.Empty);
             this.comboBoxSLocation.Items.Add("无");
             this.comboBoxSLocation.SelectedIndex = 0;

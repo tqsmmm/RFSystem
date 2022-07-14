@@ -73,7 +73,7 @@ namespace RFSystem
             {
                 ifTurnRight = false;
 
-                if (!CommonFunction.Sys_MsgYN("当前盘点货位信息或数量信息与PSCS理论库存信息不一致，是否继续修改？"))
+                if (!CommonFunction.Sys_MsgYN("当前盘点储位信息或数量信息与PSCS理论库存信息不一致，是否继续修改？"))
                 {
                     flag = false;
                 }
@@ -146,7 +146,7 @@ namespace RFSystem
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "理论货位1：";
+            this.label1.Text = "理论储位1：";
             // 
             // textBoxSapBin1
             // 
@@ -205,7 +205,7 @@ namespace RFSystem
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "理论货位2：";
+            this.label4.Text = "理论储位2：";
             // 
             // textBoxSapBinCount3
             // 
@@ -239,7 +239,7 @@ namespace RFSystem
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 20);
             this.label6.TabIndex = 8;
-            this.label6.Text = "理论货位3：";
+            this.label6.Text = "理论储位3：";
             // 
             // textBoxSTBinCount3
             // 
@@ -272,7 +272,7 @@ namespace RFSystem
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 20);
             this.label8.TabIndex = 20;
-            this.label8.Text = "实际货位3：";
+            this.label8.Text = "实际储位3：";
             // 
             // textBoxSTBinCount2
             // 
@@ -305,7 +305,7 @@ namespace RFSystem
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 20);
             this.label10.TabIndex = 16;
-            this.label10.Text = "实际货位2：";
+            this.label10.Text = "实际储位2：";
             // 
             // textBoxSTBinCount1
             // 
@@ -338,7 +338,7 @@ namespace RFSystem
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(87, 20);
             this.label12.TabIndex = 12;
-            this.label12.Text = "实际货位1：";
+            this.label12.Text = "实际储位1：";
             // 
             // btnExit
             // 
