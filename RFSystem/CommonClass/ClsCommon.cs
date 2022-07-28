@@ -6,73 +6,25 @@ namespace RFSystem
 {
     public class ClsCommon
     {
-        private static string m_ConnStr;
-        private static TDB m_db;
-
-        public static string ConnStr
-        {
-            get
-            {
-                return m_ConnStr;
-            }
-            set
-            {
-                m_ConnStr = value;
-            }
-        }
-
-        private static TDB db
-        {
-            get
-            {
-                if (m_db == null)
-                {
-                    m_db = new TDB(m_ConnStr);
-                }
-
-                return m_db;
-            }
-            set
-            {
-
-            }
-        }
-
         #region 保养货物、查询保养单
-
-        public static DataTable MaintainGetList_New(ArrayList arriveList)
-        {
-            string param = "";
-
-            foreach (object obj2 in arriveList)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-            db.OpenProcedure("RF_Maintain_GetList_New", param, out DataTable dt);
-
-            return dt;
-        }
 
         public static int MaintainItemToHis(DateTime dTime1, DateTime dTime2, string czr)
         {
-
             try
             {
-                db.BeginTrans();
+                TDB.db.BeginTrans();
                 string param = "";
                 //param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",") + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59"));
                 param = (param + TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ",")
                     + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59")) + ","
                     + TDBObject.ToDBVal(czr);
-                db.ExecProcedure("RF_Maintain_ToHis", param);
-                db.Commit();
+                TDB.db.ExecProcedure("RF_Maintain_ToHis", param);
+                TDB.db.Commit();
                 return 0;
             }
             catch
             {
-                db.RollBack();
+                TDB.db.RollBack();
                 return -1;
             }
         }
@@ -88,34 +40,19 @@ namespace RFSystem
             }
 
             param = param.Remove(param.Length - 1);
-            //db.OpenProcedure("RF_LocalStock_GetList", param, out dt);
-            db.OpenProcedure("RF_LocalStock_GetList_New", param, out DataTable dt);
+
+            TDB.db.OpenProcedure("rfid2021.dbo.RF_LocalStock_GetList_New", param, out DataTable dt);
 
             return dt;
         }
 
-        public static DataTable LocalStockGetList(ArrayList alParams)
-        {
-            string param = "";
-
-            foreach (object obj2 in alParams)
-            {
-                param = param + TDBObject.ToDBVal(obj2) + ",";
-            }
-
-            param = param.Remove(param.Length - 1);
-            //db.OpenProcedure("RF_LocalStock_GetList", param, out dt);
-            db.OpenProcedure("rfid2021.dbo.RF_LocalStock_GetList", param, out DataTable dt);
-
-            return dt;
-        }
         #endregion
 
         //工作日志统计
         public static DataSet StatisticInfo_New(string storeMan, string operatorDateFrom, string operatorDateTo)
         {
             string param = TDBObject.ToDBVal(storeMan) + "," + TDBObject.ToDBVal(operatorDateFrom) + "," + TDBObject.ToDBVal(operatorDateTo);
-            db.OpenProcedure("RF_Statistic_GetList_New", param, out DataSet ds);
+            TDB.db.OpenProcedure("RF_Statistic_GetList_New", param, out DataSet ds);
 
             return ds;
         }
@@ -127,7 +64,7 @@ namespace RFSystem
             ErrMsg = "";
             dt = new DataTable();
 
-            if (0 != db.OpenDataSet("SELECT * FROM STOrder WHERE STStatus <> -1 "
+            if (0 != TDB.db.OpenDataSet("SELECT * FROM STOrder WHERE STStatus <> -1 "
                 + " AND CONVERT(VARCHAR(10), STCreateDate, 120) >= '" + dTime1.ToString("yyyy-MM-dd") + "' "
                 + " AND CONVERT(VARCHAR(10), STCreateDate, 120) <= '" + dTime2.ToString("yyyy-MM-dd") + "' "
                 + " ORDER BY STSerial", out dt))
@@ -142,45 +79,44 @@ namespace RFSystem
         //转移至历史库
         public static int STItemToHis(DateTime dTime1, DateTime dTime2, string czr)
         {
+            TDB.db.BeginTrans();
+
             try
             {
-                db.BeginTrans();
-
                 string param = TDBObject.ToDBVal(dTime1.ToString("yyyy-MM-dd")) + ","
                     + TDBObject.ToDBVal(dTime2.ToString("yyyy-MM-dd 23:59:59")) + ","
                     + TDBObject.ToDBVal(czr);
 
-                db.ExecProcedure("STItem_ToHis", param);
-                db.Commit();
+                TDB.db.ExecProcedure("STItem_ToHis", param);
+                TDB.db.Commit();
 
                 return 0;
             }
             catch
             {
-                db.RollBack();
+                TDB.db.RollBack();
 
                 return -1;
             }
         }
-
 
         //转移至历史库-单条
         public static int STItemToHis_s(string STSerial, string czr)
         {
             try
             {
-                db.BeginTrans();
-                db.ExecSQL("insert into STOrderdetail_His(OperatorUser,STSerial,czr,czrq) select OperatorUser,STSerial,'" + czr + "',czrq=getdate() from STOrderdetail where stserial = '" + STSerial + "'");
-                db.ExecSQL("insert into STOrder_His(STSerial,STType,STCreateDate,STStatus,STDesc,STCreateUser,Plant,DocumentID,czr,czrq) select STSerial,STType,STCreateDate,STStatus,STDesc,STCreateUser,Plant,DocumentID,'" + czr + "',czrq=getdate() from STOrder where STStatus<>-1 and STSerial = '" + STSerial + "'");
-                db.ExecSQL("delete from STOrderDetail where stserial = '" + STSerial + "'");
-                db.ExecSQL("delete from STOrder where STStatus<>-1 and STSerial = '" + STSerial + "'");
-                db.Commit();
+                TDB.db.BeginTrans();
+                TDB.db.ExecSQL("insert into STOrderdetail_His(OperatorUser,STSerial,czr,czrq) select OperatorUser,STSerial,'" + czr + "',czrq=getdate() from STOrderdetail where stserial = '" + STSerial + "'");
+                TDB.db.ExecSQL("insert into STOrder_His(STSerial,STType,STCreateDate,STStatus,STDesc,STCreateUser,Plant,DocumentID,czr,czrq) select STSerial,STType,STCreateDate,STStatus,STDesc,STCreateUser,Plant,DocumentID,'" + czr + "',czrq=getdate() from STOrder where STStatus<>-1 and STSerial = '" + STSerial + "'");
+                TDB.db.ExecSQL("delete from STOrderDetail where stserial = '" + STSerial + "'");
+                TDB.db.ExecSQL("delete from STOrder where STStatus<>-1 and STSerial = '" + STSerial + "'");
+                TDB.db.Commit();
 
                 return 0;
             }
             catch
             {
-                db.RollBack();
+                TDB.db.RollBack();
 
                 return -1;
             }
@@ -314,7 +250,6 @@ namespace RFSystem
             }
             catch
             {
-                //MessageBox.Show("Failed to convert!!! Please check your input format!" + exception.Message);
                 str = "Failed to convert";
             }
 

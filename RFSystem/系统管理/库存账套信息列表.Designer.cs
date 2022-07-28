@@ -109,7 +109,7 @@
             this.dataGridViewPlantList.ReadOnly = true;
             this.dataGridViewPlantList.RowHeadersVisible = false;
             this.dataGridViewPlantList.RowTemplate.Height = 23;
-            this.dataGridViewPlantList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPlantList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewPlantList.Size = new System.Drawing.Size(805, 539);
             this.dataGridViewPlantList.TabIndex = 54;
             this.dataGridViewPlantList.SelectionChanged += new System.EventHandler(this.dataGridViewPlantList_SelectionChanged);

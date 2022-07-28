@@ -152,7 +152,7 @@ namespace RFSystem
             this.dataGridViewUserList.ReadOnly = true;
             this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 23;
-            this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewUserList.Size = new System.Drawing.Size(417, 650);
             this.dataGridViewUserList.TabIndex = 30;
             this.dataGridViewUserList.SelectionChanged += new System.EventHandler(this.dataGridViewUserList_SelectionChanged);
@@ -228,7 +228,7 @@ namespace RFSystem
 
             if (userRoles.Length == 0)
             {
-                if (DBOperate.DelUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString()) != -1)
+                if (UserInfo.DelUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString()) != -1)
                 {
                     CommonFunction.Sys_MsgBox("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
                 }
@@ -237,7 +237,7 @@ namespace RFSystem
             {
                 userRoles = userRoles.Remove(userRoles.Length - 1);
 
-                if (DBOperate.ModUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString(), userRoles) != -1)
+                if (UserInfo.ModUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString(), userRoles) != -1)
                 {
                     CommonFunction.Sys_MsgBox("用户 " + dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString() + " 权限更新成功");
                 }
@@ -246,7 +246,7 @@ namespace RFSystem
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            dtUserAndRoles = DBOperate.GetUserList(textBoxUserID.Text.Trim(), textBoxUserName.Text.Trim(), true);
+            dtUserAndRoles = UserInfo.GetUserList(textBoxUserID.Text.Trim(), textBoxUserName.Text.Trim(), true);
             dataGridViewUserList.DataSource = dtUserAndRoles;
         }
 
@@ -256,7 +256,7 @@ namespace RFSystem
             {
                 treeViewRoles.Enabled = true;
                 btnOK.Enabled = true;
-                dtUserRoles = DBOperate.GetUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString());
+                dtUserRoles = UserInfo.GetUserRoles(dataGridViewUserList.SelectedRows[0].Cells["ColumnUser_ID"].Value.ToString());
                 RoleInit.InitUserRoles(treeViewRoles, dtUserRoles);
             }
             else

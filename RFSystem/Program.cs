@@ -17,24 +17,21 @@ namespace RFSystem
 
             if (DialogResult.No != rf库存管理系统登录.ShowDialog())
             {
-                UserInfo userItem = new UserInfo();
-                userItem.userID = ConstDefine.g_User;
-                string input = ConstDefine.g_PassWord;
-                userItem.passWord = RFdesOperator.getMd5Hash(input);
-                userItem = UserInfo.GetUserByLogin(userItem, out bool flag, out DataTable table);
+                AppSetter.User_Info.passWord = CommonFunction.getMd5Hash(AppSetter.User_Info.passWord);
+                AppSetter.User_Info = UserInfo.GetUserByLogin(AppSetter.User_Info, out bool flag, out DataTable table);
 
-                ArrayList userRoles = new ArrayList();
+                AppSetter.User_Roles = new ArrayList();
 
                 foreach (DataRow row in table.Rows)
                 {
-                    userRoles.Add(row["RoleID"].ToString());
+                    AppSetter.User_Roles.Add(row["RoleID"].ToString());
                 }
 
                 if (flag)
                 {
-                    if (userItem.isEffect)
+                    if (AppSetter.User_Info.isEffect)
                     {
-                        new RF库存管理系统(userItem, userRoles).ShowDialog();
+                        new RF库存管理系统(AppSetter.User_Info, AppSetter.User_Roles).ShowDialog();
                     }
                     else
                     {

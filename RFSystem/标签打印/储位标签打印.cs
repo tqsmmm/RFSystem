@@ -118,7 +118,7 @@ namespace RFSystem
             this.dataGridViewLocationList.ReadOnly = true;
             this.dataGridViewLocationList.RowHeadersVisible = false;
             this.dataGridViewLocationList.RowTemplate.Height = 23;
-            this.dataGridViewLocationList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewLocationList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewLocationList.Size = new System.Drawing.Size(713, 555);
             this.dataGridViewLocationList.TabIndex = 30;
             this.dataGridViewLocationList.SelectionChanged += new System.EventHandler(this.dataGridViewLocationList_SelectionChanged);
@@ -157,7 +157,7 @@ namespace RFSystem
             this.dataGridViewPrinterList.ReadOnly = true;
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
-            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 180);
             this.dataGridViewPrinterList.TabIndex = 210;
             // 
@@ -227,6 +227,7 @@ namespace RFSystem
             this.txtPrinter.Name = "txtPrinter";
             this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 1008;
+            this.txtPrinter.TextChanged += new System.EventHandler(this.txtPrinter_TextChanged);
             // 
             // label11
             // 
@@ -269,8 +270,7 @@ namespace RFSystem
             dtLocationList = DBOperate.GetLocationList("");
             dataGridViewLocationList.DataSource = dtLocationList;
 
-            dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "%");
-            dataGridViewPrinterList.DataSource = dtPrinterList;
+            txtPrinter_TextChanged(null, e);
         }
 
         private void btnPatchPrint_Click(object sender, EventArgs e)
@@ -301,6 +301,12 @@ namespace RFSystem
             {
                 CommonFunction.Sys_MsgBox(exception.Message);
             }
+        }
+
+        private void txtPrinter_TextChanged(object sender, EventArgs e)
+        {
+            dtPrinterList = DBOperate.GetPrinterList(txtPrinter.Text, "");
+            dataGridViewPrinterList.DataSource = dtPrinterList;
         }
     }
 }

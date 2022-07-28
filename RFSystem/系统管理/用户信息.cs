@@ -59,14 +59,14 @@ namespace RFSystem
                 {
                     textBoxUserID.Text.Trim(),
                     textBoxUserName.Text.Trim(),
-                    RFdesOperator.getMd5Hash(textBoxPassWord.Text.Trim()),
+                    CommonFunction.getMd5Hash(textBoxPassWord.Text.Trim()),
                     txtSapRolePoint.Text.Trim(),
                     checkBoxIsAdmin.Checked ? 1 : 0
                 };
 
                 if (Text == "用户新增")
                 {
-                    int num = DBOperate.AddUser(userItem);
+                    int num = UserInfo.AddUser(userItem);
 
                     if (num != -1)
                     {
@@ -84,7 +84,7 @@ namespace RFSystem
                 }
                 else if (Text == "用户修改")
                 {
-                    if (DBOperate.ModUser(userItem) != -1)
+                    if (UserInfo.ModUser(userItem) != -1)
                     {
                         CommonFunction.Sys_MsgBox("用户 " + textBoxUserID.Text.Trim() + "|" + textBoxUserName.Text.Trim() + " 信息修改成功");
                         DialogResult = DialogResult.OK;

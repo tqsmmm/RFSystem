@@ -1,4 +1,3 @@
-using RFSystem.Properties;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -33,42 +32,29 @@ namespace RFSystem
             }
             else
             {
-                string str2 = "Provider=SQLOLEDB;Data Source=192.168.10.23;Persist Security Info=True;User ID=sa;Password=sanp1987~;Initial Catalog=RF_Database_CZ";
+                AppSetter.User_Info = new UserInfo();
 
-                if (textBoxUserID.Text=="admin")
+                AppSetter.User_Info.userID = textBoxUserID.Text.Trim().ToUpperInvariant();
+                AppSetter.User_Info.passWord = textBoxPassWord.Text.Trim();
+
+                try
                 {
-                    ConstDefine.g_DbConnStr = str2;
-                    DBOperate.ConnStr = str2;
-                    ClsCommon.ConnStr = str2;
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    ConstDefine.g_User = textBoxUserID.Text.Trim().ToUpperInvariant();
-                    ConstDefine.g_PassWord = textBoxPassWord.Text.Trim();
+                    rfid2021Service.rfidService _rfid2021service = new rfid2021Service.rfidService();
+                    rfid2021Service.MessagePack pack = _rfid2021service.Login(textBoxUserID.Text.Trim().ToUpperInvariant(), textBoxPassWord.Text.Trim(), out AppSetter.g_bxuserid, out AppSetter.g_bxusername, out AppSetter.g_bxjobid, out rfid2021Service.privilidge privateStr_new, out string str2);
 
-                    try
+                    if (!pack.Result)
                     {
-                        rfid2021Service.rfidService _rfid2021service = new rfid2021Service.rfidService();
-                        rfid2021Service.privilidge privateStr_new;
-                        rfid2021Service.MessagePack pack = _rfid2021service.Login(textBoxUserID.Text.Trim().ToUpperInvariant(), textBoxPassWord.Text.Trim(), out ConstDefine.g_bxuserid, out ConstDefine.g_bxusername, out ConstDefine.g_bxjobid, out privateStr_new, out str2);
-
-                        if (!pack.Result)
-                        {
-                            CommonFunction.Sys_MsgBox(pack.Message);
-                            return;
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        CommonFunction.Sys_MsgBox(exception.Message);
+                        CommonFunction.Sys_MsgBox(pack.Message);
                         return;
                     }
 
-                    ConstDefine.g_DbConnStr = str2;
-                    DBOperate.ConnStr = str2;
-                    ClsCommon.ConnStr = str2;
+                    TDB.ConnStr = str2;
                     DialogResult = DialogResult.OK;
+                }
+                catch (Exception exception)
+                {
+                    CommonFunction.Sys_MsgBox(exception.Message);
+                    return;
                 }
             }
         }
@@ -95,6 +81,7 @@ namespace RFSystem
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(245, 199);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(120, 50);
@@ -140,6 +127,7 @@ namespace RFSystem
             // 
             // RF库存管理系统登录
             // 
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -149,11 +137,13 @@ namespace RFSystem
             this.Controls.Add(this.btnLogin);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RF库存管理系统登录";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RF-PSCS库存管理系统登录";
+            this.Load += new System.EventHandler(this.RF库存管理系统登录_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +155,11 @@ namespace RFSystem
             {
                 GetNextControl(ActiveControl, true).Focus();
             }
+        }
+
+        private void RF库存管理系统登录_Load(object sender, EventArgs e)
+        {
+            Text = AppSetter.AppName;
         }
     }
 }

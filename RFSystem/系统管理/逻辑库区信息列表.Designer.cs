@@ -129,7 +129,7 @@
             this.dataGridViewStoreList.ReadOnly = true;
             this.dataGridViewStoreList.RowHeadersVisible = false;
             this.dataGridViewStoreList.RowTemplate.Height = 23;
-            this.dataGridViewStoreList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStoreList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewStoreList.Size = new System.Drawing.Size(869, 508);
             this.dataGridViewStoreList.TabIndex = 1056;
             this.dataGridViewStoreList.SelectionChanged += new System.EventHandler(this.dataGridViewStoreList_SelectionChanged);

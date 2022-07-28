@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace RFSystem
@@ -7,12 +9,12 @@ namespace RFSystem
     {
         public static void Sys_MsgBox(string strMsg)
         {
-            MessageBox.Show(strMsg, "RF-PSCS库存管理系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(strMsg, AppSetter.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static bool Sys_MsgYN(string strMsg)
         {
-            if (MessageBox.Show(strMsg, "RF-PSCS库存管理系统", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(strMsg, AppSetter.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 return true;
             }
@@ -20,6 +22,19 @@ namespace RFSystem
             {
                 return false;
             }
+        }
+
+        public static string getMd5Hash(string input)
+        {
+            byte[] buffer = new MD5CryptoServiceProvider().ComputeHash(Encoding.Default.GetBytes(input));
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                builder.Append(buffer[i].ToString("x2"));
+            }
+
+            return builder.ToString();
         }
 
         public static bool IfHasData(DataTable dataList)

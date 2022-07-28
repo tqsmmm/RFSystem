@@ -37,7 +37,7 @@ namespace RFSystem
 
                 _dt.Rows.Add(_dr);
 
-                rfid2021Service.MessagePack pack = newService.sendMsgNotOut("DVE131", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs);
+                rfid2021Service.MessagePack pack = newService.sendMsgNotOut("DVE131", AppSetter.g_bxuserid, AppSetter.g_bxusername, AppSetter.g_bxjobid, _sendDs);
 
                 if (pack.Result)
                 {

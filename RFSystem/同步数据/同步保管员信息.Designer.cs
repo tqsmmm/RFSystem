@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,9 +40,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +51,6 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -64,9 +63,33 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(835, 510);
             this.dataGridView1.TabIndex = 30020;
+            // 
+            // userid
+            // 
+            this.userid.DataPropertyName = "userid";
+            this.userid.HeaderText = "保管员编号";
+            this.userid.Name = "userid";
+            this.userid.ReadOnly = true;
+            this.userid.Width = 104;
+            // 
+            // userName
+            // 
+            this.userName.DataPropertyName = "userName";
+            this.userName.HeaderText = "保管员名称";
+            this.userName.Name = "userName";
+            this.userName.ReadOnly = true;
+            this.userName.Width = 104;
+            // 
+            // postid
+            // 
+            this.postid.DataPropertyName = "postid";
+            this.postid.HeaderText = "保管员岗位号";
+            this.postid.Name = "postid";
+            this.postid.ReadOnly = true;
+            this.postid.Width = 118;
             // 
             // btnDownload
             // 
@@ -129,30 +152,6 @@
             // 
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // userid
-            // 
-            this.userid.DataPropertyName = "userid";
-            this.userid.HeaderText = "保管员编号";
-            this.userid.Name = "userid";
-            this.userid.ReadOnly = true;
-            this.userid.Width = 104;
-            // 
-            // userName
-            // 
-            this.userName.DataPropertyName = "userName";
-            this.userName.HeaderText = "保管员名称";
-            this.userName.Name = "userName";
-            this.userName.ReadOnly = true;
-            this.userName.Width = 104;
-            // 
-            // postid
-            // 
-            this.postid.DataPropertyName = "postid";
-            this.postid.HeaderText = "保管员岗位号";
-            this.postid.Name = "postid";
-            this.postid.ReadOnly = true;
-            this.postid.Width = 118;
             // 
             // 同步保管员信息
             // 

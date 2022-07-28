@@ -31,10 +31,6 @@
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.地区代码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.地区名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.库存账套 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +47,10 @@
             this.是否校验 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.领用账套 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +82,6 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -107,9 +106,137 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(821, 533);
             this.dataGridView1.TabIndex = 30015;
+            // 
+            // 地区代码
+            // 
+            this.地区代码.DataPropertyName = "areaId";
+            this.地区代码.HeaderText = "地区代码";
+            this.地区代码.Name = "地区代码";
+            this.地区代码.ReadOnly = true;
+            this.地区代码.Width = 70;
+            // 
+            // 地区名称
+            // 
+            this.地区名称.DataPropertyName = "areaName";
+            this.地区名称.HeaderText = "地区名称";
+            this.地区名称.Name = "地区名称";
+            this.地区名称.ReadOnly = true;
+            this.地区名称.Width = 70;
+            // 
+            // 库存账套
+            // 
+            this.库存账套.DataPropertyName = "billTo";
+            this.库存账套.HeaderText = "库存账套";
+            this.库存账套.Name = "库存账套";
+            this.库存账套.ReadOnly = true;
+            this.库存账套.Width = 70;
+            // 
+            // 库存账套名称
+            // 
+            this.库存账套名称.DataPropertyName = "billToName";
+            this.库存账套名称.HeaderText = "库存账套名称";
+            this.库存账套名称.Name = "库存账套名称";
+            this.库存账套名称.ReadOnly = true;
+            this.库存账套名称.Width = 83;
+            // 
+            // 到货点代码
+            // 
+            this.到货点代码.DataPropertyName = "shiptoId";
+            this.到货点代码.HeaderText = "到货点代码";
+            this.到货点代码.Name = "到货点代码";
+            this.到货点代码.ReadOnly = true;
+            this.到货点代码.Width = 83;
+            // 
+            // 到货点名称
+            // 
+            this.到货点名称.DataPropertyName = "shiptoName";
+            this.到货点名称.HeaderText = "到货点名称";
+            this.到货点名称.Name = "到货点名称";
+            this.到货点名称.ReadOnly = true;
+            this.到货点名称.Width = 83;
+            // 
+            // 物理库区代码
+            // 
+            this.物理库区代码.DataPropertyName = "invPhysicCode";
+            this.物理库区代码.HeaderText = "物理库区代码";
+            this.物理库区代码.Name = "物理库区代码";
+            this.物理库区代码.ReadOnly = true;
+            this.物理库区代码.Width = 83;
+            // 
+            // 物理库区名称
+            // 
+            this.物理库区名称.DataPropertyName = "invPhysicName";
+            this.物理库区名称.HeaderText = "物理库区名称";
+            this.物理库区名称.Name = "物理库区名称";
+            this.物理库区名称.ReadOnly = true;
+            this.物理库区名称.Width = 83;
+            // 
+            // 逻辑库区代码
+            // 
+            this.逻辑库区代码.DataPropertyName = "invLogicCode";
+            this.逻辑库区代码.HeaderText = "逻辑库区代码";
+            this.逻辑库区代码.Name = "逻辑库区代码";
+            this.逻辑库区代码.ReadOnly = true;
+            this.逻辑库区代码.Width = 83;
+            // 
+            // 逻辑库区名称
+            // 
+            this.逻辑库区名称.DataPropertyName = "invLogicName";
+            this.逻辑库区名称.HeaderText = "逻辑库区名称";
+            this.逻辑库区名称.Name = "逻辑库区名称";
+            this.逻辑库区名称.ReadOnly = true;
+            this.逻辑库区名称.Width = 83;
+            // 
+            // 虚拟库标记
+            // 
+            this.虚拟库标记.DataPropertyName = "virtualMark";
+            this.虚拟库标记.HeaderText = "虚拟库标记";
+            this.虚拟库标记.Name = "虚拟库标记";
+            this.虚拟库标记.ReadOnly = true;
+            this.虚拟库标记.Width = 83;
+            // 
+            // 是否可移拨
+            // 
+            this.是否可移拨.DataPropertyName = "ifTransfer";
+            this.是否可移拨.HeaderText = "是否可移拨";
+            this.是否可移拨.Name = "是否可移拨";
+            this.是否可移拨.ReadOnly = true;
+            this.是否可移拨.Width = 83;
+            // 
+            // 是否启用
+            // 
+            this.是否启用.DataPropertyName = "isActive";
+            this.是否启用.HeaderText = "是否启用";
+            this.是否启用.Name = "是否启用";
+            this.是否启用.ReadOnly = true;
+            this.是否启用.Width = 70;
+            // 
+            // 是否校验
+            // 
+            this.是否校验.DataPropertyName = "ifCheck";
+            this.是否校验.HeaderText = "是否校验";
+            this.是否校验.Name = "是否校验";
+            this.是否校验.ReadOnly = true;
+            this.是否校验.Width = 70;
+            // 
+            // 领用账套
+            // 
+            this.领用账套.DataPropertyName = "ddBillTo";
+            this.领用账套.HeaderText = "领用账套";
+            this.领用账套.Name = "领用账套";
+            this.领用账套.ReadOnly = true;
+            this.领用账套.Width = 70;
+            // 
+            // 备注
+            // 
+            this.备注.DataPropertyName = "remark";
+            this.备注.HeaderText = "备注";
+            this.备注.Name = "备注";
+            this.备注.ReadOnly = true;
+            this.备注.Width = 58;
             // 
             // label3
             // 
@@ -146,118 +273,6 @@
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 30016;
             this.label2.Text = "查询数据：";
-            // 
-            // 地区代码
-            // 
-            this.地区代码.DataPropertyName = "areaId";
-            this.地区代码.HeaderText = "地区代码";
-            this.地区代码.Name = "地区代码";
-            this.地区代码.Width = 70;
-            // 
-            // 地区名称
-            // 
-            this.地区名称.DataPropertyName = "areaName";
-            this.地区名称.HeaderText = "地区名称";
-            this.地区名称.Name = "地区名称";
-            this.地区名称.Width = 70;
-            // 
-            // 库存账套
-            // 
-            this.库存账套.DataPropertyName = "billTo";
-            this.库存账套.HeaderText = "库存账套";
-            this.库存账套.Name = "库存账套";
-            this.库存账套.Width = 70;
-            // 
-            // 库存账套名称
-            // 
-            this.库存账套名称.DataPropertyName = "billToName";
-            this.库存账套名称.HeaderText = "库存账套名称";
-            this.库存账套名称.Name = "库存账套名称";
-            this.库存账套名称.Width = 83;
-            // 
-            // 到货点代码
-            // 
-            this.到货点代码.DataPropertyName = "shiptoId";
-            this.到货点代码.HeaderText = "到货点代码";
-            this.到货点代码.Name = "到货点代码";
-            this.到货点代码.Width = 83;
-            // 
-            // 到货点名称
-            // 
-            this.到货点名称.DataPropertyName = "shiptoName";
-            this.到货点名称.HeaderText = "到货点名称";
-            this.到货点名称.Name = "到货点名称";
-            this.到货点名称.Width = 83;
-            // 
-            // 物理库区代码
-            // 
-            this.物理库区代码.DataPropertyName = "invPhysicCode";
-            this.物理库区代码.HeaderText = "物理库区代码";
-            this.物理库区代码.Name = "物理库区代码";
-            this.物理库区代码.Width = 83;
-            // 
-            // 物理库区名称
-            // 
-            this.物理库区名称.DataPropertyName = "invPhysicName";
-            this.物理库区名称.HeaderText = "物理库区名称";
-            this.物理库区名称.Name = "物理库区名称";
-            this.物理库区名称.Width = 83;
-            // 
-            // 逻辑库区代码
-            // 
-            this.逻辑库区代码.DataPropertyName = "invLogicCode";
-            this.逻辑库区代码.HeaderText = "逻辑库区代码";
-            this.逻辑库区代码.Name = "逻辑库区代码";
-            this.逻辑库区代码.Width = 83;
-            // 
-            // 逻辑库区名称
-            // 
-            this.逻辑库区名称.DataPropertyName = "invLogicName";
-            this.逻辑库区名称.HeaderText = "逻辑库区名称";
-            this.逻辑库区名称.Name = "逻辑库区名称";
-            this.逻辑库区名称.Width = 83;
-            // 
-            // 虚拟库标记
-            // 
-            this.虚拟库标记.DataPropertyName = "virtualMark";
-            this.虚拟库标记.HeaderText = "虚拟库标记";
-            this.虚拟库标记.Name = "虚拟库标记";
-            this.虚拟库标记.Width = 83;
-            // 
-            // 是否可移拨
-            // 
-            this.是否可移拨.DataPropertyName = "ifTransfer";
-            this.是否可移拨.HeaderText = "是否可移拨";
-            this.是否可移拨.Name = "是否可移拨";
-            this.是否可移拨.Width = 83;
-            // 
-            // 是否启用
-            // 
-            this.是否启用.DataPropertyName = "isActive";
-            this.是否启用.HeaderText = "是否启用";
-            this.是否启用.Name = "是否启用";
-            this.是否启用.Width = 70;
-            // 
-            // 是否校验
-            // 
-            this.是否校验.DataPropertyName = "ifCheck";
-            this.是否校验.HeaderText = "是否校验";
-            this.是否校验.Name = "是否校验";
-            this.是否校验.Width = 70;
-            // 
-            // 领用账套
-            // 
-            this.领用账套.DataPropertyName = "ddBillTo";
-            this.领用账套.HeaderText = "领用账套";
-            this.领用账套.Name = "领用账套";
-            this.领用账套.Width = 70;
-            // 
-            // 备注
-            // 
-            this.备注.DataPropertyName = "remark";
-            this.备注.HeaderText = "备注";
-            this.备注.Name = "备注";
-            this.备注.Width = 58;
             // 
             // 同步物理库区
             // 

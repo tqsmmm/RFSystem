@@ -68,42 +68,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArriveStore\到库货物信息合并.cs">
+    <Compile Include="AppSetter.cs" />
+    <Compile Include="MetarnetRegex.cs" />
+    <Compile Include="到货通知\到库货物信息合并.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库货物信息拆分.cs">
+    <Compile Include="到货通知\到库货物信息拆分.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库货物处理.cs">
+    <Compile Include="到货通知\到库货物处理.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库货物存放信息.cs">
+    <Compile Include="到货通知\到库货物存放信息.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库通知单.cs">
+    <Compile Include="到货通知\到库通知单.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库通知单修改.cs">
+    <Compile Include="到货通知\到库通知单修改.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\到库通知单列表.cs">
+    <Compile Include="到货通知\到库通知单列表.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\异议入库.cs">
+    <Compile Include="到货通知\异议入库.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\异议入库信息添加.cs">
+    <Compile Include="到货通知\异议入库信息添加.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArriveStore\异议货物存放信息.cs">
+    <Compile Include="到货通知\异议货物存放信息.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommonClass\CommonFunction.cs" />
-    <Compile Include="CommonClass\ConstDefine.cs" />
-    <Compile Include="CommonClass\RFdesOperator.cs" />
     <Compile Include="CommonClass\RoleInit.cs" />
     <Compile Include="CommonClass\DBOperate.cs" />
     <Compile Include="CommonClass\GetData.cs" />
+    <Compile Include="同步数据\同步盘点单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="同步数据\同步盘点单.Designer.cs">
+      <DependentUpon>同步盘点单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存保养\保养单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\保养单列表.Designer.cs">
+      <DependentUpon>保养单列表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存保养\新建保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\新建保养单.Designer.cs">
+      <DependentUpon>新建保养单.cs</DependentUpon>
+    </Compile>
     <Compile Include="同步数据\同步保管员信息.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,35 +134,41 @@
     <Compile Include="同步数据\同步库存账套及逻辑库区.Designer.cs">
       <DependentUpon>同步库存账套及逻辑库区.cs</DependentUpon>
     </Compile>
-    <Compile Include="库存保养\保养单列表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\保养货物.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\制定保养单.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存保养\新增保养数量.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="库存保养\查询保养单.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="库存保养\管理保养单.cs">
+    <Compile Include="库存保养\查询保养单.Designer.cs">
+      <DependentUpon>查询保养单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\新建盘点单.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\新建盘点单.Designer.cs">
+      <DependentUpon>新建盘点单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\查询盘点单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\查询盘点单.Designer.cs">
+      <DependentUpon>查询盘点单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\挑选库存.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\挑选库存.Designer.cs">
+      <DependentUpon>挑选库存.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存保养\查询物料.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\查询物料.Designer.cs">
+      <DependentUpon>查询物料.cs</DependentUpon>
     </Compile>
     <Compile Include="查询统计\保管员物料查询.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="查询统计\保管员物料查询.Designer.cs">
       <DependentUpon>保管员物料查询.cs</DependentUpon>
-    </Compile>
-    <Compile Include="查询统计\储位物料查询.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="查询统计\储位物料查询.Designer.cs">
-      <DependentUpon>储位物料查询.cs</DependentUpon>
     </Compile>
     <Compile Include="查询统计\本地数据库查询.cs">
       <SubType>Form</SubType>
@@ -158,52 +182,60 @@
     <Compile Include="标签打印\储位标签打印.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CommonClass\SqlManager.cs" />
     <Compile Include="CommonClass\TDB.cs" />
     <Compile Include="CommonClass\TDBObject.cs" />
     <Compile Include="CommonClass\TLogError.cs" />
     <Compile Include="CommonClass\UserInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ArriveStore\到库货物信息合并.resx">
+    <EmbeddedResource Include="到货通知\到库货物信息合并.resx">
       <DependentUpon>到库货物信息合并.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库货物信息拆分.resx">
+    <EmbeddedResource Include="到货通知\到库货物信息拆分.resx">
       <DependentUpon>到库货物信息拆分.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库货物处理.resx">
+    <EmbeddedResource Include="到货通知\到库货物处理.resx">
       <DependentUpon>到库货物处理.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库货物存放信息.resx">
+    <EmbeddedResource Include="到货通知\到库货物存放信息.resx">
       <DependentUpon>到库货物存放信息.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库通知单.resx">
+    <EmbeddedResource Include="到货通知\到库通知单.resx">
       <DependentUpon>到库通知单.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库通知单修改.resx">
+    <EmbeddedResource Include="到货通知\到库通知单修改.resx">
       <DependentUpon>到库通知单修改.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\到库通知单列表.resx">
+    <EmbeddedResource Include="到货通知\到库通知单列表.resx">
       <DependentUpon>到库通知单列表.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\异议入库.resx">
+    <EmbeddedResource Include="到货通知\异议入库.resx">
       <DependentUpon>异议入库.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\异议入库信息添加.resx">
+    <EmbeddedResource Include="到货通知\异议入库信息添加.resx">
       <DependentUpon>异议入库信息添加.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArriveStore\异议货物存放信息.resx">
+    <EmbeddedResource Include="到货通知\异议货物存放信息.resx">
       <DependentUpon>异议货物存放信息.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="同步数据\同步盘点单.resx">
+      <DependentUpon>同步盘点单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\保养单列表.resx">
+      <DependentUpon>保养单列表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\新建保养单.resx">
+      <DependentUpon>新建保养单.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="同步数据\同步保管员信息.resx">
       <DependentUpon>同步保管员信息.cs</DependentUpon>
@@ -211,21 +243,23 @@
     <EmbeddedResource Include="同步数据\同步库存账套及逻辑库区.resx">
       <DependentUpon>同步库存账套及逻辑库区.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\保养单列表.resx" />
-    <EmbeddedResource Include="库存保养\保养货物.resx" />
-    <EmbeddedResource Include="库存保养\制定保养单.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="库存保养\查询保养单.resx">
+      <DependentUpon>查询保养单.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="库存保养\新增保养数量.resx" />
-    <EmbeddedResource Include="库存保养\查询保养单.resx" />
-    <EmbeddedResource Include="库存保养\管理保养单.resx">
-      <DependentUpon>管理保养单.cs</DependentUpon>
+    <EmbeddedResource Include="库存保养\查询物料.resx">
+      <DependentUpon>查询物料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\新建盘点单.resx">
+      <DependentUpon>新建盘点单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\查询盘点单.resx">
+      <DependentUpon>查询盘点单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\挑选库存.resx">
+      <DependentUpon>挑选库存.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="查询统计\保管员物料查询.resx">
       <DependentUpon>保管员物料查询.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="查询统计\储位物料查询.resx">
-      <DependentUpon>储位物料查询.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="查询统计\本地数据库查询.resx">
       <DependentUpon>本地数据库查询.cs</DependentUpon>
@@ -257,6 +291,18 @@
     <EmbeddedResource Include="标签打印\物料标签打印.resx">
       <DependentUpon>物料标签打印.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存保养\管理保养单.resx">
+      <DependentUpon>管理保养单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点单列表.resx">
+      <DependentUpon>盘点单列表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\管理盘点单.resx">
+      <DependentUpon>管理盘点单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存盘点\盘点单录入.resx">
+      <DependentUpon>盘点单录入.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\库存账套信息列表.resx">
       <DependentUpon>库存账套信息列表.cs</DependentUpon>
@@ -300,46 +346,6 @@
       <DependentUpon>用户权限设置.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\创建盘点清单.resx">
-      <DependentUpon>创建盘点清单.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\理论库存信息.resx">
-      <DependentUpon>理论库存信息.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点对照.resx">
-      <DependentUpon>盘点对照.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点对照明细信息.resx">
-      <DependentUpon>盘点对照明细信息.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点报表.resx">
-      <DependentUpon>盘点报表.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点报表明细信息.resx">
-      <DependentUpon>盘点报表明细信息.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点条目.resx">
-      <DependentUpon>盘点条目.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点条目明细信息.resx">
-      <DependentUpon>盘点条目明细信息.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\盘点清单列表.resx">
-      <DependentUpon>盘点清单列表.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="库存盘点\进行盘点.resx">
-      <DependentUpon>进行盘点.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -368,6 +374,30 @@
     </Compile>
     <Compile Include="标签打印\物料标签打印.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\管理保养单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存保养\管理保养单.Designer.cs">
+      <DependentUpon>管理保养单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\盘点单列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点单列表.Designer.cs">
+      <DependentUpon>盘点单列表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\管理盘点单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\管理盘点单.Designer.cs">
+      <DependentUpon>管理盘点单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存盘点\盘点单录入.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存盘点\盘点单录入.Designer.cs">
+      <DependentUpon>盘点单录入.cs</DependentUpon>
     </Compile>
     <Compile Include="系统管理\库存账套信息列表.cs">
       <SubType>Form</SubType>
@@ -412,36 +442,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="库存盘点\创建盘点清单.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\理论库存信息.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点对照.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点对照明细信息.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点报表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点报表明细信息.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点条目.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点条目明细信息.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\盘点清单列表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="库存盘点\进行盘点.cs">
-      <SubType>Form</SubType>
     </Compile>
     <None Include="Web References\rfid2021Service\MessagePack.datasource">
       <DependentUpon>Reference.map</DependentUpon>

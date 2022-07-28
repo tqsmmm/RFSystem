@@ -102,7 +102,7 @@ namespace RFSystem
             this.dataGridViewPrinterList.ReadOnly = true;
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
-            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewPrinterList.Size = new System.Drawing.Size(699, 464);
             this.dataGridViewPrinterList.TabIndex = 40;
             this.dataGridViewPrinterList.SelectionChanged += new System.EventHandler(this.dataGridViewPrinterList_SelectionChanged);

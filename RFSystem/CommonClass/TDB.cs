@@ -13,6 +13,38 @@ namespace RFSystem
         private ESQL_TYPE sqlType;
         protected OleDbTransaction trans;
 
+        private static string m_ConnStr;
+        private static TDB m_db;
+
+        public static string ConnStr
+        {
+            get
+            {
+                return m_ConnStr;
+            }
+            set
+            {
+                m_ConnStr = value;
+            }
+        }
+
+        public static TDB db
+        {
+            get
+            {
+                if (m_db == null)
+                {
+                    m_db = new TDB(m_ConnStr);
+                }
+
+                return m_db;
+            }
+            set
+            {
+
+            }
+        }
+
         public TDB(string ConnStr)
         {
             sqlType = ESQL_TYPE.NonQuery;

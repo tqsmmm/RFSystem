@@ -40,30 +40,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSocket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewStock = new System.Windows.Forms.DataGridView();
-            this.ColumnFACT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPRODUCT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPATCH_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPRODUCT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBct1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBct60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBct61 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBct70 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBct71 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStoreManDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSUPPLIER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBillNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnVerpr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMenge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrintCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YWTM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PZH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RKRQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxSupplier = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -84,10 +60,47 @@
             this.comboBoxSLocation = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewStock = new System.Windows.Forms.DataGridView();
+            this.deliveryLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invBin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodLineDeptId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodLineDeptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.legacyItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemUom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invLogicCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invBillTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invQualifiedQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invOrQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invPhysicCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invResponserUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invResponserDeptId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custodianJobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inspectorJobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invTransactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invTotPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depositType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depositQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depositAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depositDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productionLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
             this.SuspendLayout();
             // 
             // nudCopy
@@ -154,6 +167,7 @@
             this.txtPrinter.Name = "txtPrinter";
             this.txtPrinter.Size = new System.Drawing.Size(120, 26);
             this.txtPrinter.TabIndex = 1105;
+            this.txtPrinter.TextChanged += new System.EventHandler(this.txtPrinter_TextChanged);
             // 
             // btnPrint
             // 
@@ -191,7 +205,7 @@
             this.dataGridViewPrinterList.ReadOnly = true;
             this.dataGridViewPrinterList.RowHeadersVisible = false;
             this.dataGridViewPrinterList.RowTemplate.Height = 23;
-            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPrinterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewPrinterList.Size = new System.Drawing.Size(120, 180);
             this.dataGridViewPrinterList.TabIndex = 1110;
             // 
@@ -217,236 +231,6 @@
             this.columnSocket.Name = "columnSocket";
             this.columnSocket.ReadOnly = true;
             this.columnSocket.Visible = false;
-            // 
-            // dataGridViewStock
-            // 
-            this.dataGridViewStock.AllowUserToAddRows = false;
-            this.dataGridViewStock.AllowUserToResizeRows = false;
-            this.dataGridViewStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewStock.ColumnHeadersHeight = 30;
-            this.dataGridViewStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnFACT_NO,
-            this.ColumnPRODUCT_NO,
-            this.ColumnPATCH_NO,
-            this.ColumnSLocation,
-            this.ColumnPRODUCT_NAME,
-            this.ColumnUNIT,
-            this.ColumnBIN,
-            this.ColumnBct1,
-            this.ColumnBct60,
-            this.ColumnBct61,
-            this.ColumnBct70,
-            this.ColumnBct71,
-            this.ColumnStoreManDetail,
-            this.ColumnSUPPLIER_NO,
-            this.ColumnBillNo,
-            this.ColumnPName,
-            this.ColumnWeight,
-            this.ColumnVerpr,
-            this.ColumnMenge,
-            this.ColumnPrintCount,
-            this.YWTM,
-            this.PZH,
-            this.RKRQ});
-            this.dataGridViewStock.Location = new System.Drawing.Point(138, 148);
-            this.dataGridViewStock.Name = "dataGridViewStock";
-            this.dataGridViewStock.ReadOnly = true;
-            this.dataGridViewStock.RowHeadersVisible = false;
-            this.dataGridViewStock.RowTemplate.Height = 23;
-            this.dataGridViewStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStock.Size = new System.Drawing.Size(878, 413);
-            this.dataGridViewStock.TabIndex = 1113;
-            this.dataGridViewStock.SelectionChanged += new System.EventHandler(this.dataGridViewStock_SelectionChanged);
-            // 
-            // ColumnFACT_NO
-            // 
-            this.ColumnFACT_NO.DataPropertyName = "gch";
-            this.ColumnFACT_NO.HeaderText = "库存账套";
-            this.ColumnFACT_NO.Name = "ColumnFACT_NO";
-            this.ColumnFACT_NO.ReadOnly = true;
-            this.ColumnFACT_NO.Width = 90;
-            // 
-            // ColumnPRODUCT_NO
-            // 
-            this.ColumnPRODUCT_NO.DataPropertyName = "product_no";
-            this.ColumnPRODUCT_NO.HeaderText = "物料号";
-            this.ColumnPRODUCT_NO.Name = "ColumnPRODUCT_NO";
-            this.ColumnPRODUCT_NO.ReadOnly = true;
-            this.ColumnPRODUCT_NO.Width = 76;
-            // 
-            // ColumnPATCH_NO
-            // 
-            this.ColumnPATCH_NO.DataPropertyName = "patch";
-            this.ColumnPATCH_NO.HeaderText = "批次号";
-            this.ColumnPATCH_NO.Name = "ColumnPATCH_NO";
-            this.ColumnPATCH_NO.ReadOnly = true;
-            this.ColumnPATCH_NO.Width = 76;
-            // 
-            // ColumnSLocation
-            // 
-            this.ColumnSLocation.DataPropertyName = "SL";
-            this.ColumnSLocation.HeaderText = "逻辑库区";
-            this.ColumnSLocation.Name = "ColumnSLocation";
-            this.ColumnSLocation.ReadOnly = true;
-            this.ColumnSLocation.Width = 90;
-            // 
-            // ColumnPRODUCT_NAME
-            // 
-            this.ColumnPRODUCT_NAME.DataPropertyName = "product_desc";
-            this.ColumnPRODUCT_NAME.HeaderText = "物品名称";
-            this.ColumnPRODUCT_NAME.Name = "ColumnPRODUCT_NAME";
-            this.ColumnPRODUCT_NAME.ReadOnly = true;
-            this.ColumnPRODUCT_NAME.Width = 90;
-            // 
-            // ColumnUNIT
-            // 
-            this.ColumnUNIT.DataPropertyName = "unit";
-            this.ColumnUNIT.HeaderText = "单位";
-            this.ColumnUNIT.Name = "ColumnUNIT";
-            this.ColumnUNIT.ReadOnly = true;
-            this.ColumnUNIT.Width = 62;
-            // 
-            // ColumnBIN
-            // 
-            this.ColumnBIN.DataPropertyName = "bin1";
-            this.ColumnBIN.HeaderText = "储位1";
-            this.ColumnBIN.Name = "ColumnBIN";
-            this.ColumnBIN.ReadOnly = true;
-            this.ColumnBIN.Width = 70;
-            // 
-            // ColumnBct1
-            // 
-            this.ColumnBct1.DataPropertyName = "bin1_qty";
-            this.ColumnBct1.HeaderText = "储位1数量";
-            this.ColumnBct1.Name = "ColumnBct1";
-            this.ColumnBct1.ReadOnly = true;
-            this.ColumnBct1.Width = 98;
-            // 
-            // ColumnBct60
-            // 
-            this.ColumnBct60.DataPropertyName = "bin2";
-            this.ColumnBct60.HeaderText = "储位2";
-            this.ColumnBct60.Name = "ColumnBct60";
-            this.ColumnBct60.ReadOnly = true;
-            this.ColumnBct60.Width = 70;
-            // 
-            // ColumnBct61
-            // 
-            this.ColumnBct61.DataPropertyName = "bin2_qty";
-            this.ColumnBct61.HeaderText = "储位2数量";
-            this.ColumnBct61.Name = "ColumnBct61";
-            this.ColumnBct61.ReadOnly = true;
-            this.ColumnBct61.Width = 98;
-            // 
-            // ColumnBct70
-            // 
-            this.ColumnBct70.DataPropertyName = "bin3";
-            this.ColumnBct70.HeaderText = "储位3";
-            this.ColumnBct70.Name = "ColumnBct70";
-            this.ColumnBct70.ReadOnly = true;
-            this.ColumnBct70.Width = 70;
-            // 
-            // ColumnBct71
-            // 
-            this.ColumnBct71.DataPropertyName = "bin3_qty";
-            this.ColumnBct71.HeaderText = "储位3数量";
-            this.ColumnBct71.Name = "ColumnBct71";
-            this.ColumnBct71.ReadOnly = true;
-            this.ColumnBct71.Width = 98;
-            // 
-            // ColumnStoreManDetail
-            // 
-            this.ColumnStoreManDetail.DataPropertyName = "storeman";
-            this.ColumnStoreManDetail.HeaderText = "保管员";
-            this.ColumnStoreManDetail.Name = "ColumnStoreManDetail";
-            this.ColumnStoreManDetail.ReadOnly = true;
-            this.ColumnStoreManDetail.Width = 76;
-            // 
-            // ColumnSUPPLIER_NO
-            // 
-            this.ColumnSUPPLIER_NO.DataPropertyName = "ejc";
-            this.ColumnSUPPLIER_NO.HeaderText = "产线部门代码";
-            this.ColumnSUPPLIER_NO.Name = "ColumnSUPPLIER_NO";
-            this.ColumnSUPPLIER_NO.ReadOnly = true;
-            this.ColumnSUPPLIER_NO.Width = 118;
-            // 
-            // ColumnBillNo
-            // 
-            this.ColumnBillNo.DataPropertyName = "order_no";
-            this.ColumnBillNo.HeaderText = "送货单号";
-            this.ColumnBillNo.Name = "ColumnBillNo";
-            this.ColumnBillNo.ReadOnly = true;
-            this.ColumnBillNo.ToolTipText = "Ebeln";
-            this.ColumnBillNo.Width = 90;
-            // 
-            // ColumnPName
-            // 
-            this.ColumnPName.DataPropertyName = "supplier";
-            this.ColumnPName.HeaderText = "供应商";
-            this.ColumnPName.Name = "ColumnPName";
-            this.ColumnPName.ReadOnly = true;
-            this.ColumnPName.ToolTipText = "Name1";
-            this.ColumnPName.Width = 76;
-            // 
-            // ColumnWeight
-            // 
-            this.ColumnWeight.DataPropertyName = "weight";
-            this.ColumnWeight.HeaderText = "重量";
-            this.ColumnWeight.Name = "ColumnWeight";
-            this.ColumnWeight.ReadOnly = true;
-            this.ColumnWeight.Width = 62;
-            // 
-            // ColumnVerpr
-            // 
-            this.ColumnVerpr.DataPropertyName = "amount";
-            this.ColumnVerpr.HeaderText = "金额";
-            this.ColumnVerpr.Name = "ColumnVerpr";
-            this.ColumnVerpr.ReadOnly = true;
-            this.ColumnVerpr.Width = 62;
-            // 
-            // ColumnMenge
-            // 
-            this.ColumnMenge.DataPropertyName = "stock_qty";
-            this.ColumnMenge.HeaderText = "库存数量";
-            this.ColumnMenge.Name = "ColumnMenge";
-            this.ColumnMenge.ReadOnly = true;
-            this.ColumnMenge.Width = 90;
-            // 
-            // ColumnPrintCount
-            // 
-            this.ColumnPrintCount.DataPropertyName = "PrintCount";
-            this.ColumnPrintCount.HeaderText = "打印份数";
-            this.ColumnPrintCount.Name = "ColumnPrintCount";
-            this.ColumnPrintCount.ReadOnly = true;
-            this.ColumnPrintCount.Width = 90;
-            // 
-            // YWTM
-            // 
-            this.YWTM.DataPropertyName = "ywtm";
-            this.YWTM.HeaderText = "一维条码";
-            this.YWTM.Name = "YWTM";
-            this.YWTM.ReadOnly = true;
-            this.YWTM.Width = 90;
-            // 
-            // PZH
-            // 
-            this.PZH.DataPropertyName = "pzh";
-            this.PZH.HeaderText = "凭证号";
-            this.PZH.Name = "PZH";
-            this.PZH.ReadOnly = true;
-            this.PZH.Width = 76;
-            // 
-            // RKRQ
-            // 
-            this.RKRQ.DataPropertyName = "rkrq";
-            this.RKRQ.HeaderText = "入库日期";
-            this.RKRQ.Name = "RKRQ";
-            this.RKRQ.ReadOnly = true;
-            this.RKRQ.Width = 90;
             // 
             // groupBox1
             // 
@@ -496,7 +280,7 @@
             // 
             // textBoxOrderNo
             // 
-            this.textBoxOrderNo.Location = new System.Drawing.Point(779, 59);
+            this.textBoxOrderNo.Location = new System.Drawing.Point(799, 59);
             this.textBoxOrderNo.Name = "textBoxOrderNo";
             this.textBoxOrderNo.Size = new System.Drawing.Size(240, 26);
             this.textBoxOrderNo.TabIndex = 60;
@@ -540,11 +324,11 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 83;
-            this.label1.Text = "物品名称：";
+            this.label1.Text = "物料名称：";
             // 
             // textBoxStoreMan
             // 
-            this.textBoxStoreMan.Location = new System.Drawing.Point(779, 91);
+            this.textBoxStoreMan.Location = new System.Drawing.Point(799, 91);
             this.textBoxStoreMan.Name = "textBoxStoreMan";
             this.textBoxStoreMan.Size = new System.Drawing.Size(240, 26);
             this.textBoxStoreMan.TabIndex = 90;
@@ -567,7 +351,7 @@
             // 
             // textBoxBarcode
             // 
-            this.textBoxBarcode.Location = new System.Drawing.Point(779, 25);
+            this.textBoxBarcode.Location = new System.Drawing.Point(799, 25);
             this.textBoxBarcode.Name = "textBoxBarcode";
             this.textBoxBarcode.Size = new System.Drawing.Size(240, 26);
             this.textBoxBarcode.TabIndex = 30;
@@ -588,9 +372,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(714, 28);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 20);
+            this.label9.Size = new System.Drawing.Size(79, 20);
             this.label9.TabIndex = 0;
-            this.label9.Text = "条码号：";
+            this.label9.Text = "物料代码：";
             // 
             // comboBoxPlant
             // 
@@ -601,6 +385,7 @@
             this.comboBoxPlant.Name = "comboBoxPlant";
             this.comboBoxPlant.Size = new System.Drawing.Size(240, 28);
             this.comboBoxPlant.TabIndex = 10;
+            this.comboBoxPlant.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlant_SelectedIndexChanged);
             this.comboBoxPlant.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPlant_SelectionChangeCommitted);
             // 
             // label7
@@ -640,13 +425,356 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "产线部门代码：";
             // 
+            // dataGridViewStock
+            // 
+            this.dataGridViewStock.AllowUserToAddRows = false;
+            this.dataGridViewStock.AllowUserToResizeRows = false;
+            this.dataGridViewStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewStock.ColumnHeadersHeight = 30;
+            this.dataGridViewStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deliveryLineId,
+            this.batchId,
+            this.invBin,
+            this.itemId,
+            this.itemName,
+            this.itemDesc,
+            this.supplierId,
+            this.supplierName,
+            this.prodLineDeptId,
+            this.prodLineDeptName,
+            this.receiveId,
+            this.legacyItemCode,
+            this.itemUom,
+            this.invLogicCode,
+            this.invBillTo,
+            this.invQualifiedQty,
+            this.invOrQty,
+            this.invQty,
+            this.invPhysicCode,
+            this.invResponserUserId,
+            this.invResponserDeptId,
+            this.accountTime,
+            this.accountUserId,
+            this.orderLineId,
+            this.custodianJobId,
+            this.inspectorJobId,
+            this.transactionId,
+            this.invTransactionId,
+            this.invPrice,
+            this.invTotPrice,
+            this.depositType,
+            this.depositQty,
+            this.depositAmt,
+            this.depositDate,
+            this.productionLine,
+            this.unitWeight});
+            this.dataGridViewStock.Location = new System.Drawing.Point(138, 148);
+            this.dataGridViewStock.Name = "dataGridViewStock";
+            this.dataGridViewStock.ReadOnly = true;
+            this.dataGridViewStock.RowHeadersVisible = false;
+            this.dataGridViewStock.RowTemplate.Height = 23;
+            this.dataGridViewStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewStock.Size = new System.Drawing.Size(878, 413);
+            this.dataGridViewStock.TabIndex = 1115;
+            // 
+            // deliveryLineId
+            // 
+            this.deliveryLineId.DataPropertyName = "deliveryLineId";
+            this.deliveryLineId.HeaderText = "送货单号";
+            this.deliveryLineId.Name = "deliveryLineId";
+            this.deliveryLineId.ReadOnly = true;
+            this.deliveryLineId.Width = 90;
+            // 
+            // batchId
+            // 
+            this.batchId.DataPropertyName = "batchId";
+            this.batchId.HeaderText = "批次号";
+            this.batchId.Name = "batchId";
+            this.batchId.ReadOnly = true;
+            this.batchId.Width = 76;
+            // 
+            // invBin
+            // 
+            this.invBin.DataPropertyName = "invBin";
+            this.invBin.HeaderText = "储位";
+            this.invBin.Name = "invBin";
+            this.invBin.ReadOnly = true;
+            this.invBin.Width = 62;
+            // 
+            // itemId
+            // 
+            this.itemId.DataPropertyName = "itemId";
+            this.itemId.HeaderText = "物料代码";
+            this.itemId.Name = "itemId";
+            this.itemId.ReadOnly = true;
+            this.itemId.Width = 90;
+            // 
+            // itemName
+            // 
+            this.itemName.DataPropertyName = "itemName";
+            this.itemName.HeaderText = "物料名称";
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            this.itemName.Width = 90;
+            // 
+            // itemDesc
+            // 
+            this.itemDesc.DataPropertyName = "itemDesc";
+            this.itemDesc.HeaderText = "物料短描述";
+            this.itemDesc.Name = "itemDesc";
+            this.itemDesc.ReadOnly = true;
+            this.itemDesc.Width = 104;
+            // 
+            // supplierId
+            // 
+            this.supplierId.DataPropertyName = "supplierId";
+            this.supplierId.HeaderText = "供货商代码";
+            this.supplierId.Name = "supplierId";
+            this.supplierId.ReadOnly = true;
+            this.supplierId.Width = 104;
+            // 
+            // supplierName
+            // 
+            this.supplierName.DataPropertyName = "supplierName";
+            this.supplierName.HeaderText = "供货商名称";
+            this.supplierName.Name = "supplierName";
+            this.supplierName.ReadOnly = true;
+            this.supplierName.Width = 104;
+            // 
+            // prodLineDeptId
+            // 
+            this.prodLineDeptId.DataPropertyName = "prodLineDeptId";
+            this.prodLineDeptId.HeaderText = "产线部门代码";
+            this.prodLineDeptId.Name = "prodLineDeptId";
+            this.prodLineDeptId.ReadOnly = true;
+            this.prodLineDeptId.Width = 118;
+            // 
+            // prodLineDeptName
+            // 
+            this.prodLineDeptName.DataPropertyName = "prodLineDeptName";
+            this.prodLineDeptName.HeaderText = "产线部门名称";
+            this.prodLineDeptName.Name = "prodLineDeptName";
+            this.prodLineDeptName.ReadOnly = true;
+            this.prodLineDeptName.Width = 118;
+            // 
+            // receiveId
+            // 
+            this.receiveId.DataPropertyName = "receiveId";
+            this.receiveId.HeaderText = "收货单号";
+            this.receiveId.Name = "receiveId";
+            this.receiveId.ReadOnly = true;
+            this.receiveId.Width = 90;
+            // 
+            // legacyItemCode
+            // 
+            this.legacyItemCode.DataPropertyName = "legacyItemCode";
+            this.legacyItemCode.HeaderText = "老系统物料代码";
+            this.legacyItemCode.Name = "legacyItemCode";
+            this.legacyItemCode.ReadOnly = true;
+            this.legacyItemCode.Width = 132;
+            // 
+            // itemUom
+            // 
+            this.itemUom.DataPropertyName = "itemUom";
+            this.itemUom.HeaderText = "计量单位";
+            this.itemUom.Name = "itemUom";
+            this.itemUom.ReadOnly = true;
+            this.itemUom.Width = 90;
+            // 
+            // invLogicCode
+            // 
+            this.invLogicCode.DataPropertyName = "invLogicCode";
+            this.invLogicCode.HeaderText = "逻辑库区";
+            this.invLogicCode.Name = "invLogicCode";
+            this.invLogicCode.ReadOnly = true;
+            this.invLogicCode.Width = 90;
+            // 
+            // invBillTo
+            // 
+            this.invBillTo.DataPropertyName = "invBillTo";
+            this.invBillTo.HeaderText = "库存账套";
+            this.invBillTo.Name = "invBillTo";
+            this.invBillTo.ReadOnly = true;
+            this.invBillTo.Width = 90;
+            // 
+            // invQualifiedQty
+            // 
+            this.invQualifiedQty.DataPropertyName = "invQualifiedQty";
+            this.invQualifiedQty.HeaderText = "送货合格数量";
+            this.invQualifiedQty.Name = "invQualifiedQty";
+            this.invQualifiedQty.ReadOnly = true;
+            this.invQualifiedQty.Width = 118;
+            // 
+            // invOrQty
+            // 
+            this.invOrQty.DataPropertyName = "invOrQty";
+            this.invOrQty.HeaderText = "库存预约量";
+            this.invOrQty.Name = "invOrQty";
+            this.invOrQty.ReadOnly = true;
+            this.invOrQty.Width = 104;
+            // 
+            // invQty
+            // 
+            this.invQty.DataPropertyName = "invQty";
+            this.invQty.HeaderText = "库存数量";
+            this.invQty.Name = "invQty";
+            this.invQty.ReadOnly = true;
+            this.invQty.Width = 90;
+            // 
+            // invPhysicCode
+            // 
+            this.invPhysicCode.DataPropertyName = "invPhysicCode";
+            this.invPhysicCode.HeaderText = "物理库区";
+            this.invPhysicCode.Name = "invPhysicCode";
+            this.invPhysicCode.ReadOnly = true;
+            this.invPhysicCode.Width = 90;
+            // 
+            // invResponserUserId
+            // 
+            this.invResponserUserId.DataPropertyName = "invResponserUserId";
+            this.invResponserUserId.HeaderText = "库存责任人";
+            this.invResponserUserId.Name = "invResponserUserId";
+            this.invResponserUserId.ReadOnly = true;
+            this.invResponserUserId.Width = 104;
+            // 
+            // invResponserDeptId
+            // 
+            this.invResponserDeptId.DataPropertyName = "invResponserDeptId";
+            this.invResponserDeptId.HeaderText = "责任人部门";
+            this.invResponserDeptId.Name = "invResponserDeptId";
+            this.invResponserDeptId.ReadOnly = true;
+            this.invResponserDeptId.Width = 104;
+            // 
+            // accountTime
+            // 
+            this.accountTime.DataPropertyName = "accountTime";
+            this.accountTime.HeaderText = "收货日期";
+            this.accountTime.Name = "accountTime";
+            this.accountTime.ReadOnly = true;
+            this.accountTime.Width = 90;
+            // 
+            // accountUserId
+            // 
+            this.accountUserId.DataPropertyName = "accountUserId";
+            this.accountUserId.HeaderText = "收货人";
+            this.accountUserId.Name = "accountUserId";
+            this.accountUserId.ReadOnly = true;
+            this.accountUserId.Width = 76;
+            // 
+            // orderLineId
+            // 
+            this.orderLineId.DataPropertyName = "orderLineId";
+            this.orderLineId.HeaderText = "订单行号";
+            this.orderLineId.Name = "orderLineId";
+            this.orderLineId.ReadOnly = true;
+            this.orderLineId.Width = 90;
+            // 
+            // custodianJobId
+            // 
+            this.custodianJobId.DataPropertyName = "custodianJobId";
+            this.custodianJobId.HeaderText = "保管员";
+            this.custodianJobId.Name = "custodianJobId";
+            this.custodianJobId.ReadOnly = true;
+            this.custodianJobId.Width = 76;
+            // 
+            // inspectorJobId
+            // 
+            this.inspectorJobId.DataPropertyName = "inspectorJobId";
+            this.inspectorJobId.HeaderText = "验收员";
+            this.inspectorJobId.Name = "inspectorJobId";
+            this.inspectorJobId.ReadOnly = true;
+            this.inspectorJobId.Width = 76;
+            // 
+            // transactionId
+            // 
+            this.transactionId.DataPropertyName = "transactionId";
+            this.transactionId.HeaderText = "库存明细交易号";
+            this.transactionId.Name = "transactionId";
+            this.transactionId.ReadOnly = true;
+            this.transactionId.Width = 132;
+            // 
+            // invTransactionId
+            // 
+            this.invTransactionId.DataPropertyName = "invTransactionId";
+            this.invTransactionId.HeaderText = "库存主表交易号";
+            this.invTransactionId.Name = "invTransactionId";
+            this.invTransactionId.ReadOnly = true;
+            this.invTransactionId.Width = 132;
+            // 
+            // invPrice
+            // 
+            this.invPrice.DataPropertyName = "invPrice";
+            this.invPrice.HeaderText = "库存单价";
+            this.invPrice.Name = "invPrice";
+            this.invPrice.ReadOnly = true;
+            this.invPrice.Width = 90;
+            // 
+            // invTotPrice
+            // 
+            this.invTotPrice.DataPropertyName = "invTotPrice";
+            this.invTotPrice.HeaderText = "库存总价";
+            this.invTotPrice.Name = "invTotPrice";
+            this.invTotPrice.ReadOnly = true;
+            this.invTotPrice.Width = 90;
+            // 
+            // depositType
+            // 
+            this.depositType.DataPropertyName = "depositType";
+            this.depositType.HeaderText = "入库性质";
+            this.depositType.Name = "depositType";
+            this.depositType.ReadOnly = true;
+            this.depositType.Width = 90;
+            // 
+            // depositQty
+            // 
+            this.depositQty.DataPropertyName = "depositQty";
+            this.depositQty.HeaderText = "入库数量";
+            this.depositQty.Name = "depositQty";
+            this.depositQty.ReadOnly = true;
+            this.depositQty.Width = 90;
+            // 
+            // depositAmt
+            // 
+            this.depositAmt.DataPropertyName = "depositAmt";
+            this.depositAmt.HeaderText = "入库金额";
+            this.depositAmt.Name = "depositAmt";
+            this.depositAmt.ReadOnly = true;
+            this.depositAmt.Width = 90;
+            // 
+            // depositDate
+            // 
+            this.depositDate.DataPropertyName = "depositDate";
+            this.depositDate.HeaderText = "入库日期";
+            this.depositDate.Name = "depositDate";
+            this.depositDate.ReadOnly = true;
+            this.depositDate.Width = 90;
+            // 
+            // productionLine
+            // 
+            this.productionLine.DataPropertyName = "productionLine";
+            this.productionLine.HeaderText = "产线";
+            this.productionLine.Name = "productionLine";
+            this.productionLine.ReadOnly = true;
+            this.productionLine.Width = 62;
+            // 
+            // unitWeight
+            // 
+            this.unitWeight.DataPropertyName = "unitWeight";
+            this.unitWeight.HeaderText = "单重";
+            this.unitWeight.Name = "unitWeight";
+            this.unitWeight.ReadOnly = true;
+            this.unitWeight.Width = 62;
+            // 
             // 本地数据库查询
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 573);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewStock);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.nudCopy);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbLabelType);
@@ -665,9 +793,9 @@
             this.Load += new System.EventHandler(this.本地数据库查询_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCopy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinterList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -687,7 +815,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSocket;
-        private System.Windows.Forms.DataGridView dataGridViewStock;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxSupplier;
         private System.Windows.Forms.Label label5;
@@ -708,28 +835,42 @@
         private System.Windows.Forms.ComboBox comboBoxSLocation;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFACT_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPRODUCT_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPATCH_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPRODUCT_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUNIT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBIN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBct1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBct60;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBct61;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBct70;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBct71;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStoreManDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSUPPLIER_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBillNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVerpr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMenge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrintCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn YWTM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PZH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RKRQ;
+        private System.Windows.Forms.DataGridView dataGridViewStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryLineId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn batchId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invBin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodLineDeptId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodLineDeptName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receiveId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn legacyItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemUom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invLogicCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invBillTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invQualifiedQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invOrQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invPhysicCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invResponserUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invResponserDeptId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderLineId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custodianJobId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inspectorJobId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invTransactionId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invTotPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depositType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depositQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depositAmt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depositDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productionLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitWeight;
     }
 }

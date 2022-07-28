@@ -103,7 +103,7 @@ namespace RFSystem
             this.dataGridViewUserList.ReadOnly = true;
             this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 23;
-            this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewUserList.Size = new System.Drawing.Size(894, 606);
             this.dataGridViewUserList.TabIndex = 32;
             this.dataGridViewUserList.SelectionChanged += new System.EventHandler(this.dataGridViewUserList_SelectionChanged);
@@ -248,7 +248,7 @@ namespace RFSystem
             {
                 if (dataGridViewUserList.SelectedRows != null)
                 {
-                    if (CommonFunction.Sys_MsgYN("确认恢复此条用户信息么？") && (DBOperate.RebornUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认恢复此条用户信息么？") && (UserInfo.RebornUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
                     {
                         CommonFunction.Sys_MsgBox("用户恢复成功，如果需要检索此用户信息请取消选择\"被删除过的用户\"");
                         btnSelect.PerformClick();
@@ -271,7 +271,7 @@ namespace RFSystem
             {
                 if (dataGridViewUserList.SelectedRows != null)
                 {
-                    if (CommonFunction.Sys_MsgYN("确认删除此条用户信息么？") && (DBOperate.DelUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
+                    if (CommonFunction.Sys_MsgYN("确认删除此条用户信息么？") && (UserInfo.DelUser((string)dataGridViewUserList.SelectedRows[0].Cells["columnUserID"].Value) != -1))
                     {
                         CommonFunction.Sys_MsgBox("用户删除成功，如果需要检索此用户信息请选择\"被删除过的用户\"");
                         btnSelect.PerformClick();
@@ -322,7 +322,7 @@ namespace RFSystem
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            dtUserList = DBOperate.GetUserList(textBoxUserID.Text.Trim(), textBoxUserName.Text.Trim(), true);
+            dtUserList = UserInfo.GetUserList(textBoxUserID.Text.Trim(), textBoxUserName.Text.Trim(), true);
             
             dataGridViewUserList.DataSource = dtUserList;
         }

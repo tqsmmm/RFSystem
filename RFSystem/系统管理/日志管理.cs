@@ -33,7 +33,7 @@ namespace RFSystem
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(568, 310);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -107,10 +107,12 @@ namespace RFSystem
                 try
                 {
                     WebClient client = new WebClient();
-                    string address = ConstDefine.g_ConnStr;
+
+                    string address = string.Empty;
                     address = address.Substring(0, address.LastIndexOf('/') + 1) + "Log/" + dataGridView1.SelectedRows[0].Cells["fileName"].Value.ToString();
                     byte[] bytes = client.DownloadData(address);
                     string str2 = Encoding.GetEncoding("gb2312").GetString(bytes);
+
                     new 日志信息查看 { val = str2 }.ShowDialog();
                 }
                 catch (Exception exception)

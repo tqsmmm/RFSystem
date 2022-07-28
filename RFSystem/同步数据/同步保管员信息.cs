@@ -24,6 +24,8 @@ namespace RFSystem
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
+
                 rfid2021Service.rfidService newService = new rfid2021Service.rfidService();
                 DataSet _sendDs = new DataSet();
 
@@ -37,7 +39,7 @@ namespace RFSystem
 
                 _dt.Rows.Add(_dr);
 
-                rfid2021Service.MessagePack pack = newService.sendMsg("DVE130", ConstDefine.g_bxuserid, ConstDefine.g_bxusername, ConstDefine.g_bxjobid, _sendDs, out DataSet _outDs);
+                rfid2021Service.MessagePack pack = newService.sendMsg("DVE130", AppSetter.g_bxuserid, AppSetter.g_bxusername, AppSetter.g_bxjobid, _sendDs, out DataSet _outDs);
 
                 if (pack.Result)
                 {
@@ -69,9 +71,9 @@ namespace RFSystem
                 return;
             }
 
-            DBOperate.clearRF_Users();
+            TDB.db.Excute("DELETE FROM RF_Users");
 
-            int updateCount = DBOperate.updateRF_Users();
+            int updateCount = UserInfo.updateRF_Users();
 
             if (updateCount > -1)
             {
@@ -85,7 +87,10 @@ namespace RFSystem
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            mDt = DBOperate.getE1DV30();
+            if (TDB.db.OpenDataSet("SELECT userid,postid,userName from rfid2021.dbo.bx_E1DV30", out DataTable dt) == 0)
+            {
+                mDt = dt;
+            }
 
             if (mDt != null)
             {
